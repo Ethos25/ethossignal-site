@@ -36,6 +36,11 @@
        .font-ibm-serif { font-family: 'IBM Plex Serif', serif; }
        .font-inter { font-family: 'Inter', sans-serif; }
 
+       .wordmark-stack { display: flex; align-items: center; gap: 0.5rem; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+       .wordmark-stack .ethos { font-weight: 700; color: #141414; }
+       .wordmark-stack .glyph { font-family: 'IBM Plex Mono', monospace; font-weight: 500; color: #888888; }
+       .wordmark-stack .signal { font-family: 'IBM Plex Mono', monospace; font-weight: 400; color: #A77F43; }
+
        /* Navigation */
        .nav {
            position: sticky;
@@ -359,9 +364,9 @@
    <nav class="nav">
        <div class="nav-container">
            <div class="wordmark font-jetbrains">
-               <span class="wordmark-ethos font-jetbrains">ETHOS</span>
-               <span class="wordmark-separator font-ibm-mono">—•—</span>
-               <span class="wordmark-signal font-ibm-mono">SIGNAL</span>
+               <span class="wordmark-ethos font-jetbrains" style="font-size: 2rem;">ETHOS</span>
+               <span class="wordmark-separator font-ibm-mono" style="font-size: 2rem;">—•—</span>
+               <span class="wordmark-signal font-ibm-mono" style="font-size: 2rem;">SIGNAL</span>
            </div>
            
            <div class="nav-links font-inter">
