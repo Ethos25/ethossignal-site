@@ -329,21 +329,6 @@
            to { opacity: 1; transform: translateY(0); }
        }
 
-       /* Hero Section Specific */
-       .hero-section {
-           position: relative;
-           width: 100%;
-           height: 100vh;
-           overflow: hidden;
-           background: linear-gradient(135deg, #2F4454 0%, #141414 100%);
-           display: flex;
-           flex-direction: column;
-           justify-content: center;
-           align-items: center;
-           text-align: center;
-           padding: 0 1.5rem;
-       }
-
        /* Responsive */
        @media (max-width: 768px) {
            .nav-links {
@@ -392,8 +377,9 @@
        </div>
    </nav>
 
-  
-   <!-- Hero Background Image -->Add commentMore actions
+   <!-- Hero Section -->
+   <section style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+       <!-- Hero Background Image -->
 
 <div style="position: absolute; inset: 0; overflow: hidden;">
 <img 
@@ -445,25 +431,30 @@
             <a href="/access" class="cta-button">
             Access
             </a>
-Add comment  I think this is the hero image i accidentally deleted. 
+
+       </div>
+   </section>
+
+   <div class="divider font-jetbrains">—•—</div>
+
 
    
    <!-- Diagnostic Exposure Section -->
    <section class="section section-gray" style="
-       background-image: url('/assets/backgrounds/drift-substrate-faint.png');
+       background-image: url('/assets/backgrounds/drift-grid-faint.png');
        background-repeat: no-repeat;
        background-position: center;
        background-size: cover;
-       background-blend-mode: multiply;
-       min-height: 60vh;
    ">
+       <!-- Section Container -->
        <div class="container" style="
            display: grid;
            grid-template-columns: 1fr 2px 1fr;
            gap: 4rem;
            align-items: center;
+           min-height: 60vh;
        ">
-           <!-- Left Column: Identity Headline -->
+           <!-- Left Column: Identity Provocation -->
            <div>
                <h2 class="font-ibm-serif" style="
                    font-size: clamp(2rem, 4vw, 2.5rem);
@@ -482,7 +473,7 @@ Add comment  I think this is the hero image i accidentally deleted.
                height: 100%;
            "></div>
            
-           <!-- Right Column: Behavioral Logic -->
+           <!-- Right Column: Diagnostic Console -->
            <div class="font-inter" style="
                font-size: 1.125rem;
                line-height: 1.6;
@@ -490,9 +481,20 @@ Add comment  I think this is the hero image i accidentally deleted.
                padding: 2rem;
                border-radius: 8px;
                text-align: left;
-               box-shadow: 0 4px 10px rgba(47, 68, 84, 0.08);
                animation: fadeInUp 0.8s ease-out 0.3s both;
            ">
+               <!-- Rotated Signal Glyph -->
+               <div style="
+                   font-family: 'JetBrains Mono', monospace;
+                   transform: rotate(-90deg);
+                   opacity: 0.4;
+                   font-size: 1.25rem;
+                   margin-bottom: 1rem;
+                   color: #2F4454;
+               ">
+                   —•—
+               </div>
+               
                <p style="margin-bottom: 1rem;">
                    Most systems track output.<br>
                    Drift Quotient tracks misalignment—<em>before</em> it collapses execution.
@@ -501,17 +503,21 @@ Add comment  I think this is the hero image i accidentally deleted.
                    In finance, drift is measured.<br>
                    In people, it compounds—until clarity disappears.
                </p>
-               <p style="
-                   font-weight: 600;
-                   font-size: clamp(1.25rem, 2vw, 1.5rem);
-                   line-height: 1.4;
-                   color: #2F4454;
-               ">
+               <p style="font-weight: 600; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.4;">
                    Drift Quotient exposes the gap between stated identity and actual behavior.<br>
                    It tells you what your KPIs can't.
                </p>
            </div>
        </div>
+       
+       <!-- Section Framing: Bottom Rule -->
+       <div style="
+           width: 40%;
+           height: 1px;
+           background-color: rgba(47, 68, 84, 0.15);
+           margin-top: 3rem;
+           margin-left: 10%;
+       "></div>
    </section>
 
 
