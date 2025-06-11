@@ -1,116 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>EthosSignal | Behavioral Operating System</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>EthosSignal | Behavioral Infrastructure Platform</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+   <script>
+       tailwind.config = {
+           theme: {
+               extend: {
+                   colors: {
+                       'bone-white': '#ECEAE7',
+                       'graphite-black': '#141414',
+                       'signal-gold': '#A77F43',
+                       'signal-gold-pressed': '#8A652F',
+                       'ash-slate': '#888888',
+                       'architect-gray': '#E5E5E3',
+                       'graphite-blue': '#2F4454'
+                   },
+                   fontFamily: {
+                       'jetbrains': ['JetBrains Mono', 'monospace'],
+                       'ibm-mono': ['IBM Plex Mono', 'monospace'],
+                       'ibm-serif': ['IBM Plex Serif', 'serif'],
+                       'inter': ['Inter', 'sans-serif']
+                   },
+                   animation: {
+                       'morse-pulse': 'morse-pulse 4s infinite',
+                       'glyph-pulse': 'glyph-pulse 2s infinite'
+                   }
+               }
+           }
+       }
+   </script>
+   <style>
+       @keyframes morse-pulse {
+           0%, 15%, 100% { opacity: 1; }
+           5% { opacity: 0.2; }
+           20%, 30% { opacity: 1; }
+           25% { opacity: 0.2; }
+           35%, 50% { opacity: 1; }
+           45% { opacity: 0.2; }
+           55%, 85% { opacity: 0.2; }
+       }
+       @keyframes glyph-pulse {
+           0%, 70%, 100% { opacity: 1; }
+           75%, 95% { opacity: 0.3; }
+       }
+   </style>
 </head>
-<body>
-    <div class="behavioral-os">
-        <header class="system-navigation">
-            <div class="os-wordmark">
-                <span class="wordmark-ethos">ETHOS</span>
-                <span class="wordmark-separator">—•—</span>
-                <span class="wordmark-signal">SIGNAL</span>
-            </div>
-            <nav class="navigation-cluster">
-                <ul class="nav-list">
-                    <li><a href="#" class="nav-node">Drift</a></li>
-                    <li><a href="#" class="nav-node">Book</a></li>
-                    <li><a href="#" class="nav-node">System</a></li>
-                    <li><a href="#" class="nav-node">Engage</a></li>
-                    <li><a href="#" class="nav-node">About</a></li>
-                    <li><a href="#" class="nav-node">Signal</a></li>
-                    <li><a href="#" class="nav-cta">Request Briefing</a></li>
-                </ul>
-            </nav>
-        </header>
+<body class="bg-bone-white text-graphite-black font-inter">
+   <!-- Navigation -->
+   <nav class="sticky top-0 bg-bone-white border-b border-architect-gray z-50">
+       <div class="max-w-7xl mx-auto px-8 py-6">
+           <div class="flex items-center justify-between">
+               <!-- Word Mark -->
+               <div class="flex items-center space-x-3">
+                   <span class="font-jetbrains font-bold text-graphite-black text-xl">ETHOS</span>
+                   <span class="font-ibm-mono font-medium text-ash-slate text-xl animate-morse-pulse">—•—</span>
+                   <span class="font-ibm-mono text-signal-gold text-xl">SIGNAL</span>
+               </div>
+               
+               <!-- Navigation Links -->
+               <div class="hidden md:flex items-center space-x-8">
+                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">Drift</a>
+                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">Book</a>
+                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">System</a>
+                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">Engage</a>
+                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">About</a>
+                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">Signal</a>
+                   <a href="#" class="bg-signal-gold text-bone-white px-6 py-3 font-inter font-medium hover:bg-signal-gold-pressed transition-colors">Request Briefing</a>
+               </div>
+               
+               <!-- Mobile Menu Button -->
+               <button class="md:hidden">
+                   <span class="font-jetbrains text-graphite-black">≡</span>
+               </button>
+           </div>
+       </div>
+   </nav>
 
-        <main>
-            <section class="hero-transmission">
-                <h1 class="hero-declaration">
-                    Behavioral infrastructure for institutions that cannot afford to drift.
-                </h1>
-                <div class="hero-threshold">—•—</div>
-                <div class="system-origin-label">SYSTEM ORIGIN</div>
-                <div class="system-ignition">
-                    <span class="ignition-ethos">ETHOS</span>
-                    <span class="ignition-separator">—•—</span>
-                    <span class="ignition-signal">SIGNAL</span>
-                </div>
-            </section>
+   <!-- Hero Section -->
+   <section class="bg-bone-white py-20 px-8">
+       <div class="max-w-4xl mx-auto text-center">
+           <h1 class="font-ibm-serif text-4xl md:text-6xl font-normal leading-tight mb-8">
+               Behavioral infrastructure for institutions that cannot afford to drift.
+           </h1>
+           <div class="font-jetbrains text-ash-slate text-lg animate-glyph-pulse mb-12">—•—</div>
+           
+           <!-- System Origin -->
+           <div class="mb-6">
+               <div class="font-jetbrains text-ash-slate text-sm uppercase tracking-wider mb-4">SYSTEM ORIGIN</div>
+               <div class="flex items-center justify-center space-x-4 text-3xl md:text-5xl">
+                   <span class="font-jetbrains font-bold text-graphite-black">ETHOS</span>
+                   <span class="font-ibm-mono font-medium text-ash-slate animate-morse-pulse">—•—</span>
+                   <span class="font-ibm-mono text-signal-gold">SIGNAL</span>
+               </div>
+           </div>
+       </div>
+   </section>
 
-            <div class="section-divider">—•—</div>
+   <!-- Section Divider -->
+   <div class="text-center py-12">
+       <span class="font-jetbrains text-ash-slate text-lg animate-glyph-pulse">—•—</span>
+   </div>
 
-            <section class="alignment-hold">
-                <div class="hold-marker">|</div>
-                <div class="hold-content">
-                    EthosSignal tracks where alignment is breaking, and installs the system to hold it before it collapses.<br><br>
-                    It was designed for the moment high-functioning people start disappearing inside roles they can still perform.
-                </div>
-            </section>
+   <!-- Alignment Hold Section -->
+   <section class="bg-architect-gray py-16 px-8">
+       <div class="max-w-6xl mx-auto">
+           <div class="grid grid-cols-12 gap-8 items-start">
+               <div class="col-span-1 hidden lg:block">
+                   <span class="font-jetbrains text-graphite-black text-3xl">|</span>
+               </div>
+               <div class="col-span-12 lg:col-span-11">
+                   <div class="max-w-4xl font-inter text-lg leading-relaxed">
+                       EthosSignal tracks where alignment is breaking, and installs the system to hold it before it collapses.<br><br>
+                       It was designed for the moment high-functioning people start disappearing inside roles they can still perform.
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
 
-            <div class="section-divider">—•—</div>
+   <!-- Section Divider -->
+   <div class="text-center py-12">
+       <span class="font-jetbrains text-ash-slate text-lg animate-glyph-pulse">—•—</span>
+   </div>
 
-            <section class="system-principle">
-                <div class="principle-label">SYSTEM PRINCIPLE</div>
-                <div class="principle-doctrine">Run Your System. Or Be Run.</div>
-                <div class="principle-closure">—•—</div>
-            </section>
+   <!-- System Principle Section -->
+   <section class="bg-bone-white py-16 px-8">
+       <div class="max-w-4xl mx-auto text-center">
+           <div class="font-jetbrains text-ash-slate text-sm uppercase tracking-wider font-bold mb-4">SYSTEM PRINCIPLE</div>
+           <h2 class="font-jetbrains font-bold text-3xl md:text-4xl text-graphite-black mb-6">
+               Run Your System. Or Be Run.
+           </h2>
+           <div class="font-jetbrains text-ash-slate text-lg animate-morse-pulse">—•—</div>
+       </div>
+   </section>
 
-            <div class="section-divider">—•—</div>
+   <!-- Section Divider -->
+   <div class="text-center py-12">
+       <span class="font-jetbrains text-ash-slate text-lg animate-glyph-pulse">—•—</span>
+   </div>
 
-            <section class="operational-modules">
-                <div class="module-briefings">
-                    <h2 class="module-header">Executive Briefings</h2>
-                    <div class="module-content">
-                        90-minute diagnostic sessions for leadership teams experiencing alignment drift.<br>
-                        Real-time assessment of behavioral infrastructure gaps.
-                    </div>
-                    <a href="#" class="module-execute">Schedule Session</a>
-                </div>
-                <div class="module-platform">
-                    <h2 class="module-header">Platform Logic</h2>
-                    <div class="module-content">
-                        EthosSignal isn't a better way to reflect.<br>
-                        It's a system designed to detect—and correct—behavioral erosion before collapse sets in.
-                    </div>
-                </div>
-            </section>
+   <!-- Operational Modules Section -->
+   <section class="bg-bone-white py-16 px-8">
+       <div class="max-w-6xl mx-auto">
+           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+               <!-- Executive Briefings -->
+               <div class="p-8">
+                   <h3 class="font-ibm-serif font-semibold text-xl uppercase tracking-wider mb-6">Executive Briefings</h3>
+                   <p class="font-inter text-lg leading-relaxed mb-8">
+                       90-minute diagnostic sessions for leadership teams experiencing alignment drift.<br>
+                       Real-time assessment of behavioral infrastructure gaps.
+                   </p>
+                   <a href="#" class="bg-signal-gold text-bone-white px-8 py-4 font-inter font-medium hover:bg-signal-gold-pressed transition-all duration-200 hover:border-2 hover:border-signal-gold-pressed block text-center w-full">
+                       Schedule Session
+                   </a>
+               </div>
+               
+               <!-- Platform Logic -->
+               <div class="p-8 bg-architect-gray">
+                   <h3 class="font-ibm-serif font-semibold text-xl uppercase tracking-wider mb-6">Platform Logic</h3>
+                   <p class="font-inter text-lg leading-relaxed">
+                       EthosSignal isn't a better way to reflect.<br>
+                       It's a system designed to detect—and correct—behavioral erosion before collapse sets in.
+                   </p>
+               </div>
+           </div>
+       </div>
+   </section>
 
-            <section class="command-interface">
-                <a href="#" class="interface-execute">
-                    SEE TOPICS
-                    <span class="execute-glyph">—•—</span>
-                </a>
-            </section>
-        </main>
+   <!-- Command Interface Section -->
+   <section class="bg-bone-white py-16 px-8">
+       <div class="max-w-4xl mx-auto text-center">
+           <a href="#" class="inline-flex items-center space-x-3 font-jetbrains font-medium text-lg px-6 py-3 border border-graphite-blue text-graphite-blue hover:border-2 transition-all duration-300 group">
+               <span>SEE TOPICS</span>
+               <span class="group-hover:animate-glyph-pulse">—•—</span>
+           </a>
+       </div>
+   </section>
 
-        <footer class="system-footer">
-            <div class="footer-interface">
-                <div class="footer-wordmark">
-                    <span class="wordmark-ethos">ETHOS</span>
-                    <span class="wordmark-separator">—•—</span>
-                    <span class="wordmark-signal">SIGNAL</span>
-                </div>
-                <nav class="footer-navigation">
-                    <ul class="footer-nav-list">
-                        <li><a href="#" class="footer-node">Platform Access</a></li>
-                        <li><a href="#" class="footer-node">Executive Briefings</a></li>
-                        <li><a href="#" class="footer-node">Speaking Inquiry</a></li>
-                        <li><a href="#" class="footer-node">Research Publications</a></li>
-                        <li><a href="#" class="footer-node">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="transmission-status">TRANSMISSION COMPLETE</div>
-            <div class="footer-scanline"></div>
-        </footer>
-    </div>
+   <!-- Footer -->
+   <footer class="bg-graphite-black text-bone-white py-10 px-8 relative">
+       <div class="max-w-6xl mx-auto">
+           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+               <!-- Footer Word Mark -->
+               <div class="flex items-center space-x-3 justify-center lg:justify-start">
+                   <span class="font-jetbrains font-semibold text-white text-lg tracking-wider">ETHOS</span>
+                   <span class="font-jetbrains font-medium text-ash-slate text-lg">—•—</span>
+                   <span class="font-jetbrains text-signal-gold text-lg">SIGNAL</span>
+               </div>
+               
+               <!-- Footer Navigation -->
+               <nav class="flex flex-wrap justify-center lg:justify-end gap-6">
+                   <a href="#" class="text-bone-white text-sm opacity-80 hover:opacity-100 transition-opacity">Platform Access</a>
+                   <a href="#" class="text-bone-white text-sm opacity-80 hover:opacity-100 transition-opacity">Executive Briefings</a>
+                   <a href="#" class="text-bone-white text-sm opacity-80 hover:opacity-100 transition-opacity">Speaking Inquiry</a>
+                   <a href="#" class="text-bone-white text-sm opacity-80 hover:opacity-100 transition-opacity">Research Publications</a>
+                   <a href="#" class="text-bone-white text-sm opacity-80 hover:opacity-100 transition-opacity">Contact</a>
+               </nav>
+           </div>
+           
+           <!-- Transmission Status -->
+           <div class="text-center mb-4">
+               <span class="font-jetbrains text-xs uppercase tracking-wider opacity-60">TRANSMISSION COMPLETE</span>
+           </div>
+       </div>
+       
+       <!-- Footer Scanline -->
+       <div class="absolute bottom-0 left-0 w-full h-0.5 bg-graphite-blue animate-pulse"></div>
+   </footer>
 </body>
 </html>
