@@ -4,38 +4,315 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>EthosSignal | Behavioral Infrastructure Platform</title>
-   <script src="https://cdn.tailwindcss.com"></script>
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-   <script>
-       tailwind.config = {
-           theme: {
-               extend: {
-                   colors: {
-                       'bone-white': '#ECEAE7',
-                       'graphite-black': '#141414',
-                       'signal-gold': '#A77F43',
-                       'signal-gold-pressed': '#8A652F',
-                       'ash-slate': '#888888',
-                       'architect-gray': '#E5E5E3',
-                       'graphite-blue': '#2F4454'
-                   },
-                   fontFamily: {
-                       'jetbrains': ['JetBrains Mono', 'monospace'],
-                       'ibm-mono': ['IBM Plex Mono', 'monospace'],
-                       'ibm-serif': ['IBM Plex Serif', 'serif'],
-                       'inter': ['Inter', 'sans-serif']
-                   },
-                   animation: {
-                       'morse-pulse': 'morse-pulse 4s infinite',
-                       'glyph-pulse': 'glyph-pulse 2s infinite'
-                   }
-               }
-           }
-       }
-   </script>
    <style>
+       :root {
+           --bone-white: #ECEAE7;
+           --graphite-black: #141414;
+           --signal-gold: #A77F43;
+           --signal-gold-pressed: #8A652F;
+           --ash-slate: #888888;
+           --architect-gray: #E5E5E3;
+           --graphite-blue: #2F4454;
+       }
+
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       body {
+           font-family: 'Inter', sans-serif;
+           background: var(--bone-white);
+           color: var(--graphite-black);
+           line-height: 1.6;
+       }
+
+       .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+       .font-ibm-mono { font-family: 'IBM Plex Mono', monospace; }
+       .font-ibm-serif { font-family: 'IBM Plex Serif', serif; }
+       .font-inter { font-family: 'Inter', sans-serif; }
+
+       /* Navigation */
+       .nav {
+           position: sticky;
+           top: 0;
+           background: var(--bone-white);
+           border-bottom: 1px solid var(--architect-gray);
+           z-index: 50;
+           padding: 1.5rem 2rem;
+       }
+
+       .nav-container {
+           max-width: 1200px;
+           margin: 0 auto;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+       }
+
+       .wordmark {
+           display: flex;
+           align-items: center;
+           gap: 0.75rem;
+           font-size: 1.25rem;
+       }
+
+       .wordmark-ethos {
+           font-weight: 700;
+           color: var(--graphite-black);
+       }
+
+       .wordmark-separator {
+           font-weight: 500;
+           color: var(--ash-slate);
+           animation: morse-pulse 4s infinite;
+       }
+
+       .wordmark-signal {
+           font-weight: 400;
+           color: var(--signal-gold);
+       }
+
+       .nav-links {
+           display: flex;
+           align-items: center;
+           gap: 2rem;
+       }
+
+       .nav-link {
+           color: var(--graphite-black);
+           text-decoration: none;
+           transition: color 0.2s;
+       }
+
+       .nav-link:hover {
+           color: var(--graphite-blue);
+       }
+
+       .nav-cta {
+           background: var(--signal-gold);
+           color: var(--bone-white);
+           padding: 0.75rem 1.5rem;
+           text-decoration: none;
+           font-weight: 500;
+           transition: background-color 0.2s;
+       }
+
+       .nav-cta:hover {
+           background: var(--signal-gold-pressed);
+       }
+
+       /* Sections */
+       .section {
+           padding: 5rem 2rem;
+       }
+
+       .section-gray {
+           background: var(--architect-gray);
+       }
+
+       .container {
+           max-width: 1200px;
+           margin: 0 auto;
+       }
+
+       .container-narrow {
+           max-width: 800px;
+           margin: 0 auto;
+       }
+
+       /* Content Sections */
+       .content-grid {
+           display: grid;
+           grid-template-columns: auto 1fr;
+           gap: 2rem;
+           align-items: start;
+       }
+
+       .content-marker {
+           font-size: 2rem;
+           color: var(--graphite-black);
+           padding-top: 0.25rem;
+       }
+
+       .content-body h2 {
+           font-size: clamp(2rem, 4vw, 2.5rem);
+           font-weight: 600;
+           margin-bottom: 2rem;
+       }
+
+       .content-body p {
+           font-size: 1.125rem;
+           margin-bottom: 1.5rem;
+       }
+
+       .content-body ul {
+           list-style: none;
+           padding: 0;
+       }
+
+       .content-body li {
+           margin-bottom: 1rem;
+           font-size: 1.125rem;
+       }
+
+       .content-body strong {
+           font-weight: 700;
+       }
+
+       /* Dividers */
+       .divider {
+           text-align: center;
+           padding: 3rem 0;
+           font-size: 1.125rem;
+           color: var(--ash-slate);
+           animation: glyph-pulse 2s infinite;
+       }
+
+       /* CTA Sections */
+       .cta-section {
+           text-align: center;
+           padding: 4rem 2rem;
+       }
+
+       .cta-section h2 {
+           font-size: clamp(2rem, 4vw, 2.5rem);
+           font-weight: 600;
+           margin-bottom: 1rem;
+       }
+
+       .cta-section p {
+           font-size: 1.25rem;
+           color: var(--ash-slate);
+           margin-bottom: 2rem;
+       }
+
+       .cta-button {
+           background: var(--signal-gold);
+           color: var(--bone-white);
+           padding: 1rem 2rem;
+           text-decoration: none;
+           font-weight: 500;
+           font-size: 1.125rem;
+           display: inline-block;
+           transition: background-color 0.2s;
+       }
+
+       .cta-button:hover {
+           background: var(--signal-gold-pressed);
+       }
+
+       .command-interface {
+           text-align: center;
+           padding: 4rem 2rem;
+       }
+
+       .interface-execute {
+           display: inline-flex;
+           align-items: center;
+           gap: 0.75rem;
+           font-weight: 500;
+           font-size: 1.125rem;
+           padding: 0.75rem 1.5rem;
+           border: 1px solid var(--graphite-blue);
+           background: transparent;
+           color: var(--graphite-blue);
+           text-decoration: none;
+           transition: all 0.3s;
+       }
+
+       .interface-execute:hover {
+           background: var(--graphite-blue);
+           color: var(--bone-white);
+       }
+
+       /* Footer */
+       .footer {
+           background: var(--graphite-black);
+           color: var(--bone-white);
+           padding: 3rem 2rem 0;
+           position: relative;
+       }
+
+       .footer-grid {
+           display: grid;
+           grid-template-columns: 1fr 1fr;
+           gap: 2rem;
+           align-items: center;
+           margin-bottom: 3rem;
+           max-width: 1200px;
+           margin-left: auto;
+           margin-right: auto;
+       }
+
+       .footer-wordmark {
+           display: flex;
+           align-items: center;
+           gap: 0.5rem;
+           font-size: 1rem;
+       }
+
+       .footer-nav {
+           display: flex;
+           justify-content: flex-end;
+           gap: 1.5rem;
+           flex-wrap: wrap;
+       }
+
+       .footer-nav a {
+           color: var(--bone-white);
+           text-decoration: none;
+           font-size: 0.875rem;
+           opacity: 0.8;
+           transition: opacity 0.2s;
+       }
+
+       .footer-nav a:hover {
+           opacity: 1;
+       }
+
+       .footer-glyph {
+           text-align: center;
+           margin-bottom: 2rem;
+           font-size: 1.125rem;
+           color: var(--graphite-blue);
+           animation: glyph-pulse 2s infinite;
+       }
+
+       .footer-message {
+           text-align: center;
+           margin-bottom: 2rem;
+           max-width: 600px;
+           margin-left: auto;
+           margin-right: auto;
+           font-size: 0.875rem;
+           color: var(--ash-slate);
+       }
+
+       .transmission-status {
+           text-align: center;
+           font-size: 0.75rem;
+           text-transform: uppercase;
+           letter-spacing: 0.1em;
+           opacity: 0.6;
+           padding-bottom: 1rem;
+       }
+
+       .footer-scanline {
+           position: absolute;
+           bottom: 0;
+           left: 0;
+           width: 100%;
+           height: 2px;
+           background: var(--graphite-blue);
+           animation: pulse 2s infinite;
+       }
+
+       /* Animations */
        @keyframes morse-pulse {
            0%, 15%, 100% { opacity: 1; }
            5% { opacity: 0.2; }
@@ -45,193 +322,211 @@
            45% { opacity: 0.2; }
            55%, 85% { opacity: 0.2; }
        }
+
        @keyframes glyph-pulse {
            0%, 70%, 100% { opacity: 1; }
            75%, 95% { opacity: 0.3; }
        }
+
+       @keyframes pulse {
+           0%, 100% { opacity: 0.8; }
+           50% { opacity: 1; }
+       }
+
+       /* Responsive */
+       @media (max-width: 768px) {
+           .nav-links {
+               display: none;
+           }
+           
+           .content-grid {
+               grid-template-columns: 1fr;
+           }
+           
+           .content-marker {
+               display: none;
+           }
+           
+           .footer-grid {
+               grid-template-columns: 1fr;
+               text-align: center;
+           }
+           
+           .footer-nav {
+               justify-content: center;
+           }
+       }
    </style>
 </head>
-<body class="bg-bone-white text-graphite-black font-inter">
+<body>
    <!-- Navigation -->
-   <nav class="sticky top-0 bg-bone-white border-b border-architect-gray z-50">
-       <div class="max-w-7xl mx-auto px-8 py-6">
-           <div class="flex items-center justify-between">
-               <!-- Word Mark -->
-               <div class="flex items-center space-x-3">
-                   <span class="font-jetbrains font-bold text-graphite-black text-xl">ETHOS</span>
-                   <span class="font-ibm-mono font-medium text-ash-slate text-xl animate-morse-pulse">—•—</span>
-                   <span class="font-ibm-mono text-signal-gold text-xl">SIGNAL</span>
-               </div>
-               
-               <!-- Navigation Links -->
-               <div class="hidden md:flex items-center space-x-8">
-                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">Drift</a>
-                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">Book</a>
-                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">System</a>
-                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">Engage</a>
-                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">About</a>
-                   <a href="#" class="font-inter text-graphite-black hover:text-graphite-blue transition-colors">Signal</a>
-                   <a href="#" class="bg-signal-gold text-bone-white px-6 py-3 font-inter font-medium hover:bg-signal-gold-pressed transition-colors">Request Briefing</a>
-               </div>
-               
-               <!-- Mobile Menu Button -->
-               <button class="md:hidden">
-                   <span class="font-jetbrains text-graphite-black">≡</span>
-               </button>
+   <nav class="nav">
+       <div class="nav-container">
+           <div class="wordmark font-jetbrains">
+               <span class="wordmark-ethos font-jetbrains">ETHOS</span>
+               <span class="wordmark-separator font-ibm-mono">—•—</span>
+               <span class="wordmark-signal font-ibm-mono">SIGNAL</span>
+           </div>
+           
+           <div class="nav-links font-inter">
+               <a href="#" class="nav-link">Drift</a>
+               <a href="#" class="nav-link">Book</a>
+               <a href="#" class="nav-link">System</a>
+               <a href="#" class="nav-link">Engage</a>
+               <a href="#" class="nav-link">About</a>
+               <a href="#" class="nav-link">Signal</a>
+               <a href="#" class="nav-cta">Request Briefing</a>
            </div>
        </div>
    </nav>
 
    <!-- Hero Section -->
-   <section class="bg-bone-white py-20 px-8">
-       <div class="max-w-4xl mx-auto text-center">
-           <h1 class="font-ibm-serif text-4xl md:text-6xl font-normal leading-tight mb-8">
-               Behavioral infrastructure for institutions that cannot afford to drift.
-           </h1>
-           <div class="font-jetbrains text-ash-slate text-lg animate-glyph-pulse mb-12">—•—</div>
-           
-           <!-- System Origin -->
-           <div class="mb-6">
-               <div class="font-jetbrains text-ash-slate text-sm uppercase tracking-wider mb-4">SYSTEM ORIGIN</div>
-               <div class="flex items-center justify-center space-x-4 text-3xl md:text-5xl">
-                   <span class="font-jetbrains font-bold text-graphite-black">ETHOS</span>
-                   <span class="font-ibm-mono font-medium text-ash-slate animate-morse-pulse">—•—</span>
-                   <span class="font-ibm-mono text-signal-gold">SIGNAL</span>
-               </div>
+   <section style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+       <!-- Hero Background Image -->
+       <img 
+           src="https://ethos25.github.io/ethossignal-site/assets/hero/ethossignal-hero-v1-1920x1080-compressed.jpg" 
+           alt="EthosSignal Hero"
+           style="width: 100%; height: 100%; object-fit: cover;"
+       />
+       <!-- Overlay Content -->
+       <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 1.5rem; background: rgba(20, 20, 20, 0.4);">
+           <!-- Glyph -->
+           <div class="font-jetbrains" style="color: var(--signal-gold); font-size: 3rem; animation: glyph-pulse 2s infinite; margin-bottom: 1.5rem;">
+               —•—
            </div>
+           <!-- Headline -->
+           <h1 class="font-ibm-serif" style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.1; max-width: 1000px; margin: 0 auto 1.5rem; color: var(--bone-white);">
+               If you're not tracking Drift,<br>you're already operationalizing it.
+           </h1>
+           <!-- Subline -->
+           <p class="font-inter" style="font-size: clamp(1.125rem, 2vw, 1.25rem); max-width: 600px; color: var(--ash-slate); margin-bottom: 2.5rem;">
+               Behavioral infrastructure for institutions under velocity.
+           </p>
+           <!-- CTA -->
+           <a href="/briefing" class="font-jetbrains" style="background: var(--signal-gold); color: var(--bone-white); font-size: 1.125rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none; transition: all 0.3s; display: inline-block;">
+               Request Briefing
+           </a>
        </div>
    </section>
 
-   <!-- Section Divider -->
-   <div class="text-center py-12">
-       <span class="font-jetbrains text-ash-slate text-lg animate-glyph-pulse">—•—</span>
-   </div>
+   <div class="divider font-jetbrains">—•—</div>
 
-   <!-- Alignment Hold Section -->
-   <section class="bg-architect-gray py-16 px-8">
-       <div class="max-w-6xl mx-auto">
-           <div class="grid grid-cols-12 gap-8 items-start">
-               <div class="col-span-1 hidden lg:block">
-                   <span class="font-jetbrains text-graphite-black text-3xl">|</span>
-               </div>
-               <div class="col-span-12 lg:col-span-11">
-                   <div class="max-w-4xl font-inter text-lg leading-relaxed">
-                       EthosSignal tracks where alignment is breaking, and installs the system to hold it before it collapses.<br><br>
-                       It was designed for the moment high-functioning people start disappearing inside roles they can still perform.
+   <!-- Diagnostic Exposure Section -->
+   <section class="section section-gray">
+       <div class="container">
+           <div class="content-grid">
+               <div class="content-marker font-jetbrains">|</div>
+               <div class="content-body">
+                   <h2 class="font-ibm-serif">
+                       Drift isn't a feeling. It's a metric.
+                   </h2>
+                   <div class="font-inter">
+                       <p>Most systems track output. Drift Quotient tracks behavioral misalignment—before it becomes performance collapse.</p>
+                       <p>High-functioning institutions track portfolio drift down to the decimal—because small deviations compound into risk.</p>
+                       <p>But when it comes to people, we let behavioral misalignment compound unchecked—until the cost shows up in execution, culture, and clarity.</p>
+                       <p>Drift Quotient quantifies the distance between stated identity and operational behavior.</p>
+                       <p>It doesn't compete with your KPIs. It tells you what they've been missing.</p>
                    </div>
                </div>
            </div>
        </div>
    </section>
 
-   <!-- Section Divider -->
-   <div class="text-center py-12">
-       <span class="font-jetbrains text-ash-slate text-lg animate-glyph-pulse">—•—</span>
-   </div>
+   <div class="divider font-jetbrains">—•—</div>
 
-   <!-- System Principle Section -->
-   <section class="bg-bone-white py-16 px-8">
-       <div class="max-w-4xl mx-auto text-center">
-           <div class="font-jetbrains text-ash-slate text-sm uppercase tracking-wider font-bold mb-4">SYSTEM PRINCIPLE</div>
-           <h2 class="font-jetbrains font-bold text-3xl md:text-4xl text-graphite-black mb-6">
-               Run Your System. Or Be Run.
+   <!-- Behavioral OS Section -->
+   <section class="section">
+       <div class="container">
+           <h2 class="font-ibm-serif" style="text-align: center; margin-bottom: 2rem;">
+               Most systems weren't built to hold identity under pressure.
            </h2>
-           <div class="font-jetbrains text-ash-slate text-lg animate-morse-pulse">—•—</div>
+           <div class="container-narrow font-inter">
+               <p style="margin-bottom: 1.5rem;">EthosSignal delivers behavioral infrastructure for institutions operating at velocity:</p>
+               <ul style="margin-bottom: 2rem;">
+                   <li><strong class="font-jetbrains">Drift Quotient</strong> — identity misalignment detection</li>
+                   <li><strong class="font-jetbrains">Bravaic</strong> — a behavioral OS that stabilizes execution through AI memory and ritual enforcement</li>
+                   <li><strong class="font-jetbrains">The EthosSignal System</strong> — deployment protocols and enterprise scaffolding to hold structure at scale</li>
+               </ul>
+               <p style="font-weight: 500;">Organizations don't fail from lack of effort. They fail when execution drifts too far from identity—and no one notices in time. This isn't a culture initiative. It's structural defense.</p>
+           </div>
        </div>
    </section>
 
-   <!-- Section Divider -->
-   <div class="text-center py-12">
-       <span class="font-jetbrains text-ash-slate text-lg animate-glyph-pulse">—•—</span>
-   </div>
+   <div class="divider font-jetbrains">—•—</div>
 
-   <!-- Operational Modules Section -->
-   <section class="bg-bone-white py-16 px-8">
-       <div class="max-w-6xl mx-auto">
-           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+   <!-- Consequence of Inaction Section -->
+   <section class="section section-gray">
+       <div class="container">
+           <div class="content-grid">
+               <div class="content-marker font-jetbrains">|</div>
+               <div class="content-body">
+                   <h2 class="font-ibm-serif">
+                       You can't optimize what's already collapsing.
+                   </h2>
+                   <div class="font-inter">
+                       <p>Strategic misfires. Cultural entropy. Execution without identity. These aren't outliers. They're symptoms of Drift—already running inside your system.</p>
+                       <p>The numbers still look fine. The output is still high. But the operators behind the performance are misaligned—and starting to disappear.</p>
+                       <p>Drift doesn't look like failure. It looks like success that no longer fits.</p>
+                       <p>EthosSignal doesn't coach. It doesn't inspire. It enforces clarity—before misalignment becomes irreversible.</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
 
-    
-  <!-- EXECUTIVE BRIEFINGS -->
-  <div class="flex flex-col justify-between bg-[#f5f5f5] p-6 rounded shadow h-full">
-    <div>
-      <h2 class="text-xl font-bold mb-4 text-[#141414]">EXECUTIVE BRIEFINGS</h2>
-      <p class="mb-4 text-[#141414]">
-        90-minute diagnostic sessions for leadership teams experiencing alignment drift.<br>
-        Real-time assessment of behavioral infrastructure gaps.
-      </p>
-    </div>
-    <div class="pt-4">
-      <button class="bg-[#A77F43] text-white px-6 py-3 font-semibold w-fit">Schedule Session</button>
-    </div>
-  </div>
+   <div class="divider font-jetbrains">—•—</div>
 
-  <!-- PLATFORM LOGIC -->
-  <div class="flex flex-col justify-between bg-[#f5f5f5] p-6 rounded shadow h-full">
-    <div>
-      <h2 class="text-xl font-bold mb-4 text-[#141414]">PLATFORM LOGIC</h2>
-      <p class="text-[#141414]">
-        EthosSignal isn't a better way to reflect.<br>
-        It's a system designed to detect—and correct—behavioral erosion before collapse sets in.
-      </p>
-    </div>
-    <div class="pt-4 invisible">
-      <button class="px-6 py-3 font-semibold w-fit">Placeholder</button>
-    </div>
-  </div>
-</div>
-          
-    <!-- Placeholder for button height match -->
-    <div class="h-12"></div>
-  </div>
-
-</div>
+   <!-- CTA Close Section -->
+   <section class="cta-section">
+       <div class="container-narrow">
+           <h2 class="font-ibm-serif">
+               Drift is inevitable. Misalignment is optional.
+           </h2>
+           <p class="font-inter">
+               If your system isn't tracking it, you're not just losing to it—you're scaling it.
+           </p>
+           <a href="#" class="cta-button font-inter">Request Briefing</a>
+       </div>
+   </section>
 
    <!-- Command Interface Section -->
-   <section class="bg-bone-white py-16 px-8">
-       <div class="max-w-4xl mx-auto text-center">
-           <a href="#" class="inline-flex items-center space-x-3 font-jetbrains font-medium text-lg px-6 py-3 border border-graphite-blue text-graphite-blue hover:bg-graphite-blue hover:text-bone-white transition-colors duration-300 group">
-    <span>SEE TOPICS</span>
-    <span class="group-hover:animate-glyph-pulse">—•—</span>
+   <section class="command-interface">
+       <div class="container-narrow">
+           <a href="#" class="interface-execute font-jetbrains">
+               <span>SEE TOPICS</span>
+               <span>—•—</span>
            </a>
-
        </div>
    </section>
 
-  
-<!-- Footer -->
-<footer class="bg-graphite-black text-bone-white py-12 px-6 relative">
-  <div class="max-w-6xl mx-auto space-y-12">
+   <!-- Footer -->
+   <footer class="footer">
+       <div class="footer-grid">
+           <div class="footer-wordmark font-jetbrains">
+               <span style="font-weight: 700; color: white;">ETHOS</span>
+               <span style="font-weight: 500; color: var(--ash-slate);">—•—</span>
+               <span style="font-weight: 400; color: var(--signal-gold);">SIGNAL</span>
+           </div>
 
-    <!-- Grid: Wordmark + Nav -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-y-8">
+           <nav class="footer-nav font-inter">
+               <a href="#">Platform Access</a>
+               <a href="#">Executive Briefings</a>
+               <a href="#">Speaking Inquiry</a>
+               <a href="#">Research Publications</a>
+               <a href="#">Contact</a>
+           </nav>
+       </div>
 
-      <!-- Word Mark -->
-      <div class="flex items-center space-x-3 justify-center lg:justify-start">
-        <span class="font-jetbrains font-bold text-white text-base tracking-wider">ETHOS</span>
-        <span class="font-ibm font-medium text-ash-slate text-base">—•—</span>
-        <span class="font-ibm text-signal-gold text-base">SIGNAL</span>
-      </div>
+       <div class="footer-glyph font-jetbrains">—•—</div>
 
-      <!-- Navigation Links -->
-      <nav class="flex flex-wrap lg:flex-nowrap justify-center lg:justify-end gap-x-6 text-sm">
-        <a href="#" class="opacity-80 hover:opacity-100 transition-opacity">Platform Access</a>
-        <a href="#" class="opacity-80 hover:opacity-100 transition-opacity">Executive Briefings</a>
-        <a href="#" class="opacity-80 hover:opacity-100 transition-opacity">Speaking Inquiry</a>
-        <a href="#" class="opacity-80 hover:opacity-100 transition-opacity">Research Publications</a>
-        <a href="#" class="opacity-80 hover:opacity-100 transition-opacity">Contact</a>
-      </nav>
-    </div>
+       <div class="footer-message font-inter">
+           <p>EthosSignal is behavioral infrastructure. Drift is already in the system. We built the layer to stop it.</p>
+       </div>
 
-    <!-- Transmission Status -->
-    <div class="text-center">
-      <span class="font-jetbrains text-xs uppercase tracking-wider opacity-60">TRANSMISSION COMPLETE</span>
-    </div>
-  </div>
-
-  <!-- Footer Scanline -->
-  <div class="absolute bottom-0 left-0 w-full h-0.5 bg-graphite-blue animate-pulse"></div>
-</footer>
-
+       <div class="transmission-status font-jetbrains">TRANSMISSION COMPLETE</div>
+       
+       <div class="footer-scanline"></div>
+   </footer>
 
 </body>
 </html>
