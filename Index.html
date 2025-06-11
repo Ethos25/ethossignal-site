@@ -93,16 +93,21 @@
            color: var(--graphite-blue);
        }
 
-       .nav-cta {
+       /* Normalized CTA Button Styles */
+       .cta-button, .nav-cta {
            background: var(--signal-gold);
            color: var(--bone-white);
            padding: 0.75rem 1.5rem;
            text-decoration: none;
            font-weight: 500;
-           transition: background-color 0.2s;
+           font-size: 1.125rem;
+           border-radius: 4px;
+           display: inline-block;
+           transition: background-color 0.2s ease;
+           font-family: 'Inter', sans-serif;
        }
 
-       .nav-cta:hover {
+       .cta-button:hover, .nav-cta:hover {
            background: var(--signal-gold-pressed);
        }
 
@@ -191,21 +196,6 @@
            margin-bottom: 2rem;
        }
 
-       .cta-button {
-           background: var(--signal-gold);
-           color: var(--bone-white);
-           padding: 1rem 2rem;
-           text-decoration: none;
-           font-weight: 500;
-           font-size: 1.125rem;
-           display: inline-block;
-           transition: background-color 0.2s;
-       }
-
-       .cta-button:hover {
-           background: var(--signal-gold-pressed);
-       }
-
        .command-interface {
            text-align: center;
            padding: 4rem 2rem;
@@ -222,6 +212,7 @@
            background: transparent;
            color: var(--graphite-blue);
            text-decoration: none;
+           border-radius: 4px;
            transition: all 0.3s;
        }
 
@@ -429,10 +420,10 @@
            </h1>
            <!-- Subline -->
            <p class="font-inter" style="font-size: clamp(1.125rem, 2vw, 1.25rem); max-width: 600px; color: var(--ash-slate); margin-bottom: 2.5rem;">
-               Behavioral infrastructure for institutions under velocity.
+               Behavioral infrastructure that holds.
            </p>
            <!-- CTA -->
-            <a href="/access" class="font-jetbrains" style="background: var(--signal-gold); color: var(--bone-white); font-size: 1.125rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none; transition: all 0.3s; display: inline-block;">
+            <a href="/access" class="cta-button">
             Access
             </a>
 
@@ -515,7 +506,7 @@
            <p class="font-inter">
                If your system isn't tracking it, you're not just losing to it—you're scaling it.
            </p>
-           <a href="#" class="cta-button font-inter">Request Briefing</a>
+           <a href="#" class="cta-button">Access</a>
        </div>
    </section>
 
