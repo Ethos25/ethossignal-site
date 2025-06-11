@@ -1,0 +1,513 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bone-white: #ECEAE7;
+    --architect-gray: #E5E5E3;
+    --graphite-black: #141414;
+    --ash-slate: #888888;
+    --signal-gold: #A77F43;
+    --signal-gold-pressed: #8A652F;
+    --graphite-blue: #2F4454;
+    --breach-red: #D2302C;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bone-white);
+    color: var(--graphite-black);
+}
+
+.behavioral-os {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.system-navigation {
+    background: var(--bone-white);
+    padding: 24px 32px 24px 32px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 48px;
+    border-bottom: 1px solid var(--architect-gray);
+}
+
+.os-wordmark {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wordmark-ethos {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: var(--graphite-black);
+}
+
+.wordmark-separator {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    color: var(--ash-slate);
+    animation: morse-pulse 4s infinite;
+}
+
+@keyframes morse-pulse {
+    0%, 15%, 100% { opacity: 1; }
+    5% { opacity: 0.2; }
+    20%, 30% { opacity: 1; }
+    25% { opacity: 0.2; }
+    35%, 50% { opacity: 1; }
+    45% { opacity: 0.2; }
+    55%, 85% { opacity: 0.2; }
+}
+
+.wordmark-signal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    color: var(--signal-gold);
+}
+
+.navigation-cluster {
+    justify-self: end;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-node {
+    font-family: 'Inter', sans-serif;
+    color: var(--graphite-black);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.nav-node:hover {
+    color: var(--graphite-blue);
+}
+
+.nav-cta {
+    background: var(--signal-gold);
+    color: var(--bone-white);
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.nav-cta:hover {
+    background: var(--signal-gold-pressed);
+}
+
+.hero-transmission {
+    background: var(--bone-white);
+    padding: 80px 32px;
+    text-align: center;
+    display: grid;
+    gap: 32px;
+    justify-items: center;
+}
+
+.hero-declaration {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    max-width: 55rem;
+    line-height: 1.2;
+}
+
+.hero-threshold {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: var(--ash-slate);
+    animation: threshold-pulse 3s infinite;
+}
+
+@keyframes threshold-pulse {
+    0%, 70%, 100% { opacity: 1; }
+    75%, 95% { opacity: 0.3; }
+}
+
+.system-origin-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ash-slate);
+    margin-bottom: 16px;
+}
+
+.system-ignition {
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0;
+}
+
+.ignition-ethos {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: var(--graphite-black);
+}
+
+.ignition-separator {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    color: var(--ash-slate);
+    animation: morse-pulse 4s infinite;
+}
+
+.ignition-signal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    color: var(--signal-gold);
+}
+
+.section-divider {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    color: var(--ash-slate);
+    text-align: center;
+    margin: 48px 0;
+    animation: pulse-dash-dot 2s infinite;
+}
+
+@keyframes pulse-dash-dot {
+    0%, 70%, 100% { opacity: 1; }
+    75%, 95% { opacity: 0.3; }
+}
+
+.alignment-hold {
+    background: var(--architect-gray);
+    padding: 60px 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.hold-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    color: var(--graphite-black);
+    padding: 0 32px;
+    align-self: flex-start;
+    padding-top: 4px;
+}
+
+.hold-content {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 50rem;
+    padding-right: 32px;
+}
+
+.system-principle {
+    background: var(--bone-white);
+    padding: 60px 32px;
+    text-align: center;
+    display: grid;
+    gap: 16px;
+    justify-items: center;
+}
+
+.principle-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ash-slate);
+}
+
+.principle-doctrine {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1.75rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--graphite-black);
+    letter-spacing: 0.02em;
+}
+
+.principle-closure {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: var(--ash-slate);
+    margin-top: 8px;
+    animation: morse-pulse 4s infinite;
+}
+
+.operational-modules {
+    background: var(--bone-white);
+    padding: 60px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: baseline;
+}
+
+.module-briefings,
+.module-platform {
+    padding: 32px;
+}
+
+.module-header {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.module-content {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.module-execute {
+    background: var(--signal-gold);
+    color: var(--bone-white);
+    padding: 16px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    display: block;
+    text-align: center;
+    transition: all 0.2s;
+    border: 1px solid var(--signal-gold);
+    width: 100%;
+}
+
+.module-execute:hover {
+    background: var(--signal-gold-pressed);
+    border: 2px solid var(--signal-gold-pressed);
+    color: var(--signal-gold-pressed);
+}
+
+.command-interface {
+    background: var(--bone-white);
+    padding: 60px 32px;
+    text-align: center;
+}
+
+.interface-execute {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 1.125rem;
+    padding: 12px 24px;
+    border: 1px solid var(--graphite-blue);
+    background: transparent;
+    color: var(--graphite-blue);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s;
+    letter-spacing: 0.05em;
+}
+
+.interface-execute:hover {
+    border-width: 2px;
+}
+
+.execute-glyph {
+    transition: opacity 0.3s;
+}
+
+.interface-execute:hover .execute-glyph {
+    animation: glyph-pulse 1s infinite;
+}
+
+@keyframes glyph-pulse {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.3; }
+}
+
+.system-footer {
+    background: var(--graphite-black);
+    color: var(--bone-white);
+    padding: 40px 32px 0;
+    position: relative;
+    display: grid;
+    gap: 32px;
+}
+
+.footer-interface {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.footer-wordmark {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-wordmark .wordmark-ethos {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: #FFFFFF;
+    font-size: 115%;
+    letter-spacing: 0.03em;
+}
+
+.footer-wordmark .wordmark-separator {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    color: var(--ash-slate);
+}
+
+.footer-wordmark .wordmark-signal {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    color: var(--signal-gold);
+}
+
+.footer-navigation {
+    justify-self: end;
+}
+
+.footer-nav-list {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.footer-node {
+    color: var(--bone-white);
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.footer-node:hover {
+    opacity: 1;
+}
+
+.transmission-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    text-align: center;
+    padding: 16px 0;
+}
+
+.footer-scanline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--graphite-blue);
+    animation: footer-sweep 4s infinite;
+}
+
+@keyframes footer-sweep {
+    0% { width: 0; left: 0; }
+    50% { width: 100%; left: 0; }
+    100% { width: 0; left: 100%; }
+}
+
+@media (max-width: 1024px) {
+    .alignment-hold {
+        grid-template-columns: 1fr;
+        padding: 60px 32px;
+    }
+
+    .hold-marker {
+        display: none;
+    }
+
+    .operational-modules {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .system-navigation {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+        padding: 16px 24px;
+    }
+
+    .navigation-cluster {
+        justify-self: center;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .hero-transmission,
+    .system-principle,
+    .command-interface {
+        padding: 48px 16px;
+    }
+
+    .alignment-hold,
+    .operational-modules {
+        padding: 48px 16px;
+    }
+
+    .footer-interface {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-navigation {
+        justify-self: center;
+    }
+
+    .footer-nav-list {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-list {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .os-wordmark {
+        font-size: 1.25rem;
+    }
+
+    .hero-transmission {
+        padding: 32px 16px;
+    }
+
+    .system-ignition {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
