@@ -75,13 +75,16 @@
 
         
 
-        .hero h2 {
-            font-family: 'IBM Plex Serif', Georgia, serif;
-            font-size: 3.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
+.hero h2 {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  max-width: 900px;   /* ensure both lines stay together */
+  margin: 0 auto 1.5rem auto;
+}
+
 
 .hero-subtext {
   font-size: 1.3rem;
@@ -266,7 +269,7 @@
 .glyph-signal {
     position: fixed;
     top: 1rem;
-    left: 1rem;
+    left: 36px;
     font-size: 1.25rem;
     color: var(--cta-fill);
     font-family: monospace;
@@ -336,9 +339,8 @@
         <!-- Visual placeholder: Insert institutional drift Sora image here -->
         <div class="hero-content">
          
-         <h2>
-  System still performs. <span style="white-space: nowrap;">Alignment is already gone.</span>
-</h2>
+       <h2>System still performs. Alignment is already gone.</h2>
+
 
 <div class="subtext-wrapper">
   <p class="hero-subtext">
