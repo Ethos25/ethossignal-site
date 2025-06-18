@@ -220,7 +220,7 @@
     align-items: center;
     justify-content: center;
     z-index: 15;
-    padding-left: 10px;
+    padding-left: 15px;
 
 }
 
@@ -231,7 +231,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.0rem;
     align-items: flex-start;
 }
 
@@ -255,14 +255,34 @@
     font-weight: 700;             /* bold */
 }
 
+
+
+        .glyph {
+    font-size: 1.25rem;
+    color: var(--cta-fill);
+    font-family: monospace;
+    animation: glyphPulse 3s ease-in-out infinite;
+    opacity: 0.85;
+}
+
+@keyframes glyphPulse {
+    0%, 100% {
+        opacity: 0.85;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
         
     </style>
 </head>
 <body>
 
-  /* Nav Column */
+
         <nav class="vertical-nav">
   <ul>
+      <li><span class="glyph">—•—</span></li>
     <li><a href="/drift" class="active">Drift</a></li>
     <li><a href="/book">Book</a></li>
     <li><a href="/system">System</a></li>
