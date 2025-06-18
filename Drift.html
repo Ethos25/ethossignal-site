@@ -225,16 +225,14 @@
 }
 
 
-        .vertical-nav ul {
-    writing-mode: vertical-lr;     /* changed from vertical-rl */
-    transform: none;               /* remove the 180° flip */
+.vertical-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;        /* force top-down stack */
+    flex-direction: column;
     gap: 1.5rem;
-    align-items: center;
+    align-items: flex-start;
 }
 
 
