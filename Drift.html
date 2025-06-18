@@ -320,6 +320,26 @@
 }
 
 
+         .hero-cta-corner {
+    position: absolute;
+    top: 15%;
+    right: 20%;
+    z-index: 3;
+    background-color: var(--cta-fill);
+    color: var(--cta-text);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-cta-corner:hover {
+    background-color: var(--cta-hover);
+    transform: translateY(-2px);
+}
 
 
         
@@ -337,7 +357,7 @@
     <li><a href="/engage">Engage</a></li>
     <li><a href="/about">About</a></li>
     <li><a href="/signal">Signal</a></li>
-    <li><a href="/access" class="cta-link">Access</a></li>
+  
 
   </ul>
 </nav>
@@ -359,6 +379,7 @@
   </div>
 </div>
 
+             <a href="/access" class="hero-cta-corner">Access</a>
 
 
       
