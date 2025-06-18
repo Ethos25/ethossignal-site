@@ -257,19 +257,19 @@
 
 
 
-        .glyph {
+ .glyph {
     font-size: 1.25rem;
     color: var(--cta-fill);
     font-family: monospace;
-    animation: glyphPulse 3s ease-in-out infinite;
+    animation: glyphPulse 8s ease-in-out infinite; /* was 3s */
     opacity: 0.85;
 }
 
 @keyframes glyphPulse {
-    0%, 100% {
+    0%, 10%, 100% {
         opacity: 0.85;
     }
-    50% {
+    5% {
         opacity: 0.2;
     }
 }
