@@ -320,11 +320,11 @@
 }
 
 
-         .hero-cta-corner {
-    position: absolute;
-    top: 2%;
-    right: 2%;
-    z-index: 3;
+.hero-cta-corner {
+    position: fixed; /* Change from absolute to fixed */
+    top: 2rem; /* Use rem units instead of percentages */
+    right: 2rem; /* Use rem units instead of percentages */
+    z-index: 10; /* Increase z-index to ensure it's on top */
     background-color: var(--cta-fill);
     color: var(--cta-text);
     padding: 1rem 2rem;
@@ -335,7 +335,6 @@
     transition: all 0.2s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-
 .hero-cta-corner:hover {
     background-color: var(--cta-hover);
     transform: translateY(-2px);
