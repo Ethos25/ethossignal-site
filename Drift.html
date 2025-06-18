@@ -69,6 +69,9 @@
             max-width: 800px;
             color: white;
             margin-bottom: 2rem;
+            margin-top: -1.5rem; /* pulls headline up */
+            margin-bottom: 3rem; /* pushes subheader down */
+
 
         }
 
@@ -81,13 +84,13 @@
         }
 
         .hero-subtext {
-            font-size: 1.15rem;
+            font-size: 1.3rem;
             color: var(--primary-text);
             font-weight: 600; 
             text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3); 
             max-width: 700px;
             margin: 0 auto 2.5rem auto;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .cta {
@@ -223,7 +226,7 @@
     align-items: center;
     justify-content: center;
     z-index: 15;
-    padding-left: 15px;
+    padding-left: 22px;
 
 }
 
@@ -294,6 +297,10 @@
 
 .vertical-nav li a.cta-link:hover {
     background-color: var(--cta-hover);
+}
+
+        .vertical-nav li:last-child {
+  margin-top: 2rem;
 }
 
         
