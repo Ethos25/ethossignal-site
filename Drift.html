@@ -96,6 +96,9 @@
         }
 
 
+        
+
+
 
         /* Drift Mechanism */
         .drift-mechanism {
@@ -205,9 +208,62 @@
                 min-width: 250px;
             }
         }
+
+.vertical-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+}
+
+.vertical-nav ul {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.vertical-nav li a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: var(--secondary-text);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.vertical-nav li a:hover {
+    color: var(--cta-fill);
+}
+
+        
     </style>
 </head>
 <body>
+
+  /* Nav Column */
+        <nav class="vertical-nav">
+  <ul>
+    <li><a href="/drift">Drift</a></li>
+    <li><a href="/book">Book</a></li>
+    <li><a href="/system">System</a></li>
+    <li><a href="/engage">Engage</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/signal">Signal</a></li>
+    <li><a href="/access">Access</a></li>
+  </ul>
+</nav>
+    
     <section class="hero">
         <!-- Visual placeholder: Insert institutional drift Sora image here -->
         <div class="hero-content">
