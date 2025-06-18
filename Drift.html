@@ -255,14 +255,16 @@
     font-weight: 700;             /* bold */
 }
 
-
-
- .glyph {
+.glyph-signal {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
     font-size: 1.25rem;
     color: var(--cta-fill);
     font-family: monospace;
-    animation: glyphPulse 8s ease-in-out infinite; /* was 3s */
     opacity: 0.85;
+    z-index: 16;
+    animation: glyphPulse 8s ease-in-out infinite;
 }
 
 @keyframes glyphPulse {
@@ -273,6 +275,7 @@
         opacity: 0.2;
     }
 }
+
 
         
     </style>
