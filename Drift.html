@@ -220,18 +220,24 @@
     align-items: center;
     justify-content: center;
     z-index: 15;
+    padding-left: 10px;
+
 }
 
-.vertical-nav ul {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
+
+        .vertical-nav ul {
+    writing-mode: vertical-lr;     /* changed from vertical-rl */
+    transform: none;               /* remove the 180° flip */
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 2rem;
+    flex-direction: column;        /* force top-down stack */
+    gap: 1.5rem;
     align-items: center;
 }
+
+
 
 .vertical-nav li a {
     text-decoration: none;
@@ -246,6 +252,11 @@
     color: var(--cta-fill);
 }
 
+        .vertical-nav li a.active {
+    color: var(--cta-fill);       /* gold highlight */
+    font-weight: 700;             /* bold */
+}
+
         
     </style>
 </head>
@@ -254,7 +265,7 @@
   /* Nav Column */
         <nav class="vertical-nav">
   <ul>
-    <li><a href="/drift">Drift</a></li>
+    <li><a href="/drift" class="active">Drift</a></li>
     <li><a href="/book">Book</a></li>
     <li><a href="/system">System</a></li>
     <li><a href="/engage">Engage</a></li>
