@@ -26,60 +26,123 @@
       padding: 0;
     }
 
-    /* CINEMATIC HERO */
+    /* CINEMATIC HERO SECTION */
     .hero-section {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 4rem;
+      display: flex;
       align-items: center;
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #ECEAE7 0%, #E5E5E3 100%);
+      justify-content: space-between;
+      gap: 4rem;
+      padding: 6rem 2rem 4rem;
+      background: 
+        linear-gradient(135deg, rgba(236, 234, 231, 0.95) 0%, rgba(229, 229, 227, 0.95) 100%),
+        linear-gradient(45deg, 
+          transparent 30%, 
+          rgba(167, 127, 67, 0.03) 31%, 
+          rgba(167, 127, 67, 0.03) 32%, 
+          transparent 33%),
+        linear-gradient(-45deg, 
+          transparent 30%, 
+          rgba(20, 20, 20, 0.02) 31%, 
+          rgba(20, 20, 20, 0.02) 32%, 
+          transparent 33%);
+      background-size: 100% 100%, 60px 60px, 80px 80px;
       border-bottom: 1px solid rgba(167, 127, 67, 0.15);
-      min-height: 100vh;
+      min-height: 90vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(167, 127, 67, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(20, 20, 20, 0.03) 0%, transparent 50%);
+      animation: architectural-shift 20s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes architectural-shift {
+      0%, 100% { 
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(167, 127, 67, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(20, 20, 20, 0.03) 0%, transparent 50%);
+      }
+      50% { 
+        background: 
+          radial-gradient(circle at 80% 20%, rgba(167, 127, 67, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 20% 80%, rgba(20, 20, 20, 0.03) 0%, transparent 50%);
+      }
     }
 
     .hero-content {
-      text-align: left;
+      flex: 1 1 500px;
+      min-width: 300px;
+    }
+
+    .hero-image-container {
+      flex: 0 0 400px;
+      text-align: center;
     }
 
     .hero-image {
       width: 100%;
-      height: 500px;
-      background: linear-gradient(135deg, #808080 0%, #606060 100%);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #333;
-      font-size: 1rem;
-      text-align: center;
-      box-shadow: 0 12px 48px rgba(0,0,0,0.15);
-      border: 1px solid rgba(167, 127, 67, 0.2);
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
     }
 
     .hero-statement {
       font-family: 'IBM Plex Serif', serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 600;
-      color: #FFFFFF;
-      margin-bottom: 3rem;
+      color: #141414;
       line-height: 1.1;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
     }
 
-    .hero-context {
-      font-size: 1.5rem;
-      color: #FFFFFF;
+    .typewriter-line {
+      opacity: 0;
+      animation: typewriter-reveal 1.5s ease-out forwards;
+    }
+
+    .typewriter-line:nth-child(1) {
+      animation-delay: 0.5s;
+    }
+
+    .typewriter-line:nth-child(2) {
+      animation-delay: 2.5s;
+    }
+
+    @keyframes typewriter-reveal {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .hero-name {
+      font-size: 1.25rem;
+      color: #A77F43;
       font-weight: 500;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1rem;
     }
 
     .hero-description {
-      font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 300;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      font-size: 1.125rem;
+      color: #888888;
+      max-width: 600px;
+      font-weight: 400;
     }
 
     /* SECTION FRAMEWORK */
@@ -186,10 +249,32 @@
       color: #A77F43;
       display: block;
       margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
     }
 
     .metric-number.counting {
-      transition: all 0.3s ease;
+      animation: metric-pulse 0.6s ease-in-out;
+    }
+
+    .metric-unit.animate-metric {
+      animation: metric-activate 0.8s ease-out;
+    }
+
+    @keyframes metric-pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); color: #8A652F; }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes metric-activate {
+      0% { 
+        opacity: 0; 
+        transform: translateY(20px) scale(0.9); 
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
     }
 
     .metric-label {
@@ -200,14 +285,47 @@
       font-weight: 500;
     }
 
-    /* SYSTEM VISUALIZATION */
+    /* ENHANCED SYSTEM VISUALIZATION */
     .system-visual {
-      background: rgba(167, 127, 67, 0.05);
+      background: 
+        linear-gradient(135deg, rgba(167, 127, 67, 0.05) 0%, rgba(167, 127, 67, 0.02) 100%),
+        linear-gradient(45deg, transparent 48%, rgba(20, 20, 20, 0.02) 50%, transparent 52%);
       border: 2px solid rgba(167, 127, 67, 0.2);
       border-radius: 8px;
       padding: 3rem;
       margin: 3rem 0;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .system-visual:hover {
+      border-color: #A77F43;
+      background: 
+        linear-gradient(135deg, rgba(167, 127, 67, 0.08) 0%, rgba(167, 127, 67, 0.04) 100%),
+        linear-gradient(45deg, transparent 48%, rgba(20, 20, 20, 0.03) 50%, transparent 52%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(167, 127, 67, 0.12);
+    }
+
+    .system-visual::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, transparent, rgba(167, 127, 67, 0.1), transparent);
+      border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .system-visual:hover::before {
+      opacity: 1;
     }
 
     .system-flow {
@@ -216,6 +334,8 @@
       align-items: center;
       gap: 2rem;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
 
     .flow-element {
@@ -227,11 +347,36 @@
       font-size: 0.875rem;
       color: #A77F43;
       font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .system-visual:hover .flow-element {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(167, 127, 67, 0.15);
+      border-color: #8A652F;
+    }
+
+    .flow-element:hover {
+      background: rgba(167, 127, 67, 0.05);
+      color: #8A652F;
     }
 
     .flow-arrow {
       color: #A77F43;
       font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .system-visual:hover .flow-arrow {
+      color: #8A652F;
+      animation: arrow-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes arrow-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
     }
 
     /* BOOK SHOWCASE */
@@ -490,27 +635,26 @@
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .hero-section {
-        padding: 6rem 1.5rem 4rem;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 4rem 1.5rem;
+        gap: 3rem;
       }
 
-      .hero-grid {
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-}
+      .hero-content {
+        order: 2;
+        text-align: center;
+      }
 
-.hero-text,
-.hero-image {
-  width: 100%;
-  max-width: 90%;
-}
+      .hero-image-container {
+        order: 1;
+        flex: 0 0 auto;
+      }
 
-.hero-image img {
-  max-width: 300px;
-  height: auto;
-  margin-bottom: 2rem;
-}
-
+      .hero-image {
+        max-width: 300px;
+      }
 
       .section {
         padding: 4rem 1.5rem;
@@ -568,33 +712,31 @@
   </div>
 
   <div class="container">
-    
-
     <!-- HERO SECTION – EXECUTIVE PROFILE -->
-<section class="hero-section" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4rem; padding: 6rem 2rem 4rem;">
-  
-  <!-- Left: Text -->
-  <div style="flex: 1 1 500px; min-width: 300px;">
-    <h1 style="font-family: 'IBM Plex Serif', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; color: #141414; line-height: 1.1; margin-bottom: 1.5rem;">
-      Portfolio managers measure drift.<br>This is the behavioral equivalent.
-    </h1>
-    <p style="font-size: 1.25rem; color: #A77F43; font-weight: 500; margin-bottom: 1rem;">
-      Amy Oguntala
-    </p>
-    <p style="font-size: 1.125rem; color: #888888; max-width: 600px; font-weight: 400;">
-      COO → Founder. Architect of behavioral infrastructure that detects Drift when organizational execution outpaces strategic alignment.
-    </p>
-  </div>
+    <section class="hero-section">
+      <!-- Left: Text Content -->
+      <div class="hero-content">
+        <h1 class="hero-statement">
+          <div class="typewriter-line">Portfolio managers measure drift.</div>
+          <div class="typewriter-line">This is the behavioral equivalent.</div>
+        </h1>
+        <p class="hero-name">
+          Amy Oguntala
+        </p>
+        <p class="hero-description">
+          COO → Founder. Architect of behavioral infrastructure that detects Drift when organizational execution outpaces strategic alignment.
+        </p>
+      </div>
 
-  <!-- Right: Image -->
-  <div style="flex: 0 0 400px; text-align: center;">
-    <img src="/assets/hero/AmyHero.png" alt="Amy Oguntala Portrait" style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.1);" />
-  </div>
-</section>
-
-
-
-
+      <!-- Right: Image -->
+      <div class="hero-image-container">
+        <img 
+  src="assets/hero/AmyHero.png" 
+  alt="Amy Oguntala Executive Portrait" 
+  class="hero-image"
+/>
+      </div>
+    </section>
 
     <!-- EXECUTIVE FOUNDATION -->
     <section class="section">
@@ -655,10 +797,13 @@
       
       <div class="book-showcase">
         <div class="book-cover">
-          <div class="book-title">FASTER<br>THAN<br>YOU CAN<br>ADAPT</div>
-          <div class="book-subtitle">Why Behavioral Systems<br>Are the Only Way to<br>Stop Drift and<br>Survive the Velocity Era</div>
-          <div class="book-author">AMY OGUNTALA</div>
+          <img 
+            src="assets/hero/FasterThanYouCanAdapt.png" 
+            alt="Faster Than You Can Adapt book cover" 
+            style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 12px 48px rgba(0,0,0,0.12); border: 1px solid rgba(167, 127, 67, 0.3);" 
+          />
         </div>
+        
         <div class="book-content">
           <div class="content-container">
             <p class="statement-block">
@@ -830,7 +975,7 @@
       <a href="/drift.html" class="cta-primary">Request Strategic Briefing</a>
       <a href="/diagnostic.html" class="cta-secondary">Run Diagnostic</a>
     </div>
-  </section>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -857,10 +1002,16 @@
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
             
-            // Trigger metric counting for this section
-            const metrics = entry.target.querySelectorAll('.metric-number');
-            metrics.forEach(function(metric) {
-              animateMetric(metric);
+            // Enhanced metric animation for this section
+            const metricUnits = entry.target.querySelectorAll('.metric-unit');
+            metricUnits.forEach(function(unit, index) {
+              setTimeout(function() {
+                unit.classList.add('animate-metric');
+                const metric = unit.querySelector('.metric-number');
+                if (metric) {
+                  animateMetric(metric);
+                }
+              }, index * 200);
             });
           }
         });
