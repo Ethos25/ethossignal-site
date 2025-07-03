@@ -1,172 +1,940 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | EthosSignal</title>
-  <link rel="stylesheet" href="/Styles.css" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ECEAE7;
+      color: #141414;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* CINEMATIC HERO */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+      align-items: center;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #ECEAE7 0%, #E5E5E3 100%);
+      border-bottom: 1px solid rgba(167, 127, 67, 0.15);
+      min-height: 100vh;
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
     .hero-image {
-      position: relative;
       width: 100%;
-      height: 100vh;
-      background-image: url('/assets/hero/DriftBed.jpg');
-      background-size: cover;
-      background-position: center;
+      height: 500px;
+      background: linear-gradient(135deg, #808080 0%, #606060 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 1rem;
+      text-align: center;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+      border: 1px solid rgba(167, 127, 67, 0.2);
+    }
+
+    .hero-statement {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 3rem;
+      line-height: 1.1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-context {
+      font-size: 1.5rem;
+      color: #FFFFFF;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* SECTION FRAMEWORK */
+    .section {
+      padding: 6rem 2rem;
+      border-bottom: 1px solid rgba(167, 127, 67, 0.15);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+      position: relative;
+    }
+
+    .section.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: #A77F43;
+      opacity: 0.3;
+    }
+
+    /* SECTION HEADERS - CENTERED */
+    .section-statement {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: #141414;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .section-context {
+      font-size: 1.125rem;
+      color: #A77F43;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 4rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* CONTENT BLOCKS - LEFT ALIGNED */
+    .content-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .statement-block {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #141414;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      text-align: left;
+    }
+
+    .statement-highlight {
+      font-weight: 600;
+      color: #A77F43;
+    }
+
+    /* INVESTMENT-GRADE METRICS */
+    .metrics-display {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      border: 1px solid rgba(167, 127, 67, 0.1);
+    }
+
+    .metric-unit {
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid rgba(167, 127, 67, 0.2);
+      border-radius: 4px;
+      background: #FFFFFF;
+      transition: border-color 0.3s ease;
+    }
+
+    .metric-unit:hover {
+      border-color: #A77F43;
+    }
+
+    .metric-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #A77F43;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-number.counting {
+      transition: all 0.3s ease;
+    }
+
+    .metric-label {
+      font-size: 0.875rem;
+      color: #888888;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+    }
+
+    /* SYSTEM VISUALIZATION */
+    .system-visual {
+      background: rgba(167, 127, 67, 0.05);
+      border: 2px solid rgba(167, 127, 67, 0.2);
+      border-radius: 8px;
+      padding: 3rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .system-flow {
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
-    .hero-overlay {
-      background: rgba(0, 0, 0, 0.55);
-      color: #ECEAE7;
-      text-align: center;
-      padding: 2rem;
-      max-width: 800px;
-    }
-    .section-break {
-      text-align: center;
-      padding: 3rem 0;
+
+    .flow-element {
+      background: #FFFFFF;
+      border: 1px solid #A77F43;
+      border-radius: 4px;
+      padding: 1rem 1.5rem;
       font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #A77F43;
+      font-weight: 500;
+    }
+
+    .flow-arrow {
       color: #A77F43;
       font-size: 1.5rem;
-      animation: glyph-pulse 2s infinite;
     }
-    .book-section {
+
+    /* BOOK SHOWCASE */
+    .book-showcase {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      max-width: 1200px;
-      margin: 5rem auto;
-      padding: 2rem;
-    }
-    .book-section img {
-      width: 100%;
-      max-width: 400px;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin: 4rem 0;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.4);
       border-radius: 8px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      border: 1px solid rgba(167, 127, 67, 0.1);
     }
-    .book-section-text {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.125rem;
-      color: #141414;
-    }
-    .dark-section {
-      background: #141414;
-      color: #ECEAE7;
-      padding: 5rem 2rem;
+
+    .book-cover {
+      width: 100%;
+      height: 380px;
+      background: linear-gradient(135deg, #1A2734 0%, #0F1A24 100%);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem;
+      color: #C09A54;
       text-align: center;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+      border: 1px solid rgba(167, 127, 67, 0.3);
     }
-    .cta-section {
-      text-align: center;
-      padding: 5rem 2rem;
+
+    .book-title {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.375rem;
+      font-weight: 600;
+      line-height: 1.2;
     }
-    .cta-button {
-      background: #A77F43;
-      color: #ECEAE7;
-      padding: 0.75rem 1.5rem;
+
+    .book-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin: 1.5rem 0;
+      line-height: 1.4;
+    }
+
+    .book-author {
+      font-size: 0.9rem;
       font-weight: 500;
-      font-size: 1.125rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
     }
-    .cta-button:hover {
+
+    .book-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* SIGNATURE ELEMENTS */
+    .signature-statement {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #141414;
+      text-align: center;
+      margin: 4rem 0 2rem;
+      line-height: 1.4;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2rem;
+      background: rgba(167, 127, 67, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid #A77F43;
+    }
+
+    .glyph-signature {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #A77F43;
+      font-size: 1.75rem;
+      animation: glyph-pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes glyph-pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .signal-note {
+      text-align: center;
+      font-style: italic;
+      color: #888888;
+      font-size: 0.875rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ENHANCED CAPABILITY CARDS */
+    .capability-section {
+      margin: 4rem 0;
+    }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .capability-card {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(167, 127, 67, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .capability-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #A77F43;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .capability-card:hover {
+      background: rgba(167, 127, 67, 0.08);
+      border-color: #A77F43;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.15);
+    }
+
+    .capability-card:hover::before {
+      opacity: 1;
+    }
+
+    .capability-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #A77F43;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .capability-description {
+      font-size: 0.9rem;
+      color: #141414;
+      line-height: 1.5;
+    }
+
+    /* ENGAGEMENT ARCHITECTURE */
+    .engagement-section {
+      background: #E5E5E3;
+      padding: 5rem 2rem;
+      text-align: center;
+      margin-top: 0;
+      border-top: 1px solid rgba(167, 127, 67, 0.2);
+    }
+
+    .engagement-statement {
+      font-family: 'IBM Plex Serif', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #141414;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .engagement-context {
+      font-size: 1.25rem;
+      color: #888888;
+      margin-bottom: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-primary {
+      background: #A77F43;
+      color: #141414;
+      padding: 1.25rem 3rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta-primary:hover {
       background: #8A652F;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.3);
+    }
+
+    .cta-secondary {
+      background: transparent;
+      color: #A77F43;
+      padding: 1.25rem 3rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border: 2px solid #A77F43;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta-secondary:hover {
+      background: #A77F43;
+      color: #141414;
+      transform: translateY(-2px);
+    }
+
+    /* SCROLL PROGRESS */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(167, 127, 67, 0.1);
+      z-index: 1000;
+    }
+
+    .scroll-progress-bar {
+      height: 100%;
+      background: #A77F43;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .hero-grid {
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.hero-text,
+.hero-image {
+  width: 100%;
+  max-width: 90%;
+}
+
+.hero-image img {
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+
+      .section {
+        padding: 4rem 1.5rem;
+      }
+
+      .metrics-display {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem;
+      }
+
+      .book-showcase {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .book-cover {
+        width: 250px;
+        height: 350px;
+        margin: 0 auto;
+      }
+
+      .engagement-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .capability-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .cta-group {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .system-flow {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar"></div>
+  </div>
 
-  <!-- SECTION 1: COLD OPEN -->
-  <section style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
-    <img src="/assets/hero/DriftBed.jpg" alt="Drift Bed" style="
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;" />
-    <div style="
-      position: relative;
-      z-index: 10;
-      background: rgba(0, 0, 0, 0.55);
-      padding: 4rem 2rem;
-      text-align: center;
-      color: #ECEAE7;
-      font-family: 'IBM Plex Serif', serif;
-      max-width: 800px;
-      margin: 0 auto;
-      top: 50%;
-      transform: translateY(-50%);
-    ">
-      <h1 style="font-size: 2.75rem; font-weight: 600; line-height: 1.2;">
-        Systems can't speak for themselves.<br>
-        I had to.
-      </h1>
-    </div>
-  </section>
-  
-
-  <div class="section-break">—•—</div>
-
-  <!-- SECTION 2: FRACTURE GRID -->
-  <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 5rem auto; padding: 2rem;">
-    <!-- Left Column -->
-    <div class="font-inter" style="font-size: 1.125rem; color: #141414; display: flex; flex-direction: column; gap: 1.5rem;">
-      <p>Portfolio managers don’t ignore drift—they correct it immediately because they understand compound loss.</p>
-      <p>The same misalignment killing billion-dollar portfolios is now embedded in your leadership team, and you're calling it "culture."</p>
-      <p>Drift used to resolve itself through economic downturns that forced recalibration—AI velocity eliminated that correction mechanism.</p>
-      <p>Every executive team that believes they're "aligned" is measuring the wrong variables.</p>
-      <p>Behavioral misalignment follows the same mathematical principles as portfolio drift, but no one built the measurement system until now.</p>
-    </div>
+  <div class="container">
     
 
-    <!-- Right Column -->
-    <div style="text-align: center;">
-      <div class="font-jetbrains" style="font-size: 2rem; color: #A77F43; margin-bottom: 2rem; animation: glyph-pulse 2s infinite;">
-        —•—
-      </div>
-      <p class="font-inter" style="font-size: 1rem; color: #888888;">
-        "It wasn't burnout. It was misalignment with nowhere left to hide."
-      </p>
-    </div>
-  </section>
-
-  <div class="section-break">—•—</div>
-
-  <!-- SECTION 3: BOOK OBJECT -->
-  <section class="book-section">
-    <img src="/assets/images/Book-Cover.png" alt="Faster Than You Can Adapt Book Cover" />
-    <div class="book-section-text">
-      <p><strong><em>Faster Than You Can Adapt</em></strong> is not motivational. It’s operational. It doesn’t inspire leaders to go harder—it names what broke them before they saw it coming.</p>
-      <p>This book formalized Drift as a measurable behavioral condition—and positioned it as the silent killer of execution integrity.</p>
-      <p>If you’ve ever hit your goals while feeling disconnected from the system you were building—this is the diagnostic.</p>
-    </div>
-  </section>
-
-  <div class="section-break">—•—</div>
-
-  <!-- SECTION 4: INVERTED ORIGIN BLOCK -->
-  <section class="dark-section font-inter">
-    <h2 class="font-ibm-serif" style="font-size: 2rem; margin-bottom: 1.25rem;">From COO to Builder</h2>
-    <p style="font-size: 1.125rem; max-width: 800px; margin: 0 auto;">
-      I ran a $1.5B private equity integration. I watched systems perform while their people disappeared. I built EthosSignal not to lead a brand—but to name a fracture that had no language. Drift Quotient™ was built because KPIs lied.
+    <!-- HERO SECTION – EXECUTIVE PROFILE -->
+<section class="hero-section" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4rem; padding: 6rem 2rem 4rem;">
+  
+  <!-- Left: Text -->
+  <div style="flex: 1 1 500px; min-width: 300px;">
+    <h1 style="font-family: 'IBM Plex Serif', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; color: #141414; line-height: 1.1; margin-bottom: 1.5rem;">
+      Portfolio managers measure drift.<br>This is the behavioral equivalent.
+    </h1>
+    <p style="font-size: 1.25rem; color: #A77F43; font-weight: 500; margin-bottom: 1rem;">
+      Amy Oguntala
     </p>
+    <p style="font-size: 1.125rem; color: #888888; max-width: 600px; font-weight: 400;">
+      COO → Founder. Architect of behavioral infrastructure that detects Drift when organizational execution outpaces strategic alignment.
+    </p>
+  </div>
+
+  <!-- Right: Image -->
+  <div style="flex: 0 0 400px; text-align: center;">
+    <img src="/assets/hero/AmyHero.png" alt="Amy Oguntala Portrait" style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.1);" />
+  </div>
+</section>
+
+
+
+    <!-- CINEMATIC HERO -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-statement">
+          Portfolio managers measure drift.<br>
+          This is the behavioral equivalent.
+        </h1>
+        <p class="hero-context">Amy Oguntala</p>
+        <p class="hero-description">
+          COO → Founder. Architect of behavioral infrastructure that detects Drift when organizational execution outpaces strategic alignment.
+        </p>
+      </div>
+    </section>
+
+    <!-- EXECUTIVE FOUNDATION -->
+    <section class="section">
+      <h2 class="section-statement">Portfolio managers don't ignore drift.</h2>
+      <p class="section-context">Executive Foundation</p>
+      
+      <div class="content-container">
+        <p class="statement-block">
+          Two decades inside executive decision structures culminated in leading a <span class="statement-highlight">$1.5B private equity integration as COO</span>.
+        </p>
+        
+        <p class="statement-block">
+          Performance metrics indicated success while underlying behavioral alignment catastrophically deteriorated. Traditional management systems failed to detect misalignment until operational damage became irreversible.
+        </p>
+        
+        <p class="statement-block">
+          This architect recognized that <span class="statement-highlight">behavioral drift follows the same mathematical principles as portfolio drift</span>, but no measurement infrastructure existed.
+        </p>
+      </div>
+
+      <div class="metrics-display">
+        <div class="metric-unit">
+          <span class="metric-number">$1.5B</span>
+          <span class="metric-label">Integration Scale</span>
+        </div>
+        <div class="metric-unit">
+          <span class="metric-number">20</span>
+          <span class="metric-label">Years Executive</span>
+        </div>
+        <div class="metric-unit">
+          <span class="metric-number">2025</span>
+          <span class="metric-label">System Deployed</span>
+        </div>
+      </div>
+
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Private Equity</div>
+            <div class="capability-description">$1.5B integration leadership and operational excellence</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Operational Integration</div>
+            <div class="capability-description">Complex system mergers and behavioral alignment</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Executive Leadership</div>
+            <div class="capability-description">C-suite decision structure analysis and optimization</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK AUTHORITY -->
+    <section class="section">
+      <h2 class="section-statement">The foundational text behind behavioral alignment diagnostics.</h2>
+      <p class="section-context">Author • Fall 2025</p>
+      
+      <div class="book-showcase">
+        <div class="book-cover">
+          <div class="book-title">FASTER<br>THAN<br>YOU CAN<br>ADAPT</div>
+          <div class="book-subtitle">Why Behavioral Systems<br>Are the Only Way to<br>Stop Drift and<br>Survive the Velocity Era</div>
+          <div class="book-author">AMY OGUNTALA</div>
+        </div>
+        <div class="book-content">
+          <div class="content-container">
+            <p class="statement-block">
+              This work formalized <span class="statement-highlight">Drift as a measurable behavioral condition</span> and positioned it as the silent killer of execution integrity.
+            </p>
+            
+            <p class="statement-block">
+              The system framework provides the first quantified approach to detecting and correcting organizational drift before it becomes operationally catastrophic.
+            </p>
+            
+            <p class="statement-block">
+              Designed for leaders who recognize the difference between operational rhythm and strategic alignment—and who require diagnostic precision to maintain both under AI-accelerated pressure.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Category Creation</div>
+            <div class="capability-description">First to establish behavioral drift as measurable condition</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Behavioral Systems</div>
+            <div class="capability-description">Infrastructure design for organizational alignment detection</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Velocity Era</div>
+            <div class="capability-description">AI-accelerated decision environments and adaptation frameworks</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYSTEM ARCHITECT -->
+    <section class="section">
+      <h2 class="section-statement">Drift Quotient™ measurement at scale.</h2>
+      <p class="section-context">System Architecture</p>
+      
+      <div class="content-container">
+        <p class="statement-block">
+          Creator of <span class="statement-highlight">Individual Drift Quotient (IDQ)</span> and <span class="statement-highlight">Organizational Drift Quotient (ODQ)</span> frameworks.
+        </p>
+        
+        <p class="statement-block">
+          These systems expose misalignment between performance and coherence at individual, team, and organizational levels. The diagnostic infrastructure identifies <span class="statement-highlight">fracture points before they become institutional collapse</span>.
+        </p>
+      </div>
+
+      <div class="system-visual">
+        <div class="system-flow">
+          <div class="flow-element">IDQ</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-element">ODQ</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-element">DRIFT QUOTIENT™</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-element">INTERVENTION</div>
+        </div>
+      </div>
+
+      <div class="glyph-signature">—•—</div>
+
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Drift Quotient™</div>
+            <div class="capability-description">Proprietary measurement system for behavioral misalignment</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Behavioral Diagnostics</div>
+            <div class="capability-description">Individual and organizational alignment assessment protocols</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">System Architecture</div>
+            <div class="capability-description">Enterprise-grade infrastructure for behavioral measurement</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM DEPLOYMENT -->
+    <section class="section">
+      <h2 class="section-statement">EthosSignal™ deploys behavioral architecture.</h2>
+      <p class="section-context">Platform Infrastructure</p>
+      
+      <div class="content-container">
+        <p class="statement-block">
+          <span class="statement-highlight">EthosSignal™</span> deploys Drift Quotient™ as enterprise-grade diagnostic infrastructure. Designed for high-velocity environments where traditional management approaches fail to surface misalignment until operational damage is irreversible.
+        </p>
+        
+        <p class="statement-block">
+          Not culture work. Not coaching. <span class="statement-highlight">Behavioral architecture designed for institutional permanence</span>.
+        </p>
+        
+        <p class="statement-block">
+          Available for pilot deployment, strategic consultation, and board-level implementation across Fortune 500 organizational structures.
+        </p>
+      </div>
+
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Platform Infrastructure</div>
+            <div class="capability-description">Enterprise deployment systems for behavioral measurement</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Enterprise Systems</div>
+            <div class="capability-description">Scalable organizational diagnostic and intervention protocols</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Behavioral Infrastructure</div>
+            <div class="capability-description">Foundational architecture for velocity-era alignment management</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRENT ENGAGEMENT -->
+    <section class="section">
+      <h2 class="section-statement">Speed without alignment creates institutional fragility.</h2>
+      <p class="section-context">Strategic Engagement</p>
+      
+      <div class="content-container">
+        <p class="statement-block">
+          Available for <span class="statement-highlight">enterprise pilot deployment</span>, <span class="statement-highlight">board-level strategic consultation</span>, and <span class="statement-highlight">executive briefings</span> on organizational behavioral architecture.
+        </p>
+        
+        <p class="statement-block">
+          Engagement with leaders who recognize that velocity without alignment creates institutional fragility—and who require diagnostic infrastructure before fracture patterns become operationally visible.
+        </p>
+      </div>
+
+      <div class="signature-statement">
+        "Designed for leaders who can't afford to confuse operational rhythm with strategic alignment."
+      </div>
+      
+      <div class="glyph-signature">—•—</div>
+      <p class="signal-note">Signal registered</p>
+
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Enterprise Consulting</div>
+            <div class="capability-description">Strategic deployment for Fortune 500 organizational alignment</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Strategic Advisory</div>
+            <div class="capability-description">Board-level consultation on behavioral infrastructure</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Executive Briefings</div>
+            <div class="capability-description">C-suite presentations on drift detection protocols</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ENGAGEMENT CTA -->
+  <section class="engagement-section">
+    <h2 class="engagement-statement">Ready to work together?</h2>
+    <p class="engagement-context">
+      Request a strategic briefing or run the diagnostic assessment.
+    </p>
+    <div class="cta-group">
+      <a href="/drift.html" class="cta-primary">Request Strategic Briefing</a>
+      <a href="/diagnostic.html" class="cta-secondary">Run Diagnostic</a>
+    </div>
   </section>
 
-  <div class="section-break">—•—</div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Scroll progress bar
+      const progressBar = document.querySelector('.scroll-progress-bar');
+      
+      function updateScrollProgress() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+      }
+      
+      window.addEventListener('scroll', updateScrollProgress);
 
-  <!-- SECTION 5: CTA TO DRIFT -->
-  <section class="cta-section">
-    <h2 class="font-ibm-serif" style="font-size: 2rem; margin-bottom: 1.25rem;">
-      What happens when Drift becomes scalable?
-    </h2>
-    <a href="/drift.html" class="cta-button">Run the Diagnostic</a>
-  </section>
+      // Intersection Observer for section animations
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const sectionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            
+            // Trigger metric counting for this section
+            const metrics = entry.target.querySelectorAll('.metric-number');
+            metrics.forEach(function(metric) {
+              animateMetric(metric);
+            });
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(function(section) {
+        sectionObserver.observe(section);
+      });
+    });
+
+    // Metric counter animation
+    function animateMetric(element) {
+      if (element.hasAttribute('data-animated')) return;
+      element.setAttribute('data-animated', 'true');
+      
+      const text = element.textContent;
+      const isNumber = /^\d+$/.test(text);
+      
+      if (isNumber) {
+        const finalValue = parseInt(text);
+        const duration = 2500;
+        const increment = finalValue / (duration / 16);
+        let currentValue = 0;
+        
+        element.classList.add('counting');
+        
+        const timer = setInterval(function() {
+          currentValue += increment;
+          if (currentValue >= finalValue) {
+            element.textContent = finalValue;
+            clearInterval(timer);
+            element.classList.remove('counting');
+          } else {
+            element.textContent = Math.floor(currentValue);
+          }
+        }, 16);
+      } else if (text.includes('$') && text.includes('B')) {
+        const duration = 2500;
+        const steps = 80;
+        const stepDuration = duration / steps;
+        let currentStep = 0;
+        
+        element.classList.add('counting');
+        
+        const timer = setInterval(function() {
+          currentStep++;
+          const progress = currentStep / steps;
+          const currentValue = (1.5 * progress).toFixed(1);
+          
+          if (currentStep >= steps) {
+            element.textContent = '$1.5B';
+            clearInterval(timer);
+            element.classList.remove('counting');
+          } else {
+            element.textContent = '$' + currentValue + 'B';
+          }
+        }, stepDuration);
+      }
+    }
+  </script>
 
 </body>
 </html>
-
