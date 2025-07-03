@@ -21,7 +21,7 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0;
     }
@@ -29,9 +29,9 @@
     /* CINEMATIC HERO SECTION */
     .hero-section {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4rem;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
       padding: 6rem 2rem 4rem;
       background: 
         linear-gradient(135deg, rgba(236, 234, 231, 0.95) 0%, rgba(229, 229, 227, 0.95) 100%),
@@ -49,7 +49,7 @@
       border-bottom: 1px solid rgba(167, 127, 67, 0.15);
       min-height: 90vh;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .hero-section::before {
@@ -79,32 +79,49 @@
       }
     }
 
-    .hero-content {
-      flex: 1 1 500px;
-      min-width: 300px;
+    .hero-content, .hero-image-container {
+      width: 480px;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      /* height: 100%; */
     }
-
     .hero-image-container {
-      flex: 0 0 400px;
+      align-items: stretch;
+      justify-content: stretch;
       text-align: center;
-    }
-
-    .hero-image {
-      width: 100%;
-      max-width: 400px;
+      margin-left: 0;
       height: auto;
+    }
+    .hero-image-crop {
+      width: 100%;
+      height: 100%;
+      background-image: url('assets/hero/AmyHero.png');
+      background-size: cover;
+      background-position: center center;
       border-radius: 8px;
       box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      margin: 0 auto;
+      display: block;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-statement {
       font-family: 'IBM Plex Serif', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 600;
       color: #141414;
       line-height: 1.1;
       margin-bottom: 1.5rem;
-      overflow: hidden;
+      overflow: visible;
+      background: rgba(236,234,231,0.7);
+      display: inline-block;
+      padding-right: 1.5rem;
+      border-radius: 0 1.5rem 1.5rem 0;
+      box-shadow: 8px 0 24px -8px rgba(167,127,67,0.08);
     }
 
     .typewriter-line {
@@ -118,6 +135,10 @@
 
     .typewriter-line:nth-child(2) {
       animation-delay: 2.5s;
+    }
+
+    .typewriter-line + .typewriter-line {
+      margin-top: 0.5em;
     }
 
     @keyframes typewriter-reveal {
@@ -135,7 +156,7 @@
       font-size: 1.25rem;
       color: #A77F43;
       font-weight: 500;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-description {
@@ -395,7 +416,6 @@
     .book-cover {
       width: 100%;
       height: 380px;
-      background: linear-gradient(135deg, #1A2734 0%, #0F1A24 100%);
       border-radius: 8px;
       display: flex;
       flex-direction: column;
@@ -633,27 +653,37 @@
     }
 
     /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .hero-content, .hero-image-container {
+        width: 90vw;
+        min-width: 0;
+      }
+    }
     @media (max-width: 768px) {
       .hero-section {
         flex-direction: column;
         text-align: center;
         align-items: center;
+        justify-content: center;
         padding: 4rem 1.5rem;
-        gap: 3rem;
+        gap: 1.5rem;
       }
-
+      .hero-content, .hero-image-container {
+        width: 95vw;
+        min-width: 0;
+      }
+      .hero-image-crop {
+        width: 100%;
+        height: 60vw;
+        max-width: 95vw;
+        min-width: 0;
+      }
       .hero-content {
-        order: 2;
-        text-align: center;
+        margin-right: 0;
       }
-
-      .hero-image-container {
-        order: 1;
-        flex: 0 0 auto;
-      }
-
-      .hero-image {
-        max-width: 300px;
+      .hero-statement {
+        padding-right: 0.5rem;
+        border-radius: 0.5rem;
       }
 
       .section {
@@ -702,10 +732,115 @@
         transform: rotate(90deg);
       }
     }
+    .book-image-clean {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+      border: 1px solid rgba(167, 127, 67, 0.3);
+      margin: 0 auto;
+    }
+    .nav {
+        position: sticky;
+        top: 0;
+        background: #ECEAE7;
+        border-bottom: 1px solid #E5E5E3;
+        z-index: 50;
+        padding: 1.5rem 2rem;
+    }
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .wordmark {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 1.25rem;
+    }
+    .wordmark-ethos {
+        font-weight: 700;
+        color: #141414;
+    }
+    .wordmark-separator {
+        font-weight: 500;
+        color: #888888;
+        animation: morse-pulse 4s infinite;
+    }
+    .wordmark-signal {
+        font-weight: 400;
+        color: #A77F43;
+    }
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+    .nav-link {
+        color: #141414;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .nav-link:hover {
+        color: #2F4454;
+    }
+    .nav-cta {
+        background: #A77F43;
+        color: #ECEAE7;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.125rem;
+        border-radius: 4px;
+        display: inline-block;
+        transition: background-color 0.2s ease;
+        font-family: 'Inter', sans-serif;
+    }
+    .nav-cta:hover {
+        background: #8A652F;
+    }
+    @keyframes morse-pulse {
+        0%, 15%, 100% { opacity: 1; }
+        5% { opacity: 0.2; }
+        20%, 30% { opacity: 1; }
+        25% { opacity: 0.2; }
+        35%, 50% { opacity: 1; }
+        45% { opacity: 0.2; }
+        55%, 85% { opacity: 0.2; }
+    }
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+    }
   </style>
 </head>
 
 <body>
+  <!-- Navigation -->
+  <nav class="nav">
+      <div class="nav-container">
+          <div class="wordmark font-jetbrains">
+              <span class="wordmark-ethos font-jetbrains" style="font-size: 2rem;">ETHOS</span>
+              <span class="wordmark-separator font-ibm-mono" style="font-size: 2rem;">—•—</span>
+              <span class="wordmark-signal font-ibm-mono" style="font-size: 2rem;">SIGNAL</span>
+          </div>
+          <div class="nav-links font-inter">
+              <a href="/drift.html" class="nav-link">Drift</a>
+              <a href="#" class="nav-link">Book</a>
+              <a href="#" class="nav-link">System</a>
+              <a href="#" class="nav-link">Engage</a>
+              <a href="about.html" class="nav-link">About</a>
+              <a href="#" class="nav-link">Signal</a>
+              <a href="/access" class="nav-cta">Access</a>
+          </div>
+      </div>
+  </nav>
   <!-- SCROLL PROGRESS -->
   <div class="scroll-progress">
     <div class="scroll-progress-bar"></div>
@@ -730,30 +865,20 @@
 
       <!-- Right: Image -->
       <div class="hero-image-container">
-        <img 
-  src="assets/hero/AmyHero.png" 
-  alt="Amy Oguntala Executive Portrait" 
-  class="hero-image"
-/>
+        <div class="hero-image-crop" role="img" aria-label="Amy Oguntala Executive Portrait"></div>
       </div>
     </section>
 
     <!-- EXECUTIVE FOUNDATION -->
     <section class="section">
-      <h2 class="section-statement">Portfolio managers don't ignore drift.</h2>
+      <h2 class="section-statement">Most systems track performance.<br>None detect Drift.</h2>
       <p class="section-context">Executive Foundation</p>
-      
       <div class="content-container">
         <p class="statement-block">
-          Two decades inside executive decision structures culminated in leading a <span class="statement-highlight">$1.5B private equity integration as COO</span>.
+          Two decades inside executive decision systems—including the operational integration of a <span class="statement-highlight">$1.5B platform</span>—exposed a deeper pattern: alignment doesn’t degrade at the surface. It erodes underneath.
         </p>
-        
         <p class="statement-block">
-          Performance metrics indicated success while underlying behavioral alignment catastrophically deteriorated. Traditional management systems failed to detect misalignment until operational damage became irreversible.
-        </p>
-        
-        <p class="statement-block">
-          This architect recognized that <span class="statement-highlight">behavioral drift follows the same mathematical principles as portfolio drift</span>, but no measurement infrastructure existed.
+          That diagnostic blind spot became the basis for a new kind of architecture—modeled on the same principles that asset managers use to track portfolio drift, but designed to surface behavioral misalignment before it scales.
         </p>
       </div>
 
@@ -792,17 +917,15 @@
 
     <!-- BOOK AUTHORITY -->
     <section class="section">
-      <h2 class="section-statement">The foundational text behind behavioral alignment diagnostics.</h2>
+      <h2 class="section-statement">Where Drift begins. And how to stop it.</h2>
       <p class="section-context">Author • Fall 2025</p>
       
       <div class="book-showcase">
-        <div class="book-cover">
-          <img 
-            src="assets/hero/FasterThanYouCanAdapt.png" 
-            alt="Faster Than You Can Adapt book cover" 
-            style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 12px 48px rgba(0,0,0,0.12); border: 1px solid rgba(167, 127, 67, 0.3);" 
-          />
-        </div>
+        <img 
+          src="assets/hero/FasterThanYouCanAdapt.png" 
+          alt="Faster Than You Can Adapt book cover" 
+          class="book-image-clean"
+        />
         
         <div class="book-content">
           <div class="content-container">
