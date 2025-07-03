@@ -1,60 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | EthosSignal</title>
-    <link rel="stylesheet" href="Styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | EthosSignal</title>
+  <link rel="stylesheet" href="/Styles.css" />
+  <style>
+    .hero-image {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-image: url('/assets/hero/DriftBed.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.55);
+      color: #ECEAE7;
+      text-align: center;
+      padding: 2rem;
+      max-width: 800px;
+    }
+    .section-break {
+      text-align: center;
+      padding: 3rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: #A77F43;
+      font-size: 1.5rem;
+      animation: glyph-pulse 2s infinite;
+    }
+    .book-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 5rem auto;
+      padding: 2rem;
+    }
+    .book-section img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .book-section-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.125rem;
+      color: #141414;
+    }
+    .dark-section {
+      background: #141414;
+      color: #ECEAE7;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .cta-button {
+      background: #A77F43;
+      color: #ECEAE7;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      font-size: 1.125rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .cta-button:hover {
+      background: #8A652F;
+    }
+  </style>
 </head>
+
 <body>
 
-    <section class="section container-narrow">
-        <h1 class="font-ibm-serif" style="font-size: 2.75rem; margin-bottom: 1.5rem;">
-            The systems were still performing.<br>
-            But alignment was already gone.
-        </h1>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414; margin-bottom: 1.25rem;">
-            In the wealth management world, we tracked drift down to the decimal. Portfolio allocations, asset thresholds, tax loss harvesting triggers. It was all measurable. All monitored.
-        </p>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414; margin-bottom: 1.25rem;">
-            But when the leadership team started misfiring—when decisions got political, when the room got quieter, when the truth started costing—there was no metric. No warning. Just deterioration that couldn’t be named until it was too late.
-        </p>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414;">
-            That’s the cost of invisible drift. The system keeps running. But the people are gone.
-        </p>
-    </section>
+  <!-- SECTION 1: COLD OPEN -->
+  <section style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+    <img src="/assets/hero/DriftBed.jpg" alt="Drift Bed" style="
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;" />
+    <div style="
+      position: relative;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 4rem 2rem;
+      text-align: center;
+      color: #ECEAE7;
+      font-family: 'IBM Plex Serif', serif;
+      max-width: 800px;
+      margin: 0 auto;
+      top: 50%;
+      transform: translateY(-50%);
+    ">
+      <h1 style="font-size: 2.75rem; font-weight: 600; line-height: 1.2;">
+        Systems can't speak for themselves.<br>
+        I had to.
+      </h1>
+    </div>
+  </section>
+  
 
-    <section class="section section-gray container-narrow">
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414; margin-bottom: 1rem;">
-            <strong>COO → Founder.</strong>
-        </p>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414; margin-bottom: 1.25rem;">
-            I build diagnostic infrastructure that detects Drift: when organizational execution has outpaced strategic alignment.
-        </p>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414; margin-bottom: 1.25rem;">
-            Founder of <strong>EthosSignal™</strong>, creator of <strong>Drift Quotient™</strong> and the <strong>IDQ/ODQ</strong> frameworks. Author of <em>Faster Than You Can Adapt</em>, the foundational text behind behavioral alignment diagnostics.
-        </p>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414; margin-bottom: 1.25rem;">
-            My systems expose misalignment between performance and coherence—especially in high-velocity environments where traditional management structures fail.
-        </p>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414;">
-            My work is shaped by two decades inside executive decision structures, culminating in leading a $1.5B private equity integration as COO. Now, I name the fracture points before they become institutional collapse.
-        </p>
-    </section>
+  <div class="section-break">—•—</div>
+
+  <!-- SECTION 2: FRACTURE GRID -->
+  <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 5rem auto; padding: 2rem;">
+    <!-- Left Column -->
+    <div class="font-inter" style="font-size: 1.125rem; color: #141414; display: flex; flex-direction: column; gap: 1.5rem;">
+      <p>Portfolio managers don’t ignore drift—they correct it immediately because they understand compound loss.</p>
+      <p>The same misalignment killing billion-dollar portfolios is now embedded in your leadership team, and you're calling it "culture."</p>
+      <p>Drift used to resolve itself through economic downturns that forced recalibration—AI velocity eliminated that correction mechanism.</p>
+      <p>Every executive team that believes they're "aligned" is measuring the wrong variables.</p>
+      <p>Behavioral misalignment follows the same mathematical principles as portfolio drift, but no one built the measurement system until now.</p>
+    </div>
     
 
-    <section class="section container-narrow">
-        <h2 class="font-ibm-serif" style="font-size: 2rem; margin-bottom: 1.25rem;">
-            EthosSignal wasn’t built to inspire.
-        </h2>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414; margin-bottom: 1.25rem;">
-            It was built because executives were performing while breaking. Because leadership teams had velocity but no alignment. Because systems kept producing results—but no one knew what was eroding underneath.
-        </p>
-        <p class="font-inter" style="font-size: 1.125rem; color: #141414;">
-            Drift Quotient™ exists to make the invisible measurable. Because if you can’t diagnose misalignment, you can’t fix it. You just keep scaling the collapse.
-        </p>
-    </section>
-    
+    <!-- Right Column -->
+    <div style="text-align: center;">
+      <div class="font-jetbrains" style="font-size: 2rem; color: #A77F43; margin-bottom: 2rem; animation: glyph-pulse 2s infinite;">
+        —•—
+      </div>
+      <p class="font-inter" style="font-size: 1rem; color: #888888;">
+        "It wasn't burnout. It was misalignment with nowhere left to hide."
+      </p>
+    </div>
+  </section>
+
+  <div class="section-break">—•—</div>
+
+  <!-- SECTION 3: BOOK OBJECT -->
+  <section class="book-section">
+    <img src="/assets/images/Book-Cover.png" alt="Faster Than You Can Adapt Book Cover" />
+    <div class="book-section-text">
+      <p><strong><em>Faster Than You Can Adapt</em></strong> is not motivational. It’s operational. It doesn’t inspire leaders to go harder—it names what broke them before they saw it coming.</p>
+      <p>This book formalized Drift as a measurable behavioral condition—and positioned it as the silent killer of execution integrity.</p>
+      <p>If you’ve ever hit your goals while feeling disconnected from the system you were building—this is the diagnostic.</p>
+    </div>
+  </section>
+
+  <div class="section-break">—•—</div>
+
+  <!-- SECTION 4: INVERTED ORIGIN BLOCK -->
+  <section class="dark-section font-inter">
+    <h2 class="font-ibm-serif" style="font-size: 2rem; margin-bottom: 1.25rem;">From COO to Builder</h2>
+    <p style="font-size: 1.125rem; max-width: 800px; margin: 0 auto;">
+      I ran a $1.5B private equity integration. I watched systems perform while their people disappeared. I built EthosSignal not to lead a brand—but to name a fracture that had no language. Drift Quotient™ was built because KPIs lied.
+    </p>
+  </section>
+
+  <div class="section-break">—•—</div>
+
+  <!-- SECTION 5: CTA TO DRIFT -->
+  <section class="cta-section">
+    <h2 class="font-ibm-serif" style="font-size: 2rem; margin-bottom: 1.25rem;">
+      What happens when Drift becomes scalable?
+    </h2>
+    <a href="/drift.html" class="cta-button">Run the Diagnostic</a>
+  </section>
 
 </body>
 </html>
+
