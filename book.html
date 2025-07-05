@@ -23,7 +23,7 @@
     .container {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
 
     /* Navigation */
@@ -109,6 +109,97 @@
         55%, 85% { opacity: 0.2; }
     }
 
+    /* Typography Hierarchy */
+    h1 {
+        font-family: 'IBM Plex Serif', serif;
+        font-size: 2.75rem;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-top: 3rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(167, 127, 67, 0.15);
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-content {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #141414;
+      max-width: 800px;
+    }
+
+    .section-content p {
+      margin-bottom: 1rem;
+    }
+
+    .section-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Visual Glyph Integration */
+    .glyph {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      color: #A77F43;
+      text-align: center;
+      margin: 2rem 0;
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Fade-in Scroll Reveal Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Hero Section */
     .hero-section {
       display: flex;
@@ -116,6 +207,7 @@
       gap: 4rem;
       padding: 6rem 0 4rem;
       min-height: 80vh;
+      margin-bottom: 4rem;
     }
 
     .book-image {
@@ -130,73 +222,14 @@
       flex: 1;
     }
 
-    .hero-headline {
-      font-family: 'IBM Plex Serif', serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 600;
-      color: #141414;
-      line-height: 1.2;
-      margin-bottom: 2rem;
-    }
-
-    .hero-subhead {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.25rem;
-      color: #888888;
-      line-height: 1.6;
-      max-width: 600px;
-    }
-
-    /* Section Styling */
-    .section {
-      padding: 4rem 0;
-      border-bottom: 1px solid rgba(167, 127, 67, 0.15);
-    }
-
-    .section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-title {
-      font-family: 'IBM Plex Serif', serif;
-      font-size: clamp(2rem, 3vw, 2.5rem);
-      font-weight: 600;
-      color: #141414;
-      margin-bottom: 2rem;
-      line-height: 1.3;
-    }
-
-    .section-content {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.125rem;
-      line-height: 1.7;
-      color: #141414;
-      max-width: 800px;
-    }
-
-    .section-content p {
-      margin-bottom: 1.5rem;
-    }
-
-    .section-content p:last-child {
-      margin-bottom: 0;
-    }
-
     /* CTA Section */
     .cta-section {
       text-align: center;
       padding: 4rem 0;
+      margin-bottom: 4rem;
     }
 
-    .cta-title {
-      font-family: 'IBM Plex Serif', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #141414;
-      margin-bottom: 2rem;
-    }
-
-    .cta-group {
+    .cta-buttons {
       display: flex;
       gap: 2rem;
       justify-content: center;
@@ -228,21 +261,24 @@
       box-shadow: 0 4px 16px rgba(167, 127, 67, 0.3);
     }
 
-    .cta-note {
+    .system-tag {
       font-family: 'Inter', sans-serif;
       font-size: 0.875rem;
       color: #888888;
       text-align: center;
       line-height: 1.5;
+      font-style: italic;
     }
 
-    /* Glyph Divider */
-    .glyph-divider {
-      text-align: center;
-      margin: 3rem 0;
-      font-family: 'JetBrains Mono', monospace;
-      color: #A77F43;
-      font-size: 1.5rem;
+    /* List Styling */
+    ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
     }
 
     /* Responsive */
@@ -258,19 +294,11 @@
         width: 250px;
       }
 
-      .hero-headline {
-        font-size: 2.5rem;
-      }
-
-      .hero-subhead {
-        font-size: 1.125rem;
-      }
-
       .section {
         padding: 3rem 0;
       }
 
-      .cta-group {
+      .cta-buttons {
         flex-direction: column;
         gap: 1rem;
       }
@@ -303,99 +331,142 @@
   </nav>
 
   <div class="container">
-    <!-- CATEGORY DECLARATION (Hero) -->
-    <section class="hero-section">
+    <!-- PRIMARY HEADLINE -->
+    <section class="hero-section fade-in">
       <img 
         src="assets/hero/FasterThanYouCanAdapt.png" 
         alt="Faster Than You Can Adapt book cover" 
         class="book-image"
       />
       <div class="hero-content">
-        <h1 class="hero-headline">
-          Drift is a Measurable Condition.<br>
-          Not a Concept.
-        </h1>
-        <p class="hero-subhead">
-          Faster Than You Can Adapt is the book that named it.<br>
-          EthosSignal is the system that measures it.
-        </p>
+        <h1>Drift Detection Architecture.<br>From Framework to Deployment.</h1>
+        <p>The diagnostic system that measures behavioral misalignment before operational failure becomes visible.</p>
       </div>
     </section>
 
-    <div class="glyph-divider">—•—</div>
+    <div class="glyph">—•—</div>
 
-    <!-- INSTITUTIONAL CONSEQUENCE -->
-    <section class="section">
-      <h2 class="section-title">Why Drift Matters Now</h2>
+    <!-- OPENING SECTION: PLATFORM AUTHENTICATION -->
+    <section class="section fade-in">
       <div class="section-content">
         <p>
-          Velocity has overtaken visibility.<br>
-          Organizations are making high-cost decisions inside systems that can't track the behavioral consequences.
+          This work originated inside $1.5B portfolio operations where behavioral misalignment patterns preceded every institutional failure by 18–24 months. The diagnostic framework documented here became the foundation for Drift Quotient™—the first quantified behavioral measurement system designed for enterprise deployment.
         </p>
         <p>
-          Drift isn't burnout. It's structural misalignment.
-        </p>
-        <p>
-          This book exposes the behavioral architecture failures that lead to decision fatigue, strategic blindness, and systemic breakdown.
-        </p>
-        <p>
-          And it does so before the data shows anything is wrong.
+          The book establishes the intellectual infrastructure.<br>
+          The platform deploys the measurement capability.
         </p>
       </div>
     </section>
 
-    <!-- PLATFORM INTEGRATION -->
-    <section class="section">
-      <h2 class="section-title">The Book That Built the Diagnostic</h2>
-      <div class="section-content">
-        <p>
-          This book doesn't describe the system.<br>
-          It created the conditions that required it.
-        </p>
-        <p>
-          Faster Than You Can Adapt introduced the concept of the Drift Quotient™—a behavioral misalignment index now measured by EthosSignal's IDQ and ODQ platforms.
-        </p>
-        <p>
-          This is not a thought leadership text.<br>
-          It is a system artifact.
-        </p>
-        <p>
-          The diagnostic exists because this book named the condition.
-        </p>
-      </div>
+    <!-- CORE POSITIONING BLOCK -->
+    <section class="section fade-in">
+      <h2>The Financial Markets Problem</h2>
+      <p>Portfolio drift detection: solved, measured, institutionalized.</p>
+
+      <h2>The Organizational Equivalent</h2>
+      <p>Behavioral drift detection: unmeasured, untracked, catastrophic.</p>
+
+      <h2>The System Response</h2>
+      <p>Individual Drift Quotient (IDQ) and Organizational Drift Quotient (ODQ) frameworks—diagnostic infrastructure that identifies misalignment before execution collapse.</p>
+
+      <p>This documentation provides the structural foundation for institutional behavioral measurement at enterprise scale.</p>
     </section>
 
-    <div class="glyph-divider">—•—</div>
+    <div class="glyph">—•—</div>
 
-    <!-- ARTIFACT AUTHORITY -->
-    <section class="section">
-      <h2 class="section-title">Built by a System Architect. Not an Author.</h2>
-      <div class="section-content">
-        <p>
-          Amy Oguntala is a former COO of a $1.5B platform.<br>
-          She left when the performance metrics masked a deeper collapse: behavioral misalignment institutionalized.
-        </p>
-        <p>
-          She didn't write this book to be heard.<br>
-          She wrote it so that Drift would never again be invisible.
-        </p>
-        <p>
-          This book isn't her insight. It's the signal that broke the pattern.
-        </p>
-      </div>
+    <!-- DIAGNOSTIC AUTHORITY SECTION -->
+    <section class="section fade-in">
+      <h2>System Architecture Documentation</h2>
+      <p>Complete framework specifications for IDQ and ODQ deployment across Fortune 500 operational structures. Includes measurement protocols, scoring algorithms, and intervention mapping.</p>
+
+      <h2>Institutional Case Architecture</h2>
+      <p>Evidence patterns from executive decision systems where behavioral misalignment preceded strategic failure. Diagnostic blind spots that traditional management consulting cannot detect or correct.</p>
+
+      <h2>Implementation Infrastructure</h2>
+      <p>The transition from theoretical framework to deployed platform—including pilot protocols, enterprise integration requirements, and board-level reporting capabilities.</p>
     </section>
 
-    <!-- CALL TO ACTION BLOCK -->
-    <section class="cta-section">
-      <h3 class="cta-title">Don't Read the Book. Prove It.</h3>
-      <div class="cta-group">
-        <a href="/diagnostic.html" class="cta-primary">Take the Drift Diagnostic</a>
-      </div>
-      <p class="cta-note">
-        Your system already knows it's misaligned.<br>
-        This is how you confirm it.
+    <div class="glyph">—•—</div>
+
+    <!-- CATEGORY DEFENSE BLOCK -->
+    <section class="section fade-in">
+      <h2>What This Is Not</h2>
+      <ul>
+        <li>This is not management theory.</li>
+        <li>This is not organizational psychology.</li>
+        <li>This is not leadership development.</li>
+      </ul>
+
+      <p>
+        This is behavioral measurement infrastructure—designed for institutional permanence and enterprise-grade diagnostic precision.
+      </p>
+
+      <p>
+        The intellectual property documented here powers EthosSignal's platform deployment across regulated industries, private equity portfolios, and Fortune 500 governance systems.
       </p>
     </section>
+
+    <div class="glyph">—•—</div>
+
+    <!-- ENTERPRISE RELEVANCE SECTION -->
+    <section class="section fade-in">
+      <h2>Institutional Use Cases</h2>
+
+      <h3>For Board Directors</h3>
+      <p>Diagnostic capability that surfaces governance misalignment before it becomes fiduciary liability.</p>
+
+      <h3>For Private Equity</h3>
+      <p>Portfolio company behavioral risk assessment using quantified measurement rather than subjective evaluation.</p>
+
+      <h3>For Fortune 500 Operations</h3>
+      <p>Organizational coherence tracking that identifies drift patterns 18–24 months before operational disruption.</p>
+
+      <h3>For Strategic Consulting</h3>
+      <p>Licensed diagnostic infrastructure that upgrades behavioral assessment from intuition to measurement.</p>
+    </section>
+
+    <!-- VALIDATION ARCHITECTURE SECTION -->
+    <section class="section fade-in">
+      <h2>Validation Architecture</h2>
+      <ul>
+        <li><strong>Publication:</strong> Fall 2025 — Institutional-grade documentation supporting platform deployment and enterprise licensing.</li>
+        <li><strong>Diagnostic Framework Integration:</strong> Direct integration with EthosSignal platform—book specifications become system implementation.</li>
+        <li><strong>Category Establishment:</strong> First comprehensive documentation of behavioral drift as measurable, trackable, and institutionally relevant condition.</li>
+      </ul>
+    </section>
+
+    <div class="glyph">—•—</div>
+
+    <!-- CONVERSION PATHWAY -->
+    <section class="cta-section fade-in">
+      <h2>Conversion Pathway</h2>
+      <p>The documentation establishes the framework.<br>
+      The platform deploys the capability.<br>
+      The diagnostic reveals the necessity.</p>
+      
+      <div class="glyph">—•—</div>
+      
+      <div class="cta-buttons">
+        <a href="/diagnostic.html" class="cta-primary">Run the Drift Quotient Assessment</a>
+        <a href="/enterprise.html" class="cta-primary">Schedule Institutional Pilot</a>
+      </div>
+      
+      <p class="system-tag">Signal registered</p>
+    </section>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fade-in scroll reveal
+      const fadeIns = document.querySelectorAll('.fade-in');
+      const fadeObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      });
+      fadeIns.forEach(el => fadeObserver.observe(el));
+    });
+  </script>
 </body>
 </html> 

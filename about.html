@@ -21,9 +21,9 @@
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 0;
+      padding: 0 1.5rem;
     }
 
     /* CINEMATIC HERO SECTION */
@@ -174,6 +174,7 @@
       transform: translateY(20px);
       transition: all 0.8s ease;
       position: relative;
+      margin-bottom: 4rem;
     }
 
     .section.animate-in {
@@ -200,12 +201,13 @@
     /* SECTION HEADERS - CENTERED */
     .section-statement {
       font-family: 'IBM Plex Serif', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: 2.75rem;
       font-weight: 600;
       color: #141414;
       margin-bottom: 1.5rem;
       line-height: 1.2;
       text-align: center;
+      margin-top: 3rem;
     }
 
     .section-context {
@@ -225,10 +227,10 @@
     }
 
     .statement-block {
-      font-size: 1.25rem;
+      font-size: 1rem;
       line-height: 1.6;
       color: #141414;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       font-weight: 400;
       text-align: left;
     }
@@ -236,6 +238,33 @@
     .statement-highlight {
       font-weight: 600;
       color: #A77F43;
+    }
+
+    /* Visual Glyph Integration */
+    .glyph {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      color: #A77F43;
+      text-align: center;
+      margin: 2rem 0;
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Fade-in Scroll Reveal Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* INVESTMENT-GRADE METRICS */
@@ -884,7 +913,7 @@
     </section>
 
     <!-- EXECUTIVE FOUNDATION -->
-    <section class="section">
+    <section class="section fade-in">
       <h2 class="section-statement">Most systems track performance.<br>None detect Drift.</h2>
       <p class="section-context">Executive Foundation</p>
       <div class="content-container">
@@ -930,7 +959,7 @@
     </section>
 
     <!-- BOOK AUTHORITY -->
-    <section class="section">
+    <section class="section fade-in">
       <h2 class="section-statement">Where Drift begins. And how to stop it.</h2>
       <p class="section-context">Author • Fall 2025</p>
       
@@ -977,7 +1006,7 @@
     </section>
 
     <!-- SYSTEM ARCHITECT -->
-    <section class="section">
+    <section class="section fade-in">
       <h2 class="section-statement">Drift Quotient™ measurement at scale.</h2>
       <p class="section-context">System Architecture</p>
       
@@ -1003,7 +1032,7 @@
         </div>
       </div>
 
-      <div class="glyph-signature">—•—</div>
+      <div class="glyph">—•—</div>
 
       <div class="capability-section">
         <div class="capability-grid">
@@ -1024,7 +1053,7 @@
     </section>
 
     <!-- PLATFORM DEPLOYMENT -->
-    <section class="section">
+    <section class="section fade-in">
       <h2 class="section-statement">EthosSignal™ deploys behavioral architecture.</h2>
       <p class="section-context">Platform Infrastructure</p>
       
@@ -1061,7 +1090,7 @@
     </section>
 
     <!-- CURRENT ENGAGEMENT -->
-    <section class="section">
+    <section class="section fade-in">
       <h2 class="section-statement">Speed without alignment creates institutional fragility.</h2>
       <p class="section-context">Strategic Engagement</p>
       
@@ -1079,7 +1108,7 @@
         "Designed for leaders who can't afford to confuse operational rhythm with strategic alignment."
       </div>
       
-      <div class="glyph-signature">—•—</div>
+      <div class="glyph">—•—</div>
       <p class="signal-note">Signal registered</p>
 
       <div class="capability-section">
@@ -1159,6 +1188,15 @@
       sections.forEach(function(section) {
         sectionObserver.observe(section);
       });
+
+      // Fade-in scroll reveal
+      const fadeIns = document.querySelectorAll('.fade-in');
+      const fadeObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      });
+      fadeIns.forEach(el => fadeObserver.observe(el));
     });
 
     // Metric counter animation

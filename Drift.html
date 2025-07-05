@@ -33,9 +33,70 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
+        }
+
+        /* Typography Hierarchy */
+        h1 {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 2.75rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Section Spacing */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        /* Visual Glyph Integration */
+        .glyph {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            color: #A77F43;
+            text-align: center;
+            margin: 2rem 0;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Fade-in Scroll Reveal Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Hero Section */
@@ -494,14 +555,14 @@
       
     </section>
 
-    <section class="drift-mechanism">
+    <section class="drift-mechanism fade-in">
         <div class="container">
             <h2>Drift has always existed. AI velocity just makes it harder to ignore.</h2>
             <p>Drift forms when teams execute without pausing to recalibrate. It's caused by over-performance, unclear roles, and unchecked adaptation. But in today's environment, decisions are faster. Reflection is rare. AI acceleration compresses strategy cycles—and Drift embeds before anyone sees it. Speed doesn't cause Drift. It amplifies it.</p>
         </div>
     </section>
 
-    <section class="drift-solution">
+    <section class="drift-solution fade-in">
         <div class="container">
             <h2>The Drift Quotient™ measures what your dashboards can't.</h2>
             <p>It identifies where execution has separated from intent—at the individual, team, or organizational level. While traditional metrics track output, the Drift Quotient™ surfaces misalignment before it becomes systemic. It's the entry point to restoring clarity in systems that still appear successful.</p>
@@ -509,10 +570,23 @@
         </div>
     </section>
 
-    <section class="footer-quote">
+    <section class="footer-quote fade-in">
         <div class="container">
             <blockquote>Speed hides Drift. Until it doesn't.</blockquote>
         </div>
     </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fade-in scroll reveal
+        const fadeIns = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        });
+        fadeIns.forEach(el => fadeObserver.observe(el));
+      });
+    </script>
 </body>
 </html>
