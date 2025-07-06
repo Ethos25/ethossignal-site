@@ -8,14 +8,14 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
    <style>
+       /* Color System Variables */
        :root {
            --bone-white: #ECEAE7;
-           --graphite-black: #141414;
            --signal-gold: #A77F43;
            --signal-gold-pressed: #8A652F;
+           --graphite-black: #141414;
            --ash-slate: #888888;
            --architect-gray: #E5E5E3;
-           --graphite-blue: #2F4454;
        }
 
        * {
@@ -25,10 +25,11 @@
        }
 
        body {
-           font-family: 'Inter', sans-serif;
-           background: var(--bone-white);
+           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+           background-color: var(--bone-white);
            color: var(--graphite-black);
            line-height: 1.6;
+           overflow-x: hidden;
        }
 
        .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
@@ -118,11 +119,15 @@
 
        /* Sections */
        .section {
-           padding: 5rem 2rem;
+           padding: 5rem 0;
        }
 
        .section-gray {
            background: var(--architect-gray);
+       }
+
+       .section-tight {
+           padding: 3rem 0;
        }
 
        .container {
@@ -359,38 +364,39 @@
            }
        }
 
-       /* Typography Hierarchy */
-       h1 {
-           font-family: 'IBM Plex Serif', serif;
-           font-size: 2.75rem;
-           font-weight: 600;
-           line-height: 1.2;
-           margin-bottom: 1.5rem;
+       /* Typography Scale Standardization */
+       h1 { 
+           font-size: clamp(2.5rem, 4vw, 3.5rem); 
+           font-weight: 600; 
+           line-height: 1.2; 
+           margin-bottom: 1.5rem; 
        }
        
-       h2 {
-           font-size: 2rem;
-           font-weight: 500;
-           margin-top: 3rem;
-           margin-bottom: 1.25rem;
+       h2 { 
+           font-size: clamp(2rem, 3vw, 2.75rem); 
+           font-weight: 500; 
+           margin-top: 3rem; 
+           margin-bottom: 1.25rem; 
        }
        
-       h3 {
-           font-size: 1.5rem;
-           font-weight: 500;
-           margin-top: 2rem;
-           margin-bottom: 1rem;
+       h3 { 
+           font-size: clamp(1.5rem, 2.5vw, 2rem); 
+           font-weight: 500; 
+           margin-top: 2rem; 
+           margin-bottom: 1rem; 
        }
        
-       p {
-           font-size: 1rem;
-           line-height: 1.6;
-           margin-bottom: 1rem;
+       p { 
+           line-height: 1.6; 
        }
 
-       /* Section Spacing */
-       section {
-           margin-bottom: 4rem;
+       /* Section Spacing Normalization */
+       .section {
+           padding: 5rem 0;
+       }
+
+       .section-tight {
+           padding: 3rem 0;
        }
 
        /* Visual Glyph Integration */
@@ -419,6 +425,26 @@
            opacity: 1;
            transform: translateY(0);
        }
+
+       /* CTA Component System */
+       .cta-primary {
+           font-family: 'JetBrains Mono', monospace;
+           font-size: 1.125rem;
+           background: var(--signal-gold);
+           color: var(--bone-white);
+           padding: 1rem 2rem;
+           border-radius: 4px;
+           border: none;
+           cursor: pointer;
+           transition: all 0.2s ease;
+           text-decoration: none;
+           display: inline-block;
+       }
+
+       .cta-primary:hover {
+           background: var(--signal-gold-pressed);
+           transform: translateY(-1px);
+       }
    </style>
 </head>
 <body>
@@ -436,7 +462,7 @@
                <a href="#" class="nav-link">Book</a>
                <a href="#" class="nav-link">System</a>
                <a href="about.html" class="nav-link">About</a>
-               <a href="#" class="nav-link">Signal</a>
+               
                <a href="/access" class="nav-cta">Access</a>
            </div>
        </div>
@@ -494,7 +520,7 @@
 
            </p>
            <!-- CTA -->
-            <a href="/access" class="cta-button">
+            <a href="/access" class="cta-primary">
             Take the Test
             </a>
 
@@ -506,15 +532,15 @@
 
    
    <!-- DIAGNOSTIC BLOCK -->
-   <section class="fade-in" style="background: #ECEAE7; padding: 5rem 1.5rem; font-family: 'Inter', sans-serif;">
+           <section class="fade-in" style="background: var(--bone-white); padding: 5rem 1.5rem; font-family: 'Inter', sans-serif;">
      <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; gap: 3rem; align-items: center;">
        
        <!-- LEFT COLUMN -->
        <div style="text-align: left;">
-         <p style="font-size: 1.25rem; font-weight: 400; color: #141414; margin-bottom: 0.5rem;">
+         <p style="font-size: 1.25rem; font-weight: 400; color: var(--graphite-black); margin-bottom: 0.5rem;">
            Drift isn't a feeling.
          </p>
-         <p style="font-size: 3.5rem; font-weight: 800; color: #A77F43; line-height: 1.1;">
+         <p style="font-size: 3.5rem; font-weight: 800; color: var(--signal-gold); line-height: 1.1;">
            It's a metric.
          </p>
        </div>
@@ -522,14 +548,14 @@
        <div class="hidden md:block" style="width: 1px; height: 160px; background: #CBD5E1; margin: 0 auto;"></div>
        <!-- RIGHT COLUMN -->
        <div style="text-align: left;">
-         <p style="font-size: 1rem; font-weight: 500; color: #141414; margin-bottom: 1rem;">
+         <p style="font-size: 1rem; font-weight: 500; color: var(--graphite-black); margin-bottom: 1rem;">
            In finance, Drift is measured.
          </p>
-         <p style="font-size: 1rem; font-weight: 500; color: #141414; margin-bottom: 1rem;">
+         <p style="font-size: 1rem; font-weight: 500; color: var(--graphite-black); margin-bottom: 1rem;">
            In people, it compounds—until clarity disappears.
          </p>
-         <p style="font-size: 1.125rem; font-weight: 600; color: #141414;">
-           Drift Quotient tells you what your KPIs can't.
+         <p style="font-size: 1.125rem; font-weight: 600; color: var(--graphite-black);">
+           Drift Quotient™ tells you what your KPIs can't.
          </p>
        </div>
      </div>
@@ -540,13 +566,13 @@
    <section class="cta-section fade-in" style="text-align: center; padding: 4rem 2rem;">
      <div class="container-narrow" style="max-width: 800px; margin: 0 auto;">
        <h2 class="font-ibm-serif" style="font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 600; line-height: 1.25; margin-bottom: 1rem;">
-         <span style="color: #141414;">Drift is inevitable.</span><br>
-         <span style="color: #141414; font-weight: 600;">Misalignment is optional.</span>
+         <span style="color: var(--graphite-black);">Drift is inevitable.</span><br>
+         <span style="color: var(--graphite-black); font-weight: 600;">Misalignment is optional.</span>
        </h2>
        <p class="font-inter" style="font-size: 1.25rem; color: var(--ash-slate); margin-bottom: 2rem;">
          If your system isn't tracking it, you're not just losing to it—you're scaling it.
        </p>
-       <a href="#" class="cta-button" style="background: #A77F43; color: #ECEAE7; padding: 0.75rem 1.5rem; font-weight: 500; font-size: 1.125rem; border-radius: 4px; text-decoration: none;">
+       <a href="#" class="cta-primary">
          Take the Test
        </a>
      </div>

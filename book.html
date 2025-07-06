@@ -7,6 +7,16 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap');
 
+    /* Color System Variables */
+    :root {
+        --bone-white: #ECEAE7;
+        --signal-gold: #A77F43;
+        --signal-gold-pressed: #8A652F;
+        --graphite-black: #141414;
+        --ash-slate: #888888;
+        --architect-gray: #E5E5E3;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,8 +25,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ECEAE7;
-      color: #141414;
+      background-color: var(--bone-white);
+      color: var(--graphite-black);
       line-height: 1.5;
     }
 
@@ -51,13 +61,13 @@
     .wordmark-ethos {
       font-family: 'JetBrains Mono', monospace;
       font-weight: 700;
-      color: #141414;
+      color: var(--graphite-black);
       font-size: 2rem;
     }
     .wordmark-separator {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 500;
-      color: #888888;
+      color: var(--ash-slate);
       font-size: 2rem;
       animation: morse-pulse 4s infinite;
       -webkit-font-smoothing: antialiased;
@@ -66,7 +76,7 @@
     .wordmark-signal {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 400;
-      color: #A77F43;
+      color: var(--signal-gold);
       font-size: 2rem;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -77,16 +87,16 @@
         gap: 2rem;
     }
     .nav-link {
-        color: #141414;
+        color: var(--graphite-black);
         text-decoration: none;
         transition: color 0.2s;
     }
     .nav-link:hover {
-        color: #2F4454;
+        color: var(--ash-slate);
     }
     .nav-cta {
-        background: #A77F43;
-        color: #ECEAE7;
+        background: var(--signal-gold);
+        color: var(--bone-white);
         padding: 0.75rem 1.5rem;
         text-decoration: none;
         font-weight: 500;
@@ -97,7 +107,7 @@
         font-family: 'Inter', sans-serif;
     }
     .nav-cta:hover {
-        background: #8A652F;
+        background: var(--signal-gold-pressed);
     }
     @keyframes morse-pulse {
         0%, 15%, 100% { opacity: 1; }
@@ -109,33 +119,39 @@
         55%, 85% { opacity: 0.2; }
     }
 
-    /* Typography Hierarchy */
-    h1 {
-        font-family: 'IBM Plex Serif', serif;
-        font-size: 2.75rem;
-        font-weight: 600;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
+    /* Typography Scale Standardization */
+    h1 { 
+        font-size: clamp(2.5rem, 4vw, 3.5rem); 
+        font-weight: 600; 
+        line-height: 1.2; 
+        margin-bottom: 1.5rem; 
     }
     
-    h2 {
-        font-size: 2rem;
-        font-weight: 500;
-        margin-top: 3rem;
-        margin-bottom: 1.25rem;
+    h2 { 
+        font-size: clamp(2rem, 3vw, 2.75rem); 
+        font-weight: 500; 
+        margin-top: 3rem; 
+        margin-bottom: 1.25rem; 
     }
     
-    h3 {
-        font-size: 1.5rem;
-        font-weight: 500;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
+    h3 { 
+        font-size: clamp(1.5rem, 2.5vw, 2rem); 
+        font-weight: 500; 
+        margin-top: 2rem; 
+        margin-bottom: 1rem; 
     }
     
-    p {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin-bottom: 1rem;
+    p { 
+        line-height: 1.6; 
+    }
+
+    /* Section Spacing Normalization */
+    .section {
+        padding: 5rem 0;
+    }
+
+    .section-tight {
+        padding: 3rem 0;
     }
 
     /* Section Styling */
@@ -161,7 +177,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 1rem;
       line-height: 1.6;
-      color: #141414;
+      color: var(--graphite-black);
       max-width: 800px;
     }
 
@@ -177,7 +193,7 @@
     .glyph {
       font-family: 'JetBrains Mono', monospace;
       font-size: 1.25rem;
-      color: #A77F43;
+      color: var(--signal-gold);
       text-align: center;
       margin: 2rem 0;
       animation: pulse 4s infinite ease-in-out;
@@ -238,27 +254,24 @@
       margin-bottom: 2rem;
     }
 
+    /* CTA Component System */
     .cta-primary {
-      background: #A77F43;
-      color: #141414;
-      padding: 1.25rem 3rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Inter', sans-serif;
-      text-decoration: none;
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.125rem;
+        background: var(--signal-gold);
+        color: var(--bone-white);
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
     }
 
     .cta-primary:hover {
-      background: #8A652F;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.3);
+        background: var(--signal-gold-pressed);
+        transform: translateY(-1px);
     }
 
     .system-tag {
@@ -324,7 +337,7 @@
               <a href="#" class="nav-link">Book</a>
               <a href="#" class="nav-link">System</a>
               <a href="about.html" class="nav-link">About</a>
-              <a href="#" class="nav-link">Signal</a>
+              
               <a href="/access" class="nav-cta">Access</a>
           </div>
       </div>
@@ -368,7 +381,7 @@
       <p>Behavioral drift detection: unmeasured, untracked, catastrophic.</p>
 
       <h2>The System Response</h2>
-      <p>Individual Drift Quotient (IDQ) and Organizational Drift Quotient (ODQ) frameworks—diagnostic infrastructure that identifies misalignment before execution collapse.</p>
+                  <p>Individual Drift Quotient™ (IDQ) and Organizational Drift Quotient™ (ODQ) frameworks—diagnostic infrastructure that identifies misalignment before execution collapse.</p>
 
       <p>This documentation provides the structural foundation for institutional behavioral measurement at enterprise scale.</p>
     </section>
@@ -448,7 +461,7 @@
       <div class="glyph">—•—</div>
       
       <div class="cta-buttons">
-        <a href="/diagnostic.html" class="cta-primary">Run the Drift Quotient Assessment</a>
+                    <a href="/diagnostic.html" class="cta-primary">Run the Drift Quotient™ Assessment</a>
         <a href="/enterprise.html" class="cta-primary">Schedule Institutional Pilot</a>
       </div>
       

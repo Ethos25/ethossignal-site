@@ -7,6 +7,16 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap');
 
+    /* Color System Variables */
+    :root {
+        --bone-white: #ECEAE7;
+        --signal-gold: #A77F43;
+        --signal-gold-pressed: #8A652F;
+        --graphite-black: #141414;
+        --ash-slate: #888888;
+        --architect-gray: #E5E5E3;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,8 +25,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ECEAE7;
-      color: #141414;
+      background-color: var(--bone-white);
+      color: var(--graphite-black);
       line-height: 1.5;
     }
 
@@ -24,6 +34,61 @@
       max-width: 1000px;
       margin: 0 auto;
       padding: 0 1.5rem;
+    }
+
+    /* Typography Scale Standardization */
+    h1 { 
+        font-size: clamp(2.5rem, 4vw, 3.5rem); 
+        font-weight: 600; 
+        line-height: 1.2; 
+        margin-bottom: 1.5rem; 
+    }
+    
+    h2 { 
+        font-size: clamp(2rem, 3vw, 2.75rem); 
+        font-weight: 500; 
+        margin-top: 3rem; 
+        margin-bottom: 1.25rem; 
+    }
+    
+    h3 { 
+        font-size: clamp(1.5rem, 2.5vw, 2rem); 
+        font-weight: 500; 
+        margin-top: 2rem; 
+        margin-bottom: 1rem; 
+    }
+    
+    p { 
+        line-height: 1.6; 
+    }
+
+    /* Section Spacing Normalization */
+    .section {
+        padding: 5rem 0;
+    }
+
+    .section-tight {
+        padding: 3rem 0;
+    }
+
+    /* CTA Component System */
+    .cta-primary {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.125rem;
+        background: var(--signal-gold);
+        color: var(--bone-white);
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .cta-primary:hover {
+        background: var(--signal-gold-pressed);
+        transform: translateY(-1px);
     }
 
     /* CINEMATIC HERO SECTION */
@@ -113,7 +178,7 @@
       font-family: 'IBM Plex Serif', serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 600;
-      color: #141414;
+      color: var(--graphite-black);
       line-height: 1.1;
       margin-bottom: 1.5rem;
       overflow: visible;
@@ -154,14 +219,14 @@
 
     .hero-name {
       font-size: 1.25rem;
-      color: #A77F43;
+      color: var(--signal-gold);
       font-weight: 500;
       margin-bottom: 1.5rem;
     }
 
     .hero-description {
       font-size: 1.125rem;
-      color: #888888;
+      color: var(--ash-slate);
       max-width: 600px;
       font-weight: 400;
     }
@@ -194,7 +259,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 1px;
-      background: #A77F43;
+      background: var(--signal-gold);
       opacity: 0.3;
     }
 
@@ -203,7 +268,7 @@
       font-family: 'IBM Plex Serif', serif;
       font-size: 2.75rem;
       font-weight: 600;
-      color: #141414;
+      color: var(--graphite-black);
       margin-bottom: 1.5rem;
       line-height: 1.2;
       text-align: center;
@@ -212,7 +277,7 @@
 
     .section-context {
       font-size: 1.125rem;
-      color: #A77F43;
+      color: var(--signal-gold);
       font-weight: 500;
       text-align: center;
       margin-bottom: 4rem;
@@ -229,7 +294,7 @@
     .statement-block {
       font-size: 1rem;
       line-height: 1.6;
-      color: #141414;
+      color: var(--graphite-black);
       margin-bottom: 1rem;
       font-weight: 400;
       text-align: left;
@@ -237,14 +302,14 @@
 
     .statement-highlight {
       font-weight: 600;
-      color: #A77F43;
+      color: var(--signal-gold);
     }
 
     /* Visual Glyph Integration */
     .glyph {
       font-family: 'JetBrains Mono', monospace;
       font-size: 1.25rem;
-      color: #A77F43;
+      color: var(--signal-gold);
       text-align: center;
       margin: 2rem 0;
       animation: pulse 4s infinite ease-in-out;
@@ -289,14 +354,14 @@
     }
 
     .metric-unit:hover {
-      border-color: #A77F43;
+      border-color: var(--signal-gold);
     }
 
     .metric-number {
       font-family: 'JetBrains Mono', monospace;
       font-size: 2.5rem;
       font-weight: 600;
-      color: #A77F43;
+      color: var(--signal-gold);
       display: block;
       margin-bottom: 0.5rem;
       transition: all 0.3s ease;
@@ -329,7 +394,7 @@
 
     .metric-label {
       font-size: 0.875rem;
-      color: #888888;
+      color: var(--ash-slate);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       font-weight: 500;
@@ -352,7 +417,7 @@
     }
 
     .system-visual:hover {
-      border-color: #A77F43;
+      border-color: var(--signal-gold);
       background: 
         linear-gradient(135deg, rgba(167, 127, 67, 0.08) 0%, rgba(167, 127, 67, 0.04) 100%),
         linear-gradient(45deg, transparent 48%, rgba(20, 20, 20, 0.03) 50%, transparent 52%);
@@ -390,12 +455,12 @@
 
     .flow-element {
       background: #FFFFFF;
-      border: 1px solid #A77F43;
+      border: 1px solid var(--signal-gold);
       border-radius: 4px;
       padding: 1rem 1.5rem;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.875rem;
-      color: #A77F43;
+      color: var(--signal-gold);
       font-weight: 500;
       transition: all 0.3s ease;
       cursor: pointer;
@@ -405,22 +470,22 @@
     .system-visual:hover .flow-element {
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(167, 127, 67, 0.15);
-      border-color: #8A652F;
+      border-color: var(--signal-gold-pressed);
     }
 
     .flow-element:hover {
       background: rgba(167, 127, 67, 0.05);
-      color: #8A652F;
+      color: var(--signal-gold-pressed);
     }
 
     .flow-arrow {
-      color: #A77F43;
+      color: var(--signal-gold);
       font-size: 1.5rem;
       transition: all 0.3s ease;
     }
 
     .system-visual:hover .flow-arrow {
-      color: #8A652F;
+      color: var(--signal-gold-pressed);
       animation: arrow-pulse 2s ease-in-out infinite;
     }
 
@@ -486,7 +551,7 @@
       font-family: 'IBM Plex Serif', serif;
       font-size: 1.5rem;
       font-style: italic;
-      color: #141414;
+      color: var(--graphite-black);
       text-align: center;
       margin: 4rem 0 2rem;
       line-height: 1.4;
@@ -496,14 +561,14 @@
       padding: 2rem;
       background: rgba(167, 127, 67, 0.05);
       border-radius: 8px;
-      border-left: 4px solid #A77F43;
+      border-left: 4px solid var(--signal-gold);
     }
 
     .glyph-signature {
       text-align: center;
       margin: 2rem 0 1rem;
       font-family: 'JetBrains Mono', monospace;
-      color: #A77F43;
+      color: var(--signal-gold);
       font-size: 1.75rem;
       animation: glyph-pulse 4s ease-in-out infinite;
     }
@@ -516,7 +581,7 @@
     .signal-note {
       text-align: center;
       font-style: italic;
-      color: #888888;
+      color: var(--ash-slate);
       font-size: 0.875rem;
       margin-bottom: 3rem;
     }
@@ -551,14 +616,14 @@
       left: 0;
       width: 4px;
       height: 100%;
-      background: #A77F43;
+      background: var(--signal-gold);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
     .capability-card:hover {
       background: rgba(167, 127, 67, 0.08);
-      border-color: #A77F43;
+      border-color: var(--signal-gold);
       transform: translateY(-2px);
       box-shadow: 0 4px 16px rgba(167, 127, 67, 0.15);
     }
@@ -570,7 +635,7 @@
     .capability-title {
       font-size: 1rem;
       font-weight: 600;
-      color: #A77F43;
+      color: var(--signal-gold);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 0.75rem;
@@ -578,7 +643,7 @@
 
     .capability-description {
       font-size: 0.9rem;
-      color: #141414;
+      color: var(--graphite-black);
       line-height: 1.5;
     }
 
@@ -615,29 +680,6 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-    }
-
-    .cta-primary {
-      background: #A77F43;
-      color: #141414;
-      padding: 1.25rem 3rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Inter', sans-serif;
-      text-decoration: none;
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .cta-primary:hover {
-      background: #8A652F;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.3);
     }
 
     .cta-secondary {
@@ -806,7 +848,7 @@
     .wordmark-separator {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 500;
-      color: #888888;
+      color: var(--ash-slate);
       font-size: 2rem;
       animation: morse-pulse 4s infinite;
       -webkit-font-smoothing: antialiased;
@@ -815,7 +857,7 @@
     .wordmark-signal {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 400;
-      color: #A77F43;
+      color: var(--signal-gold);
       font-size: 2rem;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -826,16 +868,16 @@
         gap: 2rem;
     }
     .nav-link {
-        color: #141414;
+        color: var(--graphite-black);
         text-decoration: none;
         transition: color 0.2s;
     }
     .nav-link:hover {
-        color: #2F4454;
+        color: var(--ash-slate);
     }
     .nav-cta {
-        background: #A77F43;
-        color: #ECEAE7;
+        background: var(--signal-gold);
+        color: var(--bone-white);
         padding: 0.75rem 1.5rem;
         text-decoration: none;
         font-weight: 500;
@@ -846,7 +888,7 @@
         font-family: 'Inter', sans-serif;
     }
     .nav-cta:hover {
-        background: #8A652F;
+        background: var(--signal-gold-pressed);
     }
     @keyframes morse-pulse {
         0%, 15%, 100% { opacity: 1; }
@@ -879,7 +921,7 @@
               <a href="#" class="nav-link">Book</a>
               <a href="#" class="nav-link">System</a>
               <a href="about.html" class="nav-link">About</a>
-              <a href="#" class="nav-link">Signal</a>
+              
               <a href="/access" class="nav-cta">Access</a>
           </div>
       </div>
@@ -1012,7 +1054,7 @@
       
       <div class="content-container">
         <p class="statement-block">
-          Creator of <span class="statement-highlight">Individual Drift Quotient (IDQ)</span> and <span class="statement-highlight">Organizational Drift Quotient (ODQ)</span> frameworks.
+          Creator of <span class="statement-highlight">Individual Drift Quotient™ (IDQ)</span> and <span class="statement-highlight">Organizational Drift Quotient™ (ODQ)</span> frameworks.
         </p>
         
         <p class="statement-block">
