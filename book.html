@@ -10,11 +10,16 @@
     /* Color System Variables */
     :root {
         --bone-white: #ECEAE7;
-        --signal-gold: #A77F43;
-        --signal-gold-pressed: #8A652F;
+        --architect-gray: #E5E5E3;
         --graphite-black: #141414;
         --ash-slate: #888888;
-        --architect-gray: #E5E5E3;
+        --signal-gold: #A77F43;
+        --signal-gold-pressed: #8A652F;
+        --graphite-blue: #2F4454;
+        --deep-charcoal: #0A0A0A;
+        --warm-white: #FDFCFA;
+        --signal-gold-subtle: #B89660;
+        --graphite-blue-light: #4A5B6B;
     }
 
     * {
@@ -40,8 +45,9 @@
     .nav {
         position: sticky;
         top: 0;
-        background: #ECEAE7;
-        border-bottom: 1px solid #E5E5E3;
+            background: var(--warm-white);
+    border-bottom: 2px solid var(--signal-gold);
+    box-shadow: 0 4px 24px rgba(167, 127, 67, 0.08);
         z-index: 50;
         padding: 1.5rem 2rem;
     }
@@ -55,7 +61,7 @@
     .wordmark {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.2rem;
         font-size: 1.25rem;
     }
     .wordmark-ethos {
@@ -63,15 +69,20 @@
       font-weight: 700;
       color: var(--graphite-black);
       font-size: 2rem;
+      letter-spacing: -0.04em;
     }
     .wordmark-separator {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 500;
       color: var(--ash-slate);
-      font-size: 2rem;
-      animation: morse-pulse 4s infinite;
+      font-size: 1.5rem;
+      letter-spacing: -0.04em;
+      animation: morse-pulse 12s infinite;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      margin: 0 0.1rem;
+      vertical-align: middle;
+      line-height: 1;
     }
     .wordmark-signal {
       font-family: 'IBM Plex Mono', monospace;
@@ -80,6 +91,7 @@
       font-size: 2rem;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.04em;
     }
     .nav-links {
         display: flex;
@@ -92,22 +104,26 @@
         transition: color 0.2s;
     }
     .nav-link:hover {
-        color: var(--ash-slate);
+        color: var(--signal-gold);
     }
-    .nav-cta {
+    /* Standardized CTA Component System */
+    .cta-primary, .cta-button, .nav-cta {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1.125rem;
         background: var(--signal-gold);
         color: var(--bone-white);
-        padding: 0.75rem 1.5rem;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 1.125rem;
+        padding: 1rem 2rem;
         border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
         display: inline-block;
-        transition: background-color 0.2s ease;
-        font-family: 'Inter', sans-serif;
+        font-weight: 500;
     }
-    .nav-cta:hover {
+    .cta-primary:hover, .cta-button:hover, .nav-cta:hover {
         background: var(--signal-gold-pressed);
+        transform: translateY(-1px);
     }
     @keyframes morse-pulse {
         0%, 15%, 100% { opacity: 1; }
@@ -254,30 +270,12 @@
       margin-bottom: 2rem;
     }
 
-    /* CTA Component System */
-    .cta-primary {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 1.125rem;
-        background: var(--signal-gold);
-        color: var(--bone-white);
-        padding: 1rem 2rem;
-        border-radius: 4px;
-        border: none;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        text-decoration: none;
-        display: inline-block;
-    }
 
-    .cta-primary:hover {
-        background: var(--signal-gold-pressed);
-        transform: translateY(-1px);
-    }
 
     .system-tag {
       font-family: 'Inter', sans-serif;
       font-size: 0.875rem;
-      color: #888888;
+      color: var(--ash-slate);
       text-align: center;
       line-height: 1.5;
       font-style: italic;
@@ -320,6 +318,178 @@
         display: none;
       }
     }
+
+/* Headlines */
+h1, .headline-primary {
+  color: var(--deep-charcoal);
+}
+h1 .emphasis, .headline-primary .emphasis {
+  color: var(--signal-gold);
+  text-shadow: 0 1px 4px var(--signal-gold-subtle);
+}
+h2, .headline-secondary {
+  color: var(--graphite-black);
+}
+.supporting-text, .section-context, .section-subhead, .subline, .hero-description {
+  color: var(--graphite-blue);
+}
+
+/* CTA Buttons */
+.cta-primary, .cta-button, .nav-cta {
+  background: var(--signal-gold);
+  color: var(--bone-white);
+  box-shadow: 0 4px 16px rgba(167, 127, 67, 0.2);
+  transition: background 0.2s, transform 0.2s;
+}
+.cta-primary:hover, .cta-button:hover, .nav-cta:hover {
+  background: var(--signal-gold-pressed);
+  transform: translateY(-2px);
+}
+
+/* Section backgrounds */
+.section, .section-main {
+  background: var(--bone-white);
+}
+.section-alt, .section-gray {
+  background: var(--architect-gray);
+}
+.key-content, .content-elevated {
+  background: var(--warm-white);
+  box-shadow: 0 2px 12px rgba(44, 44, 44, 0.04);
+  border-radius: 8px;
+}
+
+/* Section borders */
+.section, .section-main, .section-alt {
+  border-top: 1px solid var(--signal-gold-subtle);
+  border-bottom: 1px solid var(--signal-gold-subtle);
+}
+
+/* Glyph enhancement */
+.glyph {
+  color: var(--signal-gold);
+  text-shadow: 0 2px 8px rgba(167, 127, 67, 0.3);
+}
+
+/* Footer */
+.footer {
+  background: var(--deep-charcoal);
+  color: var(--bone-white);
+}
+.footer .footer-wordmark .ethos {
+  color: var(--bone-white) !important;
+}
+.footer .footer-wordmark .separator {
+  color: var(--signal-gold) !important;
+}
+.footer .footer-wordmark .signal {
+  color: var(--graphite-blue-light) !important;
+}
+.cta-button, .nav-cta, .hero-cta, .cta-primary {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 1rem !important;
+    padding: 1rem 2rem !important;
+    background: #A77F43 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #A77F43 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3) !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+}
+.cta-button:hover, .nav-cta:hover, .hero-cta:hover, .cta-primary:hover {
+    background: #8A652F !important;
+    border-color: #8A652F !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(167, 127, 67, 0.4) !important;
+    color: #FFFFFF !important;
+}
+
+/* HOMEPAGE VISUAL HIERARCHY ENHANCEMENTS */
+.section-emphasis {
+    color: var(--signal-gold);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    text-shadow: 0 2px 4px rgba(167, 127, 67, 0.1);
+    line-height: 1.1;
+}
+.section-headline {
+    color: var(--deep-charcoal);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+.section-text {
+    color: var(--graphite-blue);
+    font-weight: 500;
+    line-height: 1.6;
+    font-size: 1.125rem;
+}
+.section-key {
+    color: var(--deep-charcoal);
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.4;
+}
+.section-primary {
+    background: var(--warm-white);
+    padding: 5rem 2rem;
+    border-top: 2px solid var(--signal-gold);
+    border-bottom: 1px solid var(--architect-gray);
+    box-shadow: 0 4px 16px rgba(167, 127, 67, 0.08);
+}
+.section-secondary {
+    background: var(--architect-gray);
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--signal-gold-subtle);
+    border-bottom: 1px solid var(--signal-gold-subtle);
+}
+.section-elevated {
+    background: var(--warm-white);
+    padding: 5rem 2rem;
+    border: 1px solid var(--signal-gold-subtle);
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 1200px;
+    box-shadow: 0 8px 32px rgba(167, 127, 67, 0.12);
+}
+.section-divider {
+    width: 2px;
+    height: 160px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--signal-gold),
+        transparent
+    );
+    margin: 0 auto;
+}
+.strategic-list {
+    list-style: none;
+    padding: 0;
+}
+.strategic-list li {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    color: var(--graphite-blue);
+    font-weight: 500;
+    position: relative;
+    padding-left: 2rem;
+}
+.strategic-list li::before {
+    content: "—";
+    color: var(--signal-gold);
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
   </style>
 </head>
 
@@ -338,7 +508,7 @@
               <a href="#" class="nav-link">System</a>
               <a href="about.html" class="nav-link">About</a>
               
-              <a href="/access" class="nav-cta">Access</a>
+              <a href="/engage" class="nav-cta">Engage</a>
           </div>
       </div>
   </nav>
@@ -356,8 +526,6 @@
         <p>The diagnostic system that measures behavioral misalignment before operational failure becomes visible.</p>
       </div>
     </section>
-
-    <div class="glyph">—•—</div>
 
     <!-- OPENING SECTION: PLATFORM AUTHENTICATION -->
     <section class="section fade-in">
@@ -386,8 +554,6 @@
       <p>This documentation provides the structural foundation for institutional behavioral measurement at enterprise scale.</p>
     </section>
 
-    <div class="glyph">—•—</div>
-
     <!-- DIAGNOSTIC AUTHORITY SECTION -->
     <section class="section fade-in">
       <h2>System Architecture Documentation</h2>
@@ -399,8 +565,6 @@
       <h2>Implementation Infrastructure</h2>
       <p>The transition from theoretical framework to deployed platform—including pilot protocols, enterprise integration requirements, and board-level reporting capabilities.</p>
     </section>
-
-    <div class="glyph">—•—</div>
 
     <!-- CATEGORY DEFENSE BLOCK -->
     <section class="section fade-in">
@@ -419,8 +583,6 @@
         The intellectual property documented here powers EthosSignal's platform deployment across regulated industries, private equity portfolios, and Fortune 500 governance systems.
       </p>
     </section>
-
-    <div class="glyph">—•—</div>
 
     <!-- ENTERPRISE RELEVANCE SECTION -->
     <section class="section fade-in">
@@ -449,16 +611,12 @@
       </ul>
     </section>
 
-    <div class="glyph">—•—</div>
-
     <!-- CONVERSION PATHWAY -->
     <section class="cta-section fade-in">
       <h2>Conversion Pathway</h2>
       <p>The documentation establishes the framework.<br>
       The platform deploys the capability.<br>
       The diagnostic reveals the necessity.</p>
-      
-      <div class="glyph">—•—</div>
       
       <div class="cta-buttons">
                     <a href="/diagnostic.html" class="cta-primary">Run the Drift Quotient™ Assessment</a>
