@@ -135,22 +135,48 @@
 
         .nav-links {
             display: flex;
-            align-items: stretch !important;
+            align-items: center;
             gap: 2rem;
         }
 
         .nav-link {
             color: var(--graphite-black);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--signal-gold);
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover {
             color: var(--signal-gold);
         }
 
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:focus {
+            outline: none;
+            color: var(--signal-gold);
+        }
+
+        .nav-link:focus::after {
+            width: 100%;
+        }
+
         /* Standardized CTA Component System */
-        .cta-primary, .cta-button, .nav-cta {
+        .cta-primary, .cta-button {
             font-family: 'JetBrains Mono', monospace;
             font-size: 1.125rem;
             background: var(--signal-gold);
@@ -165,9 +191,40 @@
             font-weight: 500;
         }
 
-        .cta-primary:hover, .cta-button:hover, .nav-cta:hover {
+        .cta-primary:hover, .cta-button:hover {
             background: var(--signal-gold-pressed);
             transform: translateY(-1px);
+        }
+
+        .nav-cta {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            background: var(--signal-gold);
+            color: var(--bone-white);
+            border: 2px solid var(--signal-gold);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            background: var(--signal-gold-pressed);
+            border-color: var(--signal-gold-pressed);
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(167, 127, 67, 0.3);
+            color: var(--bone-white);
+        }
+
+        .nav-cta:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(167, 127, 67, 0.2), 0 6px 20px rgba(167, 127, 67, 0.4);
         }
 
         /* Diagnostic Mode Cue */
@@ -199,6 +256,29 @@
         @keyframes pulse {
             0%, 100% { opacity: 0.5; }
             50% { opacity: 1; }
+        }
+
+        @keyframes fog-movement {
+            0% {
+                transform: scale(1.05) translateX(0px) translateY(0px);
+                filter: brightness(1) contrast(1);
+            }
+            25% {
+                transform: scale(1.05) translateX(-10px) translateY(-5px);
+                filter: brightness(1.02) contrast(1.02);
+            }
+            50% {
+                transform: scale(1.05) translateX(5px) translateY(-10px);
+                filter: brightness(1.05) contrast(1.05);
+            }
+            75% {
+                transform: scale(1.05) translateX(-5px) translateY(5px);
+                filter: brightness(1.02) contrast(1.02);
+            }
+            100% {
+                transform: scale(1.05) translateX(0px) translateY(0px);
+                filter: brightness(1) contrast(1);
+            }
         }
 
         @keyframes morse-pulse {
@@ -236,6 +316,7 @@
             justify-content: center;
             text-align: center;
             padding: 2rem 2rem 4rem 2rem;
+            animation: fog-movement 20s ease-in-out infinite;
         }
 
         .hero::before {
@@ -275,7 +356,8 @@
             top: 85%;
             left: 50%;
             transform: translateX(-50%);
-            max-width: 700px;
+            width: 100%;
+            max-width: 800px;
             text-align: center;
             z-index: 2;
             color: white;
@@ -339,6 +421,7 @@
             background-color: var(--architect-gray);
             padding: 4rem 0;
             text-align: center;
+            border-top: 1px solid var(--signal-gold);
         }
 
         .footer-quote blockquote {
@@ -552,12 +635,11 @@ h2, .headline-secondary {
             </div>
             
             <div class="nav-links font-inter">
-                <a href="/" class="nav-link">Home</a>
                 <a href="/drift.html" class="nav-link">Drift</a>
-                <a href="/book.html" class="nav-link">Book</a>
-                <a href="#" class="nav-link">System</a>
+                <a href="#" class="nav-link">Book</a>
+                <a href="/system.html" class="nav-link">System</a>
                 <a href="/about.html" class="nav-link">About</a>
-
+                
                 <a href="/engage" class="nav-cta">Engage</a>
             </div>
         </div>
@@ -567,17 +649,14 @@ h2, .headline-secondary {
         <!-- Visual placeholder: Insert institutional drift Sora image here -->
         <div class="hero-content">
          
-       <h2>System still performs. Alignment is already gone.</h2>
+       <h2>System still performs.<br>Alignment is already gone.</h2>
 
-        <div class="subtext-wrapper">
-          <div class="subtext-bg">
-            <p class="hero-subtext">
-              In finance, portfolio drift is corrected.<br>
-              Inside organizations, it compounds invisibly.<br>
-              EthosSignal installs behavioral infrastructure that restores alignment.
-            </p>
+                  <div class="hero-subtext">
+            <div style="white-space: nowrap;">In finance, portfolio drift is corrected.</div>
+            <div style="white-space: nowrap;">Inside organizations, it compounds invisibly.</div>
+            <div style="white-space: nowrap; color: var(--signal-gold);">EthosSignal installs behavioral infrastructure</div>
+            <div style="white-space: nowrap; color: var(--signal-gold);">that restores alignment.</div>
           </div>
-        </div>
 
       
     </section>
@@ -602,6 +681,174 @@ h2, .headline-secondary {
             <blockquote>Speed hides Drift. Until it doesn't.</blockquote>
         </div>
     </section>
+
+    <!-- PATCH: ETHOSSIGNAL FOOTER FINAL POLISH -->
+
+    <style>
+        footer {
+    padding: 3rem 20px 2rem; /* Premium separation from page content */
+    background-color: #141414;
+    color: #ECEAE7;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-nav a,
+  .footer-legal a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem; /* Increased horizontal spacing for executive scanning */
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px; /* Micro-refinement for premium tone */
+    margin-bottom: 2rem; /* Hierarchy separation from legal row */
+  }
+
+  .footer-nav a {
+    color: #E0E0E0; /* More noticeable softer white for main navigation */
+  }
+
+  .footer-nav a:hover {
+    color: #A77F43;
+    text-decoration: underline;
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* Consistent spacing for visual rhythm */
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 2rem; /* Hierarchy separation from main navigation */
+    margin-bottom: 2rem; /* Proper closure spacing */
+  }
+
+  .footer-legal a {
+    color: #AAAAAA; /* More noticeable medium gray for secondary/legal links */
+  }
+
+  .footer-legal a:hover {
+    color: #A77F43;
+    text-decoration: underline;
+  }
+
+  .footer-glyph {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .footer-ethos {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: #E0E0E0; /* More noticeable softer white to match main navigation */
+    font-size: 1.25rem;
+    letter-spacing: -0.04em;
+  }
+
+  .footer-separator {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    color: #888888;
+    font-size: 1rem;
+    letter-spacing: -0.04em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0 0.1rem;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  .footer-signal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    color: #A77F43;
+    font-size: 1.25rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.04em;
+  }
+
+  .footer-tagline {
+    font-size: 14px;
+    margin-bottom: 2.5rem; /* Increased spacing for premium hierarchy */
+    color: #E0E0E0; /* More noticeable softer white to match main navigation */
+  }
+
+  .footer-transmission {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #A77F43;
+    margin-top: 8px;
+    opacity: 0.75; /* Subtle presence for system signature */
+  }
+
+  @media (max-width: 768px) {
+    .footer-nav {
+      gap: 1rem;
+    }
+    .footer-tagline {
+      margin-bottom: 1.5rem;
+    }
+    .footer-legal {
+      gap: 1rem;
+    }
+  }
+    </style>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-glyph">
+          <span class="footer-ethos">ETHOS</span>
+          <span class="footer-separator">—•—</span>
+          <span class="footer-signal">SIGNAL</span>
+        </div>
+
+        <p class="footer-tagline">
+          Drift is already in the system. We built the layer to stop it.
+        </p>
+
+        <div class="footer-nav">
+          <a href="/platform.html">Platform Access</a>
+          <a href="/executive-briefings.html">Executive Briefings</a>
+          <a href="/speaking.html">Speaking</a>
+          <a href="/reports.html">Reports</a>
+        </div>
+
+        <div class="footer-legal">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="mailto:founder@ethossignal.com">Contact</a>
+          <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">
+            LinkedIn
+            <!-- Optional LinkedIn Icon -->
+            <!-- <img src="/assets/icons/linkedin.svg" alt="LinkedIn" style="width:14px; height:14px; margin-left:6px; vertical-align:middle;"> -->
+          </a>
+          <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
+        </div>
+
+        <div class="footer-transmission">TRANSMISSION COMPLETE</div>
+      </div>
+    </footer>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {

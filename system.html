@@ -20,6 +20,7 @@
       --warm-white: #FDFCFA;
       --signal-gold-subtle: #B89660;
       --graphite-blue-light: #4A5B6B;
+      --section-bg: #F8F7F5;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -88,10 +89,32 @@
     .nav-link {
       color: var(--graphite-black);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--signal-gold);
+      transition: width 0.3s ease;
     }
     .nav-link:hover {
       color: var(--signal-gold);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link:focus {
+      outline: none;
+      color: var(--signal-gold);
+    }
+    .nav-link:focus::after {
+      width: 100%;
     }
     h1, h2, h3 {
       font-family: 'IBM Plex Serif', serif;
@@ -106,7 +129,7 @@
     h2 {
       font-size: clamp(2rem, 3vw, 2.5rem);
       margin-top: 3rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
     }
     h3 {
       font-size: clamp(1.25rem, 2vw, 1.75rem);
@@ -119,18 +142,42 @@
       color: var(--graphite-blue);
       margin-bottom: 2rem;
       font-weight: 500;
+      line-height: 1.6;
     }
-    .glyph {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2rem;
-      color: var(--signal-gold);
+    .section-separator {
+      width: 200px;
+      height: 1px;
+      background: var(--architect-gray);
+      margin: 3rem auto;
+    }
+    .section-container {
+      background: var(--section-bg);
+      padding: 4rem 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+    .section-headline {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 600;
+      color: var(--graphite-black);
+      margin-bottom: 1rem;
       text-align: center;
-      margin: 3rem 0 2.5rem 0;
-      animation: glyph-pulse 4s infinite;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
     }
-    @keyframes glyph-pulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
+    .section-subtitle {
+      color: var(--signal-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .emphasis-text {
+      color: var(--signal-gold);
+      font-weight: 600;
     }
     @keyframes morse-pulse {
       0%, 15%, 100% { opacity: 1; }
@@ -141,64 +188,204 @@
       45% { opacity: 0.2; }
       55%, 85% { opacity: 0.2; }
     }
-    .section {
-      margin-bottom: 3rem;
-      padding: 3rem 0 0 0;
-      border-bottom: 1px solid var(--architect-gray);
+    .enhanced-section {
+      padding: 4rem 0;
+      margin-bottom: 2rem;
     }
-    .use-case {
-      background: var(--architect-gray);
-      border-radius: 8px;
-      padding: 2.5rem 2rem 2rem 2rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 2px 12px rgba(44, 44, 44, 0.04);
+    /* IDQ/ODQ FRAMEWORK VISUALIZATION - SCALED UP 40% */
+    .framework-diagram {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+      margin: 4rem 0;
+      padding: 4rem;
+      background: var(--warm-white);
+      border: 1px solid var(--signal-gold);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
     }
-    .use-case h2 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
+    .diagnostic-box {
+      background: white;
+      padding: 2.8rem;
+      border: 2px solid var(--signal-gold);
+      border-radius: 12px;
+      text-align: center;
+      min-width: 280px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
+    }
+    .diagnostic-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.15);
+    }
+    .diagnostic-box h3 {
       color: var(--signal-gold);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
     }
-    .use-case .subhead {
-      color: var(--ash-slate);
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
+    .diagnostic-box p {
+      color: var(--graphite-black);
       font-weight: 500;
+      margin-bottom: 0.7rem;
+      font-size: 1.1rem;
     }
-    .use-case ul {
-      margin: 1rem 0 1rem 1.5rem;
-      padding-left: 1.5rem;
+    .diagnostic-box small {
+      color: var(--ash-slate);
+      font-size: 0.9rem;
     }
-    .use-case li {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
+    .framework-arrow {
+      font-size: 2.8rem;
+      color: var(--signal-gold);
+      font-weight: bold;
+    }
+    /* ENTERPRISE USE CASE VISUAL CARDS - BALANCED CONTENT */
+    .use-case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .use-case-card {
+      background: var(--warm-white);
+      padding: 2rem;
+      border: 1px solid var(--architect-gray);
+      border-radius: 12px;
+      border-left: 4px solid var(--signal-gold);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .use-case-card:hover {
+      border-left-color: var(--signal-gold-pressed);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.1);
+    }
+    .use-case-title {
+      color: var(--signal-gold);
+      font-weight: 600;
+      font-size: 1.25rem;
       margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .use-case-subtitle {
+      color: var(--graphite-blue);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .use-case-content {
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+    .use-case-bullets {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+    .use-case-bullets li {
+      padding: 0.25rem 0;
+      padding-left: 1rem;
+      position: relative;
       color: var(--graphite-blue);
     }
-    .use-case .target {
+    .use-case-bullets li::before {
+      content: "•";
+      color: var(--signal-gold);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    .use-case-target {
       font-family: 'JetBrains Mono', monospace;
       color: var(--signal-gold);
       font-size: 0.95rem;
-      margin-top: 1rem;
+      margin-top: auto;
       display: block;
+      font-weight: 500;
     }
+    /* ENGAGEMENT OPTIONS - DOMINANT-SECONDARY HIERARCHY */
+    .engagement-grid {
+      display: grid;
+      grid-template-columns: 65% 35%;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .engagement-card {
+      background: white;
+      padding: 2rem;
+      border: 2px solid var(--architect-gray);
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .engagement-card.primary {
+      box-shadow: 0 4px 16px rgba(20, 20, 20, 0.12);
+      min-height: 120%;
+    }
+    .engagement-card.secondary {
+      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.06);
+    }
+    .engagement-card:hover {
+      border-color: var(--signal-gold);
+      transform: translateY(-2px);
+    }
+    .engagement-card.primary:hover {
+      box-shadow: 0 6px 20px rgba(167, 127, 67, 0.15);
+    }
+    .engagement-card.secondary:hover {
+      box-shadow: 0 4px 12px rgba(167, 127, 67, 0.1);
+    }
+    .engagement-type {
+      background: var(--signal-gold);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .engagement-type.secondary {
+      background: var(--ash-slate);
+    }
+    .engagement-description {
+      color: var(--graphite-black);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .engagement-deliverable {
+      color: var(--graphite-blue);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    /* CTA HIERARCHY SYSTEM */
     .cta-primary {
       font-family: 'JetBrains Mono', monospace !important;
       font-weight: 700 !important;
       text-transform: uppercase !important;
       letter-spacing: 1px !important;
-      font-size: 1rem !important;
-      padding: 1rem 2rem !important;
+      font-size: 1.2rem !important;
+      padding: 1.5rem 3rem !important;
       background: #A77F43 !important;
       color: #FFFFFF !important;
       border: 2px solid #A77F43 !important;
-      border-radius: 4px !important;
+      border-radius: 6px !important;
       box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3) !important;
       transition: all 0.2s ease !important;
       cursor: pointer !important;
       text-decoration: none !important;
       display: inline-block !important;
-      margin: 0.5rem 1rem 0.5rem 0;
     }
     .cta-primary:hover {
       background: #8A652F !important;
@@ -207,13 +394,55 @@
       box-shadow: 0 6px 20px rgba(167, 127, 67, 0.4) !important;
       color: #FFFFFF !important;
     }
+    .cta-secondary {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      font-size: 1rem !important;
+      padding: 1rem 2rem !important;
+      background: transparent !important;
+      color: #A77F43 !important;
+      border: 2px solid #A77F43 !important;
+      border-radius: 6px !important;
+      transition: all 0.2s ease !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+    }
+    .cta-secondary:hover {
+      background: #A77F43 !important;
+      color: #FFFFFF !important;
+      transform: translateY(-2px) !important;
+    }
+    .cta-tertiary {
+      font-family: 'JetBrains Mono', monospace !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      font-size: 1rem !important;
+      padding: 1rem 2rem !important;
+      background: transparent !important;
+      color: #888888 !important;
+      border: 2px solid #888888 !important;
+      border-radius: 6px !important;
+      transition: all 0.2s ease !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+    }
+    .cta-tertiary:hover {
+      background: #888888 !important;
+      color: #FFFFFF !important;
+      transform: translateY(-2px) !important;
+    }
     .signal-cta {
       background: var(--architect-gray);
-      border-radius: 8px;
-      padding: 3rem 2rem;
+      border-radius: 12px;
+      padding: 4rem 2rem;
       margin: 4rem 0 2rem 0;
       text-align: center;
-      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.08);
+      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
     }
     .signal-cta h2 {
       font-family: 'IBM Plex Serif', serif;
@@ -222,8 +451,19 @@
       margin-bottom: 2rem;
       font-weight: 600;
     }
-    .signal-cta .cta-primary {
-      margin: 0.5rem 1rem 0.5rem 1rem;
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .cta-secondary-group {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
     }
     .system-list, .engagement-list {
       list-style: none;
@@ -237,11 +477,11 @@
     .system-list li, .engagement-list li {
       background: var(--warm-white);
       border: 1px solid var(--signal-gold-subtle);
-      border-radius: 8px;
-      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      padding: 2rem;
       min-width: 260px;
       max-width: 340px;
-      box-shadow: 0 2px 12px rgba(44, 44, 44, 0.04);
+      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
       font-size: 1rem;
       color: var(--graphite-black);
       margin-bottom: 1rem;
@@ -256,8 +496,33 @@
     }
     @media (max-width: 768px) {
       .container { padding: 0 0.5rem; }
-      .use-case, .signal-cta { padding: 2rem 0.5rem; }
-      .system-list li, .engagement-list li { min-width: 180px; padding: 1rem; }
+      .signal-cta { padding: 3rem 1rem; }
+      .system-list li, .engagement-list li { min-width: 180px; padding: 1.5rem; }
+      .framework-diagram {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+      }
+      .framework-arrow {
+        transform: rotate(90deg);
+      }
+      .use-case-grid {
+        grid-template-columns: 1fr;
+      }
+      .engagement-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .engagement-card.primary {
+        min-height: auto;
+      }
+      .cta-secondary-group {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .section-container {
+        padding: 3rem 1rem;
+      }
     }
     /* --- NAV CTA BUTTON FINAL OVERRIDE --- */
     .nav-cta {
@@ -284,6 +549,134 @@
       box-shadow: 0 6px 20px rgba(167, 127, 67, 0.4) !important;
       color: #FFFFFF !important;
     }
+    footer {
+      padding: 3rem 20px 2rem; /* Premium separation from page content */
+      background-color: #141414;
+      color: #ECEAE7;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-nav a,
+    .footer-legal a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem; /* Increased horizontal spacing for executive scanning */
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px; /* Micro-refinement for premium tone */
+      margin-bottom: 2rem; /* Hierarchy separation from legal row */
+    }
+
+    .footer-nav a {
+      color: #E0E0E0; /* More noticeable softer white for main navigation */
+    }
+
+    .footer-nav a:hover {
+      color: #A77F43;
+      text-decoration: underline;
+    }
+
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem; /* Consistent spacing for visual rhythm */
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 2rem; /* Hierarchy separation from main navigation */
+      margin-bottom: 2rem; /* Proper closure spacing */
+    }
+
+    .footer-legal a {
+      color: #AAAAAA; /* More noticeable medium gray for secondary/legal links */
+    }
+
+    .footer-legal a:hover {
+      color: #A77F43;
+      text-decoration: underline;
+    }
+
+    .footer-glyph {
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .footer-ethos {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #E0E0E0; /* More noticeable softer white to match main navigation */
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-separator {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      color: #888888;
+      font-size: 1rem;
+      letter-spacing: -0.04em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0 0.1rem;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    .footer-signal {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      color: #A77F43;
+      font-size: 1.25rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      margin-bottom: 2.5rem; /* Increased spacing for premium hierarchy */
+      color: #E0E0E0; /* More noticeable softer white to match main navigation */
+    }
+
+    .footer-transmission {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #A77F43;
+      margin-top: 8px;
+      opacity: 0.75; /* Subtle presence for system signature */
+    }
+
+    @media (max-width: 768px) {
+      .footer-nav {
+        gap: 1rem;
+      }
+      .footer-tagline {
+        margin-bottom: 1.5rem;
+      }
+      .footer-legal {
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -296,105 +689,381 @@
         <span class="wordmark-signal font-ibm-mono" style="font-size: 2rem;">SIGNAL</span>
       </div>
       <div class="nav-links font-inter">
-        <a href="/" class="nav-link">Home</a>
         <a href="/drift.html" class="nav-link">Drift</a>
-        <a href="/book.html" class="nav-link">Book</a>
+        <a href="#" class="nav-link">Book</a>
         <a href="/system.html" class="nav-link">System</a>
         <a href="/about.html" class="nav-link">About</a>
+        
         <a href="/engage" class="nav-cta">Engage</a>
       </div>
     </div>
   </nav>
   <div class="container">
     <!-- HERO HEADER -->
-    <section class="section" style="border-bottom: none; padding-top: 4rem;">
-      <h1>Behavioral Misalignment Detection Before Performance Metrics Show Damage.</h1>
-      <div class="subhead">EthosSignal deploys the Drift Quotient™ system to measure organizational and leadership behavioral patterns that precede operational breakdown. Early detection prevents execution failure.</div>
-      <div class="glyph">—•—</div>
+    <section class="enhanced-section">
+      <div class="section-container">
+        <h1 class="section-headline">Behavioral Misalignment Detection Before Performance Metrics Show Damage.</h1>
+        <div class="section-subtitle">Enterprise Diagnostic Platform</div>
+        <div class="subhead">EthosSignal deploys the Drift Quotient™ system to measure organizational and leadership behavioral patterns that precede operational breakdown. Early detection prevents execution failure.</div>
+      </div>
     </section>
+    
+    <div class="section-separator"></div>
+    
     <!-- SYSTEM STRUCTURE OVERVIEW -->
-    <section class="section">
-      <h2>Drift Quotient™: Individual and Organizational Diagnostic Framework</h2>
-      <div class="subhead">Two-tier measurement system designed for enterprise behavioral risk assessment.</div>
-      <ul class="system-list">
-        <li><strong>IDQ — Individual Drift Quotient™</strong>13-question executive assessment measuring behavioral alignment under operational pressure.<br>Detects: Execution lag, leadership disconnect, decision resistance patterns.</li>
-        <li><strong>ODQ — Organizational Drift Quotient™</strong>Systematic organizational scan measuring misalignment between strategy execution and leadership behavior.<br>Deployed through: Executive interviews, behavioral pattern mapping, operational analysis.</li>
-      </ul>
-      <div class="subhead" style="font-weight: 600; color: var(--signal-gold); margin-top: 2rem;">Outcome:</div>
-      <div class="subhead" style="margin-top: 0;">Board-ready behavioral risk assessment with 12–18 month early warning capability before conventional metrics detect problems.</div>
-      <div class="glyph">—•—</div>
+    <section class="enhanced-section">
+      <div class="section-container">
+        <h2 class="section-headline">Drift Quotient™: Individual and Organizational Diagnostic Framework</h2>
+        <div class="section-subtitle">Two-tier measurement system designed for enterprise behavioral risk assessment.</div>
+        
+        <!-- IDQ/ODQ FRAMEWORK VISUALIZATION -->
+        <div class="framework-diagram">
+          <div class="diagnostic-box">
+            <h3>IDQ</h3>
+            <p>Individual Assessment</p>
+            <small>13-question diagnostic</small>
+          </div>
+          <div class="framework-arrow">→</div>
+          <div class="diagnostic-box">
+            <h3>ODQ</h3>
+            <p>Organizational Scan</p>
+            <small>Enterprise analysis</small>
+          </div>
+          <div class="framework-arrow">→</div>
+          <div class="diagnostic-box">
+            <h3>INTERVENTION</h3>
+            <p>Strategic Response</p>
+            <small>Board-ready action plan</small>
+          </div>
+        </div>
+        
+        <div class="subhead" style="font-weight: 600; color: var(--signal-gold); margin-top: 2rem;">Outcome:</div>
+        <div class="subhead" style="margin-top: 0;">Board-ready behavioral risk assessment with 12–18 month early warning capability before conventional metrics detect problems.</div>
+      </div>
     </section>
+    
+    <div class="section-separator"></div>
+    
     <!-- ENTERPRISE APPLICATIONS -->
-    <section class="section">
-      <h2>Enterprise Applications</h2>
-      <section class="use-case">
-        <h2>Post-Merger Integration Risk Assessment</h2>
-        <div class="subhead">Behavioral due diligence for acquisition value protection.</div>
-        <div>M&A completion often shows strong financial metrics while behavioral integration deteriorates underneath. ODQ detects hidden friction patterns before they compromise deal value.</div>
-        <ul>
-          <li>Acquired entity behavioral risk mapping</li>
-          <li>Leadership alignment assessment</li>
-          <li>Integration failure prevention (12–18 month detection window)</li>
-          <li>Post-close value protection</li>
-        </ul>
-        <span class="target">PE portfolio operations, corporate development, board oversight</span>
-      </section>
-      <section class="use-case">
-        <h2>Executive Succession Behavioral Readiness</h2>
-        <div class="subhead">Leadership transition risk measurement before promotion.</div>
-        <div>High-performing individuals often fail when promoted to enterprise leadership roles. IDQ measures behavioral capacity under scale and velocity pressure.</div>
-        <ul>
-          <li>Executive readiness assessment</li>
-          <li>Behavioral risk classification</li>
-          <li>Succession failure prevention</li>
-          <li>Board briefing documentation</li>
-        </ul>
-        <span class="target">Board transitions, executive succession planning, PE leadership replacement</span>
-      </section>
-      <section class="use-case">
-        <h2>Strategic Transformation Behavioral Capacity</h2>
-        <div class="subhead">Organizational change readiness before implementation investment.</div>
-        <div>Strategic initiatives fail when leadership teams cannot absorb behavioral demands of transformation. Combined IDQ/ODQ assessment identifies execution barriers before rollout.</div>
-        <ul>
-          <li>Leadership behavioral capacity measurement</li>
-          <li>Transformation risk assessment by role/function</li>
-          <li>Implementation readiness classification</li>
-          <li>Strategic momentum preservation</li>
-        </ul>
-        <span class="target">Transformation teams, strategy executives, enterprise acceleration planning</span>
-      </section>
-      <div class="glyph">—•—</div>
+    <section class="enhanced-section">
+      <div class="section-container">
+        <h2 class="section-headline">Enterprise Applications</h2>
+        <div class="section-subtitle">Strategic deployment across critical business scenarios</div>
+        
+        <div class="use-case-grid">
+          <div class="use-case-card">
+            <div class="use-case-title">Post-Merger Integration Risk Assessment</div>
+            <div class="use-case-subtitle">Behavioral due diligence for acquisition value protection.</div>
+            <div class="use-case-content">M&A completion often shows strong financial metrics while behavioral integration deteriorates underneath. ODQ detects hidden friction patterns before they compromise deal value.</div>
+            <ul class="use-case-bullets">
+              <li>Acquired entity behavioral risk mapping</li>
+              <li>Leadership alignment assessment</li>
+              <li>Integration failure prevention (12–18 month detection window)</li>
+              <li>Post-close value protection</li>
+              <li>Cultural integration monitoring</li>
+              <li>Operational synergy validation</li>
+            </ul>
+            <span class="use-case-target">PE portfolio operations, corporate development, board oversight</span>
+          </div>
+          
+          <div class="use-case-card">
+            <div class="use-case-title">Executive Succession Behavioral Readiness</div>
+            <div class="use-case-subtitle">Leadership transition risk measurement before promotion.</div>
+            <div class="use-case-content">High-performing individuals often fail when promoted to enterprise leadership roles. IDQ measures behavioral capacity under scale and velocity pressure.</div>
+            <ul class="use-case-bullets">
+              <li>Executive readiness assessment</li>
+              <li>Behavioral risk classification</li>
+              <li>Succession failure prevention</li>
+              <li>Board briefing documentation</li>
+              <li>Leadership capacity measurement</li>
+              <li>Transition planning optimization</li>
+            </ul>
+            <span class="use-case-target">Board transitions, executive succession planning, PE leadership replacement</span>
+          </div>
+        </div>
+      </div>
     </section>
+    
+    <div class="section-separator"></div>
+    
     <!-- ENGAGEMENT OPTIONS -->
-    <section class="section">
-      <h2>Engagement Options</h2>
-      <ul class="engagement-list">
-        <li><strong>Individual Assessment (IDQ):</strong> Standalone executive diagnostic or organizational assessment preparation. Delivered: Assessment + results interpretation + strategic recommendations.</li>
-        <li><strong>Organizational Assessment (ODQ):</strong> Full enterprise behavioral risk analysis with board presentation. Delivered: Comprehensive scan + risk mapping + intervention recommendations.</li>
-        <li><strong>Ongoing Behavioral Monitoring:</strong> Quarterly recalibration cycles with strategic advisory support. Delivered: Regular assessment updates + pattern analysis + course correction guidance.</li>
-      </ul>
-      <div class="glyph">—•—</div>
+    <section class="enhanced-section">
+      <div class="section-container">
+        <h2 class="section-headline">Engagement Options</h2>
+        <div class="section-subtitle">Professional service tiers for enterprise deployment</div>
+        
+        <div class="engagement-grid">
+          <div class="engagement-card primary">
+            <div class="engagement-type">Individual Assessment</div>
+            <div class="engagement-description">Standalone executive diagnostic or organizational assessment preparation.</div>
+            <div class="engagement-deliverable">Delivered: Assessment + results interpretation + strategic recommendations</div>
+          </div>
+          
+          <div class="engagement-card secondary">
+            <div class="engagement-type secondary">Strategic Briefing</div>
+            <div class="engagement-description">Board-level consultation on behavioral infrastructure.</div>
+            <div class="engagement-deliverable">Delivered: Strategic presentation + framework overview + implementation roadmap</div>
+          </div>
+        </div>
+      </div>
     </section>
+    
+    <div class="section-separator"></div>
+    
     <!-- DELIVERY ARCHITECTURE -->
-    <section class="section">
-      <h2>Delivery Architecture</h2>
-      <div class="subhead">Led by Amy Oguntala, former COO of $1.5B platform operations and creator of Drift Quotient™ framework. Large-scale assessments deployed through vetted analyst teams using standardized protocols. System-based delivery ensures consistent measurement methodology.</div>
-      <div class="glyph">—•—</div>
+    <section class="enhanced-section">
+      <div class="section-container">
+        <h2 class="section-headline">Delivery Architecture</h2>
+        <div class="section-subtitle">Enterprise-grade implementation framework</div>
+        <div class="subhead">Led by Amy Oguntala, former COO of $1.5B platform operations and creator of Drift Quotient™ framework. Large-scale assessments deployed through vetted analyst teams using standardized protocols. System-based delivery ensures consistent measurement methodology.</div>
+      </div>
     </section>
+    
+    <div class="section-separator"></div>
+    
     <!-- VALIDATION FRAMEWORK -->
-    <section class="section">
-      <h2>Validation Framework</h2>
-      <div class="subhead">Drift Quotient™ methodology reviewed by behavioral science and organizational psychology experts for measurement integrity and diagnostic accuracy.</div>
-      <div class="glyph">—•—</div>
+    <section class="enhanced-section">
+      <div class="section-container">
+        <h2 class="section-headline">Validation Framework</h2>
+        <div class="section-subtitle">Scientific rigor and measurement integrity</div>
+        <div class="subhead">Drift Quotient™ methodology reviewed by behavioral science and organizational psychology experts for measurement integrity and diagnostic accuracy.</div>
+      </div>
     </section>
+    
     <!-- ENGAGEMENT INITIATION CTA SECTION -->
     <section class="signal-cta">
       <h2>Behavioral Misalignment Costs More Than Measurement.</h2>
-      <a href="#" class="cta-primary">Start IDQ Assessment</a>
-      <a href="#" class="cta-primary">Request Strategic Briefing</a>
-      <a href="#" class="cta-primary">Schedule ODQ Deployment</a>
-      <div class="glyph">—•—</div>
+      <div class="cta-group">
+        <a href="#" class="cta-primary">Start IDQ Assessment</a>
+        <div class="cta-secondary-group">
+          <a href="#" class="cta-secondary">Corporate Strategic Briefing</a>
+          <a href="#" class="cta-tertiary">Start ODQ Assessment</a>
+        </div>
+      </div>
     </section>
   </div>
+
+  <script>
+    // OBJECTIVE:
+    // Audit and enhance the Systems Page UX motion based on strategic rules from the EthosSignal visual system.
+    // Validate existence of animation before applying upgrades to prevent overwriting existing logic.
+
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // STEP 1: CTA BUTTON VALIDATION + ENHANCEMENT
+      const ctaButtons = document.querySelectorAll('.cta-primary, .cta-secondary, .cta-tertiary, .nav-cta');
+      ctaButtons.forEach(btn => {
+        const computedStyle = window.getComputedStyle(btn);
+        const hasTransition = computedStyle.transitionDuration !== '0s';
+        const hasTransform = computedStyle.transform !== 'none';
+        
+        // Only enhance if basic transitions exist but advanced hover effects are missing
+        if (hasTransition && !hasTransform) {
+          // Add enhanced hover effects while preserving existing transitions
+          btn.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('enhanced-hover')) {
+              this.classList.add('enhanced-hover');
+              this.style.boxShadow = '0px 4px 12px rgba(167, 127, 67, 0.6)'; // Signal Gold glow
+              this.style.transform = 'translateY(-2px)';
+            }
+          });
+          
+          btn.addEventListener('mouseleave', function() {
+            if (this.classList.contains('enhanced-hover')) {
+              this.classList.remove('enhanced-hover');
+              this.style.boxShadow = '';
+              this.style.transform = '';
+            }
+          });
+        }
+      });
+
+      // STEP 2: SECTION SCROLL ANIMATION VALIDATION + FIX
+      const sections = document.querySelectorAll('.enhanced-section, .section-container');
+      sections.forEach(section => {
+        // Check if section already has scroll animation
+        if (!section.classList.contains('scroll-animated') && !section.style.opacity) {
+          section.classList.add('scroll-animated');
+          section.style.opacity = '0';
+          section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          section.style.transform = 'translateY(40px)';
+          
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target); // Stop observing once animated
+              }
+            });
+          }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+          });
+          
+          observer.observe(section);
+        }
+      });
+
+      // STEP 3: FRAMEWORK DIAGRAM ENHANCEMENT
+      const diagnosticBoxes = document.querySelectorAll('.diagnostic-box');
+      diagnosticBoxes.forEach((box, index) => {
+        // Add staggered entrance animation if not already animated
+        if (!box.classList.contains('entrance-animated')) {
+          box.classList.add('entrance-animated');
+          box.style.opacity = '0';
+          box.style.transform = 'translateY(20px)';
+          box.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          // Stagger the animations
+          setTimeout(() => {
+            box.style.opacity = '1';
+            box.style.transform = 'translateY(0)';
+          }, 200 * (index + 1));
+        }
+      });
+
+      // STEP 4: USE CASE CARDS ENHANCEMENT
+      const useCaseCards = document.querySelectorAll('.use-case-card');
+      useCaseCards.forEach((card, index) => {
+        // Add entrance animation if not already present
+        if (!card.classList.contains('card-animated')) {
+          card.classList.add('card-animated');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
+          card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+          
+          // Stagger card animations
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 300 * (index + 1));
+        }
+      });
+
+      // STEP 5: ENGAGEMENT CARDS ENHANCEMENT
+      const engagementCards = document.querySelectorAll('.engagement-card');
+      engagementCards.forEach((card, index) => {
+        // Add entrance animation if not already present
+        if (!card.classList.contains('engagement-animated')) {
+          card.classList.add('engagement-animated');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(25px)';
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          // Stagger engagement card animations
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 400 * (index + 1));
+        }
+      });
+
+      // STEP 6: SECTION SEPARATORS ENHANCEMENT
+      const separators = document.querySelectorAll('.section-separator');
+      separators.forEach((separator, index) => {
+        // Add subtle entrance animation for separators
+        if (!separator.classList.contains('separator-animated')) {
+          separator.classList.add('separator-animated');
+          separator.style.opacity = '0';
+          separator.style.transform = 'scaleX(0)';
+          separator.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          
+          setTimeout(() => {
+            separator.style.opacity = '1';
+            separator.style.transform = 'scaleX(1)';
+          }, 500 * (index + 1));
+        }
+      });
+
+      // STEP 7: OPTIONAL HERO OVERLAY VALIDATION (Not needed for System page)
+      // The System page doesn't have a traditional hero section with images
+      // This step is skipped as per the EthosSignal design system
+
+      // STEP 8: PERFORMANCE OPTIMIZATION
+      // Remove transition properties after animations complete for better performance
+      setTimeout(() => {
+        const animatedElements = document.querySelectorAll('.scroll-animated, .entrance-animated, .card-animated, .engagement-animated');
+        animatedElements.forEach(element => {
+          if (element.style.opacity === '1') {
+            element.style.transition = 'none';
+          }
+        });
+      }, 2000);
+
+    });
+
+    // STEP 9: SCROLL PROGRESS INDICATOR (Optional Enhancement)
+    // Add subtle scroll progress indicator for better UX
+    function createScrollProgress() {
+      if (!document.querySelector('.scroll-progress')) {
+        const progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress';
+        progressBar.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          background: rgba(167, 127, 67, 0.1);
+          z-index: 1000;
+        `;
+        
+        const progressFill = document.createElement('div');
+        progressFill.className = 'scroll-progress-fill';
+        progressFill.style.cssText = `
+          height: 100%;
+          background: #A77F43;
+          width: 0%;
+          transition: width 0.3s ease;
+        `;
+        
+        progressBar.appendChild(progressFill);
+        document.body.appendChild(progressBar);
+        
+        // Update progress on scroll
+        window.addEventListener('scroll', () => {
+          const scrollTop = window.pageYOffset;
+          const docHeight = document.body.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          progressFill.style.width = scrollPercent + '%';
+        });
+      }
+    }
+
+    // Initialize scroll progress
+    createScrollProgress();
+
+  </script>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-glyph">
+        <span class="footer-ethos">ETHOS</span>
+        <span class="footer-separator">—•—</span>
+        <span class="footer-signal">SIGNAL</span>
+      </div>
+
+      <p class="footer-tagline">
+        Drift is already in the system. We built the layer to stop it.
+      </p>
+
+      <div class="footer-nav">
+        <a href="/platform.html">Platform Access</a>
+        <a href="/executive-briefings.html">Executive Briefings</a>
+        <a href="/speaking.html">Speaking</a>
+        <a href="/reports.html">Reports</a>
+      </div>
+
+      <div class="footer-legal">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="mailto:founder@ethossignal.com">Contact</a>
+        <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
+        <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
+      </div>
+
+      <div class="footer-transmission">TRANSMISSION COMPLETE</div>
+    </div>
+  </footer>
 </body>
 </html> 
