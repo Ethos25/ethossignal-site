@@ -45,9 +45,9 @@
     .nav {
         position: sticky;
         top: 0;
-            background: var(--warm-white);
-    border-bottom: 2px solid var(--signal-gold);
-    box-shadow: 0 4px 24px rgba(167, 127, 67, 0.08);
+        background: var(--warm-white);
+        border-bottom: 2px solid var(--signal-gold);
+        box-shadow: 0 4px 24px rgba(167, 127, 67, 0.08);
         z-index: 50;
         padding: 1.5rem 2rem;
     }
@@ -128,6 +128,7 @@
     .nav-link:focus::after {
         width: 100%;
     }
+
     /* Standardized CTA Component System */
     .cta-primary, .cta-button, .nav-cta {
         font-family: 'JetBrains Mono', monospace;
@@ -147,6 +148,7 @@
         background: var(--signal-gold-pressed);
         transform: translateY(-1px);
     }
+
     @keyframes morse-pulse {
         0%, 15%, 100% { opacity: 1; }
         5% { opacity: 0.2; }
@@ -157,6 +159,7 @@
         55%, 85% { opacity: 0.2; }
     }
 
+    /* Breathing Effect Animation */
     @keyframes fog-movement {
         0% {
             transform: scale(1.05) translateX(0px) translateY(0px);
@@ -293,6 +296,7 @@
       border-radius: 8px;
       box-shadow: 0 12px 48px rgba(0,0,0,0.12);
       border: 1px solid rgba(167, 127, 67, 0.3);
+      animation: fog-movement 8s ease-in-out infinite;
     }
 
     .hero-content {
@@ -314,8 +318,6 @@
       flex-wrap: wrap;
       margin-bottom: 2rem;
     }
-
-
 
     .system-tag {
       font-family: 'Inter', sans-serif;
@@ -364,219 +366,309 @@
       }
     }
 
-/* Headlines */
-h1, .headline-primary {
-  color: var(--deep-charcoal);
-}
-h1 .emphasis, .headline-primary .emphasis {
-  color: var(--signal-gold);
-  text-shadow: 0 1px 4px var(--signal-gold-subtle);
-}
-h2, .headline-secondary {
-  color: var(--graphite-black);
-}
-.supporting-text, .section-context, .section-subhead, .subline, .hero-description {
-  color: var(--graphite-blue);
-}
+    /* Headlines */
+    h1, .headline-primary {
+      color: var(--deep-charcoal);
+    }
+    h1 .emphasis, .headline-primary .emphasis {
+      color: var(--signal-gold);
+      text-shadow: 0 1px 4px var(--signal-gold-subtle);
+    }
+    h2, .headline-secondary {
+      color: var(--graphite-black);
+    }
+    .supporting-text, .section-context, .section-subhead, .subline, .hero-description {
+      color: var(--graphite-blue);
+    }
 
-/* CTA Buttons */
-.cta-primary, .cta-button, .nav-cta {
-  background: var(--signal-gold);
-  color: var(--bone-white);
-  box-shadow: 0 4px 16px rgba(167, 127, 67, 0.2);
-  transition: background 0.2s, transform 0.2s;
-}
-.cta-primary:hover, .cta-button:hover, .nav-cta:hover {
-  background: var(--signal-gold-pressed);
-  transform: translateY(-2px);
-}
+    /* CTA Buttons */
+    .cta-primary, .cta-button, .nav-cta {
+      background: var(--signal-gold);
+      color: var(--bone-white);
+      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.2);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-primary:hover, .cta-button:hover, .nav-cta:hover {
+      background: var(--signal-gold-pressed);
+      transform: translateY(-2px);
+    }
 
-/* Section backgrounds */
-.section, .section-main {
-  background: var(--bone-white);
-}
-.section-alt, .section-gray {
-  background: var(--architect-gray);
-}
-.key-content, .content-elevated {
-  background: var(--warm-white);
-  box-shadow: 0 2px 12px rgba(44, 44, 44, 0.04);
-  border-radius: 8px;
-}
+    /* Section backgrounds */
+    .section, .section-main {
+      background: var(--bone-white);
+    }
+    .section-alt, .section-gray {
+      background: var(--architect-gray);
+    }
+    .key-content, .content-elevated {
+      background: var(--warm-white);
+      box-shadow: 0 2px 12px rgba(44, 44, 44, 0.04);
+      border-radius: 8px;
+    }
 
-/* Section borders */
-.section, .section-main, .section-alt {
-  border-top: 1px solid var(--signal-gold-subtle);
-  border-bottom: 1px solid var(--signal-gold-subtle);
-}
+    /* Section borders */
+    .section, .section-main, .section-alt {
+      border-top: 1px solid var(--signal-gold-subtle);
+      border-bottom: 1px solid var(--signal-gold-subtle);
+    }
 
-/* Glyph enhancement */
-.glyph {
-  color: var(--signal-gold);
-  text-shadow: 0 2px 8px rgba(167, 127, 67, 0.3);
-}
+    /* Glyph enhancement */
+    .glyph {
+      color: var(--signal-gold);
+      text-shadow: 0 2px 8px rgba(167, 127, 67, 0.3);
+    }
 
-    <style>
-      footer {
-        padding: 3rem 20px 2rem; /* Premium separation from page content */
-        background-color: #141414;
-        color: #ECEAE7;
-        font-family: 'Inter', sans-serif;
-      }
+    /* Premium Footer Styles */
+    footer {
+      padding: 3rem 20px 2rem; /* Premium separation from page content */
+      background-color: #141414;
+      color: #ECEAE7;
+      font-family: 'Inter', sans-serif;
+    }
 
-      .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
-      .footer-nav a,
-      .footer-legal a {
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
+    .footer-nav a,
+    .footer-legal a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem; /* Increased horizontal spacing for executive scanning */
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px; /* Micro-refinement for premium tone */
+      margin-bottom: 2rem; /* Hierarchy separation from legal row */
+    }
+
+    .footer-nav a {
+      color: #E0E0E0; /* More noticeable softer white for main navigation */
+    }
+
+    .footer-nav a:hover {
+      color: #A77F43;
+      text-decoration: underline;
+    }
+
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem; /* Consistent spacing for visual rhythm */
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 2rem; /* Hierarchy separation from main navigation */
+      margin-bottom: 2rem; /* Proper closure spacing */
+    }
+
+    .footer-legal a {
+      color: #AAAAAA; /* More noticeable medium gray for secondary/legal links */
+    }
+
+    .footer-legal a:hover {
+      color: #A77F43;
+      text-decoration: underline;
+    }
+
+    .footer-glyph {
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .footer-ethos {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #E0E0E0; /* More noticeable softer white to match main navigation */
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-separator {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      color: #888888;
+      font-size: 1rem;
+      letter-spacing: -0.04em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0 0.1rem;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    .footer-signal {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      color: #A77F43;
+      font-size: 1.25rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      margin-bottom: 2.5rem; /* Increased spacing for premium hierarchy */
+      color: #E0E0E0; /* More noticeable softer white to match main navigation */
+    }
+
+    .footer-transmission {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #A77F43;
+      margin-top: 8px;
+      opacity: 0.75; /* Subtle presence for system signature */
+    }
+
+    @media (max-width: 768px) {
       .footer-nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.5rem; /* Increased horizontal spacing for executive scanning */
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: 0.5px; /* Micro-refinement for premium tone */
-        margin-bottom: 2rem; /* Hierarchy separation from legal row */
+        gap: 1rem;
       }
-
-      .footer-nav a {
-        color: #E0E0E0; /* More noticeable softer white for main navigation */
-      }
-
-      .footer-nav a:hover {
-        color: #A77F43;
-        text-decoration: underline;
-      }
-
-      .footer-legal {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 2rem; /* Consistent spacing for visual rhythm */
-        font-size: 13px;
-        font-weight: 400;
-        margin-top: 2rem; /* Hierarchy separation from main navigation */
-        margin-bottom: 2rem; /* Proper closure spacing */
-      }
-
-      .footer-legal a {
-        color: #AAAAAA; /* More noticeable medium gray for secondary/legal links */
-      }
-
-      .footer-legal a:hover {
-        color: #A77F43;
-        text-decoration: underline;
-      }
-
-      .footer-glyph {
-        font-weight: 600;
-        font-size: 16px;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-        display: flex;
-        align-items: center;
-        gap: 0.2rem;
-      }
-
-      .footer-ethos {
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 700;
-        color: #E0E0E0; /* More noticeable softer white to match main navigation */
-        font-size: 1.25rem;
-        letter-spacing: -0.04em;
-      }
-
-      .footer-separator {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 500;
-        color: #888888;
-        font-size: 1rem;
-        letter-spacing: -0.04em;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        margin: 0 0.1rem;
-        vertical-align: middle;
-        line-height: 1;
-      }
-
-      .footer-signal {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 400;
-        color: #A77F43;
-        font-size: 1.25rem;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        letter-spacing: -0.04em;
-      }
-
       .footer-tagline {
-        font-size: 14px;
-        margin-bottom: 2.5rem; /* Increased spacing for premium hierarchy */
-        color: #E0E0E0; /* More noticeable softer white to match main navigation */
+        margin-bottom: 1.5rem;
       }
-
-      .footer-transmission {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
-        color: #A77F43;
-        margin-top: 8px;
-        opacity: 0.75; /* Subtle presence for system signature */
+      .footer-legal {
+        gap: 1rem;
       }
-
-      @media (max-width: 768px) {
-        .footer-nav {
-          gap: 1rem;
-        }
-        .footer-tagline {
-          margin-bottom: 1.5rem;
-        }
-        .footer-legal {
-          gap: 1rem;
-        }
-      }
-    </style>
-
-    <footer>
-      <div class="footer-container">
-        <div class="footer-glyph">
-          <span class="footer-ethos">ETHOS</span>
-          <span class="footer-separator">—•—</span>
-          <span class="footer-signal">SIGNAL</span>
-        </div>
-
-        <p class="footer-tagline">
-          Drift is already in the system. We built the layer to stop it.
-        </p>
-
-        <div class="footer-nav">
-          <a href="/platform.html">Platform Access</a>
-          <a href="/executive-briefings.html">Executive Briefings</a>
-          <a href="/speaking.html">Speaking</a>
-          <a href="/reports.html">Reports</a>
-        </div>
-
-        <div class="footer-legal">
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/terms.html">Terms of Service</a>
-          <a href="mailto:founder@ethossignal.com">Contact</a>
-          <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
-          <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
-        </div>
-
-        <div class="footer-transmission">TRANSMISSION COMPLETE</div>
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+      <div class="nav-container">
+          <div class="wordmark font-jetbrains">
+              <span class="wordmark-ethos font-jetbrains" style="font-size: 2rem;">ETHOS</span>
+              <span class="wordmark-separator font-ibm-mono">—•—</span>
+              <span class="wordmark-signal font-ibm-mono" style="font-size: 2rem;">SIGNAL</span>
+          </div>
+          <div class="nav-links font-inter">
+              <a href="/drift.html" class="nav-link">Drift</a>
+              <a href="book.html" class="nav-link">Book</a>
+              <a href="/system.html" class="nav-link">System</a>
+              <a href="/about.html" class="nav-link">About</a>
+              
+              <a href="/engage" class="nav-cta">Engage</a>
+          </div>
       </div>
-    </footer>
+  </nav>
+
+  <div class="container">
+    <!-- HERO SECTION -->
+    <section class="hero-section fade-in">
+      <img 
+        src="assets/hero/FasterThanYouCanAdapt.png" 
+        alt="Faster Than You Can Adapt book cover" 
+        class="book-image"
+      />
+      <div class="hero-content">
+        <h1>Faster Than You Can Adapt</h1>
+        <p class="section-context">Fall 2025</p>
+        <div class="section-content">
+          <p>
+            Where Drift begins. And how to stop it.
+          </p>
+          <p>
+            This work formalized <strong>Drift as a measurable behavioral condition</strong> and positioned it as the silent killer of execution integrity.
+          </p>
+          <p>
+            The system framework provides the first quantified approach to detecting and correcting organizational drift before it becomes operationally catastrophic.
+          </p>
+          <p>
+            Designed for leaders who recognize the difference between operational rhythm and strategic alignment—and who require diagnostic precision to maintain both under AI-accelerated pressure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK DETAILS -->
+    <section class="section fade-in">
+      <h2>Category Creation</h2>
+      <div class="section-content">
+        <p>
+          First to establish behavioral drift as a measurable condition in organizational systems.
+        </p>
+        <ul>
+          <li>Individual Drift Quotient™ (IDQ) framework</li>
+          <li>Organizational Drift Quotient™ (ODQ) framework</li>
+          <li>Behavioral diagnostic protocols</li>
+          <li>Velocity-era adaptation frameworks</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- AUTHORITY -->
+    <section class="section fade-in">
+      <h2>Author Authority</h2>
+      <div class="section-content">
+        <p>
+          Amy Oguntala brings two decades of executive decision system experience, including the operational integration of a <strong>$1.5B platform</strong>.
+        </p>
+        <p>
+          This diagnostic blind spot became the basis for a new kind of architecture—modeled on the same principles that asset managers use to track portfolio drift, but designed to surface behavioral misalignment before it scales.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section fade-in">
+      <h2>Ready to work together?</h2>
+      <p class="system-tag">
+        Request a strategic briefing or run the diagnostic assessment.
+      </p>
+      <div class="cta-buttons">
+        <a href="/drift.html" class="cta-primary">Request Strategic Briefing</a>
+        <a href="/diagnostic.html" class="cta-button">Take the Test</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-glyph">
+        <span class="footer-ethos">ETHOS</span>
+        <span class="footer-separator">—•—</span>
+        <span class="footer-signal">SIGNAL</span>
+      </div>
+
+      <p class="footer-tagline">
+        Drift is already in the system. We built the layer to stop it.
+      </p>
+
+      <div class="footer-nav">
+        <a href="/platform.html">Platform Access</a>
+        <a href="/executive-briefings.html">Executive Briefings</a>
+        <a href="/speaking.html">Speaking</a>
+        <a href="/reports.html">Reports</a>
+      </div>
+
+      <div class="footer-legal">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="mailto:founder@ethossignal.com">Contact</a>
+        <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
+        <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
+      </div>
+
+      <div class="footer-transmission">TRANSMISSION COMPLETE</div>
+    </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

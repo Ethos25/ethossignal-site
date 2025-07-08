@@ -1102,167 +1102,437 @@
       text-shadow: 0 2px 8px rgba(167, 127, 67, 0.3);
     }
 
-    <style>
-      footer {
-        padding: 3rem 20px 2rem; /* Premium separation from page content */
-        background-color: #141414;
-        color: #ECEAE7;
-        font-family: 'Inter', sans-serif;
-      }
+    /* Footer */
+    .footer {
+      background: var(--deep-charcoal);
+      color: var(--bone-white);
+    }
+    .footer .footer-wordmark .ethos {
+      color: var(--bone-white) !important;
+    }
+    .footer .footer-wordmark .separator {
+      color: var(--signal-gold) !important;
+    }
+    .footer .footer-wordmark .signal {
+      color: var(--graphite-blue-light) !important;
+    }
 
-      .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
+    /* Premium Footer Styles */
+    footer {
+      padding: 3rem 20px 2rem; /* Premium separation from page content */
+      background-color: #141414;
+      color: #ECEAE7;
+      font-family: 'Inter', sans-serif;
+    }
 
-      .footer-nav a,
-      .footer-legal a {
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 
+    .footer-nav a,
+    .footer-legal a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem; /* Increased horizontal spacing for executive scanning */
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px; /* Micro-refinement for premium tone */
+      margin-bottom: 2rem; /* Hierarchy separation from legal row */
+    }
+
+    .footer-nav a {
+      color: #E0E0E0; /* More noticeable softer white for main navigation */
+    }
+
+    .footer-nav a:hover {
+      color: #A77F43;
+      text-decoration: underline;
+    }
+
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem; /* Consistent spacing for visual rhythm */
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 2rem; /* Hierarchy separation from main navigation */
+      margin-bottom: 2rem; /* Proper closure spacing */
+    }
+
+    .footer-legal a {
+      color: #AAAAAA; /* More noticeable medium gray for secondary/legal links */
+    }
+
+    .footer-legal a:hover {
+      color: #A77F43;
+      text-decoration: underline;
+    }
+
+    .footer-glyph {
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .footer-ethos {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #E0E0E0; /* More noticeable softer white to match main navigation */
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-separator {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      color: #888888;
+      font-size: 1rem;
+      letter-spacing: -0.04em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0 0.1rem;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    .footer-signal {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      color: #A77F43;
+      font-size: 1.25rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      margin-bottom: 2.5rem; /* Increased spacing for premium hierarchy */
+      color: #E0E0E0; /* More noticeable softer white to match main navigation */
+    }
+
+    .footer-transmission {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #A77F43;
+      margin-top: 8px;
+      opacity: 0.75; /* Subtle presence for system signature */
+    }
+
+    @media (max-width: 768px) {
       .footer-nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.5rem; /* Increased horizontal spacing for executive scanning */
-        font-size: 15px;
-        font-weight: 600;
-        letter-spacing: 0.5px; /* Micro-refinement for premium tone */
-        margin-bottom: 2rem; /* Hierarchy separation from legal row */
+        gap: 1rem;
       }
-
-      .footer-nav a {
-        color: #E0E0E0; /* More noticeable softer white for main navigation */
-      }
-
-      .footer-nav a:hover {
-        color: #A77F43;
-        text-decoration: underline;
-      }
-
-      .footer-legal {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 2rem; /* Consistent spacing for visual rhythm */
-        font-size: 13px;
-        font-weight: 400;
-        margin-top: 2rem; /* Hierarchy separation from main navigation */
-        margin-bottom: 2rem; /* Proper closure spacing */
-      }
-
-      .footer-legal a {
-        color: #AAAAAA; /* More noticeable medium gray for secondary/legal links */
-      }
-
-      .footer-legal a:hover {
-        color: #A77F43;
-        text-decoration: underline;
-      }
-
-      .footer-glyph {
-        font-weight: 600;
-        font-size: 16px;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-        display: flex;
-        align-items: center;
-        gap: 0.2rem;
-      }
-
-      .footer-ethos {
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 700;
-        color: #E0E0E0; /* More noticeable softer white to match main navigation */
-        font-size: 1.25rem;
-        letter-spacing: -0.04em;
-      }
-
-      .footer-separator {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 500;
-        color: #888888;
-        font-size: 1rem;
-        letter-spacing: -0.04em;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        margin: 0 0.1rem;
-        vertical-align: middle;
-        line-height: 1;
-      }
-
-      .footer-signal {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 400;
-        color: #A77F43;
-        font-size: 1.25rem;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        letter-spacing: -0.04em;
-      }
-
       .footer-tagline {
-        font-size: 14px;
-        margin-bottom: 2.5rem; /* Increased spacing for premium hierarchy */
-        color: #E0E0E0; /* More noticeable softer white to match main navigation */
+        margin-bottom: 1.5rem;
       }
-
-      .footer-transmission {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
-        color: #A77F43;
-        margin-top: 8px;
-        opacity: 0.75; /* Subtle presence for system signature */
+      .footer-legal {
+        gap: 1rem;
       }
-
-      @media (max-width: 768px) {
-        .footer-nav {
-          gap: 1rem;
-        }
-        .footer-tagline {
-          margin-bottom: 1.5rem;
-        }
-        .footer-legal {
-          gap: 1rem;
-        }
-      }
-    </style>
-
-    <footer>
-      <div class="footer-container">
-        <div class="footer-glyph">
-          <span class="footer-ethos">ETHOS</span>
-          <span class="footer-separator">—•—</span>
-          <span class="footer-signal">SIGNAL</span>
-        </div>
-
-        <p class="footer-tagline">
-          Drift is already in the system. We built the layer to stop it.
-        </p>
-
-        <div class="footer-nav">
-          <a href="/platform.html">Platform Access</a>
-          <a href="/executive-briefings.html">Executive Briefings</a>
-          <a href="/speaking.html">Speaking</a>
-          <a href="/reports.html">Reports</a>
-        </div>
-
-        <div class="footer-legal">
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/terms.html">Terms of Service</a>
-          <a href="mailto:founder@ethossignal.com">Contact</a>
-          <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
-          <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
-        </div>
-
-        <div class="footer-transmission">TRANSMISSION COMPLETE</div>
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+      <div class="nav-container">
+          <div class="wordmark font-jetbrains">
+              <span class="wordmark-ethos font-jetbrains" style="font-size: 2rem;">ETHOS</span>
+              <span class="wordmark-separator font-ibm-mono">—•—</span>
+              <span class="wordmark-signal font-ibm-mono" style="font-size: 2rem;">SIGNAL</span>
+          </div>
+          <div class="nav-links font-inter">
+              <a href="/drift.html" class="nav-link">Drift</a>
+              <a href="#" class="nav-link">Book</a>
+              <a href="#" class="nav-link">System</a>
+              <a href="about.html" class="nav-link">About</a>
+              
+              <a href="/engage" class="nav-cta">Engage</a>
+          </div>
       </div>
-    </footer>
+  </nav>
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar"></div>
+  </div>
+
+  <div class="container">
+    <!-- HERO SECTION – EXECUTIVE PROFILE -->
+    <section class="hero-section section-primary fade-in">
+      <!-- Left: Text Content -->
+      <div class="hero-content">
+        <h1 class="hero-statement section-emphasis">
+          <div class="typewriter-line">Financial systems measure drift.</div>
+          <div class="typewriter-line">This one measures it in behavior.</div>
+        </h1>
+        <p class="hero-name">
+          Amy Oguntala
+        </p>
+        <p class="hero-description section-text">
+          COO → Founder. Architect of the only behavioral system that detects Drift before execution fails.
+        </p>
+      </div>
+      <!-- Right: Image -->
+      <div class="hero-image-container">
+        <div class="hero-image-crop" role="img" aria-label="Amy Oguntala Executive Portrait"></div>
+      </div>
+    </section>
+
+    <!-- EXECUTIVE FOUNDATION -->
+    <section class="section-secondary fade-in">
+      <h2 class="section-headline" style="text-align:center;">Most systems track performance.<br>None detect Drift.</h2>
+      <p class="section-context">Executive Foundation</p>
+      <div class="content-container">
+        <p class="statement-block section-text">
+          Two decades inside executive decision systems—including the operational integration of a <span class="statement-highlight section-key">$1.5B platform</span>—exposed a deeper pattern: alignment doesn't degrade at the surface. It erodes underneath.
+        </p>
+        <p class="statement-block section-text">
+          That diagnostic blind spot became the basis for a new kind of architecture—modeled on the same principles that asset managers use to track portfolio drift, but designed to surface behavioral misalignment before it scales.
+        </p>
+      </div>
+      <div class="metrics-display">
+        <div class="metric-unit">
+          <span class="metric-number section-emphasis">$1.5B</span>
+          <span class="metric-label">Integration Scale</span>
+        </div>
+        <div class="metric-unit">
+          <span class="metric-number section-emphasis">20</span>
+          <span class="metric-label">Years Executive</span>
+        </div>
+        <div class="metric-unit">
+          <span class="metric-number section-emphasis">2025</span>
+          <span class="metric-label">System Deployed</span>
+        </div>
+      </div>
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Private Equity</div>
+            <div class="capability-description">$1.5B integration leadership and operational excellence</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Operational Integration</div>
+            <div class="capability-description">Complex system mergers and behavioral alignment</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Executive Leadership</div>
+            <div class="capability-description">C-suite decision structure analysis and optimization</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK AUTHORITY -->
+    <section class="section-primary fade-in">
+      <h2 class="section-headline" style="text-align:center;">Where Drift begins. And how to stop it.</h2>
+      <p class="section-context">Author • Fall 2025</p>
+      <div class="book-showcase">
+        <img 
+          src="assets/hero/FasterThanYouCanAdapt.png" 
+          alt="Faster Than You Can Adapt book cover" 
+          class="book-image-clean"
+        />
+        <div class="book-content">
+          <div class="content-container">
+            <p class="statement-block section-text">
+              This work formalized <span class="statement-highlight section-key">Drift as a measurable behavioral condition</span> and positioned it as the silent killer of execution integrity.
+            </p>
+            <p class="statement-block section-text">
+              The system framework provides the first quantified approach to detecting and correcting organizational drift before it becomes operationally catastrophic.
+            </p>
+            <p class="statement-block section-text">
+              Designed for leaders who recognize the difference between operational rhythm and strategic alignment—and who require diagnostic precision to maintain both under AI-accelerated pressure.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Category Creation</div>
+            <div class="capability-description">First to establish behavioral drift as measurable condition</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Behavioral Systems</div>
+            <div class="capability-description">Infrastructure design for organizational alignment detection</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Velocity Era</div>
+            <div class="capability-description">AI-accelerated decision environments and adaptation frameworks</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYSTEM ARCHITECT -->
+    <section class="section-secondary fade-in">
+      <h2 class="section-headline" style="text-align:center;">Drift Quotient™ measurement at scale.</h2>
+      <p class="section-context">System Architecture</p>
+      <div class="content-container">
+        <p class="statement-block section-text">
+          Creator of <span class="statement-highlight section-key">Individual Drift Quotient™ (IDQ)</span> and <span class="statement-highlight section-key">Organizational Drift Quotient™ (ODQ)</span> frameworks.
+        </p>
+        <p class="statement-block section-text">
+          These systems expose misalignment between performance and coherence at individual, team, and organizational levels. The diagnostic infrastructure identifies <span class="statement-highlight section-key">fracture points before they become institutional collapse</span>.
+        </p>
+      </div>
+      <div class="system-visual">
+        <div class="system-flow">
+          <div class="flow-element">IDQ</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-element">ODQ</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-element">DRIFT QUOTIENT™</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-element">INTERVENTION</div>
+        </div>
+      </div>
+      <div class="glyph">—•—</div>
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Drift Quotient™</div>
+            <div class="capability-description">Proprietary measurement system for behavioral misalignment</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Behavioral Diagnostics</div>
+            <div class="capability-description">Individual and organizational alignment assessment protocols</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">System Architecture</div>
+            <div class="capability-description">Enterprise-grade infrastructure for behavioral measurement</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLATFORM DEPLOYMENT -->
+    <section class="section-primary fade-in">
+      <h2 class="section-headline" style="text-align:center;">EthosSignal™ deploys behavioral architecture.</h2>
+      <p class="section-context">Platform Infrastructure</p>
+      <div class="content-container">
+        <p class="statement-block section-text">
+          <span class="statement-highlight section-key">EthosSignal™</span> deploys Drift Quotient™ as enterprise-grade diagnostic infrastructure. Designed for high-velocity environments where traditional management approaches fail to surface misalignment until operational damage is irreversible.
+        </p>
+        <p class="statement-block section-text">
+          Not culture work. Not coaching. <span class="statement-highlight section-key">Behavioral architecture designed for institutional permanence</span>.
+        </p>
+        <p class="statement-block section-text">
+          Available for pilot deployment, strategic consultation, and board-level implementation across Fortune 500 organizational structures.
+        </p>
+      </div>
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Platform Infrastructure</div>
+            <div class="capability-description">Enterprise deployment systems for behavioral measurement</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Enterprise Systems</div>
+            <div class="capability-description">Scalable organizational diagnostic and intervention protocols</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Behavioral Infrastructure</div>
+            <div class="capability-description">Foundational architecture for velocity-era alignment management</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRENT ENGAGEMENT -->
+    <section class="section-secondary fade-in">
+      <h2 class="section-headline" style="text-align:center;">Speed without alignment creates institutional fragility.</h2>
+      <p class="section-context">Strategic Engagement</p>
+      <div class="content-container">
+        <p class="statement-block section-text">
+          Available for <span class="statement-highlight section-key">enterprise pilot deployment</span>, <span class="statement-highlight section-key">board-level strategic consultation</span>, and <span class="statement-highlight section-key">executive briefings</span> on organizational behavioral architecture.
+        </p>
+        <p class="statement-block section-text">
+          Engagement with leaders who recognize that velocity without alignment creates institutional fragility—and who require diagnostic infrastructure before fracture patterns become operationally visible.
+        </p>
+      </div>
+      <div class="signature-statement section-key">
+        "Designed for leaders who can't afford to confuse operational rhythm with strategic alignment."
+      </div>
+      <p class="signal-note section-text">Signal registered</p>
+      <div class="capability-section">
+        <div class="capability-grid">
+          <div class="capability-card">
+            <div class="capability-title">Enterprise Consulting</div>
+            <div class="capability-description">Strategic deployment for Fortune 500 organizational alignment</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Strategic Advisory</div>
+            <div class="capability-description">Board-level consultation on behavioral infrastructure</div>
+          </div>
+          <div class="capability-card">
+            <div class="capability-title">Executive Briefings</div>
+            <div class="capability-description">C-suite presentations on drift detection protocols</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ENGAGEMENT CTA -->
+  <section class="engagement-section">
+    <h2 class="engagement-statement">Ready to work together?</h2>
+    <p class="engagement-context">
+      Request a strategic briefing or run the diagnostic assessment.
+    </p>
+    <div class="cta-group">
+      <a href="/drift.html" class="cta-primary">Request Strategic Briefing</a>
+      <a href="/diagnostic.html" class="cta-secondary">Take the Test</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-glyph">
+        <span class="footer-ethos">ETHOS</span>
+        <span class="footer-separator">—•—</span>
+        <span class="footer-signal">SIGNAL</span>
+      </div>
+
+      <p class="footer-tagline">
+        Drift is already in the system. We built the layer to stop it.
+      </p>
+
+      <div class="footer-nav">
+        <a href="/platform.html">Platform Access</a>
+        <a href="/executive-briefings.html">Executive Briefings</a>
+        <a href="/speaking.html">Speaking</a>
+        <a href="/reports.html">Reports</a>
+      </div>
+
+      <div class="footer-legal">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="mailto:founder@ethossignal.com">Contact</a>
+        <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
+        <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
+      </div>
+
+      <div class="footer-transmission">TRANSMISSION COMPLETE</div>
+    </div>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
