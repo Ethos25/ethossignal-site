@@ -1,1069 +1,1520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>System | EthosSignal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bone-white: #ECEAE7;
-      --architect-gray: #E5E5E3;
-      --graphite-black: #141414;
-      --ash-slate: #888888;
-      --signal-gold: #A77F43;
-      --signal-gold-pressed: #8A652F;
-      --graphite-blue: #2F4454;
-      --deep-charcoal: #0A0A0A;
-      --warm-white: #FDFCFA;
-      --signal-gold-subtle: #B89660;
-      --graphite-blue-light: #4A5B6B;
-      --section-bg: #F8F7F5;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bone-white);
-      color: var(--graphite-black);
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    .nav {
-      position: sticky;
-      top: 0;
-      background: var(--warm-white);
-      border-bottom: 2px solid var(--signal-gold);
-      box-shadow: 0 4px 24px rgba(167, 127, 67, 0.08);
-      z-index: 50;
-      padding: 1.5rem 2rem;
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .wordmark {
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-      font-size: 1.25rem;
-    }
-    .wordmark-ethos {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      color: var(--graphite-black);
-      font-size: 2rem;
-      letter-spacing: -0.04em;
-    }
-    .wordmark-separator {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 500;
-      color: var(--ash-slate);
-      font-size: 1.5rem;
-      letter-spacing: -0.04em;
-      animation: morse-pulse 12s infinite;
-      margin: 0 0.1rem;
-      vertical-align: middle;
-      line-height: 1;
-    }
-    .wordmark-signal {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 400;
-      color: var(--signal-gold);
-      font-size: 2rem;
-      letter-spacing: -0.04em;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-    .nav-link {
-      color: var(--graphite-black);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      position: relative;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--signal-gold);
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover {
-      color: var(--signal-gold);
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    .nav-link:focus {
-      outline: none;
-      color: var(--signal-gold);
-    }
-    .nav-link:focus::after {
-      width: 100%;
-    }
-    h1, h2, h3 {
-      font-family: 'IBM Plex Serif', serif;
-      font-weight: 600;
-      line-height: 1.2;
-      color: var(--deep-charcoal);
-    }
-    h1 {
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      margin-bottom: 1.5rem;
-    }
-    h2 {
-      font-size: clamp(2rem, 3vw, 2.5rem);
-      margin-top: 3rem;
-      margin-bottom: 1.5rem;
-    }
-    h3 {
-      font-size: clamp(1.25rem, 2vw, 1.75rem);
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    .subhead {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.25rem;
-      color: var(--graphite-blue);
-      margin-bottom: 2rem;
-      font-weight: 500;
-      line-height: 1.6;
-    }
-    .section-separator {
-      width: 200px;
-      height: 1px;
-      background: var(--architect-gray);
-      margin: 3rem auto;
-    }
-    .section-container {
-      background: var(--section-bg);
-      padding: 4rem 2rem;
-      border-radius: 8px;
-      margin: 2rem 0;
-    }
-    .section-headline {
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 600;
-      color: var(--graphite-black);
-      margin-bottom: 1rem;
-      text-align: center;
-      margin-top: 3rem;
-      margin-bottom: 1.5rem;
-    }
-    .section-subtitle {
-      color: var(--signal-gold);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-align: center;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
-    }
-    .emphasis-text {
-      color: var(--signal-gold);
-      font-weight: 600;
-    }
-    @keyframes morse-pulse {
-      0%, 15%, 100% { opacity: 1; }
-      5% { opacity: 0.2; }
-      20%, 30% { opacity: 1; }
-      25% { opacity: 0.2; }
-      35%, 50% { opacity: 1; }
-      45% { opacity: 0.2; }
-      55%, 85% { opacity: 0.2; }
-    }
-    .enhanced-section {
-      padding: 4rem 0;
-      margin-bottom: 2rem;
-    }
-    /* IDQ/ODQ FRAMEWORK VISUALIZATION - SCALED UP 40% */
-    .framework-diagram {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 4rem;
-      margin: 4rem 0;
-      padding: 4rem;
-      background: var(--warm-white);
-      border: 1px solid var(--signal-gold);
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
-    }
-    .diagnostic-box {
-      background: white;
-      padding: 2.8rem;
-      border: 2px solid var(--signal-gold);
-      border-radius: 12px;
-      text-align: center;
-      min-width: 280px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
-    }
-    .diagnostic-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.15);
-    }
-    .diagnostic-box h3 {
-      color: var(--signal-gold);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2.1rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-    }
-    .diagnostic-box p {
-      color: var(--graphite-black);
-      font-weight: 500;
-      margin-bottom: 0.7rem;
-      font-size: 1.1rem;
-    }
-    .diagnostic-box small {
-      color: var(--ash-slate);
-      font-size: 0.9rem;
-    }
-    .framework-arrow {
-      font-size: 2.8rem;
-      color: var(--signal-gold);
-      font-weight: bold;
-    }
-    /* ENTERPRISE USE CASE VISUAL CARDS - BALANCED CONTENT */
-    .use-case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    .use-case-card {
-      background: var(--warm-white);
-      padding: 2rem;
-      border: 1px solid var(--architect-gray);
-      border-radius: 12px;
-      border-left: 4px solid var(--signal-gold);
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .use-case-card:hover {
-      border-left-color: var(--signal-gold-pressed);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(167, 127, 67, 0.1);
-    }
-    .use-case-title {
-      color: var(--signal-gold);
-      font-weight: 600;
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .use-case-subtitle {
-      color: var(--graphite-blue);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      font-style: italic;
-    }
-    .use-case-content {
-      flex-grow: 1;
-      margin-bottom: 1rem;
-    }
-    .use-case-bullets {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 1rem;
-    }
-    .use-case-bullets li {
-      padding: 0.25rem 0;
-      padding-left: 1rem;
-      position: relative;
-      color: var(--graphite-blue);
-    }
-    .use-case-bullets li::before {
-      content: "•";
-      color: var(--signal-gold);
-      font-weight: bold;
-      position: absolute;
-      left: 0;
-    }
-    .use-case-target {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--signal-gold);
-      font-size: 0.95rem;
-      margin-top: auto;
-      display: block;
-      font-weight: 500;
-    }
-    /* ENGAGEMENT OPTIONS - DOMINANT-SECONDARY HIERARCHY */
-    .engagement-grid {
-      display: grid;
-      grid-template-columns: 65% 35%;
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    .engagement-card {
-      background: white;
-      padding: 2rem;
-      border: 2px solid var(--architect-gray);
-      border-radius: 12px;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .engagement-card.primary {
-      box-shadow: 0 4px 16px rgba(20, 20, 20, 0.12);
-      min-height: 120%;
-    }
-    .engagement-card.secondary {
-      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.06);
-    }
-    .engagement-card:hover {
-      border-color: var(--signal-gold);
-      transform: translateY(-2px);
-    }
-    .engagement-card.primary:hover {
-      box-shadow: 0 6px 20px rgba(167, 127, 67, 0.15);
-    }
-    .engagement-card.secondary:hover {
-      box-shadow: 0 4px 12px rgba(167, 127, 67, 0.1);
-    }
-    .engagement-type {
-      background: var(--signal-gold);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
-      display: inline-block;
-    }
-    .engagement-type.secondary {
-      background: var(--ash-slate);
-    }
-    .engagement-description {
-      color: var(--graphite-black);
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    .engagement-deliverable {
-      color: var(--graphite-blue);
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-    /* CTA HIERARCHY SYSTEM */
-    .cta-primary {
-      font-family: 'JetBrains Mono', monospace !important;
-      font-weight: 700 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 1px !important;
-      font-size: 1.2rem !important;
-      padding: 1.5rem 3rem !important;
-      background: #A77F43 !important;
-      color: #FFFFFF !important;
-      border: 2px solid #A77F43 !important;
-      border-radius: 6px !important;
-      box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3) !important;
-      transition: all 0.2s ease !important;
-      cursor: pointer !important;
-      text-decoration: none !important;
-      display: inline-block !important;
-    }
-    .cta-primary:hover {
-      background: #8A652F !important;
-      border-color: #8A652F !important;
-      transform: translateY(-2px) !important;
-      box-shadow: 0 6px 20px rgba(167, 127, 67, 0.4) !important;
-      color: #FFFFFF !important;
-    }
-    .cta-secondary {
-      font-family: 'JetBrains Mono', monospace !important;
-      font-weight: 700 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 1px !important;
-      font-size: 1rem !important;
-      padding: 1rem 2rem !important;
-      background: transparent !important;
-      color: #A77F43 !important;
-      border: 2px solid #A77F43 !important;
-      border-radius: 6px !important;
-      transition: all 0.2s ease !important;
-      cursor: pointer !important;
-      text-decoration: none !important;
-      display: inline-block !important;
-    }
-    .cta-secondary:hover {
-      background: #A77F43 !important;
-      color: #FFFFFF !important;
-      transform: translateY(-2px) !important;
-    }
-    .cta-tertiary {
-      font-family: 'JetBrains Mono', monospace !important;
-      font-weight: 700 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 1px !important;
-      font-size: 1rem !important;
-      padding: 1rem 2rem !important;
-      background: transparent !important;
-      color: #888888 !important;
-      border: 2px solid #888888 !important;
-      border-radius: 6px !important;
-      transition: all 0.2s ease !important;
-      cursor: pointer !important;
-      text-decoration: none !important;
-      display: inline-block !important;
-    }
-    .cta-tertiary:hover {
-      background: #888888 !important;
-      color: #FFFFFF !important;
-      transform: translateY(-2px) !important;
-    }
-    .signal-cta {
-      background: var(--architect-gray);
-      border-radius: 12px;
-      padding: 4rem 2rem;
-      margin: 4rem 0 2rem 0;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
-    }
-    .signal-cta h2 {
-      font-family: 'IBM Plex Serif', serif;
-      font-size: 2rem;
-      color: var(--deep-charcoal);
-      margin-bottom: 2rem;
-      font-weight: 600;
-    }
-    .cta-group {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      justify-content: center;
-      align-items: center;
-    }
-    .cta-secondary-group {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .system-list, .engagement-list {
-      list-style: none;
-      padding: 0;
-      margin: 2rem 0 2rem 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-    .system-list li, .engagement-list li {
-      background: var(--warm-white);
-      border: 1px solid var(--signal-gold-subtle);
-      border-radius: 12px;
-      padding: 2rem;
-      min-width: 260px;
-      max-width: 340px;
-      box-shadow: 0 2px 8px rgba(20, 20, 20, 0.08);
-      font-size: 1rem;
-      color: var(--graphite-black);
-      margin-bottom: 1rem;
-      text-align: left;
-    }
-    .system-list strong, .engagement-list strong {
-      color: var(--signal-gold);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.05rem;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    @media (max-width: 768px) {
-      .container { padding: 0 0.5rem; }
-      .signal-cta { padding: 3rem 1rem; }
-      .system-list li, .engagement-list li { min-width: 180px; padding: 1.5rem; }
-      .framework-diagram {
-        flex-direction: column;
-        gap: 2rem;
-        padding: 2rem;
-      }
-      .framework-arrow {
-        transform: rotate(90deg);
-      }
-      .use-case-grid {
-        grid-template-columns: 1fr;
-      }
-      .engagement-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      .engagement-card.primary {
-        min-height: auto;
-      }
-      .cta-secondary-group {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .section-container {
-        padding: 3rem 1rem;
-      }
-    }
-    /* --- NAV CTA BUTTON FINAL OVERRIDE --- */
-    .nav-cta {
-      font-family: 'JetBrains Mono', monospace !important;
-      font-weight: 700 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 1px !important;
-      font-size: 1rem !important;
-      padding: 1rem 2rem !important;
-      background: #A77F43 !important;
-      color: #FFFFFF !important;
-      border: 2px solid #A77F43 !important;
-      border-radius: 4px !important;
-      box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3) !important;
-      transition: all 0.2s ease !important;
-      cursor: pointer !important;
-      text-decoration: none !important;
-      min-width: 120px;
-    }
-    .nav-cta:hover {
-      background: #8A652F !important;
-      border-color: #8A652F !important;
-      transform: translateY(-2px) !important;
-      box-shadow: 0 6px 20px rgba(167, 127, 67, 0.4) !important;
-      color: #FFFFFF !important;
-    }
-    footer {
-      padding: 3rem 20px 2rem; /* Premium separation from page content */
-      background-color: #141414;
-      color: #ECEAE7;
-      font-family: 'Inter', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behavioral Infrastructure Platform | EthosSignal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Color System Variables */
+        :root {
+            --bone-white: #ECEAE7;
+            --signal-gold: #A77F43;
+            --signal-gold-pressed: #8A652F;
+            --signal-gold-dark: #7A5A2F;
+            --graphite-black: #141414;
+            --ash-slate: #888888;
+            --architect-gray: #E5E5E3;
+            --graphite-blue: #2F4454;
+            --deep-charcoal: #0A0A0A;
+            --warm-white: #FDFCFA;
+            --signal-gold-subtle: #B89660;
+            --graphite-blue-light: #4A5B6B;
+        }
 
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .footer-nav a,
-    .footer-legal a {
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+        body {
+            background-color: var(--bone-white);
+            color: var(--graphite-black);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+        }
 
-    .footer-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem; /* Increased horizontal spacing for executive scanning */
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.5px; /* Micro-refinement for premium tone */
-      margin-bottom: 2rem; /* Hierarchy separation from legal row */
-    }
+        /* Navigation Enhanced */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: var(--warm-white);
+            border-bottom: 2px solid var(--signal-gold);
+            box-shadow: 0 4px 24px rgba(167, 127, 67, 0.08);
+            z-index: 50;
+            padding: 1.5rem 2rem;
+        }
 
-    .footer-nav a {
-      color: #E0E0E0; /* More noticeable softer white for main navigation */
-    }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .footer-nav a:hover {
-      color: #A77F43;
-      text-decoration: underline;
-    }
+        .wordmark {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            font-size: 1.25rem;
+        }
 
-    .footer-legal {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem; /* Consistent spacing for visual rhythm */
-      font-size: 13px;
-      font-weight: 400;
-      margin-top: 2rem; /* Hierarchy separation from main navigation */
-      margin-bottom: 2rem; /* Proper closure spacing */
-    }
+        .wordmark-ethos {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--graphite-black);
+            font-size: 2rem;
+            letter-spacing: -0.04em;
+        }
 
-    .footer-legal a {
-      color: #AAAAAA; /* More noticeable medium gray for secondary/legal links */
-    }
+        .wordmark-separator {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            color: var(--ash-slate);
+            font-size: 1.5rem;
+            letter-spacing: -0.04em;
+            animation: morse-pulse 12s infinite;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0 0.1rem;
+            vertical-align: middle;
+            line-height: 1;
+        }
 
-    .footer-legal a:hover {
-      color: #A77F43;
-      text-decoration: underline;
-    }
+        .wordmark-signal {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 400;
+            color: var(--signal-gold);
+            font-size: 2rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.04em;
+        }
 
-    .footer-glyph {
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
 
-    .footer-ethos {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      color: #E0E0E0; /* More noticeable softer white to match main navigation */
-      font-size: 1.25rem;
-      letter-spacing: -0.04em;
-    }
+        .nav-link {
+            color: var(--graphite-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
 
-    .footer-separator {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 500;
-      color: #888888;
-      font-size: 1rem;
-      letter-spacing: -0.04em;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      margin: 0 0.1rem;
-      vertical-align: middle;
-      line-height: 1;
-    }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--signal-gold);
+            transition: width 0.3s ease;
+        }
 
-    .footer-signal {
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 400;
-      color: #A77F43;
-      font-size: 1.25rem;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      letter-spacing: -0.04em;
-    }
+        .nav-link:hover {
+            color: var(--signal-gold);
+        }
 
-    .footer-tagline {
-      font-size: 14px;
-      margin-bottom: 2.5rem; /* Increased spacing for premium hierarchy */
-      color: #E0E0E0; /* More noticeable softer white to match main navigation */
-    }
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-    .footer-transmission {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #A77F43;
-      margin-top: 8px;
-      opacity: 0.75; /* Subtle presence for system signature */
-    }
+        .nav-link:focus {
+            outline: none;
+            color: var(--signal-gold);
+        }
 
-    @media (max-width: 768px) {
-      .footer-nav {
-        gap: 1rem;
-      }
-      .footer-tagline {
-        margin-bottom: 1.5rem;
-      }
-      .footer-legal {
-        gap: 1rem;
-      }
-    }
-  </style>
+        .nav-link:focus::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            background: var(--signal-gold);
+            color: var(--bone-white);
+            border: 2px solid var(--signal-gold);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            background: var(--signal-gold-pressed);
+            border-color: var(--signal-gold-pressed);
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(167, 127, 67, 0.3);
+            color: var(--bone-white);
+        }
+
+        .nav-cta:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(167, 127, 67, 0.2), 0 6px 20px rgba(167, 127, 67, 0.4);
+        }
+
+        /* Pulse animation for separator glyph */
+        @keyframes morse-pulse {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.4; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Tier Animation Styles */
+        .tier-block {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .tier-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tier Pathway Styles */
+        .tier-pathway {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .path-tier {
+            background: #141414;
+            color: #ECEAE7;
+            border: 2px solid #A77F43;
+            border-radius: 8px;
+            padding: 1rem;
+            width: 120px;
+            font-weight: 700;
+        }
+
+        .path-tier span {
+            font-size: 0.8rem;
+            color: #A77F43;
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .path-connector {
+            width: 30px;
+            height: 2px;
+            background: #A77F43;
+        }
+
+        /* Drift Glyphs Styles */
+        .drift-glyphs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .drift-glyphs .glyph {
+            color: #A77F43;
+            text-align: center;
+        }
+
+        /* Crisis Scenarios Grid */
+        .crisis-scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .scenario-card {
+            background: #E5E5E3;
+            border-left: 6px solid #A77F43;
+            padding: 30px;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .failure-stat {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #D2302C;
+            margin-bottom: 15px;
+        }
+
+        .scenario-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #141414;
+            margin-bottom: 15px;
+        }
+
+        .scenario-progression {
+            background: rgba(210, 48, 44, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .scenario-progression p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #141414;
+        }
+
+        .scenario-solution {
+            font-size: 0.95rem;
+            color: #A77F43;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .scenario-buyers {
+            font-size: 0.85rem;
+            color: #888888;
+            font-style: italic;
+            border-top: 1px solid #888888;
+            padding-top: 12px;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .crisis-scenarios-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .failure-stat {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Footer Styling */
+        footer {
+            background: var(--graphite-black);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            color: #E0E0E0;
+        }
+
+        .footer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-glyph {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-ethos {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: #E0E0E0;
+            font-size: 1.25rem;
+            letter-spacing: -0.04em;
+        }
+
+        .footer-separator {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            color: var(--ash-slate);
+            font-size: 1rem;
+            letter-spacing: -0.04em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0 0.1rem;
+            vertical-align: middle;
+            line-height: 1;
+        }
+
+        .footer-signal {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 400;
+            color: var(--signal-gold);
+            font-size: 1.25rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.04em;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            margin-bottom: 2.5rem;
+            color: #E0E0E0;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: #E0E0E0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--signal-gold);
+        }
+
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 12px;
+        }
+
+        .footer-legal a {
+            color: #AAAAAA;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: #E0E0E0;
+        }
+
+        .footer-transmission {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--signal-gold);
+            margin-top: 8px;
+            opacity: 0.75;
+        }
+
+        .hero-section {
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, var(--bone-white) 0%, var(--architect-gray) 100%);
+        }
+
+        .hero-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--graphite-black);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--ash-slate);
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+
+        .market-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            padding: 40px 0;
+            border-top: 2px solid var(--signal-gold);
+            border-bottom: 2px solid var(--signal-gold);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--signal-gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--ash-slate);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-dark {
+            background-color: var(--graphite-blue);
+            color: var(--bone-white);
+        }
+
+        .section-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: inherit;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--ash-slate);
+            margin-bottom: 50px;
+            max-width: 700px;
+        }
+
+        .section-dark .section-subtitle {
+            color: var(--architect-gray);
+        }
+
+        .diagnostic-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin: 60px 0;
+        }
+
+        .diagnostic-card {
+            background: rgba(167, 127, 67, 0.1);
+            border: 2px solid var(--signal-gold);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .section-dark .diagnostic-card {
+            background: rgba(167, 127, 67, 0.15);
+            border-color: var(--signal-gold);
+        }
+
+        .diagnostic-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--signal-gold);
+            margin-bottom: 20px;
+        }
+
+        .diagnostic-description {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .diagnostic-features {
+            list-style: none;
+        }
+
+        .diagnostic-features li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .diagnostic-features li:before {
+            content: "—•—";
+            position: absolute;
+            left: 0;
+            color: var(--signal-gold);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .engagement-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .tier-card {
+            background: var(--architect-gray);
+            border: 2px solid var(--ash-slate);
+            padding: 35px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .tier-card:hover {
+            border-color: var(--signal-gold);
+            transform: translateY(-5px);
+        }
+
+        .tier-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--signal-gold);
+            margin-bottom: 10px;
+        }
+
+        .tier-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--graphite-black);
+        }
+
+        .tier-price {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--signal-gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .tier-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--ash-slate);
+        }
+
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .use-case {
+            background: rgba(47, 68, 84, 0.1);
+            border-left: 4px solid var(--graphite-blue);
+            padding: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .use-case-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--graphite-blue);
+            margin-bottom: 15px;
+        }
+
+        .use-case-description {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .use-case-buyers {
+            font-size: 0.9rem;
+            color: var(--ash-slate);
+            font-style: italic;
+        }
+
+        .competitive-section {
+            background: #2F4454;
+            color: #ECEAE7;
+            padding: 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .category-card {
+            background: rgba(236, 234, 231, 0.1);
+            border: 2px solid #888888;
+            padding: 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .category-card.primary {
+            border-color: #A77F43;
+            background: rgba(167, 127, 67, 0.15);
+        }
+
+        .category-card:hover {
+            transform: translateY(-3px);
+            border-color: #A77F43;
+            background: rgba(167, 127, 67, 0.15);
+        }
+
+        .category-header {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: #A77F43;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-copy {
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .category-footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .disqualifier {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #A77F43;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .competitive-section .cta-button {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            background: #A77F43;
+            color: #ECEAE7;
+            border: 2px solid #A77F43;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .competitive-section .cta-button:hover {
+            background: #8A652F;
+            border-color: #8A652F;
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(167, 127, 67, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .category-header {
+                font-size: 1rem;
+            }
+            
+            .category-copy {
+                font-size: 0.9rem;
+            }
+        }
+
+        .idq-section {
+            background: linear-gradient(135deg, var(--graphite-blue) 0%, var(--graphite-black) 100%);
+            color: var(--bone-white);
+            padding: 80px 0;
+        }
+
+        .idq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .idq-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .idq-subtitle {
+            font-size: 1.3rem;
+            color: var(--architect-gray);
+            margin-bottom: 50px;
+        }
+
+        .question-container {
+            background: rgba(236, 234, 231, 0.1);
+            border: 2px solid var(--signal-gold);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .question-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--signal-gold);
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .scale-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(236, 234, 231, 0.05);
+            border-radius: 8px;
+        }
+
+        .scale-label {
+            font-size: 0.9rem;
+            color: var(--ash-slate);
+        }
+
+        .scale-numbers {
+            display: flex;
+            gap: 15px;
+        }
+
+        .scale-number {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--signal-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scale-number:hover {
+            background: var(--signal-gold);
+            color: var(--graphite-black);
+        }
+
+        .cta-button-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--signal-gold);
+            border: 2px solid var(--signal-gold);
+            padding: 16px 35px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .cta-button-secondary:hover {
+            background: var(--signal-gold);
+            color: var(--graphite-black);
+            transform: translateY(-2px);
+        }
+
+        .glyph {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--signal-gold);
+            font-size: 1.5rem;
+            margin: 20px 0;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background-color: var(--bone-white);
+            margin: 5% auto;
+            padding: 50px;
+            border: none;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            color: #888888;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+            position: absolute;
+            right: 25px;
+            top: 20px;
+        }
+
+        .modal-close:hover {
+            color: #141414;
+        }
+
+        .modal-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #141414;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            color: #888888;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #141414;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E5E5E3;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #ECEAE7;
+            color: #141414;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #A77F43;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: #A77F43;
+            color: #141414;
+            padding: 18px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .form-submit:hover {
+            background: #8A652F;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .diagnostic-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .market-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .scale-numbers {
+                gap: 10px;
+            }
+            
+            .scale-number {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <div class="wordmark font-jetbrains">
-        <span class="wordmark-ethos font-jetbrains" style="font-size: 2rem;">ETHOS</span>
-        <span class="wordmark-separator font-ibm-mono">—•—</span>
-        <span class="wordmark-signal font-ibm-mono" style="font-size: 2rem;">SIGNAL</span>
-      </div>
-      <div class="nav-links font-inter">
-        <a href="/drift.html" class="nav-link">Drift</a>
-        <a href="#" class="nav-link">Book</a>
-        <a href="/system.html" class="nav-link">System</a>
-        <a href="/about.html" class="nav-link">About</a>
-        
-        <a href="/engage" class="nav-cta">Engage</a>
-      </div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="wordmark font-jetbrains">
+                <span class="wordmark-ethos font-jetbrains" style="font-size: 2rem;">ETHOS</span>
+                <span class="wordmark-separator font-ibm-mono">—•—</span>
+                <span class="wordmark-signal font-ibm-mono" style="font-size: 2rem;">SIGNAL</span>
+            </div>
+            
+            <div class="nav-links font-inter">
+                <a href="/drift.html" class="nav-link">Drift</a>
+                <a href="/book.html" class="nav-link">Book</a>
+                <a href="/system.html" class="nav-link">System</a>
+                <a href="/about.html" class="nav-link">About</a>
+                
+                <a href="/engage" class="nav-cta">Engage</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Drift Is a System Condition. We Built the Layer to Stop It.</h1>
+            <p class="hero-subtitle">Most organizations operationalize Drift without realizing it. EthosSignal deploys systematic measurement to detect and correct behavioral misalignment before it manifests as strategic collapse or value destruction.</p>
+            
+            <div style="margin-top: 40px;">
+                <a href="#" style="
+                  font-family: 'JetBrains Mono', monospace;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  font-size: 1rem;
+                  padding: 1rem 2rem;
+                  background: var(--signal-gold);
+                  color: var(--bone-white);
+                  border: 2px solid var(--signal-gold);
+                  border-radius: 4px;
+                  box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3);
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                  text-decoration: none;
+                  display: inline-block;
+                " onmouseover="this.style.background='var(--signal-gold-pressed)'; this.style.borderColor='var(--signal-gold-pressed)'; this.style.transform='translateY(-1px) scale(1.02)'; this.style.boxShadow='0 8px 24px rgba(167, 127, 67, 0.3)';" onmouseout="this.style.background='var(--signal-gold)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='none'; this.style.boxShadow='0 4px 12px rgba(167, 127, 67, 0.3)';">Request Strategic Briefing</a>
+            </div>
+            
+            <div class="market-stats">
+                <div class="stat-item">
+                    <span class="stat-number">70%</span>
+                    <span class="stat-label">M&A Integrations Fail from Behavioral Misalignment</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">30%</span>
+                    <span class="stat-label">Deal Value Lost to Undetected Drift</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">22.6%</span>
+                    <span class="stat-label">Organizations Conduct Behavioral Due Diligence</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Systematic Drift Detection Systems (Until Now)</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <p style="color: #888888; font-size: 1.1rem; line-height: 1.6;">
+                    The gap between organizational identity and operational behavior destroys more value than financial metrics can detect. EthosSignal is the first systematic solution for measuring and correcting Drift before it becomes institutional collapse.
+                </p>
+            </div>
+        </div>
     </div>
-  </nav>
-  <div class="container">
-    <!-- HERO HEADER -->
-    <section class="enhanced-section">
-      <div class="section-container">
-        <h1 class="section-headline">Behavioral Misalignment Detection Before Performance Metrics Show Damage.</h1>
-        <div class="section-subtitle">Enterprise Diagnostic Platform</div>
-        <div class="subhead">EthosSignal deploys the Drift Quotient™ system to measure organizational and leadership behavioral patterns that precede operational breakdown. Early detection prevents execution failure.</div>
-      </div>
-    </section>
-    
-    <div class="section-separator"></div>
-    
-    <!-- SYSTEM STRUCTURE OVERVIEW -->
-    <section class="enhanced-section">
-      <div class="section-container">
-        <h2 class="section-headline">Drift Quotient™: Individual and Organizational Diagnostic Framework</h2>
-        <div class="section-subtitle">Two-tier measurement system designed for enterprise behavioral risk assessment.</div>
-        
-        <!-- IDQ/ODQ FRAMEWORK VISUALIZATION -->
-        <div class="framework-diagram">
-          <div class="diagnostic-box">
-            <h3>IDQ</h3>
-            <p>Individual Assessment</p>
-            <small>13-question diagnostic</small>
-          </div>
-          <div class="framework-arrow">→</div>
-          <div class="diagnostic-box">
-            <h3>ODQ</h3>
-            <p>Organizational Scan</p>
-            <small>Enterprise analysis</small>
-          </div>
-          <div class="framework-arrow">→</div>
-          <div class="diagnostic-box">
-            <h3>INTERVENTION</h3>
-            <p>Strategic Response</p>
-            <small>Board-ready action plan</small>
-          </div>
+
+    <section style="background: linear-gradient(to bottom, #0B0B0B 0%, #2F4454 100%); color: #ECEAE7; padding: 6rem 2rem;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2.75rem; font-family: 'IBM Plex Serif', serif; font-weight: 700; margin-bottom: 2rem;">
+                Drift Quotient™ System Architecture
+            </h2>
+            <p style="font-size: 1.125rem; color: #E5E5E3; margin-bottom: 4rem; max-width: 800px;">
+                Behavioral risk detection before strategic collapse.<br>
+                IDQ and ODQ operate as infrastructure—not insight tools.
+            </p>
+
+            <!-- SYSTEM STRUCTURE -->
+            <div class="content-grid-split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                <div>
+                    <h3 style="font-family: 'JetBrains Mono', monospace; color: #A77F43; font-size: 1.25rem; margin-bottom: 1rem;">IDQ — Individual Drift Quotient™</h3>
+                    <ul style="margin-top: 1rem; line-height: 1.7; font-size: 1rem; list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 0.75rem;">• Classifies Drift Types: The Machine, The Pillar, The Keeper</li>
+                        <li style="margin-bottom: 0.75rem;">• Executive risk profiling for board oversight</li>
+                        <li style="margin-bottom: 0.75rem;">• Maps leadership intervention protocols</li>
+                        <li style="margin-bottom: 0.75rem;">• Quarterly recalibration enabled</li>
+                        <li style="margin-bottom: 0.75rem;">• Access gated — no public samples</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="font-family: 'JetBrains Mono', monospace; color: #A77F43; font-size: 1.25rem; margin-bottom: 1rem;">ODQ — Organizational Drift Quotient™</h3>
+                    <ul style="margin-top: 1rem; line-height: 1.7; font-size: 1rem; list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 0.75rem;">• Measures alignment across strategy, identity, leadership, adaptation, energy</li>
+                        <li style="margin-bottom: 0.75rem;">• Generates Organizational Coherence Index (OCI)</li>
+                        <li style="margin-bottom: 0.75rem;">• Detects drift acceleration trends pre-collapse</li>
+                        <li style="margin-bottom: 0.75rem;">• Feeds board-level behavioral risk dashboards</li>
+                        <li style="margin-bottom: 0.75rem;">• Tier 1 deployment required for access</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Glyph Separator -->
+            <div style="text-align: center; margin: 3rem 0; font-family: 'JetBrains Mono', monospace; color: #A77F43; font-size: 1.5rem; animation: morse-pulse 12s infinite;">—•—</div>
+
+            <!-- System Outputs -->
+            <div style="background: rgba(167, 127, 67, 0.1); border: 2px solid #A77F43; border-radius: 8px; padding: 2rem; margin: 3rem 0;">
+                <h4 style="font-family: 'JetBrains Mono', monospace; color: #A77F43; font-size: 1.125rem; margin-bottom: 1.5rem;">Drift Quotient Outputs</h4>
+                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; list-style: none; padding: 0; font-size: 0.95rem; line-height: 1.6;">
+                    <li>• Drift Type Assignment (IDQ)</li>
+                    <li>• Organizational Coherence Index (ODQ)</li>
+                    <li>• Drift Acceleration Forecast</li>
+                    <li>• Intervention Recommendation Layer</li>
+                    <li>• Board-Grade Risk Documentation</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 5rem;">
+                <p style="font-size: 1.25rem; color: #E5E5E3; margin-bottom: 1.5rem; font-style: italic;">
+                    Behavioral misalignment compounds invisibly—until it doesn't.
+                </p>
+
+                <a href="/engage" style="
+                    font-family: 'JetBrains Mono', monospace;
+                    font-weight: 700;
+                    padding: 1.25rem 2.75rem;
+                    background: #A77F43;
+                    color: #ECEAE7;
+                    border-radius: 6px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    font-size: 1rem;
+                    letter-spacing: 0.05em;
+                    box-shadow: 0 4px 14px rgba(167, 127, 67, 0.25);
+                    transition: all 0.3s ease;
+                    display: inline-block;
+                "
+                onmouseover="this.style.background='#8A652F'; this.style.transform='translateY(-2px)';"
+                onmouseout="this.style.background='#A77F43'; this.style.transform='none';"
+                >
+                    Schedule Strategic Risk Scan
+                </a>
+                
+                <p style="margin-top: 2rem; font-size: 0.9rem; color: #B0B0B0; font-style: italic;">
+                    Drift is not a performance issue. It's a system condition. This platform measures it.
+                </p>
+            </div>
         </div>
-        
-        <div class="subhead" style="font-weight: 600; color: var(--signal-gold); margin-top: 2rem;">Outcome:</div>
-        <div class="subhead" style="margin-top: 0;">Board-ready behavioral risk assessment with 12–18 month early warning capability before conventional metrics detect problems.</div>
-      </div>
     </section>
-    
-    <div class="section-separator"></div>
-    
-    <!-- ENTERPRISE APPLICATIONS -->
-    <section class="enhanced-section">
-      <div class="section-container">
-        <h2 class="section-headline">Enterprise Applications</h2>
-        <div class="section-subtitle">Strategic deployment across critical business scenarios</div>
-        
-        <div class="use-case-grid">
-          <div class="use-case-card">
-            <div class="use-case-title">Post-Merger Integration Risk Assessment</div>
-            <div class="use-case-subtitle">Behavioral due diligence for acquisition value protection.</div>
-            <div class="use-case-content">M&A completion often shows strong financial metrics while behavioral integration deteriorates underneath. ODQ detects hidden friction patterns before they compromise deal value.</div>
-            <ul class="use-case-bullets">
-              <li>Acquired entity behavioral risk mapping</li>
-              <li>Leadership alignment assessment</li>
-              <li>Integration failure prevention (12–18 month detection window)</li>
-              <li>Post-close value protection</li>
-              <li>Cultural integration monitoring</li>
-              <li>Operational synergy validation</li>
-            </ul>
-            <span class="use-case-target">PE portfolio operations, corporate development, board oversight</span>
+
+    <!-- Section Separator -->
+    <div style="border-top: 2px solid var(--signal-gold); margin: 0; opacity: 0.3;"></div>
+
+    <!-- ENTERPRISE DEPLOYMENT ARCHITECTURE - REBUILT FOR ENTERPRISE VELOCITY -->
+    <section class="section-dark" style="padding: 7rem 2rem; background: #141414; color: #ECEAE7;">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">Behavioral Infrastructure Deployment Model</h2>
+        <p class="section-subtitle" style="text-align: center; color: #BEBEBE; max-width: 750px; margin: 0 auto 2rem;">
+          Four-tier deployment system designed to scale from diagnostic precision to continuous behavioral infrastructure.
+        </p>
+
+        <!-- Tier Pathway Infographic -->
+        <div class="tier-pathway">
+          <div class="path-tier">Tier 1<br><span>Assessment</span></div>
+          <div class="path-connector"></div>
+          <div class="path-tier">Tier 2<br><span>Realignment</span></div>
+          <div class="path-connector"></div>
+          <div class="path-tier">Tier 3<br><span>Monitoring</span></div>
+          <div class="path-connector"></div>
+          <div class="path-tier">Tier 4<br><span>License</span></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 4rem;">
+
+          <div class="tier-block" style="border-left: 4px solid #A77F43; padding-left: 2rem;">
+            <p class="tier-number" style="color: #A77F43; font-family: 'JetBrains Mono'; font-weight: 600; font-size: 0.9rem;">TIER 1</p>
+            <h3 class="tier-title" style="font-family: 'IBM Plex Serif'; font-size: 1.75rem; color: #ECEAE7; margin-bottom: 0.5rem;">Drift Diagnostic Engagement</h3>
+            <p class="tier-description" style="color: #BEBEBE; line-height: 1.6; max-width: 850px;">
+              IDQ and ODQ diagnostic deployment with executive-level Drift Quotient reporting, behavioral misalignment heat maps, and board-ready synthesis. Optional Governance Add-On: fiduciary risk briefing and deck (+$5K).
+            </p>
+            <p style="font-family: 'JetBrains Mono'; font-size: 0.95rem; color: #A77F43; margin-top: 0.5rem;">$15K – $40K | 3–4 Week Time to Value</p>
+            
+            <!-- Drift Type Glyphs -->
+            <div class="drift-glyphs">
+              <span class="glyph">Machine ⎯⎯⎯</span>
+              <span class="glyph">Pillar ⎯⎯⎯</span>
+              <span class="glyph">Keeper ⎯⎯⎯</span>
+            </div>
+            <p style="color: #BEBEBE; font-size: 0.9rem; font-style: italic; text-align: center; margin-top: 0.5rem;">
+              Tier 1 diagnostics return one of three behavioral Drift Types—each with a different leadership consequence.
+            </p>
           </div>
-          
-          <div class="use-case-card">
-            <div class="use-case-title">Executive Succession Behavioral Readiness</div>
-            <div class="use-case-subtitle">Leadership transition risk measurement before promotion.</div>
-            <div class="use-case-content">High-performing individuals often fail when promoted to enterprise leadership roles. IDQ measures behavioral capacity under scale and velocity pressure.</div>
-            <ul class="use-case-bullets">
-              <li>Executive readiness assessment</li>
-              <li>Behavioral risk classification</li>
-              <li>Succession failure prevention</li>
-              <li>Board briefing documentation</li>
-              <li>Leadership capacity measurement</li>
-              <li>Transition planning optimization</li>
-            </ul>
-            <span class="use-case-target">Board transitions, executive succession planning, PE leadership replacement</span>
+
+          <div class="tier-block" style="border-left: 4px solid #A77F43; padding-left: 2rem;">
+            <p class="tier-number" style="color: #A77F43; font-family: 'JetBrains Mono'; font-weight: 600; font-size: 0.9rem;">TIER 2</p>
+            <h3 class="tier-title" style="font-family: 'IBM Plex Serif'; font-size: 1.75rem; color: #ECEAE7; margin-bottom: 0.5rem;">Behavioral Realignment & Advisory</h3>
+            <p class="tier-description" style="color: #BEBEBE; line-height: 1.6; max-width: 850px;">
+              Full system diagnostic with realignment roadmap, executive team alignment sprints, and leadership architecture redesign. Outcome: decision frameworks calibrated to declared identity.
+            </p>
+            <p style="font-family: 'JetBrains Mono'; font-size: 0.95rem; color: #A77F43; margin-top: 0.5rem;">$40K – $95K | 30–45 Day Delivery Cycle</p>
           </div>
+
+          <div class="tier-block" style="border-left: 4px solid #A77F43; padding-left: 2rem;">
+            <p class="tier-number" style="color: #A77F43; font-family: 'JetBrains Mono'; font-weight: 600; font-size: 0.9rem;">TIER 3</p>
+            <h3 class="tier-title" style="font-family: 'IBM Plex Serif'; font-size: 1.75rem; color: #ECEAE7; margin-bottom: 0.5rem;">Embedded Monitoring Infrastructure</h3>
+            <p class="tier-description" style="color: #BEBEBE; line-height: 1.6; max-width: 850px;">
+              Quarterly Drift Quotient reassessment, governance reporting, embedded risk advisor, executive drift telemetry dashboard, and access to EthosSignal's enterprise recalibration system.
+            </p>
+            <p style="font-family: 'JetBrains Mono'; font-size: 0.95rem; color: #A77F43; margin-top: 0.5rem;">$100K – $300K annually | Continuous Monitoring</p>
+          </div>
+
+          <div class="tier-block" style="border-left: 4px solid #A77F43; padding-left: 2rem;">
+            <p class="tier-number" style="color: #A77F43; font-family: 'JetBrains Mono'; font-weight: 600; font-size: 0.9rem;">TIER 4</p>
+            <h3 class="tier-title" style="font-family: 'IBM Plex Serif'; font-size: 1.75rem; color: #ECEAE7; margin-bottom: 0.5rem;">Certified System Partner Licensing</h3>
+            <p class="tier-description" style="color: #BEBEBE; line-height: 1.6; max-width: 850px;">
+              Behavioral infrastructure certification for PE operating partners, transformation consultants, and strategy firms. Includes co-branded deployment rights, methodology training, and supervision.
+            </p>
+            <p style="font-family: 'JetBrains Mono'; font-size: 0.95rem; color: #A77F43; margin-top: 0.5rem;">$25K + 20% Revenue Share | Licensed Deployment</p>
+          </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem;">
+          <a href="#" class="cta-primary" style="
+            background: #A77F43;
+            color: #141414;
+            padding: 1.25rem 3rem;
+            font-family: 'JetBrains Mono';
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(167, 127, 67, 0.25);
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+          " onmouseover="this.style.background='#8A652F'; this.style.boxShadow='0 8px 24px rgba(138, 101, 47, 0.35)'" onmouseout="this.style.background='#A77F43'; this.style.boxShadow='0 4px 12px rgba(167, 127, 67, 0.25)'">
+            Schedule Drift Assessment
+          </a>
         </div>
       </div>
     </section>
-    
-    <div class="section-separator"></div>
-    
-    <!-- ENGAGEMENT OPTIONS -->
-    <section class="enhanced-section">
-      <div class="section-container">
-        <h2 class="section-headline">Engagement Options</h2>
-        <div class="section-subtitle">Professional service tiers for enterprise deployment</div>
-        
-        <div class="engagement-grid">
-          <div class="engagement-card primary">
-            <div class="engagement-type">Individual Assessment</div>
-            <div class="engagement-description">Standalone executive diagnostic or organizational assessment preparation.</div>
-            <div class="engagement-deliverable">Delivered: Assessment + results interpretation + strategic recommendations</div>
-          </div>
-          
-          <div class="engagement-card secondary">
-            <div class="engagement-type secondary">Strategic Briefing</div>
-            <div class="engagement-description">Board-level consultation on behavioral infrastructure.</div>
-            <div class="engagement-deliverable">Delivered: Strategic presentation + framework overview + implementation roadmap</div>
-          </div>
+
+    <!-- Section Separator -->
+    <div style="border-top: 2px solid var(--signal-gold); margin: 0; opacity: 0.3;"></div>
+
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title">When Behavioral Drift Becomes a Boardroom Crisis</h2>
+            <p class="section-subtitle">Drift isn't a leadership issue. It's a system condition. And it has a kill switch.</p>
+            
+            <div class="crisis-scenarios-grid">
+                <div class="scenario-card">
+                    <div class="failure-stat">70%</div>
+                    <h3 class="scenario-title">M&A Integration Drift</h3>
+                    <div class="scenario-progression">
+                        <p><strong>What it looks like:</strong> Strong financial close. Silent cultural fracture. Leadership behaviors diverge. Operational systems stall.</p>
+                    </div>
+                    <p class="scenario-solution"><strong>EthosSignal function:</strong> ODQ exposes misalignment patterns invisible to financial diligence. Drift detection protects integration value before erosion begins.</p>
+                    <p class="scenario-buyers">Target: PE Operating Partners, Corporate Development, Integration Leads</p>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="failure-stat">85%</div>
+                    <h3 class="scenario-title">Leadership Misfire</h3>
+                    <div class="scenario-progression">
+                        <p><strong>What it looks like:</strong> Top performer promoted. Behavioral collapse under pressure. Strategic decisions misfire. Teams destabilize.</p>
+                    </div>
+                    <p class="scenario-solution"><strong>EthosSignal function:</strong> IDQ reveals Drift Type and pressure response profile before promotion. Prevents costly misalignments at the top.</p>
+                    <p class="scenario-buyers">Target: Board Directors, CHROs, Succession Architects</p>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="failure-stat">65%</div>
+                    <h3 class="scenario-title">Transformation Failure</h3>
+                    <div class="scenario-progression">
+                        <p><strong>What it looks like:</strong> New initiative launches. Leadership fractures. Resistance spikes. Culture retracts.</p>
+                    </div>
+                    <p class="scenario-solution"><strong>EthosSignal function:</strong> IDQ + ODQ assess transformation capacity under behavioral strain. Prevents waste of capital, morale, and time.</p>
+                    <p class="scenario-buyers">Target: Strategy Teams, Transformation Officers, Acceleration Leads</p>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="failure-stat">NEW</div>
+                    <h3 class="scenario-title">AI Acceleration Breakdown</h3>
+                    <div class="scenario-progression">
+                        <p><strong>What it looks like:</strong> AI deployed. Decision velocity spikes. Human systems collapse. Identity drifts into automation gaps.</p>
+                    </div>
+                    <p class="scenario-solution"><strong>EthosSignal function:</strong> Measures behavioral readiness for AI deployment. Maintains coherence as automation scales.</p>
+                    <p class="scenario-buyers">Target: Chief Transformation Officers, Digital Strategy Leaders, Enterprise AI Teams</p>
+                </div>
+            </div>
+            
+            <div class="glyph">—•—</div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="cta-button-secondary">Request Strategic Briefing on Your Scenario</a>
+            </div>
         </div>
-      </div>
-    </section>
-    
-    <div class="section-separator"></div>
-    
-    <!-- DELIVERY ARCHITECTURE -->
-    <section class="enhanced-section">
-      <div class="section-container">
-        <h2 class="section-headline">Delivery Architecture</h2>
-        <div class="section-subtitle">Enterprise-grade implementation framework</div>
-        <div class="subhead">Led by Amy Oguntala, former COO of $1.5B platform operations and creator of Drift Quotient™ framework. Large-scale assessments deployed through vetted analyst teams using standardized protocols. System-based delivery ensures consistent measurement methodology.</div>
-      </div>
-    </section>
-    
-    <div class="section-separator"></div>
-    
-    <!-- VALIDATION FRAMEWORK -->
-    <section class="enhanced-section">
-      <div class="section-container">
-        <h2 class="section-headline">Validation Framework</h2>
-        <div class="section-subtitle">Scientific rigor and measurement integrity</div>
-        <div class="subhead">Drift Quotient™ methodology reviewed by behavioral science and organizational psychology experts for measurement integrity and diagnostic accuracy.</div>
-      </div>
-    </section>
-    
-    <!-- ENGAGEMENT INITIATION CTA SECTION -->
-    <section class="signal-cta">
-      <h2>Behavioral Misalignment Costs More Than Measurement.</h2>
-      <div class="cta-group">
-        <a href="#" class="cta-primary">Start IDQ Assessment</a>
-        <div class="cta-secondary-group">
-          <a href="#" class="cta-secondary">Corporate Strategic Briefing</a>
-          <a href="#" class="cta-tertiary">Start ODQ Assessment</a>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <script>
-    // OBJECTIVE:
-    // Audit and enhance the Systems Page UX motion based on strategic rules from the EthosSignal visual system.
-    // Validate existence of animation before applying upgrades to prevent overwriting existing logic.
-
-    document.addEventListener('DOMContentLoaded', function() {
-      
-      // STEP 1: CTA BUTTON VALIDATION + ENHANCEMENT
-      const ctaButtons = document.querySelectorAll('.cta-primary, .cta-secondary, .cta-tertiary, .nav-cta');
-      ctaButtons.forEach(btn => {
-        const computedStyle = window.getComputedStyle(btn);
-        const hasTransition = computedStyle.transitionDuration !== '0s';
-        const hasTransform = computedStyle.transform !== 'none';
-        
-        // Only enhance if basic transitions exist but advanced hover effects are missing
-        if (hasTransition && !hasTransform) {
-          // Add enhanced hover effects while preserving existing transitions
-          btn.addEventListener('mouseenter', function() {
-            if (!this.classList.contains('enhanced-hover')) {
-              this.classList.add('enhanced-hover');
-              this.style.boxShadow = '0px 4px 12px rgba(167, 127, 67, 0.6)'; // Signal Gold glow
-              this.style.transform = 'translateY(-2px)';
-            }
-          });
-          
-          btn.addEventListener('mouseleave', function() {
-            if (this.classList.contains('enhanced-hover')) {
-              this.classList.remove('enhanced-hover');
-              this.style.boxShadow = '';
-              this.style.transform = '';
-            }
-          });
-        }
-      });
-
-      // STEP 2: SECTION SCROLL ANIMATION VALIDATION + FIX
-      const sections = document.querySelectorAll('.enhanced-section, .section-container');
-      sections.forEach(section => {
-        // Check if section already has scroll animation
-        if (!section.classList.contains('scroll-animated') && !section.style.opacity) {
-          section.classList.add('scroll-animated');
-          section.style.opacity = '0';
-          section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-          section.style.transform = 'translateY(40px)';
-          
-          const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target); // Stop observing once animated
-              }
-            });
-          }, { 
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-          });
-          
-          observer.observe(section);
-        }
-      });
-
-      // STEP 3: FRAMEWORK DIAGRAM ENHANCEMENT
-      const diagnosticBoxes = document.querySelectorAll('.diagnostic-box');
-      diagnosticBoxes.forEach((box, index) => {
-        // Add staggered entrance animation if not already animated
-        if (!box.classList.contains('entrance-animated')) {
-          box.classList.add('entrance-animated');
-          box.style.opacity = '0';
-          box.style.transform = 'translateY(20px)';
-          box.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          
-          // Stagger the animations
-          setTimeout(() => {
-            box.style.opacity = '1';
-            box.style.transform = 'translateY(0)';
-          }, 200 * (index + 1));
-        }
-      });
-
-      // STEP 4: USE CASE CARDS ENHANCEMENT
-      const useCaseCards = document.querySelectorAll('.use-case-card');
-      useCaseCards.forEach((card, index) => {
-        // Add entrance animation if not already present
-        if (!card.classList.contains('card-animated')) {
-          card.classList.add('card-animated');
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(30px)';
-          card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-          
-          // Stagger card animations
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 300 * (index + 1));
-        }
-      });
-
-      // STEP 5: ENGAGEMENT CARDS ENHANCEMENT
-      const engagementCards = document.querySelectorAll('.engagement-card');
-      engagementCards.forEach((card, index) => {
-        // Add entrance animation if not already present
-        if (!card.classList.contains('engagement-animated')) {
-          card.classList.add('engagement-animated');
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(25px)';
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          
-          // Stagger engagement card animations
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 400 * (index + 1));
-        }
-      });
-
-      // STEP 6: SECTION SEPARATORS ENHANCEMENT
-      const separators = document.querySelectorAll('.section-separator');
-      separators.forEach((separator, index) => {
-        // Add subtle entrance animation for separators
-        if (!separator.classList.contains('separator-animated')) {
-          separator.classList.add('separator-animated');
-          separator.style.opacity = '0';
-          separator.style.transform = 'scaleX(0)';
-          separator.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-          
-          setTimeout(() => {
-            separator.style.opacity = '1';
-            separator.style.transform = 'scaleX(1)';
-          }, 500 * (index + 1));
-        }
-      });
-
-      // STEP 7: OPTIONAL HERO OVERLAY VALIDATION (Not needed for System page)
-      // The System page doesn't have a traditional hero section with images
-      // This step is skipped as per the EthosSignal design system
-
-      // STEP 8: PERFORMANCE OPTIMIZATION
-      // Remove transition properties after animations complete for better performance
-      setTimeout(() => {
-        const animatedElements = document.querySelectorAll('.scroll-animated, .entrance-animated, .card-animated, .engagement-animated');
-        animatedElements.forEach(element => {
-          if (element.style.opacity === '1') {
-            element.style.transition = 'none';
-          }
-        });
-      }, 2000);
-
-    });
-
-    // STEP 9: SCROLL PROGRESS INDICATOR (Optional Enhancement)
-    // Add subtle scroll progress indicator for better UX
-    function createScrollProgress() {
-      if (!document.querySelector('.scroll-progress')) {
-        const progressBar = document.createElement('div');
-        progressBar.className = 'scroll-progress';
-        progressBar.style.cssText = `
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 3px;
-          background: rgba(167, 127, 67, 0.1);
-          z-index: 1000;
-        `;
-        
-        const progressFill = document.createElement('div');
-        progressFill.className = 'scroll-progress-fill';
-        progressFill.style.cssText = `
-          height: 100%;
-          background: #A77F43;
-          width: 0%;
-          transition: width 0.3s ease;
-        `;
-        
-        progressBar.appendChild(progressFill);
-        document.body.appendChild(progressBar);
-        
-        // Update progress on scroll
-        window.addEventListener('scroll', () => {
-          const scrollTop = window.pageYOffset;
-          const docHeight = document.body.scrollHeight - window.innerHeight;
-          const scrollPercent = (scrollTop / docHeight) * 100;
-          progressFill.style.width = scrollPercent + '%';
-        });
-      }
-    }
-
-    // Initialize scroll progress
-    createScrollProgress();
-
-  </script>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-glyph">
-        <span class="footer-ethos">ETHOS</span>
-        <span class="footer-separator">—•—</span>
-        <span class="footer-signal">SIGNAL</span>
-      </div>
-
-      <p class="footer-tagline">
-        Drift is already in the system. We built the layer to stop it.
-      </p>
-
-      <div class="footer-nav">
-        <a href="/platform.html">Platform Access</a>
-        <a href="/executive-briefings.html">Executive Briefings</a>
-        <a href="/speaking.html">Speaking</a>
-        <a href="/reports.html">Reports</a>
-      </div>
-
-      <div class="footer-legal">
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-        <a href="mailto:founder@ethossignal.com">Contact</a>
-        <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
-        <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
-      </div>
-
-      <div class="footer-transmission">TRANSMISSION COMPLETE</div>
     </div>
-  </footer>
+
+    <!-- Section Separator -->
+    <div style="border-top: 2px solid var(--signal-gold); margin: 0; opacity: 0.3;"></div>
+
+    <div class="section competitive-section">
+        <div class="container">
+            <h2 class="section-title">Category Clarity: What EthosSignal Is—And Isn't</h2>
+            <p class="section-subtitle">We don't optimize people. We measure systems. EthosSignal operates as behavioral infrastructure—diagnosing misalignment between declared strategy and actual behavior before it fractures performance.</p>
+            
+            <div class="category-grid">
+                <div class="category-card primary">
+                    <div class="category-header">≠ HR Platforms</div>
+                    <p class="category-copy">They fix engagement. We fix systems. HR platforms address morale. EthosSignal identifies behavioral misalignment before it becomes systemic risk. This isn't coaching. It's infrastructure.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">≠ Episodic Consulting</div>
+                    <p class="category-copy">Consultants deliver workshops. We deliver telemetry. EthosSignal replaces episodic assessments with continuous diagnostic infrastructure. We don't facilitate alignment. We enforce it.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-header">≠ Process Mapping</div>
+                    <p class="category-copy">They track decisions. We track Drift. Decision platforms map what's happening. EthosSignal reveals <em>why</em> it's breaking. Misalignment isn't a data gap—it's a system condition.</p>
+                </div>
+                
+                <div class="category-card primary">
+                    <div class="category-header">≠ Strategy Execution</div>
+                    <p class="category-copy">They track completion. We measure collapse. When execution fails, OKRs don't explain it. Drift Quotient™ identifies structural misalignment between declared strategy and operational behavior—before it scales.</p>
+                </div>
+            </div>
+            
+            <div class="glyph">—•—</div>
+            
+            <div class="category-footer">
+                <p class="disqualifier">This is not culture tech. It's behavioral infrastructure.</p>
+                <a href="#" class="cta-button">Schedule Strategic Briefing</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Separator -->
+    <div style="border-top: 2px solid var(--signal-gold); margin: 0; opacity: 0.3;"></div>
+
+    <!-- CTA SECTION -->
+    <section style="padding: 4rem 2rem; text-align: center; background: var(--bone-white);">
+      <div class="container">
+        <h2 style="font-family: 'IBM Plex Serif', serif; font-size: clamp(2rem, 3vw, 2.75rem); font-weight: 600; margin-bottom: 1.5rem; color: var(--graphite-black);">Deploy Behavioral Infrastructure</h2>
+        <p style="font-size: 1.125rem; color: var(--ash-slate); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Available to qualified enterprises. Drift Quotient™ isn't a test—it's the measurement engine behind a behavioral risk system designed to protect institutional value under velocity.
+        </p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+          <a href="/drift.html" style="
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            background: var(--signal-gold);
+            color: var(--bone-white);
+            border: 2px solid var(--signal-gold);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+          " onmouseover="this.style.background='var(--signal-gold-pressed)'; this.style.borderColor='var(--signal-gold-pressed)'; this.style.transform='translateY(-1px) scale(1.02)'; this.style.boxShadow='0 8px 24px rgba(167, 127, 67, 0.3)';" onmouseout="this.style.background='var(--signal-gold)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='none'; this.style.boxShadow='0 4px 12px rgba(167, 127, 67, 0.3)';">Request Strategic Briefing</a>
+          <a href="/diagnostic.html" style="
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--graphite-black);
+            border: 2px solid var(--graphite-black);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+                     " onmouseover="this.style.background='var(--graphite-black)'; this.style.color='var(--bone-white)'; this.style.transform='translateY(-1px) scale(1.02)';" onmouseout="this.style.background='transparent'; this.style.color='var(--graphite-black)'; this.style.transform='none';">Take the Test</a>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 1rem; color: rgba(20,20,20,0.8);">3-4 week delivery timeline. Board governance reporting included.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-glyph">
+          <span class="footer-ethos">ETHOS</span>
+          <span class="footer-separator">—•—</span>
+          <span class="footer-signal">SIGNAL</span>
+        </div>
+
+        <p class="footer-tagline">
+          Drift is already in the system. We built the layer to stop it.
+        </p>
+
+        <div class="footer-nav">
+          <a href="/platform.html">Platform Access</a>
+          <a href="/executive-briefings.html">Executive Briefings</a>
+          <a href="/speaking.html">Speaking</a>
+          <a href="/reports.html">Reports</a>
+        </div>
+
+        <div class="footer-legal">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="mailto:founder@ethossignal.com">Contact</a>
+          <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
+          <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
+        </div>
+
+        <div class="footer-transmission">TRANSMISSION COMPLETE</div>
+      </div>
+    </footer>
+
+    <!-- Assessment Modal -->
+    <div id="assessmentModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title">Establish Your Behavioral Baseline</h2>
+            <p class="modal-subtitle">Complete this briefing intake to initiate Drift Quotient™ assessment. This is not a test—it's your enterprise risk telemetry.</p>
+            
+            <form id="assessmentForm">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" id="title" name="title" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company" class="form-label">Company</label>
+                    <input type="text" id="company" name="company" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="roleType" class="form-label">Role Type</label>
+                    <select id="roleType" name="roleType" class="form-select" required>
+                        <option value="">Select your role type</option>
+                        <option value="board-director">Board Director</option>
+                        <option value="cxo">CxO</option>
+                        <option value="pe-operator">PE Operator</option>
+                        <option value="transformation-lead">Transformation Lead</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="form-submit">Initiate Drift Assessment</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('assessmentModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('assessmentModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('assessmentModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to your backend
+            alert('Assessment intake submitted. You will receive access to the full IDQ diagnostic within 24 hours.');
+            closeModal();
+        });
+
+        // Fade-in scroll reveal
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeIns = document.querySelectorAll('.fade-in');
+            if (fadeIns.length > 0) {
+                const fadeObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) entry.target.classList.add('visible');
+                    });
+                });
+                fadeIns.forEach(el => fadeObserver.observe(el));
+            }
+
+            // Tier blocks animation with staggered timing
+            const tierBlocks = document.querySelectorAll('.tier-block');
+            if (tierBlocks.length > 0) {
+                const tierObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Get the index of this tier in the overall list
+                            const tierIndex = Array.from(tierBlocks).indexOf(entry.target);
+                            // Apply staggered delay (500ms per tier)
+                            setTimeout(() => {
+                                entry.target.classList.add("visible");
+                            }, tierIndex * 500);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                tierBlocks.forEach(el => tierObserver.observe(el));
+            }
+        });
+    </script>
 </body>
-</html> 
+</html>

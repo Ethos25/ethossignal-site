@@ -59,8 +59,8 @@
     .section-secondary {
         background: var(--architect-gray);
         padding: 5rem 2rem;
-        border-top: 1px solid var(--signal-gold-subtle);
-        border-bottom: 1px solid var(--signal-gold-subtle);
+        border-top: 1px solid var(--signal-gold);
+        border-bottom: 1px solid var(--signal-gold);
     }
     .section-elevated {
         background: var(--warm-white);
@@ -1091,9 +1091,20 @@
     }
 
     /* Section borders */
-    .section, .section-main, .section-alt {
-      border-top: 1px solid var(--signal-gold-subtle);
-      border-bottom: 1px solid var(--signal-gold-subtle);
+    .section-primary,
+    .section-secondary {
+      border-top: 1px solid var(--signal-gold);
+      border-bottom: none;
+    }
+    .section-primary:first-of-type,
+    .section-secondary:first-of-type {
+      border-top: none;
+    }
+    .section::before {
+      display: none;
+    }
+    .section:first-of-type::before {
+      display: block;
     }
 
     /* Glyph enhancement */
@@ -1245,6 +1256,13 @@
       .footer-legal {
         gap: 1rem;
       }
+    }
+    .section-primary:first-of-type {
+      border-top: none;
+    }
+    .section-secondary:last-of-type,
+    .section-primary:last-of-type {
+      border-bottom: none;
     }
   </style>
 </head>
