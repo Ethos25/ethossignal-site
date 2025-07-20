@@ -377,34 +377,7 @@
            box-shadow: 0 0 0 3px rgba(167, 127, 67, 0.2), 0 6px 20px rgba(167, 127, 67, 0.4);
        }
 
-       .cta-secondary {
-           font-family: 'JetBrains Mono', monospace;
-           font-weight: 700;
-           text-transform: uppercase;
-           letter-spacing: 1px;
-           font-size: 1rem;
-           padding: 1rem 2rem;
-           background: transparent;
-           color: var(--signal-gold);
-           border: 2px solid var(--signal-gold);
-           border-radius: 4px;
-           transition: all 0.3s ease;
-           cursor: pointer;
-           text-decoration: none;
-           display: inline-block;
-       }
 
-       .cta-secondary:hover {
-           background: var(--signal-gold);
-           color: var(--bone-white);
-           transform: translateY(-1px) scale(1.02);
-           box-shadow: 0 6px 16px rgba(167, 127, 67, 0.25);
-       }
-
-       .cta-secondary:focus {
-           outline: none;
-           box-shadow: 0 0 0 3px rgba(167, 127, 67, 0.2), 0 4px 12px rgba(167, 127, 67, 0.2);
-       }
 
                .nav-cta {
             font-family: 'JetBrains Mono', monospace;
@@ -502,16 +475,28 @@
            }
        }
 
-       /* Fade-in Scroll Reveal Classes */
+       /* Enterprise-Grade Fade-in Scroll Reveal */
        .fade-in {
            opacity: 0;
-           transform: translateY(20px);
-           transition: opacity 0.8s ease, transform 0.8s ease;
+           transform: translateY(30px);
+           transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
        }
 
        .fade-in.visible {
            opacity: 1;
            transform: translateY(0);
+       }
+
+       /* Premium Section Hover Effects */
+       .section-primary, .section-secondary, .section-elevated {
+           transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+           cursor: pointer;
+       }
+
+       .section-primary:hover, .section-secondary:hover, .section-elevated:hover {
+           background: rgba(167, 127, 67, 0.03);
+           transform: translateY(-1px);
+           box-shadow: 0 2px 8px rgba(167, 127, 67, 0.06);
        }
 
        /* CTA Sections Enhanced */
@@ -697,14 +682,15 @@
                <span class="wordmark-signal font-ibm-mono" style="font-size: 2rem;">SIGNAL</span>
            </div>
            
-           <div class="nav-links font-inter">
-               <a href="/drift.html" class="nav-link">Drift</a>
-               <a href="#" class="nav-link">Book</a>
-               <a href="#" class="nav-link">System</a>
-               <a href="about.html" class="nav-link">About</a>
-               
-               <a href="/engage" class="nav-cta">Engage</a>
-           </div>
+                       <div class="nav-links font-inter">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="drift.html" class="nav-link">Drift</a>
+                <a href="book.html" class="nav-link">Book</a>
+                <a href="system.html" class="nav-link">System</a>
+                <a href="about.html" class="nav-link">About</a>
+                
+                <a href="engage.html" class="nav-cta">Engage</a>
+            </div>
        </div>
    </nav>
 
@@ -761,8 +747,8 @@
                Most metrics measure outputs. This one tracks collapse—before it starts.
            </p>
            <!-- Primary CTA - Enhanced -->
-           <a href="/engage" class="cta-primary">
-               Take the Test
+           <a href="engage.html" class="cta-primary">
+               Engage
            </a>
        </div>
    </section>
@@ -824,8 +810,8 @@
            </p>
            
            <div style="text-align: center;">
-               <a href="#" class="cta-primary">
-                   Take the Test
+               <a href="/engage" class="cta-primary">
+                   Engage
                </a>
            </div>
        </div>
@@ -869,8 +855,8 @@
            <div class="glyph">—•—</div>
            
            <div style="text-align: center;">
-               <a href="/drift.html" class="cta-secondary">
-                   Get Briefed
+               <a href="engage.html" class="cta-primary">
+                   Engage
                </a>
            </div>
        </div>
@@ -916,7 +902,7 @@
           <a href="/terms.html">Terms of Service</a>
           <a href="mailto:founder@ethossignal.com">Contact</a>
           <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
-          <span style="color: #AAAAAA;">© 2025 EthosSignal. All rights reserved.</span>
+                      <span style="color: var(--ash-slate);">© 2025 EthosSignal. All rights reserved.</span>
         </div>
 
         <div class="footer-transmission">TRANSMISSION COMPLETE</div>
@@ -925,12 +911,17 @@
 
    <script>
      document.addEventListener('DOMContentLoaded', function() {
-       // Fade-in scroll reveal
+       // Enterprise-Grade Fade-in Scroll Reveal
        const fadeIns = document.querySelectorAll('.fade-in');
        const fadeObserver = new IntersectionObserver(entries => {
          entries.forEach(entry => {
-           if (entry.isIntersecting) entry.target.classList.add('visible');
+           if (entry.isIntersecting) {
+             entry.target.classList.add('visible');
+           }
          });
+       }, { 
+         threshold: 0.1,
+         rootMargin: '0px 0px -50px 0px'
        });
        fadeIns.forEach(el => fadeObserver.observe(el));
 
