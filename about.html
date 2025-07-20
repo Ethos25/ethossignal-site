@@ -172,6 +172,101 @@
         padding: 3rem 0;
     }
 
+    /* Navigation */
+    .nav {
+        position: sticky;
+        top: 0;
+        background: var(--warm-white);
+        border-bottom: 2px solid var(--signal-gold);
+        box-shadow: 0 4px 24px rgba(167, 127, 67, 0.08);
+        z-index: 50;
+        padding: 1.5rem 2rem;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .wordmark {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        flex-shrink: 0;
+    }
+
+    .wordmark-ethos {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        color: var(--graphite-black);
+        font-size: 2rem;
+        letter-spacing: -0.04em;
+    }
+
+    .wordmark-separator {
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 500;
+        color: var(--ash-slate);
+        font-size: 1.5rem;
+        letter-spacing: -0.04em;
+        animation: morse-pulse 12s infinite;
+        margin: 0 0.1rem;
+    }
+
+    .wordmark-signal {
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 400;
+        color: var(--signal-gold);
+        font-size: 2rem;
+        letter-spacing: -0.04em;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        color: var(--graphite-black);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        position: relative;
+    }
+
+    .nav-link:hover {
+        color: var(--signal-gold);
+    }
+
+    .nav-cta {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.875rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--signal-gold);
+        color: var(--bone-white);
+        border: 2px solid var(--signal-gold);
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav-cta:hover {
+        background: var(--signal-gold-pressed);
+        border-color: var(--signal-gold-pressed);
+        transform: translateY(-1px);
+    }
+
     /* Standardized CTA Component System */
     .cta-primary, .cta-button, .nav-cta {
         font-family: 'JetBrains Mono', monospace;
@@ -193,30 +288,8 @@
         transform: translateY(-1px);
     }
 
-    .cta-button, .nav-cta, .hero-cta, .cta-primary {
-        font-family: 'JetBrains Mono', monospace !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        font-size: 1rem !important;
-        padding: 1rem 2rem !important;
-        background: #A77F43 !important;
-        color: #FFFFFF !important;
-        border: 2px solid #A77F43 !important;
-        border-radius: 4px !important;
-        box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3) !important;
-        transition: all 0.2s ease !important;
-        cursor: pointer !important;
-        text-decoration: none !important;
-        display: inline-block !important;
-    }
-    .cta-button:hover, .nav-cta:hover, .hero-cta:hover, .cta-primary:hover {
-        background: #8A652F !important;
-        border-color: #8A652F !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 20px rgba(167, 127, 67, 0.4) !important;
-        color: #FFFFFF !important;
-    }
+
+
 
     /* CINEMATIC HERO SECTION */
     .hero-section {
@@ -863,16 +936,33 @@
       }
 
       .nav-links {
-        gap: 1rem;
+        gap: 0.75rem;
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
       }
 
-      /* Transform prevention for glyphs */
-      .glyph, [style*="glyph-pulse"], .wordmark-separator {
+      .nav-cta {
+        font-size: 0.75rem;
+        padding: 0.625rem 1rem;
+        letter-spacing: 0.3px;
+      }
+
+      .wordmark-ethos, .wordmark-signal {
+        font-size: 1.5rem;
+      }
+
+      .wordmark-separator {
+        font-size: 1.25rem;
         transform: none !important;
         -webkit-transform: none !important;
+      }
+
+      /* Hero section mobile fixes */
+      .glyph, [style*="glyph-pulse"] {
+        transform: none !important;
+        -webkit-transform: none !important;
+        font-size: 2rem !important;
       }
 
       /* Container mobile constraints */
@@ -1002,6 +1092,24 @@
         padding: 0.75rem;
       }
 
+      .nav-container {
+        gap: 0.75rem;
+      }
+
+      .nav-links {
+        gap: 0.75rem;
+      }
+
+      .wordmark-ethos, .wordmark-signal {
+        font-size: 1.25rem;
+      }
+
+      .wordmark-separator {
+        font-size: 1rem;
+        transform: none !important;
+        -webkit-transform: none !important;
+      }
+
       .container {
         padding: 0 0.75rem;
       }
@@ -1025,92 +1133,8 @@
       border: 1px solid rgba(167, 127, 67, 0.3);
       margin: 0 auto;
     }
-    .nav {
-        position: sticky;
-        top: 0;
-        background: var(--warm-white);
-        border-bottom: 2px solid var(--signal-gold);
-        box-shadow: 0 4px 24px rgba(167, 127, 67, 0.08);
-        z-index: 50;
-        padding: 1.5rem 2rem;
-    }
-    .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .wordmark {
-        display: flex;
-        align-items: center;
-        gap: 0.2rem;
-        font-size: 1.25rem;
-    }
-    .wordmark-ethos {
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 700;
-        color: var(--graphite-black);
-        font-size: 2rem;
-        letter-spacing: -0.04em;
-    }
-    .wordmark-separator {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 500;
-        color: var(--ash-slate);
-        font-size: 1.5rem;
-        letter-spacing: -0.04em;
-        animation: morse-pulse 12s infinite;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        margin: 0 0.1rem;
-        vertical-align: middle;
-        line-height: 1;
-    }
-    .wordmark-signal {
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 400;
-        color: var(--signal-gold);
-        font-size: 2rem;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        letter-spacing: -0.04em;
-    }
-    .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-    }
-    .nav-link {
-        color: var(--graphite-black);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-weight: 500;
-        position: relative;
-    }
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--signal-gold);
-        transition: width 0.3s ease;
-    }
-    .nav-link:hover {
-        color: var(--signal-gold);
-    }
-    .nav-link:hover::after {
-        width: 100%;
-    }
-    .nav-link:focus {
-        outline: none;
-        color: var(--signal-gold);
-    }
-    .nav-link:focus::after {
-        width: 100%;
-    }
+
+
 
     @keyframes morse-pulse {
         0%, 15%, 100% { opacity: 1; }
@@ -1121,11 +1145,7 @@
         45% { opacity: 0.2; }
         55%, 85% { opacity: 0.2; }
     }
-    @media (max-width: 768px) {
-        .nav-links {
-            display: none;
-        }
-    }
+
 
     /* Headlines */
     h1, .headline-primary {
@@ -1140,38 +1160,6 @@
     }
     .supporting-text, .section-context, .section-subhead, .subline, .hero-description {
       color: var(--graphite-blue);
-    }
-
-    /* Navigation CTA Standardized */
-    .nav-cta {
-        font-family: 'JetBrains Mono', monospace;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 1rem;
-        padding: 1rem 2rem;
-        background: var(--signal-gold);
-        color: var(--bone-white);
-        border: 2px solid var(--signal-gold);
-        border-radius: 4px;
-        box-shadow: 0 4px 12px rgba(167, 127, 67, 0.3);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .nav-cta:hover {
-        background: var(--signal-gold-pressed);
-        border-color: var(--signal-gold-pressed);
-        transform: translateY(-1px) scale(1.02);
-        box-shadow: 0 8px 24px rgba(167, 127, 67, 0.3);
-        color: var(--bone-white);
-    }
-
-    .nav-cta:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(167, 127, 67, 0.2), 0 6px 20px rgba(167, 127, 67, 0.4);
     }
 
     /* CTA Buttons */
