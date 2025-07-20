@@ -238,6 +238,15 @@
            color: var(--graphite-black);
            line-height: 1.6;
            overflow-x: hidden;
+           width: 100%;
+           max-width: 100vw;
+       }
+
+       /* Mobile-first container constraints */
+       html {
+           overflow-x: hidden;
+           width: 100%;
+           max-width: 100vw;
        }
 
        .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
@@ -254,6 +263,9 @@
            box-shadow: 0 4px 24px rgba(167, 127, 67, 0.08);
            z-index: 50;
            padding: 1.5rem 2rem;
+           width: 100%;
+           max-width: 100vw;
+           overflow-x: hidden;
        }
 
        .nav-container {
@@ -262,6 +274,8 @@
            display: flex;
            justify-content: space-between;
            align-items: center;
+           width: 100%;
+           box-sizing: border-box;
        }
 
        .wordmark {
@@ -269,6 +283,7 @@
            align-items: center;
            gap: 0.2rem;
            font-size: 1.25rem;
+           flex-shrink: 0;
        }
 
        .wordmark-ethos {
@@ -291,6 +306,8 @@
            margin: 0 0.1rem;
            vertical-align: middle;
            line-height: 1;
+           transform: none !important; /* Prevent rotation */
+           -webkit-transform: none !important; /* Webkit specific */
        }
 
        .wordmark-signal {
@@ -307,6 +324,7 @@
            display: flex;
            align-items: center;
            gap: 2rem;
+           flex-wrap: wrap;
        }
 
        .nav-link {
@@ -414,12 +432,18 @@
            max-width: 1000px;
            margin: 0 auto;
            padding: 0 1.5rem;
+           width: 100%;
+           max-width: 100vw;
+           box-sizing: border-box;
        }
 
        .container-narrow {
            max-width: 800px;
            margin: 0 auto;
            padding: 0 1.5rem;
+           width: 100%;
+           max-width: 100vw;
+           box-sizing: border-box;
        }
 
        /* Visual Glyph Integration */
@@ -430,6 +454,8 @@
            text-align: center;
            margin: 2rem 0;
            animation: pulse 4s infinite ease-in-out;
+           transform: none !important; /* Prevent rotation on mobile */
+           -webkit-transform: none !important; /* Webkit specific */
        }
 
        @keyframes pulse {
@@ -659,7 +685,140 @@
         opacity: 0.75; /* Subtle presence for system signature */
       }
 
+      /* COMPREHENSIVE MOBILE MEDIA QUERIES */
       @media (max-width: 768px) {
+        /* Mobile container constraints */
+        html, body {
+          overflow-x: hidden !important;
+          width: 100% !important;
+          max-width: 100vw !important;
+        }
+
+        /* Navigation mobile fixes */
+        .nav {
+          padding: 1rem;
+          width: 100%;
+          max-width: 100vw;
+          overflow-x: hidden;
+        }
+
+        .nav-container {
+          flex-direction: column;
+          gap: 1rem;
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .wordmark {
+          order: 1;
+        }
+
+        .nav-links {
+          order: 2;
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
+        }
+
+        .wordmark-ethos, .wordmark-signal {
+          font-size: 1.5rem;
+        }
+
+        .wordmark-separator {
+          font-size: 1.25rem;
+          transform: none !important;
+          -webkit-transform: none !important;
+        }
+
+                 /* Hero section mobile fixes */
+         .glyph, [style*="glyph-pulse"] {
+           transform: none !important;
+           -webkit-transform: none !important;
+           font-size: 2rem !important;
+         }
+
+         /* Hero section container fixes */
+         section[style*="position: relative"] {
+           width: 100% !important;
+           max-width: 100vw !important;
+           overflow-x: hidden !important;
+         }
+
+         /* Hero overlay content fixes */
+         div[style*="position: absolute"][style*="inset: 0"][style*="z-index: 10"] {
+           padding: 0 1rem !important;
+           width: 100% !important;
+           max-width: 100vw !important;
+           box-sizing: border-box !important;
+         }
+
+        /* Container mobile constraints */
+        .container, .container-narrow {
+          padding: 0 1rem;
+          width: 100%;
+          max-width: 100vw;
+          margin: 0 auto;
+          box-sizing: border-box;
+        }
+
+        .content-grid-enhanced {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .content-grid-split {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .section-divider {
+          display: none;
+        }
+
+        .metrics-display {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          padding: 1.5rem;
+          margin: 2rem 0;
+        }
+
+        /* Typography mobile adjustments */
+        .section-emphasis {
+          font-size: clamp(2rem, 8vw, 2.5rem);
+        }
+
+        .section-headline {
+          font-size: clamp(1.25rem, 6vw, 1.75rem);
+        }
+
+        .executive-headline {
+          font-size: clamp(2rem, 8vw, 2.5rem);
+        }
+
+        .executive-subhead {
+          font-size: clamp(1rem, 5vw, 1.25rem);
+        }
+
+        /* Section padding mobile adjustments */
+        .section-primary, .section-secondary, .section-elevated {
+          padding: 3rem 1rem;
+          margin: 0;
+          width: 100%;
+          max-width: 100vw;
+          box-sizing: border-box;
+        }
+
+        /* CTA mobile adjustments */
+        .cta-primary, .nav-cta {
+          padding: 1rem 1.5rem;
+          font-size: 0.875rem;
+          width: auto;
+          max-width: 100%;
+        }
+
+        /* Footer mobile fixes */
         .footer-nav {
           gap: 1rem;
         }
@@ -668,6 +827,66 @@
         }
         .footer-legal {
           gap: 1rem;
+        }
+      }
+
+             /* iOS Safari specific fixes */
+       @media screen and (-webkit-min-device-pixel-ratio: 2) {
+         /* Prevent webkit transform issues */
+         .wordmark-separator, .glyph, [style*="glyph-pulse"] {
+           -webkit-transform: none !important;
+           transform: none !important;
+           -webkit-backface-visibility: hidden;
+           backface-visibility: hidden;
+         }
+
+         /* Prevent iOS zoom on double tap */
+         * {
+           touch-action: manipulation;
+         }
+
+         /* Fix iOS viewport height issues */
+         section[style*="100vh"] {
+           min-height: 100vh;
+           height: -webkit-fill-available;
+         }
+       }
+
+       /* Extra small mobile devices */
+       @media (max-width: 480px) {
+        .nav {
+          padding: 0.75rem;
+        }
+
+        .nav-container {
+          gap: 0.75rem;
+        }
+
+        .nav-links {
+          gap: 0.75rem;
+        }
+
+        .wordmark-ethos, .wordmark-signal {
+          font-size: 1.25rem;
+        }
+
+        .wordmark-separator {
+          font-size: 1rem;
+          transform: none !important;
+          -webkit-transform: none !important;
+        }
+
+        .container, .container-narrow {
+          padding: 0 0.75rem;
+        }
+
+        .section-primary, .section-secondary, .section-elevated {
+          padding: 2rem 0.75rem;
+        }
+
+        .cta-primary, .nav-cta {
+          padding: 0.75rem 1.25rem;
+          font-size: 0.8rem;
         }
       }
    </style>
@@ -734,7 +953,7 @@
          min-height: 100vh;
        ">
            <!-- Glyph -->
-           <div class="font-jetbrains" style="color: var(--signal-gold); font-size: 3rem; animation: glyph-pulse 4s infinite; margin-bottom: 1.5rem;">
+           <div class="font-jetbrains" style="color: var(--signal-gold); font-size: 3rem; animation: glyph-pulse 4s infinite; margin-bottom: 1.5rem; transform: none !important; -webkit-transform: none !important;">
                —•—
            </div>
            <!-- Headline - Executive Typography -->
