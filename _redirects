@@ -1,7 +1,7 @@
 https://www.ethossignal.com/* https://ethossignal.com/:splat 301!
 http://ethossignal.com/* https://ethossignal.com/:splat 301!
-/about/ /about 301!
-/book/ /book 301!
-/drift/ /drift 301!
-/engage/ /engage 301!
-/system/ /system 301!
+/about/ /about.html 301!
+/book/ /book.html 301!
+/drift/ /drift.html 301!
+/engage/ /engage.html 301!
+/system/ /system.html 301!
