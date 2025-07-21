@@ -299,6 +299,7 @@
             color: #888888;
             font-size: 1rem;
             letter-spacing: -0.04em;
+            animation: morse-pulse 12s infinite;
             margin: 0 0.1rem;
         }
 
@@ -404,6 +405,16 @@
             .footer-nav, .footer-legal {
                 gap: 1rem;
             }
+        }
+
+        @keyframes morse-pulse {
+            0%, 15%, 100% { opacity: 1; }
+            5% { opacity: 0.2; }
+            20%, 30% { opacity: 1; }
+            25% { opacity: 0.2; }
+            35%, 50% { opacity: 1; }
+            45% { opacity: 0.2; }
+            55%, 85% { opacity: 0.2; }
         }
     </style>
 </head>
