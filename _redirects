@@ -1,4 +1,6 @@
+# Force HTTPS and remove www
 https://www.ethossignal.com/* https://ethossignal.com/:splat 301!
+http://www.ethossignal.com/* https://ethossignal.com/:splat 301!
 http://ethossignal.com/* https://ethossignal.com/:splat 301!
 /about/ /about.html 301!
 /book/ /book.html 301!
