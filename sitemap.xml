@@ -30,4 +30,29 @@
     <lastmod>2025-07-20</lastmod>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://ethossignal.com/privacy.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ethossignal.com/platform.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ethossignal.com/executive-briefings.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ethossignal.com/speaking.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ethossignal.com/reports.html</loc>
+    <lastmod>2025-01-21</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset> 

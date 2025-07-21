@@ -1732,10 +1732,15 @@
       if (element.hasAttribute('data-animated')) return;
       element.setAttribute('data-animated', 'true');
       
-      const text = element.textContent;
-      const isNumber = /^\d+$/.test(text);
-      
-      if (isNumber) {
+                const text = element.textContent;
+          const isNumber = /^\d+$/.test(text);
+          
+          // Store original content for crawler accessibility
+          if (!element.hasAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', text);
+          }
+          
+          if (isNumber) {
         const finalValue = parseInt(text);
         const duration = 2500;
         const increment = finalValue / (duration / 16);
@@ -1746,7 +1751,9 @@
         const timer = setInterval(function() {
           currentValue += increment;
           if (currentValue >= finalValue) {
-            element.textContent = finalValue;
+            // Always return to original static content
+            const originalText = element.getAttribute('data-original-text') || finalValue.toString();
+            element.textContent = originalText;
             clearInterval(timer);
             element.classList.remove('counting');
           } else {
@@ -1767,7 +1774,9 @@
           const currentValue = (1.5 * progress).toFixed(1);
           
           if (currentStep >= steps) {
-            element.textContent = '$1.5B';
+            // Always return to original static content
+            const originalText = element.getAttribute('data-original-text') || '$1.5B';
+            element.textContent = originalText;
             clearInterval(timer);
             element.classList.remove('counting');
           } else {
