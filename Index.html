@@ -846,6 +846,11 @@
         .footer-legal {
           gap: 1rem;
         }
+
+        /* Service offerings mobile responsive */
+        div[style*="display: grid; grid-template-columns: repeat(2, 1fr)"] {
+          grid-template-columns: 1fr !important;
+        }
       }
 
              /* iOS Safari specific fixes */
@@ -1095,33 +1100,76 @@
        </div>
    </section>
 
-   <!-- PLATFORM CAPABILITIES SECTION -->
-   <section class="section-secondary fade-in">
+
+
+  <!-- SERVICE OFFERINGS SECTION -->
+  <section class="section-primary fade-in">
+      <div class="container">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; max-width: 1000px; margin: 0 auto;">
+              
+              <!-- Card 1: M&A LIFECYCLE -->
+              <div style="background: var(--warm-white); border: 2px solid var(--architect-gray); border-radius: 8px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(167, 127, 67, 0.08)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(167, 127, 67, 0.15)'; this.querySelector('.left-accent-bar').style.opacity='1';" onmouseout="this.style.background='var(--warm-white)'; this.style.borderColor='var(--architect-gray)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.left-accent-bar').style.opacity='0';">
+                  <!-- Hidden left accent bar (simulates ::before pseudo-element) -->
+                  <div class="left-accent-bar" style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--signal-gold); opacity: 0; transition: opacity 0.3s ease;"></div>
+                  <h3 style="color: var(--signal-gold); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">M&A LIFECYCLE</h3>
+                  <p style="color: var(--deep-charcoal); font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.75rem; font-family: 'Inter', sans-serif;">Pre-deal readiness, due diligence, post-close alignment</p>
+                  <p style="color: var(--ash-slate); font-size: 0.875rem; line-height: 1.6; font-family: 'Inter', sans-serif;">From LOI to earnout completion. We architect the operational backbone that protects value through every phase of the transaction.</p>
+              </div>
+              
+              <!-- Card 2: LEADERSHIP SUCCESSION -->
+              <div style="background: var(--warm-white); border: 2px solid var(--architect-gray); border-radius: 8px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(167, 127, 67, 0.08)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(167, 127, 67, 0.15)'; this.querySelector('.left-accent-bar').style.opacity='1';" onmouseout="this.style.background='var(--warm-white)'; this.style.borderColor='var(--architect-gray)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.left-accent-bar').style.opacity='0';">
+                  <!-- Hidden left accent bar (simulates ::before pseudo-element) -->
+                  <div class="left-accent-bar" style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--signal-gold); opacity: 0; transition: opacity 0.3s ease;"></div>
+                  <h3 style="color: var(--signal-gold); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">LEADERSHIP SUCCESSION</h3>
+                  <p style="color: var(--deep-charcoal); font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.75rem; font-family: 'Inter', sans-serif;">Founder exits and CEO transitions destabilize identity</p>
+                  <p style="color: var(--ash-slate); font-size: 0.875rem; line-height: 1.6; font-family: 'Inter', sans-serif;">Seamless leadership transition without cultural fracture. We ensure continuity when the irreplaceable needs replacing.</p>
+              </div>
+              
+              <!-- Card 3: PRIVATE EQUITY OPERATIONS -->
+              <div style="background: var(--warm-white); border: 2px solid var(--architect-gray); border-radius: 8px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(167, 127, 67, 0.08)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(167, 127, 67, 0.15)'; this.querySelector('.left-accent-bar').style.opacity='1';" onmouseout="this.style.background='var(--warm-white)'; this.style.borderColor='var(--architect-gray)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.left-accent-bar').style.opacity='0';">
+                  <!-- Hidden left accent bar (simulates ::before pseudo-element) -->
+                  <div class="left-accent-bar" style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--signal-gold); opacity: 0; transition: opacity 0.3s ease;"></div>
+                  <h3 style="color: var(--signal-gold); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">PRIVATE EQUITY OPERATIONS</h3>
+                  <p style="color: var(--deep-charcoal); font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.75rem; font-family: 'Inter', sans-serif;">Execution under investor pressure, exit preparation, value protection</p>
+                  <p style="color: var(--ash-slate); font-size: 0.875rem; line-height: 1.6; font-family: 'Inter', sans-serif;">Portfolio company transformation that delivers returns. We speak both operator and investor fluently.</p>
+              </div>
+              
+              <!-- Card 4: GROWTH INFLECTIONS -->
+              <div style="background: var(--warm-white); border: 2px solid var(--architect-gray); border-radius: 8px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(167, 127, 67, 0.08)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(167, 127, 67, 0.15)'; this.querySelector('.left-accent-bar').style.opacity='1';" onmouseout="this.style.background='var(--warm-white)'; this.style.borderColor='var(--architect-gray)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.left-accent-bar').style.opacity='0';">
+                  <!-- Hidden left accent bar (simulates ::before pseudo-element) -->
+                  <div class="left-accent-bar" style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--signal-gold); opacity: 0; transition: opacity 0.3s ease;"></div>
+                  <h3 style="color: var(--signal-gold); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">GROWTH INFLECTIONS</h3>
+                  <p style="color: var(--deep-charcoal); font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.75rem; font-family: 'Inter', sans-serif;">Scale reveals what strategy concealed—systems start to slip</p>
+                  <p style="color: var(--ash-slate); font-size: 0.875rem; line-height: 1.6; font-family: 'Inter', sans-serif;">When 10x growth breaks everything that got you there. We rebuild at speed without losing what matters.</p>
+              </div>
+              
+              <!-- Card 5: CRISIS STABILIZATION -->
+              <div style="background: var(--warm-white); border: 2px solid var(--architect-gray); border-radius: 8px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(167, 127, 67, 0.08)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(167, 127, 67, 0.15)'; this.querySelector('.left-accent-bar').style.opacity='1';" onmouseout="this.style.background='var(--warm-white)'; this.style.borderColor='var(--architect-gray)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.left-accent-bar').style.opacity='0';">
+                  <!-- Hidden left accent bar (simulates ::before pseudo-element) -->
+                  <div class="left-accent-bar" style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--signal-gold); opacity: 0; transition: opacity 0.3s ease;"></div>
+                  <h3 style="color: var(--signal-gold); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">CRISIS STABILIZATION</h3>
+                  <p style="color: var(--deep-charcoal); font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.75rem; font-family: 'Inter', sans-serif;">Intervention when coherence collapses and execution breaks</p>
+                  <p style="color: var(--ash-slate); font-size: 0.875rem; line-height: 1.6; font-family: 'Inter', sans-serif;">Rapid deployment when the unthinkable happens. We've led through crisis and know what actually works.</p>
+              </div>
+              
+              <!-- Card 6: STRATEGIC SHIFTS -->
+              <div style="background: var(--warm-white); border: 2px solid var(--architect-gray); border-radius: 8px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(167, 127, 67, 0.08)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(167, 127, 67, 0.15)'; this.querySelector('.left-accent-bar').style.opacity='1';" onmouseout="this.style.background='var(--warm-white)'; this.style.borderColor='var(--architect-gray)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.left-accent-bar').style.opacity='0';">
+                  <!-- Hidden left accent bar (simulates ::before pseudo-element) -->
+                  <div class="left-accent-bar" style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--signal-gold); opacity: 0; transition: opacity 0.3s ease;"></div>
+                  <h3 style="color: var(--signal-gold); font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; font-family: 'JetBrains Mono', monospace;">STRATEGIC SHIFTS</h3>
+                  <p style="color: var(--deep-charcoal); font-size: 1rem; font-weight: 500; line-height: 1.5; margin-bottom: 0.75rem; font-family: 'Inter', sans-serif;">Business model redesign, culture reset, AI adaptation</p>
+                  <p style="color: var(--ash-slate); font-size: 0.875rem; line-height: 1.6; font-family: 'Inter', sans-serif;">Fundamental transformation without fatal disruption. We architect change that sticks.</p>
+              </div>
+              
+          </div>
+      </div>
+  </section>
+
+
+
+   <!-- FINAL CTA SECTION -->
+   <section class="section-primary fade-in">
        <div class="container">
-           <h2 class="section-headline" style="text-align: center; margin-bottom: 3rem;">
-               <span style="color: var(--deep-charcoal);">Drift is inevitable.</span><br>
-               <span style="color: var(--signal-gold);">Misalignment is optional.</span>
-           </h2>
-           
-           <div class="metrics-display">
-               <div class="metric-unit" data-delay="0">
-                   <span class="metric-number">IDQ</span>
-                   <span class="metric-label">Individual Drift Quotient™</span>
-               </div>
-               <div class="metric-unit" data-delay="200">
-                   <span class="metric-number">ODQ</span>
-                   <span class="metric-label">Organizational Drift Quotient™</span>
-               </div>
-               <div class="metric-unit" data-delay="400">
-                   <span class="metric-number">2025</span>
-                   <span class="metric-label">Platform Deployed</span>
-               </div>
-           </div>
-           
-           <p class="section-text" style="text-align: center; margin-bottom: 2rem;">
-               If your system isn't tracking it, you're not just losing to it—you're scaling it.
-           </p>
-           
            <div style="text-align: center;">
                <a href="/engage" class="cta-primary">
                    Engage
@@ -1130,17 +1178,16 @@
        </div>
    </section>
 
-   
-
    <!-- Section Separator -->
    <div class="section-separator"></div>
 
-   <!-- COMMAND INTERFACE SECTION -->
-   <section class="command-interface">
-       <div class="container-narrow">
-           <a href="#" class="interface-execute font-jetbrains">
-               <span>SEE TOPICS</span>
-           </a>
+   <!-- DRIFT STATEMENT SECTION -->
+   <section class="section-secondary fade-in">
+       <div class="container">
+           <h2 class="section-headline" style="text-align: center; margin-bottom: 3rem;">
+               <span style="color: var(--deep-charcoal);">Drift is inevitable.</span><br>
+               <span style="color: var(--signal-gold);">Misalignment is optional.</span>
+           </h2>
        </div>
    </section>
 
