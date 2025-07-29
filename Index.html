@@ -972,23 +972,97 @@
          text-align: center;
          padding: 0 1.5rem;
          min-height: 100vh;
+         transform: translateY(-10vh);
        ">
-           <!-- Glyph -->
-           <div class="font-jetbrains" style="color: var(--signal-gold); font-size: 3rem; animation: glyph-pulse 4s infinite; margin-bottom: 1.5rem; transform: none !important; -webkit-transform: none !important;">
-               —•—
-           </div>
-           <!-- Headline - Executive Typography -->
-           <h1 class="font-ibm-serif" style="font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; max-width: 1000px; margin: 0 auto 1.5rem; color: var(--bone-white); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
-               If you're not tracking Drift,<br>you're operationalizing it.
+
+           <!-- H1 - Largest -->
+           <h1 class="font-ibm-serif" style="font-size: clamp(3.5rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; width: 100%; margin: 0 auto 1rem; color: var(--signal-gold); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); text-align: center;">
+               M&A. Succession. Transformation.
            </h1>
-           <!-- Subline - Executive Typography -->
-           <p class="font-inter executive-subhead" style="max-width: 600px; color: var(--bone-white); margin-bottom: 2.5rem; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);">
-               Most metrics measure outputs. This one tracks collapse—before it starts.
-           </p>
+           <!-- H2 - Medium -->
+           <h2 class="font-ibm-serif" style="font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; max-width: 1000px; margin: 0 auto 1rem; color: var(--bone-white); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">
+               Critical transitions demand experienced operators.
+           </h2>
+           <!-- H3 - Smallest -->
+           <h3 class="font-inter" style="font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 500; max-width: 600px; margin: 0 auto 2.5rem; color: var(--bone-white); text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);">
+               We provide strategic execution during your highest-stakes moments.
+           </h3>
            <!-- Primary CTA - Enhanced -->
            <a href="engage.html" class="cta-primary">
                Engage
            </a>
+       </div>
+   </section>
+
+   <!-- NEW SECTION - Amy Introduction -->
+   <section class="section-secondary fade-in">
+       <div class="container">
+           <!-- Content Container Box -->
+           <div style="background: var(--warm-white); padding: 4rem 3rem; border-radius: 4px; box-shadow: 0 2px 8px rgba(167, 127, 67, 0.08); border: 1px solid rgba(167, 127, 67, 0.1);">
+               <!-- Impact Numbers -->
+               <div style="display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; flex-wrap: wrap;">
+                   <div style="text-align: center;">
+                       <h2 style="font-family: 'JetBrains Mono', monospace; font-size: 3.5rem; font-weight: 700; color: var(--signal-gold); margin: 0; line-height: 1;">$70B</h2>
+                       <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--graphite-blue); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.5rem;">Platform Consolidated</p>
+                   </div>
+                   <div style="text-align: center;">
+                       <h2 style="font-family: 'JetBrains Mono', monospace; font-size: 3.5rem; font-weight: 700; color: var(--signal-gold); margin: 0; line-height: 1;">$1.6B</h2>
+                       <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--graphite-blue); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.5rem;">Direct Oversight</p>
+                   </div>
+                   <div style="text-align: center;">
+                       <h2 style="font-family: 'JetBrains Mono', monospace; font-size: 3.5rem; font-weight: 700; color: var(--signal-gold); margin: 0; line-height: 1;">25</h2>
+                       <p style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: var(--graphite-blue); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.5rem;">Years of Pattern Recognition</p>
+                   </div>
+               </div>
+
+               <!-- Left-Right Split Layout -->
+               <div style="display: grid; grid-template-columns: 1fr 2px 1fr; gap: 3rem; align-items: start; max-width: 1200px; margin: 0 auto;">
+                   <!-- Left Side: Text Content with Systems Page Card Effect -->
+                   <div style="text-align: left; background: var(--warm-white); border: 2px solid var(--architect-gray); border-radius: 8px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='rgba(167, 127, 67, 0.08)'; this.style.borderColor='var(--signal-gold)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(167, 127, 67, 0.15)'; this.querySelector('.left-accent-bar').style.opacity='1';" onmouseout="this.style.background='var(--warm-white)'; this.style.borderColor='var(--architect-gray)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.left-accent-bar').style.opacity='0';">
+                       <!-- Hidden left accent bar (simulates ::before pseudo-element) -->
+                       <div class="left-accent-bar" style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--signal-gold); opacity: 0; transition: opacity 0.3s ease;"></div>
+                       
+                       <h3 style="font-family: 'IBM Plex Serif', serif; font-size: 1.5rem; font-weight: 400; color: var(--deep-charcoal); margin-bottom: 1rem;">
+                           Founded by <span style="font-weight: 700; color: var(--signal-gold); font-size: 1.65rem;">Amy Oguntala</span>
+                       </h3>
+                       <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--graphite-blue); line-height: 1.5; margin-bottom: 1rem;">
+                           The strategic operator who's been the <strong>consultant</strong>, the <strong>COO</strong>, and the <strong>systems thinker</strong>.
+                       </p>
+                       <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--graphite-blue); line-height: 1.5;">
+                           <strong>Led M&A integration, private equity operations, and enterprise transformation</strong>—across Fortune 500 and founder-led firms.
+                       </p>
+                   </div>
+                   
+                   <!-- Divider Line -->
+                   <div style="background: var(--signal-gold); opacity: 0.3; width: 2px; height: 100%; min-height: 200px;"></div>
+                   
+                   <!-- Right Side: Credential Pills -->
+                   <div style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
+                       <!-- All Pills Left-Justified on Right Side -->
+                       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-start;">
+                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--signal-gold); color: var(--warm-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 600; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--bone-white)'; this.style.color='var(--signal-gold)'; this.style.borderColor='var(--signal-gold)';" onmouseout="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)'; this.style.borderColor='var(--signal-gold)';">Former COO</span>
+                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--bone-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)';" onmouseout="this.style.background='var(--bone-white)'; this.style.color='inherit';">Accenture Alum</span>
+                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--bone-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)';" onmouseout="this.style.background='var(--bone-white)'; this.style.color='inherit';">CFP®</span>
+                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--bone-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)';" onmouseout="this.style.background='var(--bone-white)'; this.style.color='inherit';">MBA</span>
+                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--bone-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)';" onmouseout="this.style.background='var(--bone-white)'; this.style.color='inherit';">Agile/PMP® Certified (Past)</span>
+                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--bone-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)';" onmouseout="this.style.background='var(--bone-white)'; this.style.color='inherit';">AI Strategy (Cornell)</span>
+                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--bone-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)';" onmouseout="this.style.background='var(--bone-white)'; this.style.color='inherit';">Fortune 500 Omnichannel</span>
+                                                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--bone-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)';" onmouseout="this.style.background='var(--bone-white)'; this.style.color='inherit';">RIA Integration</span>
+                           <span style="display: inline-block; padding: 0.5rem 1.25rem; background: var(--signal-gold); color: var(--warm-white); border: 1px solid var(--signal-gold); border-radius: 4px; font-size: 0.875rem; font-weight: 600; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.background='var(--bone-white)'; this.style.color='var(--signal-gold)'; this.style.borderColor='var(--signal-gold)';" onmouseout="this.style.background='var(--signal-gold)'; this.style.color='var(--warm-white)'; this.style.borderColor='var(--signal-gold)';">Private Equity Exit</span>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- Closing Section -->
+               <div style="max-width: 700px; margin: 4rem auto 0; text-align: center;">
+                   <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--graphite-blue); line-height: 1.6;">
+                       You typically choose between strategy and execution—consultants who design or operators who deliver. <span style="color: var(--signal-gold); font-weight: 600;">Amy is the rare executive who's lived both sides.</span>
+                   </p>
+                   <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--graphite-blue); margin-top: 1rem; font-style: italic;">
+                       Author of Faster Than You Can Adapt (2026)
+                   </p>
+               </div>
+           </div>
        </div>
    </section>
 
@@ -1056,48 +1130,7 @@
        </div>
    </section>
 
-   <!-- Section Separator -->
-   <div class="section-separator"></div>
-
-   <!-- SYSTEM ARCHITECTURE SECTION -->
-   <section class="section-elevated fade-in">
-       <div class="container">
-           <h2 class="section-headline" style="text-align: center; margin-bottom: 1rem;">
-               Behavioral Infrastructure
-           </h2>
-           <p class="section-text" style="text-align: center; margin-bottom: 3rem; color: var(--signal-gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
-               Platform Architecture
-           </p>
-           
-           <div class="content-grid-split">
-               <div>
-                   <h3 class="section-headline" style="font-size: 1.75rem; margin-bottom: 1rem;">
-                       Detection Layer
-                   </h3>
-                   <p class="section-text">
-                       Proprietary algorithms identify behavioral misalignment patterns before they become operationally visible. 
-                       <span style="color: var(--signal-gold); font-weight: 600;">Real-time drift measurement.</span>
-                   </p>
-               </div>
-               
-               <div>
-                   <h3 class="section-headline" style="font-size: 1.75rem; margin-bottom: 1rem;">
-                       Intervention Protocol
-                   </h3>
-                   <p class="section-text">
-                       Systematic correction mechanisms designed for institutional permanence. 
-                       <span style="color: var(--signal-gold); font-weight: 600;">Not culture work. Architecture.</span>
-                   </p>
-               </div>
-           </div>
-           
-           <div style="text-align: center;">
-               <a href="engage.html" class="cta-primary">
-                   Engage
-               </a>
-           </div>
-       </div>
-   </section>
+   
 
    <!-- Section Separator -->
    <div class="section-separator"></div>
