@@ -539,6 +539,12 @@
                 width: auto;
                 max-width: 100%;
             }
+
+            /* Crisis grid mobile adjustments */
+            .crisis-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         /* iOS Safari specific fixes */
@@ -633,11 +639,84 @@ h2, .headline-secondary {
   border-radius: 8px;
 }
 
-/* Section borders */
-.section, .section-main, .section-alt {
-  border-top: 1px solid var(--signal-gold-subtle);
-  border-bottom: 1px solid var(--signal-gold-subtle);
-}
+        /* Section borders */
+        .section, .section-main, .section-alt {
+          border-top: 1px solid var(--signal-gold-subtle);
+          border-bottom: 1px solid var(--signal-gold-subtle);
+        }
+
+        /* Crisis Scenarios Grid */
+        .crisis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .scenario-card {
+            background: var(--warm-white);
+            border: 2px solid var(--architect-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .scenario-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--signal-gold);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .scenario-card:hover {
+            background: rgba(167, 127, 67, 0.08);
+            border-color: var(--signal-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(167, 127, 67, 0.15);
+        }
+
+        .scenario-card:hover::before {
+            opacity: 1;
+        }
+
+        .failure-stat {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--signal-gold);
+            margin-bottom: 1rem;
+        }
+
+        .scenario-title {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--graphite-black);
+            margin-bottom: 1rem;
+        }
+
+        .scenario-content {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--ash-slate);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--ash-slate);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
 
 /* Glyph enhancement */
 .glyph {
@@ -793,6 +872,60 @@ h2, .headline-secondary {
             <h2>The Drift Quotient™ measures what your dashboards can't.</h2>
             <p>It identifies where execution has separated from intent—at the individual, team, or organizational level. While traditional metrics track output, the Drift Quotient™ surfaces misalignment before it becomes systemic. It's the entry point to restoring clarity in systems that still appear successful.</p>
             <a href="engage.html" class="cta-primary">Engage</a>
+        </div>
+    </section>
+
+    <!-- Crisis Scenarios Section -->
+    <section class="section fade-in">
+        <div class="container">
+            <h2>When Behavioral Drift Becomes a Boardroom Crisis</h2>
+            <p class="section-subtitle">
+                Drift isn't a leadership issue. It's a system condition. And it has a kill switch.
+            </p>
+
+            <div class="crisis-grid">
+                <div class="scenario-card">
+                    <div class="failure-stat">70%</div>
+                    <div class="scenario-title">M&A Integration Drift</div>
+                    <div class="scenario-content">
+                        <strong>What it looks like:</strong> Strong financial close. Silent cultural fracture. Leadership behaviors diverge. Operational systems stall.
+                        <br><br>
+                        <strong>EthosSignal function:</strong> ODQ exposes misalignment patterns invisible to financial diligence. Drift detection protects integration value before erosion begins.
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="failure-stat">85%</div>
+                    <div class="scenario-title">Leadership Misfire</div>
+                    <div class="scenario-content">
+                        <strong>What it looks like:</strong> Top performer promoted. Behavioral collapse under pressure. Strategic decisions misfire. Teams destabilize.
+                        <br><br>
+                        <strong>EthosSignal function:</strong> IDQ reveals Drift Type and pressure response profile before promotion. Prevents costly misalignments at the top.
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <div class="failure-stat">65%</div>
+                    <div class="scenario-title">Transformation Failure</div>
+                    <div class="scenario-content">
+                        <strong>What it looks like:</strong> New initiative launches. Leadership fractures. Resistance spikes. Culture retracts.
+                        <br><br>
+                        <strong>EthosSignal function:</strong> IDQ + ODQ assess transformation capacity under behavioral strain. Prevents waste of capital, morale, and time.
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="failure-stat">NEW</div>
+                    <div class="scenario-title">AI Acceleration Breakdown</div>
+                    <div class="scenario-content">
+                        <strong>What it looks like:</strong> AI deployed. Decision velocity spikes. Human systems collapse. Identity drifts into automation gaps.
+                        <br><br>
+                        <strong>EthosSignal function:</strong> Measures behavioral readiness for AI deployment. Maintains coherence as automation scales.
+                    </div>
+                </div>
+            </div>
+
+            <div class="glyph">—•—</div>
         </div>
     </section>
 
