@@ -367,14 +367,38 @@
             text-align: center;
         }
 
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--ash-slate);
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
+                 .section-subtitle-container {
+             text-align: center;
+             margin: 0 auto 3rem;
+             max-width: 800px;
+         }
+
+         .subtitle-primary {
+             font-family: 'IBM Plex Serif', serif;
+             font-size: 1.5rem;
+             font-weight: 600;
+             color: var(--graphite-black);
+             margin-bottom: 1rem;
+             letter-spacing: -0.02em;
+         }
+
+         .subtitle-secondary {
+             font-family: 'Inter', sans-serif;
+             font-size: 1rem;
+             color: var(--ash-slate);
+             line-height: 1.5;
+             font-weight: 400;
+         }
+
+         .section-subtitle {
+             font-size: 1.125rem;
+             color: var(--ash-slate);
+             text-align: center;
+             max-width: 700px;
+             margin: 0 auto 3rem;
+             line-height: 1.6;
+             white-space: nowrap;
+         }
 
         .hero-emphasis {
             color: var(--signal-gold);
@@ -458,22 +482,94 @@
             margin-bottom: 1rem;
         }
 
-        .capability-description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--graphite-black);
-        }
+                 .capability-description {
+             font-size: 0.95rem;
+             line-height: 1.6;
+             color: var(--graphite-black);
+         }
 
-        /* Clean 2x2 Grid Layout */
-        .infrastructure-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 4rem 0;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+         
+
+                 /* Situations Grid Layout */
+         .situations-grid {
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+             gap: 4rem 3rem;
+             margin: 4rem 0;
+             max-width: 1000px;
+             margin-left: auto;
+             margin-right: auto;
+         }
+
+         .situation-card {
+             position: relative;
+             padding-left: 2rem;
+             margin-bottom: 3rem;
+         }
+
+         .situation-card::before {
+             content: '';
+             position: absolute;
+             left: 0;
+             top: 0;
+             bottom: 0;
+             width: 2px;
+             background: var(--signal-gold);
+             opacity: 0.6;
+         }
+
+         .situation-label {
+             font-family: 'JetBrains Mono', monospace;
+             font-size: 0.75rem;
+             font-weight: 500;
+             color: var(--signal-gold);
+             text-transform: uppercase;
+             letter-spacing: 0.5px;
+             margin-bottom: 1rem;
+         }
+
+         .situation-headline {
+             font-family: 'IBM Plex Serif', serif;
+             font-size: 1.75rem;
+             font-weight: 600;
+             color: var(--graphite-black);
+             line-height: 1.2;
+             letter-spacing: -0.02em;
+             margin-bottom: 1rem;
+         }
+
+         .situation-outcome {
+             font-family: 'Inter', sans-serif;
+             font-size: 0.9rem;
+             font-style: italic;
+             color: var(--graphite-blue);
+             line-height: 1.5;
+             opacity: 0.8;
+         }
+
+         .situations-cta {
+             text-align: center;
+             margin: 4rem 0 2rem;
+         }
+
+         .situations-cta .cta-subtext {
+             font-family: 'Inter', sans-serif;
+             font-size: 1.125rem;
+             color: var(--graphite-blue);
+             margin-bottom: 1.5rem;
+             font-weight: 500;
+         }
+
+         /* Clean 2x2 Grid Layout */
+         .infrastructure-grid {
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+             gap: 2rem;
+             margin: 4rem 0;
+             max-width: 900px;
+             margin-left: auto;
+             margin-right: auto;
+         }
 
         /* Architecture Pipeline */
         .pipeline-section {
@@ -916,11 +1012,30 @@
                  gap: 2rem;
              }
 
-            /* Grid mobile adjustments */
-            .infrastructure-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
+                         /* Grid mobile adjustments */
+             .situations-grid {
+                 grid-template-columns: 1fr;
+                 gap: 2rem;
+                 margin: 2rem 0;
+             }
+
+             .situation-card {
+                 padding-left: 1.5rem;
+                 margin-bottom: 2rem;
+             }
+
+             .situation-headline {
+                 font-size: 1.5rem;
+             }
+
+             .situations-cta {
+                 margin: 2rem 0 1rem;
+             }
+
+             .infrastructure-grid {
+                 grid-template-columns: 1fr;
+                 gap: 1.5rem;
+             }
 
             .pipeline-grid {
                 grid-template-columns: 1fr;
@@ -1064,87 +1179,59 @@
 
     <div class="section-separator"></div>
 
-    <!-- System Infrastructure -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Drift Quotient™ System Architecture</h2>
-            <p class="section-subtitle">
-                Enterprise-grade behavioral infrastructure designed for systematic Drift measurement and organizational risk protection.
-            </p>
-
-            <div class="infrastructure-grid">
-                <div class="capability-card">
-                    <div class="capability-title">Individual Drift Quotient™ (IDQ)</div>
-                    <div class="capability-description">
-                        Measures individual behavioral patterns under organizational pressure. 
-                        Identifies Drift Types (Machine, Pillar, Keeper) and quantifies leadership 
-                        risk profiles for key personnel decision-making.
-                    </div>
+                                       <!-- SECTION 2 — The Situations We Enter -->
+       <section class="section">
+           <div class="container">
+                               <h2 class="section-title">The Situations We Enter</h2>
+                <div class="section-subtitle-container">
+                    <div class="subtitle-primary">Unstable ground.</div>
+                    <div class="subtitle-secondary">Where strategic operators determine whether recovery happens—or failure locks in.</div>
                 </div>
-
-                <div class="capability-card">
-                    <div class="capability-title">Organizational Drift Quotient™ (ODQ)</div>
-                    <div class="capability-description">
-                        Generates Organizational Coherence Index (OCI) across alignment dimensions. 
-                        Forecasts institutional collapse timelines and measures systematic Drift 
-                        acceleration before strategic failure manifests.
+               
+               <div class="situations-grid">
+                                       <div class="situation-card">
+                        <div class="situation-label">INFLECTION: INTEGRATION DRIFT</div>
+                        <div class="situation-headline">Deal signed. Integration is stalling.</div>
+                        <div class="situation-outcome">Value protected through systematic realignment.</div>
                     </div>
+
+                   <div class="situation-card">
+                       <div class="situation-label">INFLECTION: SUCCESSION BREAKDOWN</div>
+                       <div class="situation-headline">Founder won't let go. Successor paralyzed.</div>
+                       <div class="situation-outcome">Stabilized identity transfer. Transition landed clean.</div>
+                   </div>
+
+                   <div class="situation-card">
+                       <div class="situation-label">INFLECTION: ROLLUP COLLAPSE</div>
+                       <div class="situation-headline">12 acquisitions. No system. EBITDA declining.</div>
+                       <div class="situation-outcome">Infrastructure hardened. Ops recalibrated. Multiple protected.</div>
+                   </div>
+
+                   <div class="situation-card">
+                       <div class="situation-label">INFLECTION: SCALING FRACTURE</div>
+                       <div class="situation-headline">Growth shattered legacy systems. Leadership overwhelmed.</div>
+                       <div class="situation-outcome">Rebuilt without deceleration. Platform re-aligned.</div>
+                   </div>
+
+                   <div class="situation-card">
+                       <div class="situation-label">INFLECTION: CRISIS FREEZE</div>
+                       <div class="situation-headline">Everything's breaking. No one's leading.</div>
+                       <div class="situation-outcome">Immediate containment. Execution stabilized. Reputation intact.</div>
+                   </div>
+
+                   <div class="situation-card">
+                       <div class="situation-label">INFLECTION: STRATEGIC REBOOT</div>
+                       <div class="situation-headline">New model approved. Execution failing.</div>
+                       <div class="situation-outcome">Behavior realigned to blueprint. Strategy recovered.</div>
+                   </div>
+               </div>
+
+                                               <div class="situations-cta">
+                    <p class="cta-subtext">Drift accelerates during transitions. We know how to stabilize what matters.</p>
+                    <a href="engage.html" class="cta-primary">Schedule a Call</a>
                 </div>
-
-                <div class="capability-card">
-                    <div class="capability-title">Behavioral Risk Analytics</div>
-                    <div class="capability-description">
-                        Real-time dashboard infrastructure for executive teams. Board-grade 
-                        risk documentation, intervention recommendations, and strategic 
-                        recalibration protocols for sustained organizational coherence.
-                    </div>
-                </div>
-
-                <div class="capability-card">
-                    <div class="capability-title">Systematic Intervention Framework</div>
-                    <div class="capability-description">
-                        Deploys targeted behavioral corrections based on Drift Type classification. 
-                        Prevents costly misalignments through systematic measurement rather than 
-                        episodic consulting or cultural optimization approaches.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Infrastructure Pipeline -->
-            <div class="pipeline-section">
-                <h3 style="font-family: 'IBM Plex Serif', serif; font-size: 1.75rem; color: var(--graphite-black); text-align: center; margin-bottom: 1rem;">Processing Architecture</h3>
-                <p style="text-align: center; color: var(--ash-slate); margin-bottom: 2rem;">Four-stage diagnostic pipeline for systematic Drift measurement and correction</p>
-                
-                <div class="pipeline-grid">
-                    <div class="pipeline-stage">
-                        <div class="stage-number">01</div>
-                        <div class="stage-title">Diagnostic Layer</div>
-                        <div class="stage-description">IDQ + ODQ systematic Drift measurement across organizational depth</div>
-                    </div>
-
-                    <div class="pipeline-stage">
-                        <div class="stage-number">02</div>
-                        <div class="stage-title">Processing Layer</div>
-                        <div class="stage-description">BIAC Algorithm processes Drift deviation patterns</div>
-                    </div>
-
-                    <div class="pipeline-stage">
-                        <div class="stage-number">03</div>
-                        <div class="stage-title">Analysis Layer</div>
-                        <div class="stage-description">Drift classification and risk trajectory forecasting</div>
-                    </div>
-
-                    <div class="pipeline-stage">
-                        <div class="stage-number">04</div>
-                        <div class="stage-title">Reporting Layer</div>
-                        <div class="stage-description">Board-grade dashboards and strategic risk documentation</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glyph">—•—</div>
-        </div>
-    </section>
+           </div>
+       </section>
 
     <div class="section-separator"></div>
 
