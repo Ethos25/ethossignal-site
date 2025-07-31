@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EthosSignal – Behavioral Infrastructure Platform</title>
+  <title>EthosSignal – Results</title>
 
-  <meta name="description" content="EthosSignal helps executive teams diagnose and resolve organizational misalignment during M&A, succession, and strategic transformation.">
+  <meta name="description" content="EthosSignal deploys during critical organizational transitions—M&A, succession, transformation. Immediate deployment. Measurable results.">
 
-  <link rel="canonical" href="https://ethossignal.com/system.html" />
+  <link rel="canonical" href="https://ethossignal.com/results.html" />
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="EthosSignal – Behavioral Infrastructure Platform">
-  <meta property="og:description" content="EthosSignal provides diagnostic tools and systematic intervention for executive teams managing organizational misalignment during M&A integration, succession planning, and strategic transformation.">
+  <meta property="og:title" content="EthosSignal – Results">
+  <meta property="og:description" content="EthosSignal deploys during critical organizational transitions—M&A, succession, transformation. Immediate deployment. Measurable results.">
   <meta property="og:image" content="https://ethossignal.com/images/og-image.png">
-  <meta property="og:url" content="https://ethossignal.com/">
+  <meta property="og:url" content="https://ethossignal.com/results.html">
   <meta property="og:site_name" content="EthosSignal">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EthosSignal – Behavioral Infrastructure Platform">
-  <meta name="twitter:description" content="EthosSignal provides diagnostic tools and systematic intervention for executive teams managing organizational misalignment during M&A integration, succession planning, and strategic transformation.">
+  <meta name="twitter:title" content="EthosSignal – Results">
+  <meta name="twitter:description" content="EthosSignal deploys during critical organizational transitions—M&A, succession, transformation. Immediate deployment. Measurable results.">
   <meta name="twitter:image" content="https://ethossignal.com/images/og-image.png">
   <meta name="twitter:site" content="@EthosSignal">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -162,26 +162,202 @@
             padding: 0 2rem;
         }
 
-        /* Typography */
-        .hero-title {
-            font-family: 'IBM Plex Serif', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 600;
-            line-height: 1.1;
-            color: var(--graphite-black);
+                 /* Hero Section - CLEAN EXECUTIVE REFINEMENT */
+         .hero-section {
+             padding: 2.5rem 0 2rem;
+             background-color: #FDFCFA;
+             text-align: center;
+         }
+
+                                   .hero-headline {
+              font-family: 'IBM Plex Serif', serif;
+              font-size: clamp(2.5rem, 6vw, 4rem);
+              font-weight: 600;
+              line-height: 1.1;
+              color: var(--graphite-black);
+              margin-bottom: 0.75rem;
+              text-align: center;
+              max-width: 1200px;
+              margin-left: auto;
+              margin-right: auto;
+          }
+
+        .metric-row {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .metric-item {
             text-align: center;
         }
 
-        .hero-subtitle {
-            font-size: 1.25rem;
+        .metric-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3.4rem;
+            font-weight: 700;
+            color: var(--signal-gold);
+            display: block;
+            margin-bottom: 0.25rem;
+            line-height: 1;
+        }
+
+        .metric-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
             color: var(--ash-slate);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
+                 /* Hero Layout - Centered Design */
+         .hero-content {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             max-width: 1200px;
+             margin: 0 auto;
+         }
+
+                                       /* Static Metrics Row */
+           .metric-row {
+               display: flex;
+               justify-content: center;
+               gap: 1.75rem;
+               margin-bottom: 1.5rem;
+               flex-wrap: wrap;
+               width: 100%;
+           }
+
+                                       .metric-item {
+               text-align: center;
+               padding: 1.25rem 1rem;
+               min-width: 140px;
+               position: relative;
+           }
+
+          .metric-item:not(:last-child)::after {
+              content: '';
+              position: absolute;
+              right: -0.875rem;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 1px;
+              height: 60%;
+              background-color: var(--architect-gray);
+          }
+
+         .metric-number {
+             font-family: 'JetBrains Mono', monospace;
+             font-size: 2.8rem;
+             font-weight: 700;
+             color: var(--signal-gold);
+             display: block;
+             margin-bottom: 0.5rem;
+             line-height: 1;
+         }
+
+                   .metric-label {
+              font-family: 'IBM Plex Mono', monospace;
+              font-size: 0.75rem;
+              color: var(--ash-slate);
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              font-weight: 400;
+              line-height: 1.3;
+          }
+
+                                   /* Centered Text Content */
+          .hero-text-content {
+              text-align: center;
+              max-width: 100%;
+              margin: 0 auto;
+          }
+
+          .hero-subhead {
+              max-width: none;
+              margin: 0;
+              text-align: center;
+          }
+
+                                                                                 .lead-statement {
+                 font-family: 'Inter', sans-serif;
+                 font-size: 1.25rem;
+                 line-height: 1.2;
+                 color: var(--ash-slate);
+                 text-align: center;
+                 margin-bottom: 1rem;
+                 white-space: nowrap;
+                 display: block;
+                 width: 100%;
+             }
+
+                   .rhythm-line {
+              font-family: 'JetBrains Mono', monospace;
+              font-size: 1.5rem;
+              font-weight: 500;
+              letter-spacing: 0.2em;
+              color: var(--graphite-black);
+              text-align: center;
+              margin: 1rem 0;
+              text-transform: uppercase;
+              white-space: nowrap;
+          }
+
+        .closeout-statement {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1rem;
+            font-style: italic;
+            line-height: 1.35;
+            color: var(--graphite-blue);
+            text-align: center;
+            margin-top: 2rem;
+            opacity: 0.8;
+        }
+
+        .cta-primary {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+            padding: 1.25rem 2.5rem;
+            background: var(--signal-gold);
+            color: var(--bone-white);
+            border: 2px solid var(--signal-gold);
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 12px rgba(167, 127, 67, 0.25);
+            margin-top: 1rem;
+        }
+
+        .cta-primary:hover {
+            background: var(--signal-gold-pressed);
+            border-color: var(--signal-gold-pressed);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(167, 127, 67, 0.35);
+        }
+
+                 .cta-subtext {
+             font-family: 'Inter', sans-serif;
+             font-size: 0.875rem;
+             color: var(--graphite-blue);
+             margin-top: 1rem;
+             text-align: center;
+         }
+
+                                       /* Center CTA container */
+           .cta-container {
+               text-align: center;
+               margin-top: 0.75rem;
+           }
+
+        /* Typography */
         .section-title {
             font-family: 'IBM Plex Serif', serif;
             font-size: clamp(2rem, 4vw, 3rem);
@@ -198,13 +374,6 @@
             max-width: 700px;
             margin: 0 auto 3rem;
             line-height: 1.6;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            padding: 8rem 0 6rem;
-            background: var(--bone-white);
-            text-align: center;
         }
 
         .hero-emphasis {
@@ -504,31 +673,6 @@
             color: var(--ash-slate);
         }
 
-        /* CTA System */
-        .cta-primary {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 1rem;
-            padding: 1.25rem 2.5rem;
-            background: var(--signal-gold);
-            color: var(--bone-white);
-            border: 2px solid var(--signal-gold);
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 4px 14px rgba(167, 127, 67, 0.25);
-        }
-
-        .cta-primary:hover {
-            background: var(--signal-gold-pressed);
-            border-color: var(--signal-gold-pressed);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(167, 127, 67, 0.35);
-        }
-
         /* Section Spacing */
         .section {
             padding: 6rem 0;
@@ -556,17 +700,7 @@
             10%, 30%, 50%, 70%, 90% { opacity: 0.3; }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
 
         /* Footer */
         footer {
@@ -679,59 +813,108 @@
             opacity: 0.75;
         }
 
-        /* COMPREHENSIVE MOBILE MEDIA QUERIES */
-        @media (max-width: 768px) {
-            /* Mobile container constraints */
-            html, body {
-                overflow-x: hidden !important;
-                width: 100% !important;
-                max-width: 100vw !important;
-            }
+                 /* COMPREHENSIVE MOBILE MEDIA QUERIES */
+         @media (max-width: 768px) {
+             /* Mobile container constraints */
+             html, body {
+                 overflow-x: hidden !important;
+                 width: 100% !important;
+                 max-width: 100vw !important;
+             }
 
-            /* Navigation mobile fixes */
-            .nav {
-                padding: 1rem;
-                width: 100%;
-                max-width: 100vw;
-                overflow-x: hidden;
-            }
+             /* Navigation mobile fixes */
+             .nav {
+                 padding: 1rem;
+                 width: 100%;
+                 max-width: 100vw;
+                 overflow-x: hidden;
+             }
 
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-                width: 100%;
-                max-width: 100%;
-            }
+             .nav-container {
+                 flex-direction: column;
+                 gap: 1rem;
+                 width: 100%;
+                 max-width: 100%;
+             }
 
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-                width: 100%;
-            }
+             .nav-links {
+                 gap: 1rem;
+                 flex-wrap: wrap;
+                 justify-content: center;
+                 width: 100%;
+             }
 
-            /* Transform prevention for glyphs */
-            .glyph, [style*="glyph-pulse"], .wordmark-separator {
-                transform: none !important;
-                -webkit-transform: none !important;
-            }
+             /* Transform prevention for glyphs */
+             .glyph, [style*="glyph-pulse"], .wordmark-separator {
+                 transform: none !important;
+                 -webkit-transform: none !important;
+             }
 
-            /* Container mobile constraints */
-            .container {
-                padding: 0 1rem;
-                width: 100%;
-                max-width: 100vw;
-                margin: 0 auto;
-                box-sizing: border-box;
-            }
+             /* Container mobile constraints */
+             .container {
+                 padding: 0 1rem;
+                 width: 100%;
+                 max-width: 100vw;
+                 margin: 0 auto;
+                 box-sizing: border-box;
+             }
 
-            /* Hero section mobile adjustments */
-            .hero-section {
-                padding: 4rem 1rem;
-                width: 100%;
-                max-width: 100vw;
-                box-sizing: border-box;
-            }
+             /* Hero section mobile adjustments */
+             .hero-section {
+                 padding: 4rem 1rem;
+                 width: 100%;
+                 max-width: 100vw;
+                 box-sizing: border-box;
+             }
+
+                                          /* Hero layout mobile adjustments */
+               .hero-content {
+                   gap: 1.5rem;
+               }
+
+                               .metric-row {
+                    gap: 1.25rem;
+                    margin-bottom: 1rem;
+                }
+
+                               .metric-item {
+                    padding: 1rem 0.75rem;
+                    min-width: 120px;
+                }
+
+                .metric-item:not(:last-child)::after {
+                    display: none;
+                }
+
+               .metric-number {
+                   font-size: 2.2rem;
+               }
+
+               .metric-label {
+                   font-size: 0.7rem;
+               }
+
+               .hero-text-content {
+                   text-align: center;
+               }
+
+               .lead-statement {
+                   text-align: center;
+                   font-size: 1.125rem;
+               }
+
+              .rhythm-line {
+                  text-align: center;
+              }
+
+              .cta-container {
+                  margin-top: 1.5rem;
+              }
+
+             .metric-row {
+                 flex-direction: column;
+                 gap: 2rem;
+             }
 
             /* Grid mobile adjustments */
             .infrastructure-grid {
@@ -831,52 +1014,58 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="drift.html" class="nav-link">Drift</a>
                 <a href="book.html" class="nav-link">Book</a>
-                <a href="system.html" class="nav-link">System</a>
+                <a href="results.html" class="nav-link">Results</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="engage.html" class="nav-cta">Engage</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section fade-in">
-        <div class="container">
-            <h1 class="hero-title">Drift Is a System Condition. We Built the Layer to Stop It.</h1>
-            <p class="hero-subtitle">
-                Most organizations operationalize Drift without realizing it. EthosSignal deploys systematic measurement to detect and correct behavioral misalignment before it manifests as strategic collapse or value destruction.
-            </p>
-            
-            <div class="market-stats">
-                <div class="stat-item">
-                    <span class="stat-number">70%</span>
-                    <span class="stat-label">M&A Integrations Fail from Behavioral Misalignment</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">30%</span>
-                    <span class="stat-label">Deal Value Lost to Undetected Drift</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">22.6%</span>
-                    <span class="stat-label">Organizations Conduct Behavioral Due Diligence</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">0</span>
-                    <span class="stat-label">Systematic Drift Detection Systems (Until Now)</span>
-                </div>
-            </div>
-
-            <p class="hero-emphasis">
-                The gap between organizational identity and operational behavior destroys more value than financial metrics can detect.
-            </p>
-            
-                            <a href="engage.html" class="cta-primary">Schedule Drift Assessment</a>
-        </div>
-    </section>
+         <!-- Hero Section - CLEAN EXECUTIVE REFINEMENT -->
+     <section class="hero-section">
+         <div class="container">
+             <h1 class="hero-headline">Critical Transitions.<br>Immediate Deployment.</h1>
+             
+                                                       <div class="hero-content">
+                   <!-- Centered Metrics Row -->
+                   <div class="metric-row">
+                       <div class="metric-item">
+                           <span class="metric-number">$1.6B</span>
+                           <span class="metric-label">Platform COO Operations</span>
+                       </div>
+                       <div class="metric-item">
+                           <span class="metric-number">$75B</span>
+                           <span class="metric-label">Rollup Integration Outcome</span>
+                       </div>
+                       <div class="metric-item">
+                           <span class="metric-number">25+</span>
+                           <span class="metric-label">Years Transition Leadership</span>
+                       </div>
+                   </div>
+                   
+                   <!-- Centered Text Content -->
+                   <div class="hero-text-content">
+                       <div class="hero-subhead">
+                           <div class="lead-statement">
+                               EthosSignal enters during critical transitions—before failure, after friction, or when strategic momentum begins to stall.
+                           </div>
+                       </div>
+                   </div>
+               </div>
+              
+              <!-- Centered Rhythm Line and CTA -->
+              <div class="rhythm-line">SALE • SUCCESSION • INTEGRATION • REBUILD</div>
+              
+                             <div class="cta-container">
+                   <a href="engage.html" class="cta-primary">Schedule a Call</a>
+               </div>
+         </div>
+     </section>
 
     <div class="section-separator"></div>
 
     <!-- System Infrastructure -->
-    <section class="section fade-in">
+    <section class="section">
         <div class="container">
             <h2 class="section-title">Drift Quotient™ System Architecture</h2>
             <p class="section-subtitle">
@@ -960,7 +1149,7 @@
     <div class="section-separator"></div>
 
     <!-- Crisis Scenarios -->
-    <section class="section fade-in">
+    <section class="section">
         <div class="container">
             <h2 class="section-title">When Behavioral Drift Becomes a Boardroom Crisis</h2>
             <p class="section-subtitle">
@@ -1016,7 +1205,7 @@
     <div class="section-separator"></div>
 
     <!-- Deployment Model -->
-    <section class="section fade-in">
+    <section class="section">
         <div class="container">
             <h2 class="section-title">Enterprise Deployment Architecture</h2>
             <p class="section-subtitle">
@@ -1096,33 +1285,9 @@
             
             <div class="footer-transmission">TRANSMISSION COMPLETE</div>
         </div>
-    </footer>
+         </footer>
 
-    <script>
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
 
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Staggered animation for cards
-        const cards = document.querySelectorAll('.capability-card, .deployment-card, .scenario-card');
-        cards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
-    </script>
-</body>
-</html>
+ </body>
+ </html> 
