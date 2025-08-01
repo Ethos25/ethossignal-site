@@ -10,11 +10,7 @@
     <lastmod>2025-07-20</lastmod>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://ethossignal.com/book.html</loc>
-    <lastmod>2025-07-20</lastmod>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://ethossignal.com/drift.html</loc>
     <lastmod>2025-07-20</lastmod>
@@ -26,7 +22,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ethossignal.com/system.html</loc>
+    <loc>https://ethossignal.com/situations.html</loc>
     <lastmod>2025-07-20</lastmod>
     <priority>0.7</priority>
   </url>

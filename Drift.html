@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EthosSignal – Behavioral Infrastructure Platform</title>
+  <title>Drift | The Gap Between Intent and Execution</title>
 
-  <meta name="description" content="EthosSignal helps executive teams diagnose and resolve organizational misalignment during M&A, succession, and strategic transformation.">
+  <meta name="description" content="Drift—the measurable misalignment destroying organizational value. Introducing the frameworks to detect it before it scales.">
 
   <link rel="canonical" href="https://ethossignal.com/drift.html" />
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="EthosSignal – Behavioral Infrastructure Platform">
-  <meta property="og:description" content="EthosSignal provides diagnostic tools and systematic intervention for executive teams managing organizational misalignment during M&A integration, succession planning, and strategic transformation.">
+  <meta property="og:title" content="Drift | The Gap Between Intent and Execution">
+  <meta property="og:description" content="Drift—the measurable misalignment destroying organizational value. Introducing the frameworks to detect it before it scales.">
   <meta property="og:image" content="https://ethossignal.com/images/og-image.png">
-  <meta property="og:url" content="https://ethossignal.com/">
+  <meta property="og:url" content="https://ethossignal.com/drift.html">
   <meta property="og:site_name" content="EthosSignal">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EthosSignal – Behavioral Infrastructure Platform">
-  <meta name="twitter:description" content="EthosSignal provides diagnostic tools and systematic intervention for executive teams managing organizational misalignment during M&A integration, succession planning, and strategic transformation.">
+  <meta name="twitter:title" content="Drift | The Gap Between Intent and Execution">
+  <meta name="twitter:description" content="Drift—the measurable misalignment destroying organizational value. Introducing the frameworks to detect it before it scales.">
   <meta name="twitter:image" content="https://ethossignal.com/images/og-image.png">
   <meta name="twitter:site" content="@EthosSignal">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -820,7 +820,122 @@ h2, .headline-secondary {
     left: 0;
     top: 0;
 }
+
+/* Book Section Styles */
+.book-section {
+    background-color: var(--warm-white);
+    padding: 5rem 0;
+}
+
+.book-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.book-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-image {
+    max-width: 225px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(167, 127, 67, 0.15);
+}
+
+.book-text h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: var(--signal-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.book-text h2 {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--graphite-black);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.book-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--graphite-blue);
+    margin-bottom: 1.5rem;
+}
+
+.book-text ul {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.book-text li {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--graphite-blue);
+    margin-bottom: 0.5rem;
+}
+
+.book-text .cta-primary {
+    margin-top: 2rem;
+}
+
+/* Mobile responsive for book section */
+@media (max-width: 768px) {
+    .book-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .book-image {
+        max-width: 250px;
+    }
+    
+    .book-text h2 {
+        font-size: 2rem;
+    }
+    
+    .book-text p,
+    .book-text li {
+        font-size: 1rem;
+    }
+}
     </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EthosSignal",
+      "url": "https://ethossignal.com",
+      "@id": "https://ethossignal.com/#organization",
+      "description": "Strategic operations firm specializing in critical organizational transitions",
+      "founder": {
+        "@type": "Person",
+        "name": "Amy Oguntala",
+        "jobTitle": "Founder & Strategic Operator",
+        "description": "Former COO with $1.6B platform operations experience"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "serviceType": ["M&A Integration", "Succession Planning", "Crisis Stabilization", "Strategic Operations"]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -834,11 +949,9 @@ h2, .headline-secondary {
             
             <div class="nav-links font-inter">
                 <a href="index.html" class="nav-link">Home</a>
+                <a href="situations.html" class="nav-link">Situations</a>
                 <a href="drift.html" class="nav-link">Drift</a>
-                <a href="book.html" class="nav-link">Book</a>
-                <a href="engagements.html" class="nav-link">Engagements</a>
-                
-                <a href="engage.html" class="nav-cta">Engage</a>
+                <a href="engage.html" class="nav-cta">Schedule a Call</a>
             </div>
         </div>
     </nav>
@@ -870,7 +983,35 @@ h2, .headline-secondary {
         <div class="container">
             <h2>The Drift Quotient™ measures what your dashboards can't.</h2>
             <p>It identifies where execution has separated from intent—at the individual, team, or organizational level. While traditional metrics track output, the Drift Quotient™ surfaces misalignment before it becomes systemic. It's the entry point to restoring clarity in systems that still appear successful.</p>
-            <a href="engage.html" class="cta-primary">Engage</a>
+                            <a href="engage.html" class="cta-primary">Schedule a Call</a>
+        </div>
+    </section>
+
+    <!-- Book Section -->
+    <section class="book-section fade-in">
+        <div class="container">
+            <div class="book-content">
+                <div class="book-image-container">
+                    <img 
+                        src="assets/hero/FasterThanYouCanAdapt.png" 
+                        alt="Faster Than You Can Adapt book cover" 
+                        class="book-image"
+                    />
+                </div>
+                <div class="book-text">
+                    <h3>The Book on Drift</h3>
+                    <h2>Faster Than You Can Adapt (Fall 2025)</h2>
+                    <p>defines Drift as the measurable gap between strategic intent and operational execution.</p>
+                    <p>Written by Amy Oguntala after $1.5B in platform operations revealed Drift as the root cause of transition failure—missed by traditional KPIs until the damage is irreversible.</p>
+                    <p>The book introduces the Drift Quotient™ system—the first diagnostic methodology to quantify organizational misalignment through two frameworks:</p>
+                    <ul>
+                        <li>IDQ™ (Individual Drift Quotient)</li>
+                        <li>ODQ™ (Organizational Drift Quotient)</li>
+                    </ul>
+                    <p>This system transforms invisible behavioral risk into measurable data before it scales.</p>
+                    <a href="engage.html" class="cta-primary">Join the waitlist</a>
+                </div>
+            </div>
         </div>
     </section>
 
