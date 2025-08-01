@@ -166,16 +166,39 @@
         }
 
         .nav-link {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
             color: var(--graphite-black);
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
             position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--signal-gold);
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover {
             color: var(--signal-gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:focus {
+            outline: none;
+            color: var(--signal-gold);
+        }
+
+        .nav-link:focus::after {
+            width: 100%;
         }
 
         /* Standardized CTA Component System */
@@ -391,49 +414,90 @@
         /* Drift Mechanism */
         .drift-mechanism {
             background-color: var(--architect-gray);
-            padding: 4rem 0;
+            padding: 6rem 0;
         }
 
         .drift-mechanism h2 {
             font-family: 'IBM Plex Serif', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .drift-mechanism p {
             font-family: 'Inter', sans-serif;
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 400;
             color: var(--graphite-blue);
-            line-height: 1.6;
-            max-width: 800px;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 3rem;
         }
+
+        .drift-mechanism .pull-quote {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--signal-gold);
+            text-align: center;
+            max-width: 700px;
+            margin: 4rem auto;
+            padding: 2rem;
+            border-left: 4px solid var(--signal-gold);
+            background: rgba(167, 127, 67, 0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+
 
         /* Drift Solution */
         .drift-solution {
             background-color: var(--bone-white);
-            padding: 4rem 0;
+            padding: 6rem 0;
         }
 
         .drift-solution h2 {
             font-family: 'IBM Plex Serif', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .drift-solution p {
             font-family: 'Inter', sans-serif;
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 400;
             color: var(--graphite-blue);
-            line-height: 1.6;
-            max-width: 800px;
-            margin-bottom: 2rem;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 3rem;
         }
+
+        .drift-solution .cta-primary {
+            display: block;
+            width: fit-content;
+            margin: 4rem auto 0 auto;
+            font-size: 1.125rem;
+            padding: 1.25rem 2.5rem;
+            box-shadow: 0 8px 24px rgba(167, 127, 67, 0.2);
+        }
+
+
 
         /* Footer Quote */
         .footer-quote {
@@ -535,11 +599,37 @@
                 max-width: 100%;
             }
 
+            /* Drift sections mobile adjustments */
+            .drift-mechanism h2,
+            .drift-solution h2 {
+                font-size: 2.25rem;
+                margin-bottom: 2rem;
+            }
+
+            .drift-mechanism p,
+            .drift-solution p {
+                font-size: 1.125rem;
+                margin-bottom: 2rem;
+            }
+
+            .drift-mechanism .pull-quote {
+                font-size: 1.25rem;
+                padding: 1.5rem;
+                margin: 2rem auto;
+            }
+
+            .drift-solution .cta-primary {
+                padding: 1rem 2rem;
+                margin: 2rem auto 0 auto;
+            }
+
             /* Crisis grid mobile adjustments */
             .crisis-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+
         }
 
         /* iOS Safari specific fixes */
@@ -958,19 +1048,19 @@ h2, .headline-secondary {
                   <div class="hero-subtext">
             <div style="white-space: nowrap;">In finance, portfolio drift is corrected.</div>
             <div style="white-space: nowrap;">Inside organizations, it compounds invisibly.</div>
-            <div style="white-space: nowrap; color: var(--signal-gold);">EthosSignal installs behavioral infrastructure</div>
-            <div style="white-space: nowrap; color: var(--signal-gold);">that restores alignment.</div>
+            <div style="white-space: nowrap; color: var(--signal-gold);">EthosSignal finds where execution separated from intent—and realigns it.</div>
           </div>
 
       
     </section>
 
-    <section class="drift-mechanism fade-in">
-        <div class="container">
-            <h2>Drift has always existed. AI velocity just makes it harder to ignore.</h2>
-            <p>Drift forms when teams execute without pausing to recalibrate. It's caused by over-performance, unclear roles, and unchecked adaptation. But in today's environment, decisions are faster. Reflection is rare. AI acceleration compresses strategy cycles—and Drift embeds before anyone sees it. Speed doesn't cause Drift. It amplifies it.</p>
-        </div>
-    </section>
+            <section class="drift-mechanism fade-in">
+            <div class="container">
+                <h2>Drift has always existed. AI velocity just makes it harder to ignore.</h2>
+                <p>Drift forms when teams execute without pausing to recalibrate. It's caused by over-performance, unclear roles, and unchecked adaptation. But in today's environment, decisions are faster. Reflection is rare. AI acceleration compresses strategy cycles—and Drift embeds before anyone sees it. Speed doesn't cause Drift. It amplifies it.</p>
+                <div class="pull-quote">"AI acceleration compresses strategy cycles—and Drift embeds before anyone sees it."</div>
+            </div>
+        </section>
 
     <section class="drift-solution fade-in">
         <div class="container">
@@ -1218,7 +1308,7 @@ h2, .headline-secondary {
           <a href="index.html">Home</a>
           <a href="situations.html">Situations</a>
           <a href="drift.html">Drift</a>
-          <a href="engage.html">SCHEDULE CALL</a>
+                           <a href="engage.html">Schedule Call</a>
           <a href="mailto:speaking@ethossignal.com">Speaking Inquiries</a>
         </div>
 

@@ -144,16 +144,39 @@
         }
 
         .nav-link {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
             color: var(--graphite-black);
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
             position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--signal-gold);
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover {
             color: var(--signal-gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:focus {
+            outline: none;
+            color: var(--signal-gold);
+        }
+
+        .nav-link:focus::after {
+            width: 100%;
         }
 
         .nav-cta {
@@ -1293,7 +1316,7 @@
                  <a href="index.html">Home</a>
                  <a href="situations.html">Situations</a>
                  <a href="drift.html">Drift</a>
-                 <a href="engage.html">SCHEDULE CALL</a>
+                 <a href="engage.html">Schedule Call</a>
                  <a href="mailto:speaking@ethossignal.com">Speaking Inquiries</a>
              </div>
              

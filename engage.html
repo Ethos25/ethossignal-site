@@ -122,16 +122,39 @@
         }
 
         .nav-link {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
             color: var(--graphite-black);
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
             position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--signal-gold);
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover {
             color: var(--signal-gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:focus {
+            outline: none;
+            color: var(--signal-gold);
+        }
+
+        .nav-link:focus::after {
+            width: 100%;
         }
 
         .nav-cta {
@@ -182,6 +205,7 @@
             max-width: 700px;
             margin: 0 auto 2rem;
             line-height: 1.5;
+            white-space: nowrap;
         }
 
         .hero-emphasis {
@@ -346,89 +370,122 @@
         }
 
         /* Footer */
+        footer {
+            padding: 3rem 20px 2rem; /* Premium separation from page content */
+            background-color: #141414;
+            color: #ECEAE7;
+            font-family: 'Inter', sans-serif;
+        }
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
-        .footer-glyph {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--signal-gold);
-        }
-
-        .footer-ethos {
-            font-weight: 700;
-            color: var(--graphite-black);
-        }
-
-        .footer-separator {
-            color: var(--ash-slate);
-            animation: morse-pulse 12s infinite;
-            margin: 0 0.5rem;
-        }
-
-        .footer-signal {
-            color: var(--signal-gold);
-        }
-
-        .footer-tagline {
-            font-size: 0.875rem;
-            color: var(--ash-slate);
-            margin: 1.5rem 0;
-            font-style: italic;
+        .footer-nav a,
+        .footer-legal a {
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .footer-nav {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem; /* Increased horizontal spacing for executive scanning */
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px; /* Micro-refinement for premium tone */
+            margin-bottom: 2rem; /* Hierarchy separation from legal row */
         }
 
         .footer-nav a {
-            color: var(--ash-slate);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.2s ease;
+            color: #E0E0E0; /* More noticeable softer white for main navigation */
         }
 
         .footer-nav a:hover {
-            color: var(--signal-gold);
+            color: #A77F43;
+            text-decoration: underline;
         }
 
         .footer-legal {
-            font-size: 0.75rem;
-            color: var(--ash-slate);
-            border-top: 1px solid var(--architect-gray);
-            padding-top: 1.5rem;
-            margin-top: 2rem;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem; /* Consistent spacing for visual rhythm */
+            font-size: 13px;
+            font-weight: 400;
+            margin-top: 2rem; /* Hierarchy separation from main navigation */
+            margin-bottom: 2rem; /* Proper closure spacing */
         }
 
         .footer-legal a {
-            color: var(--ash-slate);
-            text-decoration: none;
-            transition: color 0.2s ease;
+            color: #AAAAAA; /* More noticeable medium gray for secondary/legal links */
         }
 
         .footer-legal a:hover {
-            color: var(--signal-gold);
+            color: #A77F43;
+            text-decoration: underline;
+        }
+
+        .footer-glyph {
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .footer-ethos {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: #E0E0E0; /* More noticeable softer white to match main navigation */
+            font-size: 1.25rem;
+            letter-spacing: -0.04em;
+        }
+
+        .footer-separator {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            color: #888888;
+            font-size: 1rem;
+            letter-spacing: -0.04em;
+            animation: morse-pulse 12s infinite;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0 0.1rem;
+            vertical-align: middle;
+            line-height: 1;
+        }
+
+        .footer-signal {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 400;
+            color: #A77F43;
+            font-size: 1.25rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.04em;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            margin-bottom: 2.5rem; /* Increased spacing for premium hierarchy */
+            color: #E0E0E0; /* More noticeable softer white to match main navigation */
         }
 
         .footer-transmission {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--ash-slate);
-            margin-top: 1.5rem;
-            opacity: 0.6;
+            font-size: 12px;
+            color: #A77F43;
+            margin-top: 8px;
+            opacity: 0.75; /* Subtle presence for system signature */
         }
 
         /* Animations */
@@ -635,9 +692,11 @@
                 For organizations facing critical transitions: M&A, succession, operational crisis.
             </p>
             <p class="hero-emphasis">
-                We deploy when execution gaps threaten enterprise value. Initial assessment determines fit and approach.
+                We deploy when execution gaps threaten enterprise value.
             </p>
-            <p style="font-style: italic; margin-top: 1rem;">Initial conversation determines fit and approach.</p>
+            <p class="hero-emphasis">
+                Initial assessment determines fit and approach.
+            </p>
         </div>
     </section>
 
@@ -649,29 +708,19 @@
             <div class="form-section">
                 <h2 class="form-title">Strategic Assessment Request</h2>
                 <p class="form-subtitle">
-                    Complete this form to request an assessment. We respond within 24 hours.
+                    Brief assessment request for critical transitions requiring immediate operator deployment.
                 </p>
 
                 <form id="assessmentForm" action="#" method="POST">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" id="firstName" name="firstName" class="form-input" required>
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" id="lastName" name="lastName" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email Address</label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-input">
                         </div>
 
                         <div class="form-group">
@@ -682,31 +731,6 @@
                         <div class="form-group">
                             <label for="company" class="form-label">Organization</label>
                             <input type="text" id="company" name="company" class="form-input" required>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="roleType" class="form-label">Primary Role</label>
-                            <select id="roleType" name="roleType" class="form-select" required>
-                                <option value="">Select your role</option>
-                                <option value="ceo">CEO/President</option>
-                                <option value="coo">COO/Operations</option>
-                                <option value="cto">CTO/Technology</option>
-                                <option value="board">Board Director</option>
-                                <option value="pe">PE/VC Partner</option>
-                                <option value="consultant">Strategy Consultant</option>
-                                <option value="other">Other Executive Role</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="organizationSize" class="form-label">Organization Size</label>
-                            <select id="organizationSize" name="organizationSize" class="form-select" required>
-                                <option value="">Select organization size</option>
-                                <option value="startup">Startup (< 50 employees)</option>
-                                <option value="growth">Growth Stage (50-500 employees)</option>
-                                <option value="enterprise">Enterprise (500+ employees)</option>
-                                <option value="portfolio">Portfolio Company/Investment</option>
-                            </select>
                         </div>
 
                         <div class="form-group full-width">
@@ -723,19 +747,8 @@
                         </div>
 
                         <div class="form-group full-width">
-                            <label for="challenge" class="form-label">CURRENT CHALLENGE</label>
-                            <textarea id="challenge" name="challenge" class="form-textarea" placeholder="Describe your current transition challenge and its impact on operations." required></textarea>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="timeline" class="form-label">TIMELINE</label>
-                            <select id="timeline" name="timeline" class="form-select" required>
-                                <option value="">Select preferred timeline</option>
-                                <option value="immediate">Immediate (< 1 week)</option>
-                                <option value="month">2-4 weeks</option>
-                                <option value="quarter">30-90 days</option>
-                                <option value="exploring">Planning stage</option>
-                            </select>
+                            <label for="challenge" class="form-label">CRITICAL CHALLENGE</label>
+                            <textarea id="challenge" name="challenge" class="form-textarea" placeholder="Briefly describe the execution gap threatening enterprise value." required></textarea>
                         </div>
                     </div>
 
@@ -745,32 +758,7 @@
         </div>
     </section>
 
-    <div class="section-separator"></div>
 
-    <!-- Contact Information -->
-    <section class="fade-in">
-        <div class="container">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <h3 class="contact-title">Direct Contact</h3>
-                    <p class="contact-detail">contact@ethossignal.com</p>
-                    <p class="contact-note">
-                        For immediate assessment requests or partnership inquiries
-                    </p>
-                </div>
-
-                <div class="contact-card">
-                    <h3 class="contact-title">Response Time</h3>
-                    <p class="contact-detail">24-48 Hours</p>
-                    <p class="contact-note">
-                        Qualified requests receive priority scheduling and detailed assessment planning
-                    </p>
-                </div>
-            </div>
-
-            
-        </div>
-    </section>
 
     <footer>
         <div class="footer-container">
@@ -788,7 +776,7 @@
                 <a href="index.html">Home</a>
                 <a href="situations.html">Situations</a>
                 <a href="drift.html">Drift</a>
-                <a href="engage.html">SCHEDULE CALL</a>
+                                 <a href="engage.html">Schedule Call</a>
                 <a href="mailto:speaking@ethossignal.com">Speaking Inquiries</a>
             </div>
 
