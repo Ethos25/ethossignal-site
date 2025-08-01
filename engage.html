@@ -633,14 +633,14 @@
     <!-- Hero Section -->
     <section class="hero-section fade-in">
         <div class="container">
-            <h1 class="hero-title">Schedule Your Drift Assessment</h1>
+            <h1 class="hero-title">Schedule a Strategic Assessment</h1>
             <p class="hero-subtitle">
-                Deploy systematic behavioral measurement to detect and correct organizational misalignment 
-                before it manifests as strategic collapse or value destruction.
+                For organizations facing critical transitions: M&A, succession, operational crisis.
             </p>
             <p class="hero-emphasis">
-                Available to qualified enterprises. This isn't consulting—it's behavioral infrastructure.
+                We deploy when execution gaps threaten enterprise value. Initial assessment determines fit and approach.
             </p>
+            <p style="font-style: italic; margin-top: 1rem;">Minimum engagement: $25K. Response within 24 hours.</p>
         </div>
     </section>
 
@@ -650,10 +650,9 @@
     <section class="fade-in">
         <div class="container">
             <div class="form-section">
-                <h2 class="form-title">Drift Quotient™ Assessment Request</h2>
+                <h2 class="form-title">Strategic Assessment Request</h2>
                 <p class="form-subtitle">
-                    Complete this form to begin the assessment process. 
-                    We'll respond within 24 hours to qualified requests.
+                    Complete this form to request an assessment. We respond within 24 hours.
                 </p>
 
                 <form id="assessmentForm" action="#" method="POST">
@@ -714,23 +713,36 @@
                         </div>
 
                         <div class="form-group full-width">
-                            <label for="challenge" class="form-label">Primary Behavioral Challenge</label>
-                            <textarea id="challenge" name="challenge" class="form-textarea" placeholder="Describe the specific behavioral misalignment or execution challenge you're experiencing. What feels 'off' between your strategy and actual operations?" required></textarea>
+                            <label for="transitionType" class="form-label">TRANSITION TYPE</label>
+                            <select id="transitionType" name="transitionType" class="form-select" required>
+                                <option value="">Select transition type</option>
+                                <option value="ma-integration">M&A Integration</option>
+                                <option value="succession">Leadership Succession</option>
+                                <option value="post-investment">Post-Investment Operations</option>
+                                <option value="scale-crisis">Scale Crisis</option>
+                                <option value="transformation">Strategic Transformation</option>
+                                <option value="other">Other Critical Transition</option>
+                            </select>
                         </div>
 
                         <div class="form-group full-width">
-                            <label for="timeline" class="form-label">Assessment Timeline</label>
+                            <label for="challenge" class="form-label">CURRENT CHALLENGE</label>
+                            <textarea id="challenge" name="challenge" class="form-textarea" placeholder="Describe your current transition challenge and its impact on operations." required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="timeline" class="form-label">TIMELINE</label>
                             <select id="timeline" name="timeline" class="form-select" required>
                                 <option value="">Select preferred timeline</option>
-                                <option value="immediate">Immediate (within 2 weeks)</option>
-                                <option value="month">Within 1 month</option>
-                                <option value="quarter">Within 3 months</option>
-                                <option value="exploring">Exploring options</option>
+                                <option value="immediate">Immediate (< 1 week)</option>
+                                <option value="month">2-4 weeks</option>
+                                <option value="quarter">30-90 days</option>
+                                <option value="exploring">Planning stage</option>
                             </select>
                         </div>
                     </div>
 
-                    <button type="submit" class="form-submit">Request Drift Assessment</button>
+                    <button type="submit" class="form-submit">SUBMIT REQUEST</button>
                 </form>
             </div>
         </div>
@@ -744,7 +756,7 @@
             <div class="contact-info">
                 <div class="contact-card">
                     <h3 class="contact-title">Direct Contact</h3>
-                    <p class="contact-detail">founder@ethossignal.com</p>
+                    <p class="contact-detail">contact@ethossignal.com</p>
                     <p class="contact-note">
                         For immediate assessment requests or partnership inquiries
                     </p>
@@ -759,7 +771,7 @@
                 </div>
             </div>
 
-            <div class="glyph">—•—</div>
+            
         </div>
     </section>
 
@@ -772,25 +784,24 @@
             </div>
 
             <p class="footer-tagline">
-                Drift is already in the system. We built the layer to stop it.
+                Strategic operations for critical transitions.
             </p>
 
             <div class="footer-nav">
-                <a href="platform.html">Platform Access</a>
-                <a href="executive-briefings.html">Executive Briefings</a>
-                <a href="speaking.html">Speaking</a>
-                <a href="reports.html">Reports</a>
+                <a href="index.html">Home</a>
+                <a href="situations.html">Situations</a>
+                <a href="drift.html">Drift</a>
+                <a href="engage.html">Schedule Call</a>
+                <a href="mailto:speaking@ethossignal.com">Speaking Inquiries</a>
             </div>
 
             <div class="footer-legal">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
-                <a href="mailto:founder@ethossignal.com">Contact</a>
+                <a href="mailto:contact@ethossignal.com">Contact</a>
                 <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
                 <span style="color: var(--ash-slate);">© 2025 EthosSignal. All rights reserved.</span>
             </div>
-
-            <div class="footer-transmission">TRANSMISSION COMPLETE</div>
         </div>
     </footer>
 

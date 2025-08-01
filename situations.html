@@ -60,6 +60,28 @@
             max-width: 100vw;
         }
 
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .metric-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .metric-item {
+                min-width: auto;
+            }
+            
+            .rhythm-line {
+                font-size: 1.25rem;
+                letter-spacing: 0.15em;
+            }
+            
+            .lead-statement {
+                font-size: 1.125rem;
+                line-height: 1.4;
+            }
+        }
+
         /* Navigation */
         .nav {
             position: sticky;
@@ -185,13 +207,17 @@
         .metric-row {
             display: flex;
             justify-content: center;
-            gap: 4rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: nowrap;
+            width: 100%;
         }
 
         .metric-item {
             text-align: center;
+            flex: 0 0 auto;
+            min-width: 160px;
         }
 
         .metric-number {
@@ -286,13 +312,16 @@
                                                                                  .lead-statement {
                  font-family: 'Inter', sans-serif;
                  font-size: 1.25rem;
-                 line-height: 1.2;
+                 line-height: 1.3;
                  color: var(--ash-slate);
                  text-align: center;
-                 margin-bottom: 1rem;
-                 white-space: nowrap;
+                 margin: 1.5rem 0 2rem 0;
+                 white-space: normal;
                  display: block;
                  width: 100%;
+                 max-width: 800px;
+                 margin-left: auto;
+                 margin-right: auto;
              }
 
                    .rhythm-line {
@@ -302,7 +331,7 @@
               letter-spacing: 0.2em;
               color: var(--graphite-black);
               text-align: center;
-              margin: 1rem 0;
+              margin: 2rem 0 1.5rem 0;
               text-transform: uppercase;
               white-space: nowrap;
           }
@@ -354,7 +383,7 @@
                                        /* Center CTA container */
            .cta-container {
                text-align: center;
-               margin-top: 0.75rem;
+               margin-top: 1.5rem;
            }
 
         /* Typography */
@@ -1161,39 +1190,38 @@
          <div class="container">
              <h1 class="hero-headline">Critical Transitions.<br>Immediate Deployment.</h1>
              
-                                                       <div class="hero-content">
-                   <!-- Centered Metrics Row -->
-                   <div class="metric-row">
-                       <div class="metric-item">
-                           <span class="metric-number">$1.6B</span>
-                           <span class="metric-label">Platform COO Operations</span>
-                       </div>
-                       <div class="metric-item">
-                           <span class="metric-number">$75B</span>
-                           <span class="metric-label">Rollup Integration Outcome</span>
-                       </div>
-                       <div class="metric-item">
-                           <span class="metric-number">25+</span>
-                           <span class="metric-label">Years Transition Leadership</span>
-                       </div>
-                   </div>
-                   
-                   <!-- Centered Text Content -->
-                   <div class="hero-text-content">
-                       <div class="hero-subhead">
-                           <div class="lead-statement">
-                               EthosSignal enters during critical transitions—before failure, after friction, or when strategic momentum begins to stall.
-                           </div>
-                       </div>
-                   </div>
-               </div>
-              
-              <!-- Centered Rhythm Line and CTA -->
-              <div class="rhythm-line">SALE • SUCCESSION • INTEGRATION • REBUILD</div>
-              
-                             <div class="cta-container">
-                   <a href="engage.html" class="cta-primary">Schedule a Call</a>
-               </div>
+             <!-- Centered Metrics Row -->
+             <div class="metric-row">
+                 <div class="metric-item">
+                     <span class="metric-number">$1.6B</span>
+                     <span class="metric-label">Platform COO Operations</span>
+                 </div>
+                 <div class="metric-item">
+                     <span class="metric-number">$75B</span>
+                     <span class="metric-label">Rollup Integration Outcome</span>
+                 </div>
+                 <div class="metric-item">
+                     <span class="metric-number">25+</span>
+                     <span class="metric-label">Years Transition Leadership</span>
+                 </div>
+             </div>
+             
+             <!-- Centered Rhythm Line -->
+             <div class="rhythm-line">SALE • SUCCESSION • INTEGRATION • REBUILD</div>
+             
+             <!-- Centered Text Content -->
+             <div class="hero-text-content">
+                 <div class="hero-subhead">
+                     <div class="lead-statement">
+                         EthosSignal enters during critical transitions—before failure, after friction, or when strategic momentum begins to stall.
+                     </div>
+                 </div>
+             </div>
+             
+             <!-- Centered CTA -->
+             <div class="cta-container">
+                 <a href="engage.html" class="cta-primary">Schedule a Call</a>
+             </div>
          </div>
      </section>
 
@@ -1264,26 +1292,25 @@
                 <span class="footer-signal">SIGNAL</span>
             </div>
             
-            <p class="footer-tagline">
-                Drift is already in the system. We built the layer to stop it.
-            </p>
-            
-            <div class="footer-nav">
-                <a href="/platform.html">Platform Access</a>
-                <a href="/executive-briefings.html">Executive Briefings</a>
-                <a href="/speaking.html">Speaking</a>
-                <a href="/reports.html">Reports</a>
-            </div>
-            
-            <div class="footer-legal">
-                <a href="/privacy.html">Privacy Policy</a>
-                <a href="/terms.html">Terms of Service</a>
-                <a href="engage.html">Contact</a>
-                <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
-                <span style="color: var(--ash-slate);">© 2025 EthosSignal. All rights reserved.</span>
-            </div>
-            
-            <div class="footer-transmission">TRANSMISSION COMPLETE</div>
+                         <p class="footer-tagline">
+                 Strategic operations for critical transitions.
+             </p>
+             
+             <div class="footer-nav">
+                 <a href="index.html">Home</a>
+                 <a href="situations.html">Situations</a>
+                 <a href="drift.html">Drift</a>
+                 <a href="engage.html">Schedule Call</a>
+                 <a href="mailto:speaking@ethossignal.com">Speaking Inquiries</a>
+             </div>
+             
+             <div class="footer-legal">
+                 <a href="/privacy.html">Privacy Policy</a>
+                 <a href="/terms.html">Terms of Service</a>
+                 <a href="mailto:contact@ethossignal.com">Contact</a>
+                 <a href="https://www.linkedin.com/in/amyoguntala" target="_blank">LinkedIn</a>
+                 <span style="color: var(--ash-slate);">© 2025 EthosSignal. All rights reserved.</span>
+             </div>
         </div>
          </footer>
 
