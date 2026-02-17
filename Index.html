@@ -126,6 +126,11 @@
             font-size: 0.85em;
         }
 
+        .nav-logo .dot, .footer-logo .dot {
+            position: relative;
+            top: 0.1em;
+        }
+
         nav a {
             font-family: var(--sans);
             font-size: 0.63rem;
@@ -563,7 +568,7 @@
 
     <!-- NAV -->
     <nav>
-        <div class="nav-logo">ETHOS <span class="morse">—•—</span> SIGNAL</div>
+        <div class="nav-logo">ETHOS <span class="morse">—<span class="dot">•</span>—</span> SIGNAL</div>
         <a href="#contact">Contact</a>
     </nav>
 
@@ -698,7 +703,7 @@
     <!-- FOOTER -->
     <div class="container">
         <footer>
-            <div class="footer-logo">ETHOS <span class="morse">—•—</span> SIGNAL</div>
+            <div class="footer-logo">ETHOS <span class="morse">—<span class="dot">•</span>—</span> SIGNAL</div>
             <span class="copy">© <script>document.write(new Date().getFullYear())</script> EthosSignal. All rights reserved.</span>
         </footer>
     </div>
