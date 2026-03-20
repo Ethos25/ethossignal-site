@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090909">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Amy Oguntala — Chief Operating Officer | EthosSignal</title>
-    <meta name="description" content="Amy Oguntala — Chief Operating Officer. P&L ownership and advisory services leadership across PE-backed wealth management platforms.">
+    <meta name="description" content="Operations. Impact. Value. — Amy Oguntala, Chief Operating Officer. Direct revenue accountability and full P&L ownership across PE-backed wealth management platforms.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Amy Oguntala — Chief Operating Officer">
-    <meta property="og:description" content="Direct revenue accountability and full P&L ownership, from acquisition through integration, succession, and post-close stabilization.">
+    <meta property="og:description" content="Operations. Impact. Value. Direct revenue accountability and full P&L ownership, from acquisition through integration, succession, and post-close stabilization.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ethossignal.com">
     <meta property="og:site_name" content="EthosSignal">
@@ -35,7 +37,7 @@
         "@type": "Person",
         "name": "Amy Oguntala",
         "jobTitle": "Chief Operating Officer",
-        "description": "Enterprise operating leadership with direct revenue and P&L accountability across PE-backed wealth management platforms.",
+        "description": "Direct revenue accountability and full P&L ownership across PE-backed wealth management platforms.",
         "url": "https://ethossignal.com",
         "sameAs": ["https://www.linkedin.com/in/amyoguntala"],
         "alumniOf": [
@@ -65,7 +67,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 16px; scroll-behavior: smooth; }
+        html { font-size: 16px; scroll-behavior: smooth; background: #090909; color-scheme: dark; }
 
         body {
             background: var(--bg);
@@ -116,7 +118,7 @@
         .nav-logo {
             font-family: var(--serif);
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--text);
@@ -135,13 +137,13 @@
 
         nav a {
             font-family: var(--sans);
-            font-size: 0.63rem;
+            font-size: 0.6rem;
             font-weight: 400;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--text-dim);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.4s ease;
         }
 
         nav a:hover { color: var(--gold); }
@@ -174,28 +176,35 @@
             color: var(--gold);
             margin-bottom: 2.8rem;
             opacity: 0;
-            animation: fadeIn 0.8s ease forwards 0.2s;
+            animation: fadeIn 0.7s ease-out forwards 0.3s;
         }
 
-        .hero h1 {
+        /* Hero title — choreographed line-by-line entrance */
+        .hero-title-line {
             font-family: var(--serif);
             font-size: clamp(2.8rem, 5.2vw, 4rem);
-            font-weight: 400;
+            font-weight: 500;
             line-height: 1.1;
-            letter-spacing: -0.015em;
+            letter-spacing: -0.02em;
             color: var(--text);
-            margin-bottom: 2.2rem;
             opacity: 0;
-            animation: fadeIn 0.8s ease forwards 0.4s;
+            text-shadow: 0 0 0.5px rgba(233, 229, 223, 0.15);
         }
 
+        .hero-title-line:last-of-type {
+            margin-bottom: 2.2rem;
+        }
+
+        .hero-title-line:nth-child(2) { animation: fadeInFast 0.55s ease-out forwards 0.6s; }
+        .hero-title-line:nth-child(3) { animation: fadeInFast 0.55s ease-out forwards 0.8s; }
+        .hero-title-line:nth-child(4) { animation: fadeInFast 0.55s ease-out forwards 1.0s; }
+
         .hero-rule {
-            width: 44px;
+            width: 0;
             height: 1px;
             background: var(--gold);
             margin-bottom: 2.2rem;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards 0.55s;
+            animation: drawRule 0.65s ease-out forwards 1.35s;
         }
 
         .hero-statement {
@@ -204,16 +213,22 @@
             font-weight: 400;
             font-style: italic;
             line-height: 1.65;
+            letter-spacing: 0.01em;
             color: var(--text-secondary);
             max-width: 620px;
             opacity: 0;
-            animation: fadeIn 0.8s ease forwards 0.65s;
+            animation: fadeIn 0.9s ease-out forwards 1.75s;
         }
 
         /* ===== SECTIONS ===== */
         .section {
             padding: 6rem 0;
             border-top: 1px solid var(--rule);
+        }
+
+        .section.first-section {
+            border-top: none;
+            padding-top: 4rem;
         }
 
         .section-label {
@@ -239,15 +254,19 @@
         .section h2 {
             font-family: var(--serif);
             font-size: clamp(1.8rem, 2.8vw, 2.3rem);
-            font-weight: 400;
+            font-weight: 500;
             line-height: 1.25;
+            letter-spacing: -0.01em;
             color: var(--text);
             margin-bottom: 2rem;
+            text-shadow: 0 0 0.3px rgba(233, 229, 223, 0.1);
         }
 
         .prose {
             font-size: 0.95rem;
+            font-weight: 300;
             line-height: 1.9;
+            letter-spacing: 0.005em;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
@@ -257,6 +276,22 @@
         .prose strong {
             font-weight: 400;
             color: var(--text);
+        }
+
+        /* ===== TRACK RECORD THESIS (unicorn line) ===== */
+        .track-record-thesis {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.55;
+            color: var(--text-secondary);
+            margin-bottom: 3.5rem;
+        }
+
+        .track-record-thesis em {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 500;
         }
 
         /* ===== METRICS ===== */
@@ -278,7 +313,7 @@
             font-family: var(--sans);
             font-size: 0.52rem;
             font-weight: 400;
-            letter-spacing: 0.35em;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
             color: var(--text-dim);
             margin-bottom: 0.6rem;
@@ -286,15 +321,19 @@
 
         .metric-value {
             font-family: var(--serif);
-            font-size: 2.6rem;
-            font-weight: 500;
+            font-size: 2.8rem;
+            font-weight: 600;
             color: var(--gold);
             line-height: 1;
             margin-bottom: 0.9rem;
+            letter-spacing: -0.02em;
+            font-variant-numeric: lining-nums;
+            font-feature-settings: "lnum" 1;
+            text-shadow: 0 0 0.5px rgba(184, 164, 122, 0.2);
         }
 
         .metric-label {
-            font-size: 0.73rem;
+            font-size: 0.75rem;
             font-weight: 300;
             line-height: 1.65;
             color: var(--text-secondary);
@@ -303,15 +342,15 @@
 
         /* ===== SCOPE ===== */
         .scope {
-            background: var(--bg-elevated);
-            border: 1px solid var(--rule);
-            padding: 2.8rem 2.5rem;
+            padding: 0;
             margin-bottom: 3rem;
         }
 
         .scope-line {
             font-size: 0.95rem;
+            font-weight: 300;
             line-height: 1.85;
+            letter-spacing: 0.005em;
             color: var(--text-secondary);
             margin-bottom: 1.2rem;
         }
@@ -323,22 +362,23 @@
             color: var(--text);
         }
 
-        /* ===== PLATFORM NOTE ===== */
+        /* ===== PLATFORM NOTE — elevated treatment ===== */
         .platform-note {
             font-family: var(--serif);
-            font-size: 1rem;
-            font-style: italic;
-            color: var(--text-dim);
-            padding: 1.8rem 0;
-            border-top: 1px solid var(--rule);
-            border-bottom: 1px solid var(--rule);
-            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            font-style: normal;
+            letter-spacing: 0;
+            color: var(--text-secondary);
+            padding: 0;
+            border: none;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
             line-height: 1.7;
         }
 
         .platform-note span {
             color: var(--gold);
-            font-style: normal;
         }
 
         /* ===== CAREER ===== */
@@ -346,7 +386,7 @@
             font-family: var(--sans);
             font-size: 0.56rem;
             font-weight: 400;
-            letter-spacing: 0.35em;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
             color: var(--text-dim);
             margin-bottom: 1.2rem;
@@ -376,50 +416,184 @@
             color: var(--text-secondary);
         }
 
+        .role-detail {
+            flex-basis: 100%;
+            font-family: var(--sans);
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            opacity: 0.75;
+            line-height: 1.5;
+            margin-top: 0.1rem;
+        }
+
         .role-date {
             font-family: var(--sans);
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             font-weight: 300;
             color: var(--text-dim);
-            letter-spacing: 0.04em;
-        }
-
-        /* ===== CREDENTIALS ===== */
-        .credentials {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--rule);
-        }
-
-        .cred {
-            font-size: 0.63rem;
-            font-weight: 300;
             letter-spacing: 0.06em;
-            padding: 0.45rem 0.9rem;
-            border: 1px solid var(--gold-border);
-            color: var(--text-dim);
-            transition: color 0.3s, border-color 0.3s;
         }
 
-        .cred:hover {
-            color: var(--gold);
-            border-color: rgba(184, 164, 122, 0.4);
+        /* ===== CREDENTIAL SEPARATOR ===== */
+        .credential-separator {
+            padding: 1.5rem 0 2rem 0;
         }
 
-        /* ===== ES SECTION ===== */
-        .es-closer {
+        .credential-separator-inner {
+            font-family: var(--sans);
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            line-height: 2.2;
+        }
+
+        .credential-separator-inner .cred-highlight {
+            color: var(--text);
+        }
+
+        .credential-separator-inner .sep {
+            margin: 0 0.55rem;
+            opacity: 0.3;
+            font-weight: 300;
+        }
+
+        /* ===== OPERATING THESIS — A/B column layout with ∴ ===== */
+        .thesis-columns {
+            display: flex;
+            gap: 4rem;
+            margin-bottom: 0;
+        }
+
+        .thesis-column {
+            flex: 1;
+            opacity: 0;
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .thesis-column.col-a {
+            transform: translateX(-8px) translateY(6px);
+        }
+
+        .thesis-column.col-b {
+            transform: translateX(8px) translateY(6px);
+        }
+
+        .reveal.visible .thesis-column.col-a {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .reveal.visible .thesis-column.col-b {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .thesis-label {
             font-family: var(--serif);
-            font-size: 0.95rem;
-            font-style: italic;
-            color: var(--text-dim);
-            margin-top: 1.5rem;
-            letter-spacing: 0.02em;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            opacity: 0.8;
         }
 
-        /* ===== LENS ===== */
+        .thesis-column p {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 400;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* Ghost line in the gutter */
+        .thesis-columns {
+            position: relative;
+        }
+
+        .thesis-columns::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            bottom: 2rem;
+            left: 50%;
+            width: 1px;
+            background: var(--gold);
+            opacity: 0.10;
+        }
+
+        /* ∴ symbol — three dots, centered below the gutter */
+        .thesis-therefore {
+            margin-top: 3.5rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .therefore-symbol {
+            width: 24px;
+            height: 22px;
+            position: relative;
+        }
+
+        .therefore-symbol svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .therefore-dot {
+            fill: var(--gold);
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .reveal.visible .therefore-dot.dot-bl {
+            opacity: 0.85;
+            transition-delay: 0.4s;
+        }
+
+        .reveal.visible .therefore-dot.dot-br {
+            opacity: 0.85;
+            transition-delay: 0.6s;
+        }
+
+        .reveal.visible .therefore-dot.dot-top {
+            opacity: 0.85;
+            transition-delay: 0.85s;
+        }
+
+        /* Synthesis — centered, generous word-spacing for list/sentence ambiguity */
+        .thesis-synthesis {
+            text-align: center;
+            margin: 3.5rem auto 0 auto;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 1.1s ease-out, transform 1.1s ease-out;
+        }
+
+        .reveal.visible .thesis-synthesis {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1.2s;
+        }
+
+        .thesis-synthesis p {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 500;
+            line-height: 1.7;
+            color: var(--text);
+            word-spacing: 0.5em;
+        }
+
+        /* ===== LENS (kept for legacy, may remove) ===== */
         .lens {
             border-left: 2px solid var(--gold);
             padding-left: 2.2rem;
@@ -428,47 +602,43 @@
 
         .lens p {
             font-size: 0.95rem;
+            font-weight: 300;
             line-height: 1.9;
+            letter-spacing: 0.005em;
             color: var(--text-secondary);
             margin-bottom: 1.2rem;
         }
 
         .lens p:last-child { margin-bottom: 0; }
 
-        /* ===== CURRENT ===== */
-        .current-statement {
+        /* ===== ES SECTION ===== */
+        .es-closer {
             font-family: var(--serif);
-            font-size: clamp(1.2rem, 2vw, 1.4rem);
-            font-weight: 400;
-            line-height: 1.7;
-            color: var(--text);
+            font-size: 0.95rem;
+            font-style: italic;
+            letter-spacing: 0.015em;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .current-statement em {
-            font-style: italic;
+        .es-availability {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.55;
+            letter-spacing: -0.005em;
             color: var(--gold);
+            padding-top: 1.5rem;
+        }
+
+        .es-availability .highlight {
+            color: var(--text);
         }
 
         /* ===== CONTACT ===== */
         .contact-section {
             padding: 5.5rem 0;
-            border-top: 1px solid var(--rule);
-        }
-
-        .contact-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .contact-row h2 {
-            font-family: var(--serif);
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--text);
-            margin-bottom: 0;
         }
 
         .contact-links {
@@ -483,18 +653,25 @@
             font-weight: 300;
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s;
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
+            transition: color 0.4s ease, border-color 0.4s ease;
         }
 
-        .contact-links a:hover { color: var(--gold); }
+        .contact-links a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
 
         .contact-links .email {
             font-family: var(--serif);
             font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
             color: var(--gold);
             padding-bottom: 2px;
-            border-bottom: 1px solid rgba(184, 164, 122, 0.2);
-            transition: border-color 0.3s;
+            border-bottom: 1px solid rgba(184, 164, 122, 0);
+            transition: border-color 0.5s ease;
         }
 
         .contact-links .email:hover { border-color: var(--gold); }
@@ -512,7 +689,7 @@
 
         .footer-logo {
             font-family: var(--serif);
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 500;
             letter-spacing: 0.25em;
             text-transform: uppercase;
@@ -526,43 +703,120 @@
         }
 
         footer .copy {
-            font-size: 0.58rem;
+            font-size: 0.56rem;
+            font-weight: 400;
             color: var(--text-dim);
             letter-spacing: 0.06em;
         }
 
-        /* ===== ANIMATION ===== */
+        /* ===== ANIMATIONS ===== */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes fadeInFast {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes drawRule {
+            from { width: 0; opacity: 0; }
+            to { width: 44px; opacity: 1; }
+        }
+
+        /* ===== SCROLL REVEAL ===== */
         .reveal {
             opacity: 0;
             transform: translateY(8px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
 
         .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .metric-stagger {
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible .metric-stagger:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+        .reveal.visible .metric-stagger:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+        .reveal.visible .metric-stagger:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+
+        .block-reveal {
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible .block-reveal { opacity: 1; transform: translateY(0); }
+        .reveal.visible .block-reveal.d1 { transition-delay: 0.05s; }
+        .reveal.visible .block-reveal.d2 { transition-delay: 0.15s; }
+        .reveal.visible .block-reveal.d3 { transition-delay: 0.25s; }
+        .reveal.visible .block-reveal.d4 { transition-delay: 0.3s; transition-duration: 0.8s; }
+        .reveal.visible .block-reveal.d5 { transition-delay: 0.35s; }
+
+        .stagger {
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible .stagger:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
+        .reveal.visible .stagger:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+        .reveal.visible .stagger:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+        .reveal.visible .stagger:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             nav { padding: 1.2rem 1.5rem; }
             .container { padding: 0 1.5rem; }
+            .hero { padding-top: 5rem; padding-bottom: 3rem; }
+            .hero-name { margin-bottom: 2rem; }
+            .hero-title-line { text-shadow: none; }
+            .hero-statement { font-size: 1.05rem; }
+            .section { padding: 4rem 0; }
+            .section.first-section { padding-top: 3rem; }
+            .section-label { margin-bottom: 2rem; }
+            .track-record-thesis { font-size: 1.3rem; margin-bottom: 2.5rem; }
             .metrics { grid-template-columns: 1fr; }
-            .metric { margin-right: 0; margin-bottom: -1px; }
-            .metric { padding: 1.8rem 1.5rem; }
-            .scope { padding: 2rem 1.5rem; }
+            .metric { margin-right: 0; margin-bottom: -1px; padding: 1.8rem 1.5rem; }
+            .metric-value { font-size: 2.4rem; text-shadow: none; }
+            .scope { padding: 0; }
+            .platform-note { font-size: 1.05rem; margin-top: 3rem; margin-bottom: 3rem; }
             .role { flex-direction: column; gap: 0.25rem; }
             .role-date { text-align: left; }
-            .contact-row { flex-direction: column; align-items: flex-start; }
+            .credential-separator-inner { line-height: 2.4; }
+            .thesis-columns { flex-direction: column; gap: 2.5rem; }
+            .thesis-columns::after { display: none; }
+            .thesis-column.col-a, .thesis-column.col-b { transform: translateY(6px); }
+            .thesis-column p { font-size: 1rem; }
+            .thesis-therefore { margin-top: 2.5rem; margin-bottom: 2rem; }
+            .thesis-synthesis { margin-top: 2.5rem; }
+            .thesis-synthesis p { font-size: 1.15rem; word-spacing: 0.35em; }
+            .es-availability { font-size: 1.3rem; }
             .contact-links { flex-direction: column; gap: 1rem; align-items: flex-start; }
-            .lens { padding-left: 1.5rem; }
+            .contact-links a { font-size: 0.95rem; padding: 0.3rem 0; }
+            .contact-links .email { font-size: 1.1rem; }
             footer { flex-direction: column; align-items: center; text-align: center; }
         }
 
         @media (max-width: 480px) {
             .nav-logo { font-size: 0.8rem; }
+            .hero-title-line { font-size: 2.2rem; }
+            .hero-statement { font-size: 0.95rem; }
+            .track-record-thesis { font-size: 1.15rem; }
+            .metric-value { font-size: 2.2rem; }
+            .platform-note { font-size: 0.95rem; }
+            .thesis-synthesis p { font-size: 1.05rem; word-spacing: 0.3em; }
+            .es-availability { font-size: 1.15rem; }
+        }
+
+        @media (max-width: 360px) {
+            .nav-logo { font-size: 0.7rem; letter-spacing: 0.2em; }
+            .hero-title-line { font-size: 1.9rem; }
+            .credential-separator-inner { font-size: 0.52rem; letter-spacing: 0.3em; }
         }
     </style>
 </head>
@@ -574,130 +828,166 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- HERO -->
+    <!-- ============================================================ -->
+    <!-- 1. HERO                                                      -->
+    <!-- ============================================================ -->
     <div class="container">
         <section class="hero">
             <div class="hero-name">Amy Oguntala, CFP®</div>
-            <h1>Chief Operating Officer.<br>Wealth Management &<br>PE-Backed Platforms.</h1>
+            <div class="hero-title-line">Chief Operating Officer.</div>
+            <div class="hero-title-line">Wealth Management &</div>
+            <div class="hero-title-line">PE-Backed Platforms.</div>
             <div class="hero-rule"></div>
             <p class="hero-statement">Direct revenue accountability and full P&L ownership, from acquisition through integration, succession, and post-close stabilization.</p>
         </section>
     </div>
 
-    <!-- TRACK RECORD -->
+    <!-- ============================================================ -->
+    <!-- 2. TRACK RECORD                                              -->
+    <!-- ============================================================ -->
     <div class="container">
-        <section class="section reveal">
-            <div class="section-label">Track Record</div>
+        <section class="section first-section reveal">
+            <div class="section-label block-reveal d1">Track Record</div>
+
+            <p class="track-record-thesis block-reveal d2">Three levels of operating complexity, from institutional to founder-led to PE-backed aggregator, <em>led from the inside.</em></p>
 
             <div class="metrics">
-                <div class="metric">
+                <div class="metric metric-stagger" data-count-to="1.5" data-prefix="$" data-suffix="B" data-decimals="1">
                     <div class="metric-category">Platform</div>
                     <div class="metric-value">$1.5B</div>
                     <div class="metric-label">RIA platform under direct operating leadership through transaction diligence and post-close integration</div>
                 </div>
-                <div class="metric">
+                <div class="metric metric-stagger" data-count-to="100" data-suffix="%" data-decimals="0">
                     <div class="metric-category">Earnout</div>
                     <div class="metric-value">100%</div>
                     <div class="metric-label">Earnout delivered against deal thesis — revenue, retention, regulatory conversion, and succession targets</div>
                 </div>
-                <div class="metric">
+                <div class="metric metric-stagger" data-count-to="98" data-suffix="%" data-decimals="0">
                     <div class="metric-category">Retention</div>
                     <div class="metric-value">98%</div>
                     <div class="metric-label">Client retention through advisor succession, integration, and repapering</div>
                 </div>
             </div>
 
-            <div class="scope">
+            <div class="scope block-reveal d3">
                 <p class="scope-line">
-                    <strong>Full enterprise leadership</strong> — advisory revenue, investment governance, client experience, operating model design, and custodial strategy.
+                    <strong>Full operating model scope:</strong> advisory revenue, investment governance, client experience, data and technology infrastructure, talent management, and strategic partnerships.
                 </p>
                 <p class="scope-line">
-                    Architected advisor compensation, career progression, and performance frameworks aligned with retention and earnout execution under private equity ownership.
+                    Architected advisor compensation, career pathing, and performance frameworks aligned with retention and earnout execution.
                 </p>
                 <p class="scope-line">
                     Led fixed-fee transformation, OCIO transition, and team buildout from acquisition through scale. Primary escalation point for ultra-high-net-worth client concerns.
                 </p>
             </div>
 
-            <div class="platform-note">
-                Sole executive responsibility for the largest acquisition in Wealth Enhancement Group history at the time — integrated into <span>Wealth Enhancement Group's $70B+ PE-backed footprint</span>; recognized internally as an integration authority across the acquisition footprint. Engaged in early-stage diligence conversations with prospective targets.
+            <div class="platform-note block-reveal d4">
+                Sole executive responsibility for the largest acquisition in Wealth Enhancement Group history at the time. Integrated into <span>a PE-backed platform that scaled from $14B to $70B+</span>. Engaged in early-stage diligence conversations with prospective targets.
             </div>
 
-            <div class="career-heading">Career</div>
+            <div class="career-heading block-reveal d5">Career</div>
             <div class="role">
                 <span class="role-title">SVP, Managing Director <span class="role-org">— Wealth Enhancement Group</span></span>
                 <span class="role-date">2020 – 2024</span>
+                <span class="role-detail">Full P&L ownership of acquired $1.5B platform through 5x enterprise growth ($14B to $70B+).</span>
             </div>
             <div class="role">
-                <span class="role-title">Chief Operating Officer <span class="role-org">— JOYN (acquired by WEG at 2.2x)</span></span>
+                <span class="role-title">Chief Operating Officer <span class="role-org">— JOYN (acquired by WEG)</span></span>
                 <span class="role-date">2016 – 2020</span>
+                <span class="role-detail">Led $1.5B wealth management platform through PE acquisition and successful exit.</span>
             </div>
             <div class="role">
                 <span class="role-title">Senior Manager, Financial Services <span class="role-org">— Accenture</span></span>
                 <span class="role-date">2015 – 2016</span>
+                <span class="role-detail">Private wealth management operations and advisory for institutional clients.</span>
             </div>
             <div class="role">
                 <span class="role-title">SVP, Omnichannel & Program Leadership <span class="role-org">— SunTrust (now Truist)</span></span>
                 <span class="role-date">2011 – 2015</span>
-            </div>
-
-            <div class="credentials">
-                <span class="cred">CFP®</span>
-                <span class="cred">MBA — University of Florida</span>
-                <span class="cred">BBA — Temple University</span>
-                <span class="cred">AI Strategy — Cornell</span>
-                <span class="cred">Series 7, 66, 24</span>
-                <span class="cred">Accenture Alum</span>
+                <span class="role-detail">Enterprise-scale program leadership across 110-person PMO.</span>
             </div>
         </section>
     </div>
 
-    <!-- ETHOSSIGNAL -->
+    <!-- ============================================================ -->
+    <!-- 3. CREDENTIAL BAR (separator)                                -->
+    <!-- ============================================================ -->
+    <div class="container">
+        <div class="credential-separator reveal">
+            <div class="credential-separator-inner">
+                <span class="cred-highlight">CFP®</span> <span class="sep">|</span>
+                MBA <span class="sep">|</span>
+                <span class="cred-highlight">AI Strategy, Cornell (Executive)</span> <span class="sep">|</span>
+                Accenture Alum
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. OPERATING THESIS                                          -->
+    <!-- ============================================================ -->
     <div class="container">
         <section class="section reveal">
+            <div class="section-label">Operating Thesis</div>
+
+            <div class="thesis-columns">
+                <div class="thesis-column col-a">
+                    <div class="thesis-label">A.</div>
+                    <p>Regulatory pressure is accelerating. Clients are arriving armed with data the advisor didn't provide. Fee structures are compressing. Most operating models weren't built for convergence at this pace.</p>
+                </div>
+
+                <div class="thesis-column col-b">
+                    <div class="thesis-label">B.</div>
+                    <p>AI is the most powerful tool available and the most ungoverned. Most firms have no enterprise AI strategy and no framework for what their people are already using. Technology compounds whatever the operating model already is.</p>
+                </div>
+            </div>
+
+            <!-- ∴ symbol — three dots, centered below the column gutter -->
+            <div class="thesis-therefore">
+                <div class="therefore-symbol">
+                    <svg viewBox="0 0 24 22" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Bottom-left: slightly wider than tall, offset left -->
+                        <ellipse class="therefore-dot dot-bl" cx="4.5" cy="18.5" rx="2.8" ry="2.6" />
+                        <!-- Bottom-right: slightly taller than wide, offset right -->
+                        <ellipse class="therefore-dot dot-br" cx="19.5" cy="18.2" rx="2.5" ry="2.9" />
+                        <!-- Top: slightly rotated feel, centered above -->
+                        <ellipse class="therefore-dot dot-top" cx="12" cy="3.5" rx="2.7" ry="2.5" transform="rotate(-2 12 3.5)" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="thesis-synthesis">
+                <p>Operations.  Impact.  Value.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. ETHOSSIGNAL (merged: practice + posture + availability)   -->
+    <!-- ============================================================ -->
+    <div class="container">
+        <section class="section first-section reveal">
             <div class="section-label">EthosSignal</div>
-            <h2>Advisory practice for enterprises navigating transition.</h2>
             <p class="prose">
-                M&A, leadership transitions, integration complexity, and growth inflection. Founded to formalize two decades of operating pattern recognition across wealth management and financial services.
+                Founded on two decades of operating experience across wealth management and financial services.
             </p>
             <p class="es-closer">Selective engagements. Confidential mandates.</p>
-        </section>
-    </div>
-
-    <!-- OPERATING LENS -->
-    <div class="container">
-        <section class="section reveal">
-            <div class="section-label">Operating Lens</div>
-            <div class="lens">
-                <p>
-                    Transitions fail when execution separates from intent. Breakdowns surface first in behavior — advisor economics, governance friction, decision velocity, incentive misalignment — long before metrics reflect them. Misalignment at the operating level compounds into enterprise value erosion.
-                </p>
-                <p>
-                    The work — whether in a formal operating role or advisory capacity — centers on restoring structural alignment between strategy and the day-to-day operating reality of the business. Discipline at the operating layer determines valuation outcomes.
-                </p>
-            </div>
-        </section>
-    </div>
-
-    <!-- CURRENT -->
-    <div class="container">
-        <section class="section reveal">
-            <div class="section-label">Current</div>
-            <p class="current-statement">
-                Currently engaged in selective advisory mandates and open to <em>senior operating leadership roles within wealth management and PE-backed RIA platforms.</em>
+            <p class="es-availability">
+                Available for <span class="highlight">operating leadership</span> and <span class="highlight">board roles</span> within wealth management platforms at inflection points.
             </p>
         </section>
     </div>
 
-    <!-- CONTACT -->
+    <!-- ============================================================ -->
+    <!-- 6. CONTACT                                                   -->
+    <!-- ============================================================ -->
     <div class="container">
         <section class="contact-section reveal" id="contact">
-            <div class="contact-row">
-                <h2>Contact</h2>
-                <div class="contact-links">
-                    <a href="mailto:contact@ethossignal.com?subject=EthosSignal%20-%20Inquiry" class="email">contact@ethossignal.com</a>
-                    <a href="https://www.linkedin.com/in/amyoguntala" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                </div>
+            <div class="section-label">Contact</div>
+            <div class="contact-links">
+                <a href="mailto:contact@ethossignal.com?subject=EthosSignal%20-%20Inquiry" class="email">contact@ethossignal.com</a>
+                <a href="https://www.linkedin.com/in/amyoguntala" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a>Atlanta</a>
             </div>
         </section>
     </div>
@@ -711,10 +1001,153 @@
     </div>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        // Scroll reveal observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    // Trigger number count-up for metrics
+                    const metrics = e.target.querySelectorAll('[data-count-to]');
+                    metrics.forEach((metric, i) => {
+                        setTimeout(() => countUp(metric), i * 150 + 200);
+                    });
+                }
+            });
         }, { threshold: 0.08 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Number count-up animation
+        function countUp(metricEl) {
+            const valueEl = metricEl.querySelector('.metric-value');
+            if (!valueEl || metricEl.dataset.counted) return;
+            metricEl.dataset.counted = 'true';
+
+            const target = parseFloat(metricEl.dataset.countTo);
+            const prefix = metricEl.dataset.prefix || '';
+            const suffix = metricEl.dataset.suffix || '';
+            const decimals = parseInt(metricEl.dataset.decimals) || 0;
+            const duration = 850;
+            const startTime = performance.now();
+
+            function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = easeOutCubic(progress) * target;
+
+                valueEl.textContent = decimals > 0
+                    ? prefix + current.toFixed(decimals) + suffix
+                    : prefix + Math.round(current) + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    valueEl.textContent = decimals > 0
+                        ? prefix + target.toFixed(decimals) + suffix
+                        : prefix + target + suffix;
+                }
+            }
+
+            valueEl.textContent = prefix + '0' + suffix;
+            requestAnimationFrame(update);
+        }
+
+        // ============================================
+        // SUB-PERCEPTUAL AUDIO SYSTEM
+        // ============================================
+        // Barely audible tonal events synchronized with
+        // the ∴ dot sequence and the morse code mark.
+        // Total audio layer is below conscious attention
+        // threshold (~35-40dB in most environments).
+        // Browsers require user interaction before audio.
+        // ============================================
+
+        let audioCtx = null;
+        let audioInitialized = false;
+
+        function initAudio() {
+            if (audioInitialized) return;
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                audioInitialized = true;
+            } catch (e) {
+                // Audio not supported, fail silently
+            }
+        }
+
+        // Initialize audio on first scroll
+        window.addEventListener('scroll', function initOnScroll() {
+            initAudio();
+            window.removeEventListener('scroll', initOnScroll);
+        }, { once: true });
+
+        // Play a single sub-perceptual tone
+        // freq: Hz, duration: seconds, delay: seconds, gain: 0-1
+        function playTone(freq, duration, delay, gain) {
+            if (!audioCtx) return;
+
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            const startTime = audioCtx.currentTime + delay;
+
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+
+            // Envelope: fade in over 40% of duration, sustain, fade out
+            gainNode.gain.setValueAtTime(0, startTime);
+            gainNode.gain.linearRampToValueAtTime(gain, startTime + duration * 0.4);
+            gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
+
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            osc.start(startTime);
+            osc.stop(startTime + duration);
+        }
+
+        // ∴ TONAL SEQUENCE
+        // Three ascending tones synchronized with the CSS dot reveals:
+        // Bottom-left dot (0.4s delay): low tone
+        // Bottom-right dot (0.6s delay): mid tone
+        // Top dot (0.85s delay): high tone
+        // Rising pitch = convergence. Two premises resolve to a conclusion.
+        let thereforePlayed = false;
+
+        const thereforeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting && !thereforePlayed && audioCtx) {
+                    thereforePlayed = true;
+                    // Tones at the threshold of perception
+                    // Gain at 0.04 = barely audible in a quiet room
+                    playTone(130, 0.5, 0.4, 0.04);   // Bottom-left: C3
+                    playTone(164, 0.5, 0.6, 0.04);   // Bottom-right: E3
+                    playTone(196, 0.7, 0.85, 0.05);  // Top: G3 (slightly louder, the conclusion)
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const thereforeEl = document.querySelector('.thesis-therefore');
+        if (thereforeEl) thereforeObserver.observe(thereforeEl);
+
+        // MORSE CODE SONIC MARK (—•—)
+        // On nav logo hover: dash-dot-dash as tonal sequence
+        // Dash = sustained tone, Dot = brief tone
+        const navLogo = document.querySelector('.nav-logo');
+        if (navLogo) {
+            let morsePlaying = false;
+            navLogo.addEventListener('mouseenter', () => {
+                if (!audioCtx || morsePlaying) return;
+                morsePlaying = true;
+                // —•— : sustained, brief, sustained
+                // All at the same pitch (A3 = 220Hz) for unity
+                playTone(220, 0.35, 0, 0.03);      // Dash 1
+                playTone(220, 0.12, 0.45, 0.03);   // Dot
+                playTone(220, 0.35, 0.65, 0.03);   // Dash 2
+                setTimeout(() => { morsePlaying = false; }, 1200);
+            });
+        }
     </script>
 
 </body>
