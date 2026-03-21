@@ -128,6 +128,12 @@
             color: var(--gold);
             margin: 0 0.4rem;
             font-size: 0.85em;
+            animation: morseBreathe 6s ease-in-out infinite;
+        }
+
+        @keyframes morseBreathe {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
 
         .nav-logo .dot, .footer-logo .dot {
@@ -1083,9 +1089,32 @@
             window.removeEventListener('scroll', initOnScroll);
         }, { once: true });
 
-        // Play a single sub-perceptual tone
-        // freq: Hz, duration: seconds, delay: seconds, gain: 0-1
-        function playTone(freq, duration, delay, gain) {
+        // Play a tone
+        // freq: Hz, duration: seconds, delay: seconds, gain: 0-1, type: wave type
+        function playTone(freq, duration, delay, gain, type) {
+            if (!audioCtx) return;
+
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            const startTime = audioCtx.currentTime + delay;
+
+            osc.type = type || 'sine';
+            osc.frequency.value = freq;
+
+            // Envelope: fade in over 40% of duration, sustain, fade out
+            gainNode.gain.setValueAtTime(0, startTime);
+            gainNode.gain.linearRampToValueAtTime(gain, startTime + duration * 0.4);
+            gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
+
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            osc.start(startTime);
+            osc.stop(startTime + duration);
+        }
+
+        // Morse code beep: sharp attack, classic 750Hz tone
+        function playMorseBeep(duration, delay, gain) {
             if (!audioCtx) return;
 
             const osc = audioCtx.createOscillator();
@@ -1093,11 +1122,12 @@
             const startTime = audioCtx.currentTime + delay;
 
             osc.type = 'sine';
-            osc.frequency.value = freq;
+            osc.frequency.value = 750;  // Classic morse code frequency
 
-            // Envelope: fade in over 40% of duration, sustain, fade out
+            // Sharp attack (5ms), sustain, sharp decay (5ms) — like real CW
             gainNode.gain.setValueAtTime(0, startTime);
-            gainNode.gain.linearRampToValueAtTime(gain, startTime + duration * 0.4);
+            gainNode.gain.linearRampToValueAtTime(gain, startTime + 0.005);
+            gainNode.gain.setValueAtTime(gain, startTime + duration - 0.005);
             gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
 
             osc.connect(gainNode);
@@ -1132,21 +1162,42 @@
         if (thereforeEl) thereforeObserver.observe(thereforeEl);
 
         // MORSE CODE SONIC MARK (—•—)
-        // On nav logo hover: dash-dot-dash as tonal sequence
-        // Dash = sustained tone, Dot = brief tone
+        // On nav logo hover: classic morse code beeps
+        // Dash = 3 units (180ms), Dot = 1 unit (60ms), Gap = 1 unit (60ms)
+        // 750Hz sine wave with sharp attack/decay = authentic CW sound
         const navLogo = document.querySelector('.nav-logo');
         if (navLogo) {
             let morsePlaying = false;
             navLogo.addEventListener('mouseenter', () => {
                 if (!audioCtx || morsePlaying) return;
                 morsePlaying = true;
-                // —•— : sustained, brief, sustained
-                // All at the same pitch (A3 = 220Hz) for unity
-                playTone(220, 0.35, 0, 0.03);      // Dash 1
-                playTone(220, 0.12, 0.45, 0.03);   // Dot
-                playTone(220, 0.35, 0.65, 0.03);   // Dash 2
-                setTimeout(() => { morsePlaying = false; }, 1200);
+                const vol = 0.04;  // Still subtle
+                playMorseBeep(0.18, 0, vol);        // Dash (180ms)
+                playMorseBeep(0.06, 0.24, vol);     // Dot (60ms, after 60ms gap)
+                playMorseBeep(0.18, 0.36, vol);     // Dash (180ms, after 60ms gap)
+                setTimeout(() => { morsePlaying = false; }, 800);
             });
+        }
+
+        // RANDOM BLINK on morse code mark
+        // Occasional quick blink, almost at random, layered on top of the CSS breathing
+        const morseEl = document.querySelector('.nav-logo .morse');
+        if (morseEl) {
+            function randomBlink() {
+                // Quick blink: opacity drops to 0.15 and recovers in 300ms
+                morseEl.style.transition = 'opacity 0.15s ease-out';
+                morseEl.style.opacity = '0.15';
+                setTimeout(() => {
+                    morseEl.style.transition = 'opacity 0.3s ease-in';
+                    morseEl.style.opacity = '';  // Return to CSS animation control
+                }, 150);
+
+                // Next blink at random interval: 4-12 seconds
+                const next = 4000 + Math.random() * 8000;
+                setTimeout(randomBlink, next);
+            }
+            // First blink after 5-10 seconds
+            setTimeout(randomBlink, 5000 + Math.random() * 5000);
         }
     </script>
 
