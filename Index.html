@@ -128,12 +128,6 @@
             color: var(--gold);
             margin: 0 0.4rem;
             font-size: 0.85em;
-            animation: morseBreathe 6s ease-in-out infinite;
-        }
-
-        @keyframes morseBreathe {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
         }
 
         .nav-logo .dot, .footer-logo .dot {
@@ -1077,36 +1071,17 @@
             if (audioInitialized) return;
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                // Resume if browser suspended it
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
                 audioInitialized = true;
             } catch (e) {
                 // Audio not supported, fail silently
             }
         }
 
-        // Browsers require a real user gesture (click, tap, keydown) to allow audio.
-        // Scroll does NOT count. Initialize on first interaction.
-        function initOnInteraction() {
+        // Initialize audio on first scroll (this was working before)
+        window.addEventListener('scroll', function initOnScroll() {
             initAudio();
-            // Also resume if it was created but suspended
-            if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-            // Remove all listeners once initialized
-            document.removeEventListener('click', initOnInteraction);
-            document.removeEventListener('touchstart', initOnInteraction);
-            document.removeEventListener('keydown', initOnInteraction);
-            // Also try on scroll as fallback for some browsers
-            window.removeEventListener('scroll', initOnInteraction);
-        }
-
-        document.addEventListener('click', initOnInteraction, { once: true });
-        document.addEventListener('touchstart', initOnInteraction, { once: true });
-        document.addEventListener('keydown', initOnInteraction, { once: true });
-        window.addEventListener('scroll', initOnInteraction, { once: true });
+            window.removeEventListener('scroll', initOnScroll);
+        }, { once: true });
 
         // Play a tone
         // freq: Hz, duration: seconds, delay: seconds, gain: 0-1, type: wave type
@@ -1167,7 +1142,6 @@
         const thereforeObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting && !thereforePlayed && audioCtx) {
-                    if (audioCtx.state === 'suspended') audioCtx.resume();
                     thereforePlayed = true;
                     playTone(130, 0.5, 0.4, 0.05);   // Bottom-left: C3
                     playTone(164, 0.5, 0.6, 0.05);   // Bottom-right: E3
@@ -1187,12 +1161,9 @@
         if (navLogo) {
             let morsePlaying = false;
             navLogo.addEventListener('mouseenter', () => {
-                // This click/hover also counts as interaction — ensure audio is ready
-                if (!audioCtx) initAudio();
-                if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
                 if (!audioCtx || morsePlaying) return;
                 morsePlaying = true;
-                const vol = 0.06;  // Subtle but audible in a quiet room
+                const vol = 0.06;
                 playMorseBeep(0.18, 0, vol);        // Dash (180ms)
                 playMorseBeep(0.06, 0.24, vol);     // Dot (60ms, after 60ms gap)
                 playMorseBeep(0.18, 0.36, vol);     // Dash (180ms, after 60ms gap)
@@ -1200,25 +1171,42 @@
             });
         }
 
-        // RANDOM BLINK on morse code mark
-        // Occasional quick blink, almost at random, layered on top of the CSS breathing
+        // LIGHTNING FLASH on morse code mark
+        // Sharp bright flash at random intervals, like a signal transmitting
         const morseEl = document.querySelector('.nav-logo .morse');
         if (morseEl) {
-            function randomBlink() {
-                // Quick blink: opacity drops to 0.15 and recovers in 300ms
-                morseEl.style.transition = 'opacity 0.15s ease-out';
-                morseEl.style.opacity = '0.15';
-                setTimeout(() => {
-                    morseEl.style.transition = 'opacity 0.3s ease-in';
-                    morseEl.style.opacity = '';  // Return to CSS animation control
-                }, 150);
+            function lightningFlash() {
+                // Sharp flash: gold glow appears instantly, fades slowly
+                morseEl.style.transition = 'none';
+                morseEl.style.textShadow = '0 0 8px rgba(184, 164, 122, 0.9), 0 0 24px rgba(184, 164, 122, 0.5)';
+                morseEl.style.color = '#d4c49a';
 
-                // Next blink at random interval: 4-12 seconds
-                const next = 4000 + Math.random() * 8000;
-                setTimeout(randomBlink, next);
+                // Fade back over 500ms
+                setTimeout(() => {
+                    morseEl.style.transition = 'text-shadow 0.5s ease-out, color 0.5s ease-out';
+                    morseEl.style.textShadow = 'none';
+                    morseEl.style.color = '';
+                }, 60);
+
+                // 25% chance of a double flash (lightning flicker)
+                if (Math.random() < 0.25) {
+                    setTimeout(() => {
+                        morseEl.style.transition = 'none';
+                        morseEl.style.textShadow = '0 0 6px rgba(184, 164, 122, 0.7), 0 0 16px rgba(184, 164, 122, 0.3)';
+                        morseEl.style.color = '#d4c49a';
+                        setTimeout(() => {
+                            morseEl.style.transition = 'text-shadow 0.4s ease-out, color 0.4s ease-out';
+                            morseEl.style.textShadow = 'none';
+                            morseEl.style.color = '';
+                        }, 40);
+                    }, 180);
+                }
+
+                // Next flash: random 6-18 seconds
+                setTimeout(lightningFlash, 6000 + Math.random() * 12000);
             }
-            // First blink after 5-10 seconds
-            setTimeout(randomBlink, 5000 + Math.random() * 5000);
+            // First flash after 4-8 seconds
+            setTimeout(lightningFlash, 4000 + Math.random() * 4000);
         }
     </script>
 
