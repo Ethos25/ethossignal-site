@@ -128,6 +128,12 @@
             color: var(--gold);
             margin: 0 0.4rem;
             font-size: 0.85em;
+            animation: morseBreathe 6s ease-in-out infinite;
+        }
+
+        @keyframes morseBreathe {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
         }
 
         .nav-logo .dot, .footer-logo .dot {
@@ -1052,161 +1058,6 @@
 
             valueEl.textContent = prefix + '0' + suffix;
             requestAnimationFrame(update);
-        }
-
-        // ============================================
-        // SUB-PERCEPTUAL AUDIO SYSTEM
-        // ============================================
-        // Barely audible tonal events synchronized with
-        // the ∴ dot sequence and the morse code mark.
-        // Total audio layer is below conscious attention
-        // threshold (~35-40dB in most environments).
-        // Browsers require user interaction before audio.
-        // ============================================
-
-        let audioCtx = null;
-        let audioInitialized = false;
-
-        function initAudio() {
-            if (audioInitialized) return;
-            try {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                audioInitialized = true;
-            } catch (e) {
-                // Audio not supported, fail silently
-            }
-        }
-
-        // Initialize audio on first scroll (this was working before)
-        window.addEventListener('scroll', function initOnScroll() {
-            initAudio();
-            window.removeEventListener('scroll', initOnScroll);
-        }, { once: true });
-
-        // Play a tone
-        // freq: Hz, duration: seconds, delay: seconds, gain: 0-1, type: wave type
-        function playTone(freq, duration, delay, gain, type) {
-            if (!audioCtx) return;
-
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            const startTime = audioCtx.currentTime + delay;
-
-            osc.type = type || 'sine';
-            osc.frequency.value = freq;
-
-            // Envelope: fade in over 40% of duration, sustain, fade out
-            gainNode.gain.setValueAtTime(0, startTime);
-            gainNode.gain.linearRampToValueAtTime(gain, startTime + duration * 0.4);
-            gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
-
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-
-            osc.start(startTime);
-            osc.stop(startTime + duration);
-        }
-
-        // Morse code beep: sharp attack, classic 750Hz tone
-        function playMorseBeep(duration, delay, gain) {
-            if (!audioCtx) return;
-
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            const startTime = audioCtx.currentTime + delay;
-
-            osc.type = 'sine';
-            osc.frequency.value = 750;  // Classic morse code frequency
-
-            // Sharp attack (5ms), sustain, sharp decay (5ms) — like real CW
-            gainNode.gain.setValueAtTime(0, startTime);
-            gainNode.gain.linearRampToValueAtTime(gain, startTime + 0.005);
-            gainNode.gain.setValueAtTime(gain, startTime + duration - 0.005);
-            gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
-
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-
-            osc.start(startTime);
-            osc.stop(startTime + duration);
-        }
-
-        // ∴ TONAL SEQUENCE
-        // Three ascending tones synchronized with the CSS dot reveals:
-        // Bottom-left dot (0.4s delay): low tone
-        // Bottom-right dot (0.6s delay): mid tone
-        // Top dot (0.85s delay): high tone
-        // Rising pitch = convergence. Two premises resolve to a conclusion.
-        let thereforePlayed = false;
-
-        const thereforeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting && !thereforePlayed && audioCtx) {
-                    thereforePlayed = true;
-                    playTone(130, 0.5, 0.4, 0.05);   // Bottom-left: C3
-                    playTone(164, 0.5, 0.6, 0.05);   // Bottom-right: E3
-                    playTone(196, 0.7, 0.85, 0.06);   // Top: G3 (slightly louder, the conclusion)
-                }
-            });
-        }, { threshold: 0.3 });
-
-        const thereforeEl = document.querySelector('.thesis-therefore');
-        if (thereforeEl) thereforeObserver.observe(thereforeEl);
-
-        // MORSE CODE SONIC MARK (—•—)
-        // On nav logo hover: classic morse code beeps
-        // Dash = 3 units (180ms), Dot = 1 unit (60ms), Gap = 1 unit (60ms)
-        // 750Hz sine wave with sharp attack/decay = authentic CW sound
-        const navLogo = document.querySelector('.nav-logo');
-        if (navLogo) {
-            let morsePlaying = false;
-            navLogo.addEventListener('mouseenter', () => {
-                if (!audioCtx || morsePlaying) return;
-                morsePlaying = true;
-                const vol = 0.06;
-                playMorseBeep(0.18, 0, vol);        // Dash (180ms)
-                playMorseBeep(0.06, 0.24, vol);     // Dot (60ms, after 60ms gap)
-                playMorseBeep(0.18, 0.36, vol);     // Dash (180ms, after 60ms gap)
-                setTimeout(() => { morsePlaying = false; }, 800);
-            });
-        }
-
-        // LIGHTNING FLASH on morse code mark
-        // Sharp bright flash at random intervals, like a signal transmitting
-        const morseEl = document.querySelector('.nav-logo .morse');
-        if (morseEl) {
-            function lightningFlash() {
-                // Sharp flash: gold glow appears instantly, fades slowly
-                morseEl.style.transition = 'none';
-                morseEl.style.textShadow = '0 0 8px rgba(184, 164, 122, 0.9), 0 0 24px rgba(184, 164, 122, 0.5)';
-                morseEl.style.color = '#d4c49a';
-
-                // Fade back over 500ms
-                setTimeout(() => {
-                    morseEl.style.transition = 'text-shadow 0.5s ease-out, color 0.5s ease-out';
-                    morseEl.style.textShadow = 'none';
-                    morseEl.style.color = '';
-                }, 60);
-
-                // 25% chance of a double flash (lightning flicker)
-                if (Math.random() < 0.25) {
-                    setTimeout(() => {
-                        morseEl.style.transition = 'none';
-                        morseEl.style.textShadow = '0 0 6px rgba(184, 164, 122, 0.7), 0 0 16px rgba(184, 164, 122, 0.3)';
-                        morseEl.style.color = '#d4c49a';
-                        setTimeout(() => {
-                            morseEl.style.transition = 'text-shadow 0.4s ease-out, color 0.4s ease-out';
-                            morseEl.style.textShadow = 'none';
-                            morseEl.style.color = '';
-                        }, 40);
-                    }, 180);
-                }
-
-                // Next flash: random 6-18 seconds
-                setTimeout(lightningFlash, 6000 + Math.random() * 12000);
-            }
-            // First flash after 4-8 seconds
-            setTimeout(lightningFlash, 4000 + Math.random() * 4000);
         }
     </script>
 
