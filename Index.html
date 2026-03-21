@@ -1077,17 +1077,36 @@
             if (audioInitialized) return;
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                // Resume if browser suspended it
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
                 audioInitialized = true;
             } catch (e) {
                 // Audio not supported, fail silently
             }
         }
 
-        // Initialize audio on first scroll
-        window.addEventListener('scroll', function initOnScroll() {
+        // Browsers require a real user gesture (click, tap, keydown) to allow audio.
+        // Scroll does NOT count. Initialize on first interaction.
+        function initOnInteraction() {
             initAudio();
-            window.removeEventListener('scroll', initOnScroll);
-        }, { once: true });
+            // Also resume if it was created but suspended
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            // Remove all listeners once initialized
+            document.removeEventListener('click', initOnInteraction);
+            document.removeEventListener('touchstart', initOnInteraction);
+            document.removeEventListener('keydown', initOnInteraction);
+            // Also try on scroll as fallback for some browsers
+            window.removeEventListener('scroll', initOnInteraction);
+        }
+
+        document.addEventListener('click', initOnInteraction, { once: true });
+        document.addEventListener('touchstart', initOnInteraction, { once: true });
+        document.addEventListener('keydown', initOnInteraction, { once: true });
+        window.addEventListener('scroll', initOnInteraction, { once: true });
 
         // Play a tone
         // freq: Hz, duration: seconds, delay: seconds, gain: 0-1, type: wave type
@@ -1148,12 +1167,11 @@
         const thereforeObserver = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting && !thereforePlayed && audioCtx) {
+                    if (audioCtx.state === 'suspended') audioCtx.resume();
                     thereforePlayed = true;
-                    // Tones at the threshold of perception
-                    // Gain at 0.04 = barely audible in a quiet room
-                    playTone(130, 0.5, 0.4, 0.04);   // Bottom-left: C3
-                    playTone(164, 0.5, 0.6, 0.04);   // Bottom-right: E3
-                    playTone(196, 0.7, 0.85, 0.05);  // Top: G3 (slightly louder, the conclusion)
+                    playTone(130, 0.5, 0.4, 0.05);   // Bottom-left: C3
+                    playTone(164, 0.5, 0.6, 0.05);   // Bottom-right: E3
+                    playTone(196, 0.7, 0.85, 0.06);   // Top: G3 (slightly louder, the conclusion)
                 }
             });
         }, { threshold: 0.3 });
@@ -1169,9 +1187,12 @@
         if (navLogo) {
             let morsePlaying = false;
             navLogo.addEventListener('mouseenter', () => {
+                // This click/hover also counts as interaction — ensure audio is ready
+                if (!audioCtx) initAudio();
+                if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
                 if (!audioCtx || morsePlaying) return;
                 morsePlaying = true;
-                const vol = 0.04;  // Still subtle
+                const vol = 0.06;  // Subtle but audible in a quiet room
                 playMorseBeep(0.18, 0, vol);        // Dash (180ms)
                 playMorseBeep(0.06, 0.24, vol);     // Dot (60ms, after 60ms gap)
                 playMorseBeep(0.18, 0.36, vol);     // Dash (180ms, after 60ms gap)
